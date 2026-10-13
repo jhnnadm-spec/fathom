@@ -1,6 +1,6 @@
 {
   "ticker": "COST",
-  "generatedAt": "2026-10-13T13:28:41.646Z",
+  "generatedAt": "2026-10-13T13:32:08.123Z",
   "model": "cloudflare:@cf/openai/gpt-oss-120b",
   "sources": [
     {
@@ -23,10 +23,47 @@
     }
   ],
   "topics": {
-    "whatItDoes": [],
+    "whatItDoes": [
+      {
+        "text": "Costco runs membership warehouses in the United States, Puerto Rico, Canada, Mexico, Japan, the United Kingdom, Korea, Australia, Taiwan, China, Spain, France, Sweden, Iceland and New Zealand.",
+        "quote": "We are principally engaged in the operation of membership warehouses in the United States (U.S.) and Puerto Rico, Canada, Mexico, Japan, the United Kingdom (U.K.), Korea, Australia, Taiwan, China, Spain, France, Sweden, Iceland, and New Zealand.",
+        "source": {
+          "label": "10-K filed October 7, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=We%20are%20principally%20engaged%20in%20the%20operation%20of%20membership%20warehouses",
+          "section": "10-K Item 1"
+        }
+      },
+      {
+        "text": "Costco also operates e‑commerce sites in the United States, Canada, Mexico, the United Kingdom, Korea, Taiwan, Japan, Australia and China.",
+        "quote": "The Company operates e‑commerce sites in the U.S., Canada, Mexico, the U.K., Korea, Taiwan, Japan, Australia, and China.",
+        "source": {
+          "label": "10-K filed October 7, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=The%20Company%20operates%20e%E2%80%91commerce%20sites%20in%20the%20U.S.%2C%20Canada%2C%20Mexico%2C",
+          "section": "10-K Item 1"
+        }
+      },
+      {
+        "text": "Costco’s business includes gasoline stations, which accounted for 11% of its total net sales in 2026.",
+        "quote": "Our gasoline business represented 11% of total net sales in 2026.",
+        "source": {
+          "label": "10-K filed October 7, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=Our%20gasoline%20business%20represented%2011%25%20of%20total%20net%20sales%20in",
+          "section": "10-K Item 1"
+        }
+      }
+    ],
     "howItMakesMoney": [
       {
-        "text": "Members pay an annual fee of $65 in the U.S., which provides recurring revenue.",
+        "text": "Net sales come from selling a limited selection of goods at low margins, especially in new and existing warehouses.",
+        "quote": "Net sales increased 10% to $297,247, driven by an increase in comparable sales and sales at new warehouses",
+        "source": {
+          "label": "10-K filed October 7, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=Net%20sales%20increased%2010%25%20to%20%24297%2C247%2C%20driven%20by%20an%20increase",
+          "section": "10-K Item 7"
+        }
+      },
+      {
+        "text": "It also earns revenue from annual membership fees charged to members.",
         "quote": "Our annual fee for memberships is $65 in the U.S., varies in other countries and includes a free household card.",
         "source": {
           "label": "10-K filed October 7, 2026 · Item 1, Business",
@@ -35,21 +72,31 @@
         }
       }
     ],
-    "competitiveEdge": [],
-    "marketPosition": [
+    "competitiveEdge": [
       {
-        "text": "Costco notes that Walmart, Target, Kroger and Amazon are its major competitors in the United States.",
-        "quote": "Walmart, Target, Kroger, and Amazon are among our significant general merchandise retail competitors in the U.S.",
+        "text": "Costco says low prices on a limited, high‑turnover product mix let it keep gross margins lower than most retailers.",
+        "quote": "These volumes and turnover enable us to operate profitably at significantly lower gross margins (net sales less merchandise costs) than most other retailers.",
         "source": {
           "label": "10-K filed October 7, 2026 · Item 1, Business",
-          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=Walmart%2C%20Target%2C%20Kroger%2C%20and%20Amazon%20are%20among%20our%20significant%20general",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=These%20volumes%20and%20turnover%20enable%20us%20to%20operate%20profitably%20at",
           "section": "10-K Item 1"
+        }
+      }
+    ],
+    "marketPosition": [
+      {
+        "text": "Costco notes it faces strong competition from other retailers and warehouse‑club operators.",
+        "quote": "We face strong competition from other retailers and warehouse club operators, which could adversely affect our business, financial condition and results of operations.",
+        "source": {
+          "label": "10-K filed October 7, 2026 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=We%20face%20strong%20competition%20from%20other%20retailers%20and%20warehouse%20club",
+          "section": "10-K Item 1A"
         }
       }
     ],
     "industryTrends": [
       {
-        "text": "Costco says online and mobile retailing lets customers compare prices more easily, increasing competition.",
+        "text": "The company observes that online and mobile retail growth lets shoppers compare prices more easily, increasing competition.",
         "quote": "The evolution of retailing in online and mobile channels has improved the ability of customers to comparison shop, which has enhanced competition.",
         "source": {
           "label": "10-K filed October 7, 2026 · Item 1A, Risk Factors",
@@ -60,7 +107,7 @@
     ],
     "demandDrivers": [
       {
-        "text": "Comparable sales grow when members shop more often and spend more per visit.",
+        "text": "Comparable sales rise when members shop more often and spend more per visit.",
         "quote": "Comparable sales growth is achieved through increasing shopping frequency from new and existing members and the amount they spend on each visit (average ticket).",
         "source": {
           "label": "10-K filed October 7, 2026 · Item 7, Management's Discussion and Analysis",
@@ -71,85 +118,68 @@
     ],
     "biggestRisks": [
       {
-        "text": "Costco says it relies heavily on the performance of its U.S. and Canadian operations.",
-        "quote": "We are highly dependent on the financial performance of our U.S. and Canadian operations.",
+        "text": "It identifies a risk that IT project failures or system outages could harm its operations.",
+        "quote": "Failure to successfully execute IT projects and have IT systems available to our business would adversely impact our operations.",
         "source": {
           "label": "10-K filed October 7, 2026 · Item 1A, Risk Factors",
-          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=We%20are%20highly%20dependent%20on%20the%20financial%20performance%20of%20our",
-          "section": "10-K Item 1A"
-        }
-      },
-      {
-        "text": "Growth depends on acquiring and building new warehouse sites, which can be difficult.",
-        "quote": "Our growth is dependent, in part, on our ability to acquire property and build or lease new warehouses and depots.",
-        "source": {
-          "label": "10-K filed October 7, 2026 · Item 1A, Risk Factors",
-          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=Our%20growth%20is%20dependent%2C%20in%20part%2C%20on%20our%20ability%20to",
-          "section": "10-K Item 1A"
-        }
-      },
-      {
-        "text": "Disruptions in distribution or manufacturing could hurt sales and member satisfaction.",
-        "quote": "Disruptions in merchandise distribution or processing, packaging, manufacturing, and other facilities could adversely affect sales and member satisfaction.",
-        "source": {
-          "label": "10-K filed October 7, 2026 · Item 1A, Risk Factors",
-          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=Disruptions%20in%20merchandise%20distribution%20or%20processing%2C%20packaging%2C%20manufacturing%2C%20and%20other",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=Failure%20to%20successfully%20execute%20IT%20projects%20and%20have%20IT%20systems",
           "section": "10-K Item 1A"
         }
       }
     ],
     "newRisks": [],
     "outlook": [],
-    "upcoming": []
+    "upcoming": [
+      {
+        "text": "Costco plans to open up to 33 new warehouses, including five relocations, in fiscal 2027.",
+        "quote": "We opened 28 new warehouses, including three relocations, in 2026, and plan to open up to 33 new warehouses, including five relocations, in 2027.",
+        "source": {
+          "label": "10-K filed October 7, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=We%20opened%2028%20new%20warehouses%2C%20including%20three%20relocations%2C%20in%202026%2C",
+          "section": "10-K Item 7"
+        }
+      },
+      {
+        "text": "In April, the board approved raising the quarterly cash dividend by 13%.",
+        "quote": "In April, the Board of Directors approved a 13% increase in the quarterly cash dividend.",
+        "source": {
+          "label": "10-K filed October 7, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=In%20April%2C%20the%20Board%20of%20Directors%20approved%20a%2013%25%20increase",
+          "section": "10-K Item 7"
+        }
+      }
+    ]
   },
   "dropped": [
     {
       "topic": "whatItDoes",
       "reason": "quote not found in report",
-      "text": "Costco runs membership warehouses in the United States, Canada, Mexico, Japan, the United Kingdom, Korea, Australia, Taiwan, China, Spain, France, Sweden, Iceland, and New Zealand.",
-      "quote": "We operate membership warehouses in the United States, Canada, Mexico, Japan, the United Kingdom, Korea, Australia, Taiwan, China, Spain, France, Sweden, Iceland, and New Zealand."
+      "text": "Costco runs membership warehouses and e‑commerce sites in many countries worldwide.",
+      "quote": "We operate membership warehouses and e‑commerce sites in the United States, Canada, Mexico, Japan, the United Kingdom, Korea, Australia, Taiwan, China, Spain, France, Sweden, Iceland and New Zealand."
     },
     {
-      "topic": "whatItDoes",
-      "reason": "quote not found in report",
-      "text": "Costco also runs e‑commerce sites for members in several countries.",
-      "quote": "We operate e‑commerce sites in the U.S., Canada, Mexico, the U.K., Korea, Taiwan, Japan, Australia, and China."
+      "topic": "demandDrivers",
+      "reason": "number not in quote (2026)",
+      "text": "Higher gasoline prices and favorable foreign‑currency movements boosted net sales in 2026.",
+      "quote": "Higher gasoline prices positively impacted net sales by $3,501, or 130 basis points, and changes in foreign currencies positively impacted net sales by $1,332, or 49 basis points."
     },
     {
-      "topic": "howItMakesMoney",
+      "topic": "biggestRisks",
       "reason": "quote not found in report",
-      "text": "The company sells low‑priced, limited‑selection merchandise to generate high sales volume and fast inventory turnover.",
-      "quote": "We offer low prices on a limited selection of products to generate high sales volumes and rapid inventory turnover."
+      "text": "Costco says its results rely heavily on U.S. and Canadian operations, which generate most of its sales and income.",
+      "quote": "We are highly dependent on the financial performance of our U.S. and Canadian operations, which comprised 86% and 83% of net sales and operating income in 2026."
     },
     {
-      "topic": "competitiveEdge",
+      "topic": "biggestRisks",
       "reason": "quote not found in report",
-      "text": "Costco says it can operate profitably with much lower gross margins than most retailers.",
-      "quote": "We operate profitably at significantly lower gross margins than most other retailers."
-    },
-    {
-      "topic": "outlook",
-      "reason": "quote not found in report",
-      "text": "Costco expects to spend about $7.5 billion on capital projects in fiscal 2027.",
-      "quote": "We intend to spend approximately $7,500 during fiscal 2027."
+      "text": "The firm warns that losing member loyalty or brand reputation could cut sales and renewal rates.",
+      "quote": "Membership loyalty and growth are essential to our business. Damage to our brands, reputation, or culture may negatively impact comparable sales, diminish member trust, and reduce renewal rates."
     },
     {
       "topic": "outlook",
       "reason": "quote not found in report",
-      "text": "The company plans to open up to 33 new warehouses, including five relocations, in 2027.",
-      "quote": "We plan to open up to 33 new warehouses, including five relocations, in 2027."
-    },
-    {
-      "topic": "upcoming",
-      "reason": "quote not found in report",
-      "text": "Costco expects to spend about $7.5 billion on capital projects in fiscal 2027.",
-      "quote": "We intend to spend approximately $7,500 during fiscal 2027."
-    },
-    {
-      "topic": "upcoming",
-      "reason": "quote not found in report",
-      "text": "The company plans to open up to 33 new warehouses, including five relocations, in 2027.",
-      "quote": "We plan to open up to 33 new warehouses, including five relocations, in 2027."
+      "text": "Management expects its cash, investments and operating cash flow to be enough to meet liquidity and capital needs for the foreseeable future.",
+      "quote": "We believe our cash and investment positions and operating cash flow will be sufficient to meet our liquidity and capital requirements for the foreseeable future."
     }
   ]
 }
