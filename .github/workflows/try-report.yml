@@ -40,6 +40,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout --orphan sec-data
           git rm -rf --cached . > /dev/null
-          git add -f out
+          # vercel.json comes along so Vercel knows not to publish this branch.
+          git add -f out vercel.json
           git commit -q -m "SEC data for: $TICKERS"
           git push -f origin sec-data
