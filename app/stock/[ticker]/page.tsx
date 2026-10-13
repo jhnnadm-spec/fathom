@@ -12,6 +12,48 @@ import type { Statement } from "@/lib/financials/templates";
 import { termsIn } from "@/lib/financials/templates";
 import { lookupTerm } from "@/lib/glossary";
 import { getCompanyReport, type CompanyReport } from "@/lib/report/company";
+import { EXPLANATIONS } from "@/content/explanations";
+import type { CheckedClaim, SavedExplanation, TopicId } from "@/lib/explain/types";
+
+function explanationFor(report: CompanyReport): SavedExplanation | undefined {
+  return EXPLANATIONS[report.company.ticker];
+}
+
+/** AI-written points, each linked to the exact words in the report it came from. */
+function Claims({ claims, empty }: { claims: CheckedClaim[]; empty?: string }) {
+  if (claims.length === 0) {
+    return empty ? <p className="text-[16px] leading-relaxed text-muted">{empty}</p> : null;
+  }
+  return (
+    <ul className="flex flex-col gap-4">
+      {claims.map((c) => (
+        <li key={c.text} className="flex flex-col gap-1.5">
+          <p className="text-[17px] leading-relaxed">{c.text}</p>
+          <SourceLink href={c.source.url} label={c.source.label} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Topic({ e, id, title, empty }: { e: SavedExplanation; id: TopicId; title: string; empty?: string }) {
+  if (e.topics[id].length === 0 && !empty) return null;
+  return (
+    <div className="flex flex-col gap-3">
+      <h3 className="font-display text-lg font-bold">{title}</h3>
+      <Claims claims={e.topics[id]} empty={empty} />
+    </div>
+  );
+}
+
+function AiNote({ e }: { e: SavedExplanation }) {
+  return (
+    <p className="rounded-xl bg-mist px-3.5 py-2.5 text-[13px] leading-relaxed text-muted">
+      Written by AI from the company&apos;s own reports on {formatDate(e.generatedAt.slice(0, 10))}. Every point was
+      checked word-for-word against the report it links to; points that failed the check were removed.
+    </p>
+  );
+}
 
 export async function generateMetadata(props: PageProps<"/stock/[ticker]">): Promise<Metadata> {
   const { ticker } = await props.params;
@@ -164,8 +206,21 @@ function ComingSoon({ title, items }: { title: string; items: string[] }) {
 
 function Surface({ report }: { report: CompanyReport }) {
   const n = report.numbers;
+  const e = explanationFor(report);
   return (
     <div className="flex flex-col gap-5">
+      {e && (
+        <Card title="In short">
+          <Claims claims={[...e.topics.whatItDoes.slice(0, 1), ...e.topics.howItMakesMoney.slice(0, 1)]} />
+          {e.topics.biggestRisks[0] && (
+            <div className="flex flex-col gap-3 border-t border-line pt-4">
+              <h3 className="text-[13px] font-semibold uppercase tracking-wider text-[#2F7A99]">Biggest risk</h3>
+              <Claims claims={e.topics.biggestRisks.slice(0, 1)} />
+            </div>
+          )}
+          <AiNote e={e} />
+        </Card>
+      )}
       <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
         <Card title="Is it growing?">
           <BigChange c={n?.annual.revenue} noun="sales" />
@@ -223,14 +278,29 @@ function Below({ report }: { report: CompanyReport }) {
   ];
   return (
     <div className="flex flex-col gap-5">
-      <ComingSoon
-        title="Business model and competitive edge"
-        items={[
-          "What the company sells and how it makes money",
-          "What the company says gives it an edge over competitors, such as its brand, costs or customer loyalty",
-          "Where it says it stands in its industry",
-        ]}
-      />
+      {explanationFor(report) ? (
+        <Card title="Business model and competitive edge">
+          <Topic e={explanationFor(report)!} id="whatItDoes" title="What the company does" />
+          <Topic e={explanationFor(report)!} id="howItMakesMoney" title="How it makes money" />
+          <Topic
+            e={explanationFor(report)!}
+            id="competitiveEdge"
+            title="What the company says gives it an edge"
+            empty="The report doesn't describe this clearly, so it's left out."
+          />
+          <Topic e={explanationFor(report)!} id="marketPosition" title="Where it says it stands in its industry" />
+          <AiNote e={explanationFor(report)!} />
+        </Card>
+      ) : (
+        <ComingSoon
+          title="Business model and competitive edge"
+          items={[
+            "What the company sells and how it makes money",
+            "What the company says gives it an edge over competitors, such as its brand, costs or customer loyalty",
+            "Where it says it stands in its industry",
+          ]}
+        />
+      )}
       <Card title="Growth and profit" note="From the income statement: what the company sold and what it kept.">
         <Said statement={find(report, "revenue-year")} />
         {n && <RevenueChart history={n.revenueHistory} />}
@@ -451,6 +521,27 @@ function Deep({ report }: { report: CompanyReport }) {
       <MarginHistory report={report} />
       <WhatChanged report={report} />
       <AccountsCheck report={report} />
+      {explanationFor(report) ? (
+        <Card title="Industry, risks and what's coming up">
+          <Topic e={explanationFor(report)!} id="industryTrends" title="Trends in its industry" />
+          <Topic e={explanationFor(report)!} id="demandDrivers" title="What drives demand" />
+          <Topic e={explanationFor(report)!} id="biggestRisks" title="Its biggest risks" />
+          <Topic
+            e={explanationFor(report)!}
+            id="newRisks"
+            title="New or changed risks"
+            empty="The latest quarterly report doesn't describe any new or changed risks."
+          />
+          <Topic
+            e={explanationFor(report)!}
+            id="outlook"
+            title="What management expects"
+            empty="The reports don't give a forward outlook."
+          />
+          <Topic e={explanationFor(report)!} id="upcoming" title="What the company says is coming up" />
+          <AiNote e={explanationFor(report)!} />
+        </Card>
+      ) : (
       <ComingSoon
         title="Industry, risks and what's coming up"
         items={[
@@ -460,6 +551,7 @@ function Deep({ report }: { report: CompanyReport }) {
           "Management's outlook, or a clear note when the report gives none",
         ]}
       />
+      )}
       <Valuation report={report} />
       <Card title="Read the original reports">
         <div className="flex flex-col gap-2">
