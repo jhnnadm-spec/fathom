@@ -84,7 +84,7 @@ export function ExplainButton({
               : "Fathom can write one now from the company's own reports: what it does, how it makes money, its edge, its industry and its risks. Every point is checked against the report it links to."}
           </p>
           {phase === "failed" && (
-            <p className="text-[15px] text-[#FF8FA3]">That didn&apos;t work this time. Please try again later.</p>
+            <p className="text-[15px] text-[#B42318]">That didn&apos;t work this time. Please try again later.</p>
           )}
           <div>
             <button

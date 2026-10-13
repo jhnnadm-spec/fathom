@@ -5,13 +5,13 @@
 import { formatDate, formatMoney } from "../financials/format";
 import type { CompanyNumbers, Comparison } from "../financials/metrics";
 
-/** Chart colours, checked for colour-blind readers on Fathom's dark background (in this order). */
+/** Chart colours, checked for colour-blind readers on Fathom's light glass tiles (in this order). */
 export const SERIES = {
-  blue: "#3987e5",
+  blue: "#2a78d6",
   magenta: "#d55181",
-  violet: "#9085e9",
+  violet: "#6250d6",
   green: "#199e70",
-  orange: "#d95926",
+  orange: "#eb6834",
 } as const;
 
 export type Segment = { label: string; value: number; display: string; color: string; note: string };

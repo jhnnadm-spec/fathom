@@ -52,12 +52,12 @@ export function StackedBar({ segments, caption, selectHint = "Tap a part of the 
             onClick={() => setActive(i)}
             aria-label={`${s.label}: ${s.display}`}
             aria-pressed={active === i}
-            className="h-full cursor-pointer transition-[width,filter] duration-700 ease-out first:rounded-l-lg last:rounded-r-lg hover:brightness-125 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ocean motion-reduce:transition-none"
+            className="h-full cursor-pointer transition-[width,opacity] duration-700 ease-out first:rounded-l-lg last:rounded-r-lg hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ocean motion-reduce:transition-none"
             style={{
               width: shown ? `${(s.value / total) * 100}%` : "0%",
               transitionDelay: `${i * 90}ms`,
               background: s.color,
-              filter: active !== null && active !== i ? "saturate(0.55) brightness(0.8)" : undefined,
+              opacity: active !== null && active !== i ? 0.45 : 1,
             }}
           />
         ))}
@@ -122,7 +122,7 @@ export function Columns({ bars, color, highlight }: { bars: Bar[]; color: string
             className="group flex h-full flex-1 cursor-pointer flex-col justify-end focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ocean"
           >
             <span
-              className="block w-full rounded-t-[4px] transition-[height] duration-700 ease-out group-hover:brightness-125 motion-reduce:transition-none"
+              className="block w-full rounded-t-[4px] transition-[height] duration-700 ease-out group-hover:brightness-110 motion-reduce:transition-none"
               style={{
                 height: shown ? `${Math.max(3, (b.value / max) * 100)}%` : "0%",
                 transitionDelay: `${i * 70}ms`,
@@ -170,7 +170,7 @@ export function BillsGauge({ value }: { value: number }) {
         <div className="absolute inset-y-0 right-0 w-1/2 rounded-r-full bg-[#199e70]/35" />
         <div className="absolute -top-1.5 h-6 w-[3px] rounded bg-line" style={{ left: "calc(50% - 1px)" }} aria-hidden="true" />
         <div
-          className="absolute -top-2 h-7 w-2 rounded-full bg-ink shadow-[0_0_0_3px_var(--color-panel)] transition-[left] duration-1000 ease-out motion-reduce:transition-none"
+          className="absolute -top-2 h-7 w-2 rounded-full bg-ink shadow-[0_0_0_3px_#ffffff] transition-[left] duration-1000 ease-out motion-reduce:transition-none"
           style={{ left: `calc(${shown ? pos * 100 : 0}% - 4px)` }}
           role="img"
           aria-label={`$${value.toFixed(2)} for every $1 due within a year`}
@@ -304,7 +304,7 @@ export function Lines({
                 className="motion-reduce:[transition:none]"
               />
               {s.values[active] !== undefined && (
-                <circle cx={x(active)} cy={y(s.values[active]!)} r="4.5" fill={s.color} stroke="var(--color-panel)" strokeWidth="2" />
+                <circle cx={x(active)} cy={y(s.values[active]!)} r="4.5" fill={s.color} stroke="#ffffff" strokeWidth="2" />
               )}
             </g>
           );

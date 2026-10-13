@@ -300,7 +300,7 @@ function Surface(ctx: Ctx) {
             {d.change !== undefined && (
               <Headline value={`${d.change >= 0 ? "+" : "−"}${formatPercent(d.change)}`} caption="sales compared with the year before" />
             )}
-            <Columns bars={d.bars} color={SERIES.blue} highlight="#4FE3D0" />
+            <Columns bars={d.bars} color={SERIES.blue} highlight="#0B4F6C" />
           </>
         );
       }
@@ -462,7 +462,7 @@ function BlockView({ block, report }: { block: Block; report: CompanyReport }) {
       const d = salesHistory(n)!;
       return (
         <ChartPanel title="Sales by year" note="Tap a year to see its sales.">
-          <Columns bars={d.bars} color={SERIES.blue} highlight="#4FE3D0" />
+          <Columns bars={d.bars} color={SERIES.blue} highlight="#0B4F6C" />
         </ChartPanel>
       );
     }

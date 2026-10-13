@@ -5,18 +5,18 @@
   In the code, "bg-ocean" or "text-ink" refers to these.
 */
 @theme {
-  /* Night dive: Fathom's colours, defined once and used everywhere. */
-  --color-abyss: #0a1622; /* page background */
-  --color-panel: #122536; /* raised areas: tiles, boxes */
-  --color-panel-2: #183450; /* inside panels: tracks, inputs, inactive tabs */
-  --color-ink: #e6f1f5; /* main text */
-  --color-muted: #9db4c2; /* secondary text */
-  --color-line: #23405a; /* dividers */
-  --color-ocean: #4fe3d0; /* the glow: links, key numbers, active tab */
-  --color-ocean-dark: #8cf2e5; /* glow on hover */
-  --color-mist: #122536; /* same as panel (older name) */
+  /* Glass: Fathom's colours, from the logo's four layers of water. */
+  --color-abyss: #ffffff; /* text on dark buttons, and the sticky bar behind the level tabs */
+  --color-panel: rgb(255 255 255 / 0.72); /* frosted tiles */
+  --color-panel-2: #e3f0f5; /* inside tiles: chart tracks, inactive tabs, inputs */
+  --color-ink: #0a2a3a; /* main text */
+  --color-muted: #3d5a69; /* secondary text */
+  --color-line: #d3e6ee; /* dividers */
+  --color-ocean: #0b4f6c; /* deepest layer: links, key numbers, active tab, buttons */
+  --color-ocean-dark: #073447; /* buttons on hover */
+  --color-mist: rgb(255 255 255 / 0.72); /* same as panel (older name) */
 
-  /* The logo's water layers, used as small swatches. */
+  /* The logo's water layers. */
   --color-surface: #cde7f0;
   --color-shallow: #7fc4d8;
   --color-mid: #2f8fb3;
@@ -27,11 +27,14 @@
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
+/* A soft blue glow at the top of every page that fades to white, like light through water. */
 body {
-  background: var(--color-abyss);
+  background:
+    linear-gradient(180deg, #cde7f0 0px, #eaf5f9 420px, #ffffff 1000px) no-repeat,
+    #ffffff;
   color: var(--color-ink);
   font-family: var(--font-sans);
 }
@@ -65,4 +68,12 @@ a:hover {
 @media (prefers-reduced-motion: reduce) {
   .fathom-loader-dot,
   .fathom-loader-wave { animation: none; }
+}
+
+/* Frosted glass tiles: see-through white with a soft blur, a bright edge and a gentle shadow. */
+.bg-panel {
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgb(255 255 255 / 0.9);
+  box-shadow: 0 8px 24px rgb(11 79 108 / 0.08);
 }
