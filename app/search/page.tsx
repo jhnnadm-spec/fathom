@@ -1,3 +1,4 @@
+import { Loader } from "@/components/Loader";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -11,7 +12,7 @@ export default function SearchPage(props: PageProps<"/search">) {
   return (
     <section className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 py-12">
       <SearchForm />
-      <Suspense fallback={<p className="text-muted">Searching…</p>}>
+      <Suspense fallback={<Loader label="Searching…" />}>
         <Results searchParams={props.searchParams} />
       </Suspense>
     </section>

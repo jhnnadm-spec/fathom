@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense, type ReactNode } from "react";
 import { DepthTabs } from "@/components/DepthTabs";
+import { Loader } from "@/components/Loader";
 import { ExplainButton } from "@/components/ExplainButton";
 import { CompanyNews, MarketData, PriceChart } from "@/components/MarketWidgets";
 import { RevenueChart } from "@/components/RevenueChart";
@@ -25,7 +26,7 @@ export async function generateMetadata(props: PageProps<"/stock/[ticker]">): Pro
 export default function StockPage(props: PageProps<"/stock/[ticker]">) {
   return (
     <div>
-      <Suspense fallback={<ReportLoading />}>
+      <Suspense fallback={<Loader label="Reading the latest reports from the SEC…" />}>
         <Report params={props.params} />
       </Suspense>
     </div>
@@ -715,21 +716,6 @@ function Unsupported({ reason, name }: { reason: "foreign-filer" | "no-recent-re
       ) : (
         <p>{name} hasn&apos;t filed an annual or quarterly report with the SEC in the last two years, so there is nothing for Fathom to explain.</p>
       )}
-    </div>
-  );
-}
-
-function ReportLoading() {
-  return (
-    <div className="mx-auto flex w-full max-w-[720px] flex-col gap-5 px-5 py-14" aria-busy="true">
-      <div className="h-5 w-40 animate-pulse rounded bg-mist" />
-      <div className="h-12 w-80 max-w-full animate-pulse rounded-lg bg-mist" />
-      <div className="mt-6 flex flex-col gap-3">
-        {[0, 1, 2, 3, 4].map((i) => (
-          <div key={i} className="h-5 animate-pulse rounded bg-mist" style={{ width: `${90 - i * 9}%` }} />
-        ))}
-      </div>
-      <p className="text-[15px] text-muted">Reading the latest reports from the SEC…</p>
     </div>
   );
 }
