@@ -1,0 +1,194 @@
+{
+  "ticker": "MSFT",
+  "generatedAt": "2026-10-13T13:27:21.082Z",
+  "model": "cloudflare:@cf/openai/gpt-oss-120b",
+  "sources": [
+    {
+      "id": "10-K Item 1",
+      "form": "10-K",
+      "filingDate": "2026-07-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm"
+    },
+    {
+      "id": "10-K Item 1A",
+      "form": "10-K",
+      "filingDate": "2026-07-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm"
+    },
+    {
+      "id": "10-K Item 7",
+      "form": "10-K",
+      "filingDate": "2026-07-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm"
+    }
+  ],
+  "topics": {
+    "whatItDoes": [
+      {
+        "text": "The company says it is a technology company that makes digital technology and AI widely available responsibly.",
+        "quote": "Microsoft is a technology company committed to making digital technology and artificial intelligence (“AI”) available broadly and doing so responsibly.",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=Microsoft%20is%20a%20technology%20company%20committed%20to%20making%20digital%20technology",
+          "section": "10-K Item 1"
+        }
+      },
+      {
+        "text": "The company says it develops and supports software, services, devices, and solutions that create new value for customers.",
+        "quote": "We develop and support software, services, devices, and solutions that deliver new value for customers and help people and businesses realize their full potential.",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=We%20develop%20and%20support%20software%2C%20services%2C%20devices%2C%20and%20solutions%20that",
+          "section": "10-K Item 1"
+        }
+      }
+    ],
+    "howItMakesMoney": [
+      {
+        "text": "The company says it earns revenue by offering cloud‑based solutions, AI, software, platforms and content to customers.",
+        "quote": "We offer an array of services, including cloud-based solutions that provide customers with AI, software, services, platforms, and content, and we provide solution support and consulting services.",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=We%20offer%20an%20array%20of%20services%2C%20including%20cloud%2Dbased%20solutions%20that",
+          "section": "10-K Item 1"
+        }
+      },
+      {
+        "text": "The company says it generates revenue from a wide range of cloud solutions, content, licensing, advertising and device sales.",
+        "quote": "We generate revenue by offering a wide range of cloud-based solutions, content, and other services to people and businesses;",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=We%20generate%20revenue%20by%20offering%20a%20wide%20range%20of%20cloud%2Dbased",
+          "section": "10-K Item 7"
+        }
+      }
+    ],
+    "competitiveEdge": [
+      {
+        "text": "The company says its global cloud scale and identity‑security portfolio let it solve complex cybersecurity challenges better than rivals.",
+        "quote": "our cloud’s global scale, coupled with our broad portfolio of identity and security solutions, allows us to effectively solve complex cybersecurity challenges for our customers",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=our%20cloud%E2%80%99s%20global%20scale%2C%20coupled%20with%20our%20broad%20portfolio%20of",
+          "section": "10-K Item 1"
+        }
+      }
+    ],
+    "marketPosition": [
+      {
+        "text": "The company says its goal is to lead the industry in several technology areas over the long term.",
+        "quote": "Our goal is to lead the industry in several distinct areas of technology over the long term, which we expect will translate to sustained growth.",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=Our%20goal%20is%20to%20lead%20the%20industry%20in%20several%20distinct",
+          "section": "10-K Item 1"
+        }
+      },
+      {
+        "text": "The company says Microsoft Cloud revenue grew 27% to $214.4 billion, showing its leading market position.",
+        "quote": "Microsoft Cloud revenue increased 27% to $214.4 billion.",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=Microsoft%20Cloud%20revenue%20increased%2027%25%20to%20%24214.4%20billion.",
+          "section": "10-K Item 7"
+        }
+      }
+    ],
+    "industryTrends": [
+      {
+        "text": "The company says its industry is dynamic, highly competitive and sees frequent technology and business‑model changes.",
+        "quote": "Our industry is dynamic and highly competitive, with frequent changes in both technologies and business models.",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=Our%20industry%20is%20dynamic%20and%20highly%20competitive%2C%20with%20frequent%20changes",
+          "section": "10-K Item 7"
+        }
+      },
+      {
+        "text": "The company says each industry shift creates opportunities for new products, technologies or ideas that can transform the business.",
+        "quote": "Each industry shift is an opportunity to conceive new products, new technologies, or new ideas that can further transform the industry and our business.",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=Each%20industry%20shift%20is%20an%20opportunity%20to%20conceive%20new%20products%2C",
+          "section": "10-K Item 7"
+        }
+      }
+    ],
+    "demandDrivers": [
+      {
+        "text": "The company says demand for Azure and other cloud services drove a 41% revenue increase.",
+        "quote": "Azure and other cloud services revenue grew 41% driven by demand for services across the platform with continued growth across all workloads.",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=Azure%20and%20other%20cloud%20services%20revenue%20grew%2041%25%20driven%20by",
+          "section": "10-K Item 7"
+        }
+      },
+      {
+        "text": "The company says Microsoft 365 Commercial cloud growth was powered by higher revenue per user from Copilot and E5.",
+        "quote": "Microsoft 365 Commercial cloud revenue grew 17% with growth in revenue per user driven by Microsoft 365 Copilot and Microsoft 365 E5.",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=Microsoft%20365%20Commercial%20cloud%20revenue%20grew%2017%25%20with%20growth%20in",
+          "section": "10-K Item 7"
+        }
+      }
+    ],
+    "biggestRisks": [
+      {
+        "text": "The company says intense competition across all markets could hurt its results of operations.",
+        "quote": "We face intense competition across all markets for our products and services, which could adversely affect our results of operations.",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=We%20face%20intense%20competition%20across%20all%20markets%20for%20our%20products",
+          "section": "10-K Item 1A"
+        }
+      },
+      {
+        "text": "The company says its cloud and AI strategy needs large investments and depends on customer demand, technology and regulation, any of which could harm the business.",
+        "quote": "Our cloud and AI strategy requires substantial investments and depends on evolving customer demand, technological developments, competitive dynamics, and regulatory conditions, any of which could adversely affect our business",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=Our%20cloud%20and%20AI%20strategy%20requires%20substantial%20investments%20and%20depends",
+          "section": "10-K Item 1A"
+        }
+      },
+      {
+        "text": "The company says cyberattacks and security vulnerabilities could reduce revenue, raise costs or damage its reputation.",
+        "quote": "Cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to our reputation or competitive position.",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=Cyberattacks%20and%20security%20vulnerabilities%20could%20lead%20to%20reduced%20revenue%2C%20increased",
+          "section": "10-K Item 1A"
+        }
+      }
+    ],
+    "newRisks": [],
+    "outlook": [
+      {
+        "text": "The company says it will keep looking for datacenter expansion and more server capacity to meet evolving customer needs, especially for AI.",
+        "quote": "We continue to identify and evaluate opportunities to expand our datacenter locations and increase our server capacity to meet the evolving needs of our customers",
+        "source": {
+          "label": "10-K filed July 29, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=We%20continue%20to%20identify%20and%20evaluate%20opportunities%20to%20expand%20our",
+          "section": "10-K Item 7"
+        }
+      }
+    ],
+    "upcoming": []
+  },
+  "dropped": [
+    {
+      "topic": "competitiveEdge",
+      "reason": "quote not found in report",
+      "text": "The company says its Microsoft Cloud integrates across the technology stack, offering openness, faster value, lower cost and greater agility.",
+      "quote": "Our Microsoft Cloud provides integration across the technology stack while offering openness, improving time to value, reducing costs, and increasing agility."
+    },
+    {
+      "topic": "outlook",
+      "reason": "quote not found in report",
+      "text": "The company says its investments in cloud, AI infrastructure and devices will raise operating costs and may lower operating margins.",
+      "quote": "Our investments in cloud and AI infrastructure and devices will continue to increase our operating costs and may decrease our operating margins."
+    }
+  ]
+}

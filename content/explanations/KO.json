@@ -1,0 +1,193 @@
+{
+  "ticker": "KO",
+  "generatedAt": "2026-10-13T13:24:53.380Z",
+  "model": "cloudflare:@cf/openai/gpt-oss-120b",
+  "sources": [
+    {
+      "id": "10-K Item 1",
+      "form": "10-K",
+      "filingDate": "2026-02-20",
+      "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+    },
+    {
+      "id": "10-K Item 1A",
+      "form": "10-K",
+      "filingDate": "2026-02-20",
+      "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+    },
+    {
+      "id": "10-K Item 7",
+      "form": "10-K",
+      "filingDate": "2026-02-20",
+      "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+    },
+    {
+      "id": "10-Q Part I Item 2",
+      "form": "10-Q",
+      "filingDate": "2026-07-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026050503/ko-20260703.htm"
+    },
+    {
+      "id": "10-Q Part II Item 1A",
+      "form": "10-Q",
+      "filingDate": "2026-07-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026050503/ko-20260703.htm"
+    }
+  ],
+  "topics": {
+    "whatItDoes": [
+      {
+        "text": "The company sells beverage concentrates and finished drinks through bottling partners.",
+        "quote": "Our concentrate operations typically generate net operating revenues by selling beverage concentrates, sometimes referred to as “beverage bases,” syrups, including fountain syrups, and certain finished beverages to authorized bottling operations",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=Our%20concentrate%20operations%20typically%20generate%20net%20operating%20revenues%20by%20selling",
+          "section": "10-K Item 1"
+        }
+      }
+    ],
+    "howItMakesMoney": [
+      {
+        "text": "It earns revenue by selling concentrates to bottlers.",
+        "quote": "Our concentrate operations typically generate net operating revenues by selling beverage concentrates, sometimes referred to as “beverage bases,” syrups, including fountain syrups, and certain finished beverages to authorized bottling operations",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=Our%20concentrate%20operations%20typically%20generate%20net%20operating%20revenues%20by%20selling",
+          "section": "10-K Item 1"
+        }
+      },
+      {
+        "text": "It also earns revenue by selling finished sparkling drinks and other beverages to retailers.",
+        "quote": "Our finished product operations generate net operating revenues by selling sparkling soft drinks and a variety of other finished beverages to retailers",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=Our%20finished%20product%20operations%20generate%20net%20operating%20revenues%20by%20selling",
+          "section": "10-K Item 1"
+        }
+      }
+    ],
+    "competitiveEdge": [
+      {
+        "text": "The company says its strong, stable bottling and distribution system lets it grow by making and selling new products worldwide.",
+        "quote": "Our strong and stable bottling and distribution system helps us capture growth by manufacturing, distributing and selling existing, enhanced and new innovative products to consumers throughout the world.",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=Our%20strong%20and%20stable%20bottling%20and%20distribution%20system%20helps%20us",
+          "section": "10-K Item 1"
+        }
+      },
+      {
+        "text": "The company says it owns and markets several of the world’s largest non‑alcoholic sparkling soft‑drink brands.",
+        "quote": "We own and market several of the world’s largest nonalcoholic sparkling soft drink brands, including Coca-Cola, Sprite, Coca-Cola Zero Sugar, Fanta and Diet Coke/Coca-Cola Light.",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=We%20own%20and%20market%20several%20of%20the%20world%E2%80%99s%20largest%20nonalcoholic",
+          "section": "10-K Item 1"
+        }
+      }
+    ],
+    "marketPosition": [
+      {
+        "text": "The company says it owns and markets several of the world’s largest non‑alcoholic sparkling soft‑drink brands.",
+        "quote": "We own and market several of the world’s largest nonalcoholic sparkling soft drink brands, including Coca-Cola, Sprite, Coca-Cola Zero Sugar, Fanta and Diet Coke/Coca-Cola Light.",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=We%20own%20and%20market%20several%20of%20the%20world%E2%80%99s%20largest%20nonalcoholic",
+          "section": "10-K Item 1"
+        }
+      },
+      {
+        "text": "The company says its branded beverages represent about 2.2 billion of the 65 billion daily beverage servings worldwide.",
+        "quote": "Beverages bearing trademarks owned by or licensed to the Company account for 2.2 billion of the estimated 65 billion servings of all beverages consumed worldwide every day.",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=Beverages%20bearing%20trademarks%20owned%20by%20or%20licensed%20to%20the%20Company",
+          "section": "10-K Item 1"
+        }
+      }
+    ],
+    "industryTrends": [
+      {
+        "text": "The company notes that rapid digital evolution and e‑commerce growth are reshaping consumer shopping habits.",
+        "quote": "The rapidly evolving digital landscape and growth of e-commerce in many markets has led to dramatic shifts in consumer shopping habits and patterns.",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=The%20rapidly%20evolving%20digital%20landscape%20and%20growth%20of%20e%2Dcommerce%20in",
+          "section": "10-K Item 7"
+        }
+      },
+      {
+        "text": "The company says ongoing concern about obesity and chronic disease is affecting the beverage industry.",
+        "quote": "There is ongoing concern among consumers, public health professionals and government agencies about the health problems associated with obesity and other chronic diseases",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=There%20is%20ongoing%20concern%20among%20consumers%2C%20public%20health%20professionals%20and",
+          "section": "10-K Item 1A"
+        }
+      }
+    ],
+    "demandDrivers": [
+      {
+        "text": "The company says its success depends on connecting with consumers by offering a wide variety of beverage options that meet their desires, needs and lifestyles.",
+        "quote": "We believe our success depends on our ability to connect with consumers by providing them with a wide variety of beverage options to meet their desires, needs and lifestyles.",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=We%20believe%20our%20success%20depends%20on%20our%20ability%20to%20connect",
+          "section": "10-K Item 1"
+        }
+      },
+      {
+        "text": "The company says its strong bottling and distribution system helps capture growth by delivering innovative products to consumers worldwide.",
+        "quote": "Our strong and stable bottling and distribution system helps us capture growth by manufacturing, distributing and selling existing, enhanced and new innovative products to consumers throughout the world.",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=Our%20strong%20and%20stable%20bottling%20and%20distribution%20system%20helps%20us",
+          "section": "10-K Item 1"
+        }
+      }
+    ],
+    "biggestRisks": [
+      {
+        "text": "Unfavorable economic and geopolitical conditions could hurt financial results.",
+        "quote": "Unfavorable general economic and geopolitical conditions could negatively impact our financial results.",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=Unfavorable%20general%20economic%20and%20geopolitical%20conditions%20could%20negatively%20impact%20our",
+          "section": "10-K Item 1A"
+        }
+      },
+      {
+        "text": "The company operates in a highly competitive commercial beverage industry.",
+        "quote": "We operate in the highly competitive commercial beverage industry.",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=We%20operate%20in%20the%20highly%20competitive%20commercial%20beverage%20industry.",
+          "section": "10-K Item 1A"
+        }
+      },
+      {
+        "text": "Supply‑chain disruptions, including higher commodity, raw‑material and transportation costs, could adversely affect financial condition or results.",
+        "quote": "Disruption of our supply chain, including increased commodity, raw material, packaging, energy, transportation and other input costs, may adversely affect our financial condition or results of operations.",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=Disruption%20of%20our%20supply%20chain%2C%20including%20increased%20commodity%2C%20raw%20material%2C",
+          "section": "10-K Item 1A"
+        }
+      }
+    ],
+    "newRisks": [],
+    "outlook": [
+      {
+        "text": "Management says it believes the company is well positioned to create value for the company and its stakeholders.",
+        "quote": "we believe we are well positioned to create value for our Company and our stakeholders.",
+        "source": {
+          "label": "10-K filed February 20, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm#:~:text=we%20believe%20we%20are%20well%20positioned%20to%20create%20value%20for",
+          "section": "10-K Item 7"
+        }
+      }
+    ],
+    "upcoming": []
+  },
+  "dropped": []
+}

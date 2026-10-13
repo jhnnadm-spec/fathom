@@ -1,0 +1,155 @@
+{
+  "ticker": "COST",
+  "generatedAt": "2026-10-13T13:28:41.646Z",
+  "model": "cloudflare:@cf/openai/gpt-oss-120b",
+  "sources": [
+    {
+      "id": "10-K Item 1",
+      "form": "10-K",
+      "filingDate": "2026-10-07",
+      "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm"
+    },
+    {
+      "id": "10-K Item 1A",
+      "form": "10-K",
+      "filingDate": "2026-10-07",
+      "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm"
+    },
+    {
+      "id": "10-K Item 7",
+      "form": "10-K",
+      "filingDate": "2026-10-07",
+      "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm"
+    }
+  ],
+  "topics": {
+    "whatItDoes": [],
+    "howItMakesMoney": [
+      {
+        "text": "Members pay an annual fee of $65 in the U.S., which provides recurring revenue.",
+        "quote": "Our annual fee for memberships is $65 in the U.S., varies in other countries and includes a free household card.",
+        "source": {
+          "label": "10-K filed October 7, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=Our%20annual%20fee%20for%20memberships%20is%20%2465%20in%20the%20U.S.%2C",
+          "section": "10-K Item 1"
+        }
+      }
+    ],
+    "competitiveEdge": [],
+    "marketPosition": [
+      {
+        "text": "Costco notes that Walmart, Target, Kroger and Amazon are its major competitors in the United States.",
+        "quote": "Walmart, Target, Kroger, and Amazon are among our significant general merchandise retail competitors in the U.S.",
+        "source": {
+          "label": "10-K filed October 7, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=Walmart%2C%20Target%2C%20Kroger%2C%20and%20Amazon%20are%20among%20our%20significant%20general",
+          "section": "10-K Item 1"
+        }
+      }
+    ],
+    "industryTrends": [
+      {
+        "text": "Costco says online and mobile retailing lets customers compare prices more easily, increasing competition.",
+        "quote": "The evolution of retailing in online and mobile channels has improved the ability of customers to comparison shop, which has enhanced competition.",
+        "source": {
+          "label": "10-K filed October 7, 2026 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=The%20evolution%20of%20retailing%20in%20online%20and%20mobile%20channels%20has",
+          "section": "10-K Item 1A"
+        }
+      }
+    ],
+    "demandDrivers": [
+      {
+        "text": "Comparable sales grow when members shop more often and spend more per visit.",
+        "quote": "Comparable sales growth is achieved through increasing shopping frequency from new and existing members and the amount they spend on each visit (average ticket).",
+        "source": {
+          "label": "10-K filed October 7, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=Comparable%20sales%20growth%20is%20achieved%20through%20increasing%20shopping%20frequency%20from",
+          "section": "10-K Item 7"
+        }
+      }
+    ],
+    "biggestRisks": [
+      {
+        "text": "Costco says it relies heavily on the performance of its U.S. and Canadian operations.",
+        "quote": "We are highly dependent on the financial performance of our U.S. and Canadian operations.",
+        "source": {
+          "label": "10-K filed October 7, 2026 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=We%20are%20highly%20dependent%20on%20the%20financial%20performance%20of%20our",
+          "section": "10-K Item 1A"
+        }
+      },
+      {
+        "text": "Growth depends on acquiring and building new warehouse sites, which can be difficult.",
+        "quote": "Our growth is dependent, in part, on our ability to acquire property and build or lease new warehouses and depots.",
+        "source": {
+          "label": "10-K filed October 7, 2026 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=Our%20growth%20is%20dependent%2C%20in%20part%2C%20on%20our%20ability%20to",
+          "section": "10-K Item 1A"
+        }
+      },
+      {
+        "text": "Disruptions in distribution or manufacturing could hurt sales and member satisfaction.",
+        "quote": "Disruptions in merchandise distribution or processing, packaging, manufacturing, and other facilities could adversely affect sales and member satisfaction.",
+        "source": {
+          "label": "10-K filed October 7, 2026 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm#:~:text=Disruptions%20in%20merchandise%20distribution%20or%20processing%2C%20packaging%2C%20manufacturing%2C%20and%20other",
+          "section": "10-K Item 1A"
+        }
+      }
+    ],
+    "newRisks": [],
+    "outlook": [],
+    "upcoming": []
+  },
+  "dropped": [
+    {
+      "topic": "whatItDoes",
+      "reason": "quote not found in report",
+      "text": "Costco runs membership warehouses in the United States, Canada, Mexico, Japan, the United Kingdom, Korea, Australia, Taiwan, China, Spain, France, Sweden, Iceland, and New Zealand.",
+      "quote": "We operate membership warehouses in the United States, Canada, Mexico, Japan, the United Kingdom, Korea, Australia, Taiwan, China, Spain, France, Sweden, Iceland, and New Zealand."
+    },
+    {
+      "topic": "whatItDoes",
+      "reason": "quote not found in report",
+      "text": "Costco also runs e‑commerce sites for members in several countries.",
+      "quote": "We operate e‑commerce sites in the U.S., Canada, Mexico, the U.K., Korea, Taiwan, Japan, Australia, and China."
+    },
+    {
+      "topic": "howItMakesMoney",
+      "reason": "quote not found in report",
+      "text": "The company sells low‑priced, limited‑selection merchandise to generate high sales volume and fast inventory turnover.",
+      "quote": "We offer low prices on a limited selection of products to generate high sales volumes and rapid inventory turnover."
+    },
+    {
+      "topic": "competitiveEdge",
+      "reason": "quote not found in report",
+      "text": "Costco says it can operate profitably with much lower gross margins than most retailers.",
+      "quote": "We operate profitably at significantly lower gross margins than most other retailers."
+    },
+    {
+      "topic": "outlook",
+      "reason": "quote not found in report",
+      "text": "Costco expects to spend about $7.5 billion on capital projects in fiscal 2027.",
+      "quote": "We intend to spend approximately $7,500 during fiscal 2027."
+    },
+    {
+      "topic": "outlook",
+      "reason": "quote not found in report",
+      "text": "The company plans to open up to 33 new warehouses, including five relocations, in 2027.",
+      "quote": "We plan to open up to 33 new warehouses, including five relocations, in 2027."
+    },
+    {
+      "topic": "upcoming",
+      "reason": "quote not found in report",
+      "text": "Costco expects to spend about $7.5 billion on capital projects in fiscal 2027.",
+      "quote": "We intend to spend approximately $7,500 during fiscal 2027."
+    },
+    {
+      "topic": "upcoming",
+      "reason": "quote not found in report",
+      "text": "The company plans to open up to 33 new warehouses, including five relocations, in 2027.",
+      "quote": "We plan to open up to 33 new warehouses, including five relocations, in 2027."
+    }
+  ]
+}
