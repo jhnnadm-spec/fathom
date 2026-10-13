@@ -228,9 +228,9 @@ describe("filing sections", () => {
     expect(findSection(sections, "1A")?.text).toContain("outsourcing partners");
   });
 
-  it("reads a title written on the line after the heading", () => {
+  it("finds a heading whose title is on the next line, and uses SEC's official name", () => {
     const sections = splitSections(htmlToText(tenK), "10-K");
-    expect(findSection(sections, "7")?.title).toBe("Management’s Discussion and Analysis");
+    expect(findSection(sections, "7")?.title).toBe("Management's Discussion and Analysis");
     expect(findSection(sections, "7")?.text).toContain("Net sales increased");
   });
 
