@@ -1,20 +1,19 @@
 /**
  * Write plain-English explanations for companies with AI, check every claim
- * against the reports, and save the result into content/explanations/.
+ * against the reports, and save the result into content/explanations/
+ * (and into Supabase too, when it's set up).
  *
  *   npx tsx scripts/explain.ts AAPL KO
  *
  * Needs SEC_USER_AGENT, CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN.
- * Optional: CLOUDFLARE_MODEL to try a different model.
+ * Optional: CLOUDFLARE_MODEL to try a different model; SUPABASE_URL and SUPABASE_SECRET_KEY.
  */
 import { mkdir, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { checkExplanation, extractJson } from "../lib/explain/check";
-import { buildRetryPrompt, buildUserPrompt, RETRY_TOPICS, SYSTEM_PROMPT } from "../lib/explain/prompt";
-import { cloudflareProvider } from "../lib/explain/provider";
-import { gatherSections } from "../lib/explain/sources";
-import { TOPICS, type SavedExplanation, type TopicId } from "../lib/explain/types";
+import { generateExplanation } from "../lib/explain/generate";
+import { TOPICS, type TopicId } from "../lib/explain/types";
 import { findCompanies, loadTickers } from "../lib/sec/tickers";
+import { saveReady, seedReady, storeEnabled } from "../lib/store/explanations";
 
 const OUT_DIR = path.join("content", "explanations");
 
@@ -23,61 +22,21 @@ async function explain(query: string) {
   if (!company) throw new Error(`No company found for "${query}"`);
   console.log(`\n=== ${company.name} (${company.ticker}) ===`);
 
-  const { name, sections } = await gatherSections(company.cik);
-  if (sections.length === 0) throw new Error("No report sections found");
-  const user = buildUserPrompt(name, sections);
-  console.log(`Sections: ${sections.map((s) => `${s.id} (${s.text.length.toLocaleString()} chars)`).join(", ")}`);
-  console.log(`Prompt size: about ${Math.round((SYSTEM_PROMPT.length + user.length) / 4).toLocaleString()} tokens`);
-
-  const provider = cloudflareProvider();
-  const ask = async (prompt: string): Promise<unknown> => {
-    for (let attempt = 1; attempt <= 2; attempt++) {
-      const reply = await provider.complete(SYSTEM_PROMPT, prompt);
-      try {
-        return extractJson(reply);
-      } catch (err) {
-        console.log(`Attempt ${attempt}: reply wasn't valid JSON (${(err as Error).message}). First 300 chars: ${reply.slice(0, 300)}`);
-        if (attempt === 2) throw err;
-      }
-    }
-  };
-
-  const { topics, dropped } = checkExplanation(await ask(user), sections);
-
-  // Second chance for important topics that came back empty because every claim failed.
-  const failures = dropped.filter(
-    (d) => (RETRY_TOPICS as readonly string[]).includes(d.topic) && topics[d.topic as TopicId].length === 0,
-  );
-  if (failures.length > 0) {
-    const cited = new Set(failures.map((f) => f.topic));
-    const relevant = sections.filter((s) => s.id.startsWith("10-K Item 1") || (cited.has("biggestRisks") && s.id.includes("1A")));
-    console.log(`Retrying ${[...cited].join(", ")} with ${relevant.map((s) => s.id).join(", ")}`);
-    const retry = checkExplanation(await ask(buildRetryPrompt(name, relevant, failures)), relevant);
-    for (const t of cited) {
-      const id = t as TopicId;
-      if (topics[id].length === 0 && retry.topics[id].length > 0) {
-        topics[id] = retry.topics[id];
-        console.log(`  ${id}: ${retry.topics[id].length} kept on retry`);
-      }
-    }
-    dropped.push(...retry.dropped.filter((d) => cited.has(d.topic)).map((d) => ({ ...d, reason: `retry: ${d.reason}` })));
-  }
-  const saved: SavedExplanation = {
-    ticker: company.ticker,
-    generatedAt: new Date().toISOString(),
-    model: provider.name,
-    sources: sections.map((s) => ({ id: s.id, form: s.form, filingDate: s.filingDate, url: s.url })),
-    topics,
-    dropped,
-  };
-
+  const { explanation, filingsKey } = await generateExplanation(company, { log: (l) => console.log(l) });
   for (const id of Object.keys(TOPICS) as TopicId[]) {
-    console.log(`  ${id.padEnd(16)} ${topics[id].length} kept`);
+    console.log(`  ${id.padEnd(16)} ${explanation.topics[id].length} kept`);
   }
-  console.log(`  Dropped ${dropped.length}: ${dropped.map((d) => `${d.topic} (${d.reason})`).join("; ") || "none"}`);
+  console.log(
+    `  Dropped ${explanation.dropped.length}: ${explanation.dropped.map((d) => `${d.topic} (${d.reason})`).join("; ") || "none"}`,
+  );
 
   await mkdir(OUT_DIR, { recursive: true });
-  await writeFile(path.join(OUT_DIR, `${company.ticker}.json`), JSON.stringify(saved, null, 2) + "\n");
+  await writeFile(path.join(OUT_DIR, `${company.ticker}.json`), JSON.stringify(explanation, null, 2) + "\n");
+  if (storeEnabled()) {
+    await seedReady(company.ticker, explanation, filingsKey);
+    await saveReady(company.ticker, explanation, filingsKey);
+    console.log("  Saved to Supabase");
+  }
 }
 
 /** Rewrite content/explanations/index.ts so the website can import every saved explanation. */
@@ -100,8 +59,7 @@ async function writeIndex() {
 }
 
 async function main() {
-  const queries = process.argv.slice(2);
-  for (const q of queries) {
+  for (const q of process.argv.slice(2)) {
     try {
       await explain(q);
     } catch (err) {

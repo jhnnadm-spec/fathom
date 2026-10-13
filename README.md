@@ -51,3 +51,19 @@ More folders arrive as the build continues: `lib/` for data and AI code,
 
 The site is hosted on Vercel. Every time new code reaches the `main` branch on
 GitHub, Vercel rebuilds and publishes it automatically.
+
+## Explanations for any company (Supabase)
+
+Companies without a saved explanation show a **Write the plain-English
+explanation** button. Fathom then writes one with the free Cloudflare AI,
+checks every point, and saves it in a free Supabase database.
+
+- Limits (to stay free): about 6 new explanations a day in total, and 3 new
+  companies per visitor per day. Requests over the daily total are queued.
+- The **Daily explanations** workflow (GitHub Actions) runs at 23:10 UTC, just
+  before the AI allowance resets. It writes queued companies, queues an update
+  when a company files a newer report, and keeps Supabase from pausing.
+- Database setup: paste `supabase/schema.sql` into Supabase → SQL Editor → Run.
+- Settings needed on Vercel: `SUPABASE_URL`, `SUPABASE_SECRET_KEY`,
+  `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN`, `VISITOR_SALT`.
+  On GitHub (Actions secrets): `SUPABASE_URL`, `SUPABASE_SECRET_KEY`.

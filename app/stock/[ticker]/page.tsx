@@ -12,12 +12,10 @@ import type { Statement } from "@/lib/financials/templates";
 import { termsIn } from "@/lib/financials/templates";
 import { lookupTerm } from "@/lib/glossary";
 import { getCompanyReport, type CompanyReport } from "@/lib/report/company";
-import { EXPLANATIONS } from "@/content/explanations";
+import { ExplainButton } from "@/components/ExplainButton";
+import { explanationState, type ExplanationState } from "@/lib/explain/ondemand";
 import type { CheckedClaim, SavedExplanation, TopicId } from "@/lib/explain/types";
 
-function explanationFor(report: CompanyReport): SavedExplanation | undefined {
-  return EXPLANATIONS[report.company.ticker];
-}
 
 /** AI-written points, each linked to the exact words in the report it came from. */
 function Claims({ claims, empty }: { claims: CheckedClaim[]; empty?: string }) {
@@ -74,6 +72,10 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
   const { ticker } = await params;
   const report = await getCompanyReport(decodeURIComponent(ticker).toUpperCase());
   if (!report) notFound();
+  const state: ExplanationState = report.support.supported
+    ? await explanationState(report.company.ticker, report.explanationKey)
+    : { status: "unavailable" };
+  const e = state.explanation;
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-8">
@@ -81,11 +83,12 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
       {report.support.supported ? (
         <div className="flex flex-wrap items-start gap-6">
           <div className="flex min-w-0 flex-[999_1_560px] flex-col gap-5">
+            <ExplainStatus ticker={report.company.ticker} state={state} />
             <DepthTabs
               panels={[
-                { id: "surface", label: "Surface", hint: "30 seconds", color: "#CDE7F0", content: <Surface report={report} /> },
-                { id: "below", label: "Below", hint: "Breakdown", color: "#7FC4D8", content: <Below report={report} /> },
-                { id: "deep", label: "Deep", hint: "Detail", color: "#0B4F6C", content: <Deep report={report} /> },
+                { id: "surface", label: "Surface", hint: "30 seconds", color: "#CDE7F0", content: <Surface report={report} e={e} /> },
+                { id: "below", label: "Below", hint: "Breakdown", color: "#7FC4D8", content: <Below report={report} e={e} /> },
+                { id: "deep", label: "Deep", hint: "Detail", color: "#0B4F6C", content: <Deep report={report} e={e} /> },
               ]}
             />
             <Disclaimer />
@@ -185,13 +188,30 @@ function BigChange({ c, noun }: { c?: Comparison; noun: string }) {
   );
 }
 
+/** Above the levels: offer to write the explanation, or say it's on its way. */
+function ExplainStatus({ ticker, state }: { ticker: string; state: ExplanationState }) {
+  if (state.status === "unavailable") return null;
+  if (state.status === "ready") {
+    return state.stale ? <ExplainButton ticker={ticker} initial="none" update /> : null;
+  }
+  if (state.explanation && state.status === "queued") {
+    return (
+      <p className="rounded-2xl border border-line bg-white px-5 py-4 text-[15px] leading-relaxed text-muted">
+        A newer report has been filed. An updated explanation is in the queue; until then, the one below was written
+        from the earlier report.
+      </p>
+    );
+  }
+  return <ExplainButton ticker={ticker} initial={state.status} update={Boolean(state.explanation)} />;
+}
+
 /** A section that the AI step will fill in, listing what it will cover. */
 function ComingSoon({ title, items }: { title: string; items: string[] }) {
   return (
     <Card title={title}>
       <p className="text-[16px] leading-relaxed text-muted">
-        Coming with Fathom&apos;s plain-English explanations, written from the company&apos;s own reports, with every
-        point linked to its source:
+        Not written yet for this company. Fathom&apos;s plain-English explanation, written from the company&apos;s own
+        reports with every point linked to its source, will cover:
       </p>
       <ul className="flex list-disc flex-col gap-1 pl-5 text-[16px] leading-relaxed text-muted">
         {items.map((i) => (
@@ -204,9 +224,8 @@ function ComingSoon({ title, items }: { title: string; items: string[] }) {
 
 // ---------------------------------------------------------------- level 1: Surface
 
-function Surface({ report }: { report: CompanyReport }) {
+function Surface({ report, e }: { report: CompanyReport; e?: SavedExplanation }) {
   const n = report.numbers;
-  const e = explanationFor(report);
   return (
     <div className="flex flex-col gap-5">
       {e && (
@@ -267,7 +286,7 @@ const METRIC_NAMES: Record<string, string> = {
   currentLiabilities: "current liabilities",
 };
 
-function Below({ report }: { report: CompanyReport }) {
+function Below({ report, e }: { report: CompanyReport; e?: SavedExplanation }) {
   const n = report.numbers;
   const leftOut = [
     ...new Set(
@@ -278,18 +297,18 @@ function Below({ report }: { report: CompanyReport }) {
   ];
   return (
     <div className="flex flex-col gap-5">
-      {explanationFor(report) ? (
+      {e ? (
         <Card title="Business model and competitive edge">
-          <Topic e={explanationFor(report)!} id="whatItDoes" title="What the company does" />
-          <Topic e={explanationFor(report)!} id="howItMakesMoney" title="How it makes money" />
+          <Topic e={e} id="whatItDoes" title="What the company does" />
+          <Topic e={e} id="howItMakesMoney" title="How it makes money" />
           <Topic
-            e={explanationFor(report)!}
+            e={e}
             id="competitiveEdge"
             title="What the company says gives it an edge"
             empty="The report doesn't describe this clearly, so it's left out."
           />
-          <Topic e={explanationFor(report)!} id="marketPosition" title="Where it says it stands in its industry" />
-          <AiNote e={explanationFor(report)!} />
+          <Topic e={e} id="marketPosition" title="Where it says it stands in its industry" />
+          <AiNote e={e} />
         </Card>
       ) : (
         <ComingSoon
@@ -514,32 +533,32 @@ function Valuation({ report }: { report: CompanyReport }) {
   );
 }
 
-function Deep({ report }: { report: CompanyReport }) {
+function Deep({ report, e }: { report: CompanyReport; e?: SavedExplanation }) {
   return (
     <div className="flex flex-col gap-5">
       <KeyRatios report={report} />
       <MarginHistory report={report} />
       <WhatChanged report={report} />
       <AccountsCheck report={report} />
-      {explanationFor(report) ? (
+      {e ? (
         <Card title="Industry, risks and what's coming up">
-          <Topic e={explanationFor(report)!} id="industryTrends" title="Trends in its industry" />
-          <Topic e={explanationFor(report)!} id="demandDrivers" title="What drives demand" />
-          <Topic e={explanationFor(report)!} id="biggestRisks" title="Key risks the company highlights" />
+          <Topic e={e} id="industryTrends" title="Trends in its industry" />
+          <Topic e={e} id="demandDrivers" title="What drives demand" />
+          <Topic e={e} id="biggestRisks" title="Key risks the company highlights" />
           <Topic
-            e={explanationFor(report)!}
+            e={e}
             id="newRisks"
             title="New or changed risks"
             empty="The latest quarterly report doesn't describe any new or changed risks."
           />
           <Topic
-            e={explanationFor(report)!}
+            e={e}
             id="outlook"
             title="What management expects"
             empty="The reports don't give a forward outlook."
           />
-          <Topic e={explanationFor(report)!} id="upcoming" title="What the company says is coming up" />
-          <AiNote e={explanationFor(report)!} />
+          <Topic e={e} id="upcoming" title="What the company says is coming up" />
+          <AiNote e={e} />
         </Card>
       ) : (
       <ComingSoon

@@ -3,6 +3,7 @@
  * then cached for a few hours so SEC isn't asked again on every visit.
  */
 import { cacheLife, cacheTag } from "next/cache";
+import { currentReports, filingsKey } from "../explain/sources";
 import { computeNumbers, type CompanyNumbers } from "../financials/metrics";
 import { buildStatements, type Statement } from "../financials/templates";
 import { describeAnnouncement } from "../sec/events";
@@ -50,6 +51,7 @@ export type CompanyReport = {
   announcements: Announcement[];
   governance?: GovernanceCheck;
   tradingViewSymbol: string; // e.g. "NASDAQ:AAPL", for the price chart and market data
+  explanationKey: string; // which reports a plain-English explanation should be written from
   generatedAt: string;
 };
 
@@ -126,6 +128,7 @@ export async function getCompanyReport(ticker: string): Promise<CompanyReport | 
     statements: [],
     announcements: [],
     tradingViewSymbol: tradingViewSymbol(ref.ticker, filings.exchanges),
+    explanationKey: filingsKey(currentReports(filings)),
     generatedAt: new Date().toISOString(),
   };
   if (!support.supported) return base;

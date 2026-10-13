@@ -6,7 +6,7 @@
  * Very long sections are cut to a limit so the request fits the AI model and the
  * free daily allowance. The cut always happens at a paragraph break.
  */
-import { latestFiling, loadFilings, type Filing } from "../sec/filings";
+import { latestFiling, loadFilings, type CompanyFilings, type Filing } from "../sec/filings";
 import { findSection, loadSections } from "../sec/sections";
 import type { SourceSection } from "./types";
 
@@ -24,8 +24,8 @@ export function trimAtParagraph(text: string, maxChars: number): string {
   return text.slice(0, cut > maxChars * 0.6 ? cut : maxChars).trim();
 }
 
-export async function gatherSections(cik: string): Promise<{ name: string; sections: SourceSection[] }> {
-  const filings = await loadFilings(cik);
+/** The reports an explanation is written from: the latest 10-K, plus the latest 10-Q if it's newer. */
+export function currentReports(filings: CompanyFilings): Partial<Record<"10-K" | "10-Q", Filing>> {
   const reports: Partial<Record<"10-K" | "10-Q", Filing>> = {
     "10-K": latestFiling(filings, "10-K"),
     "10-Q": latestFiling(filings, "10-Q"),
@@ -34,6 +34,19 @@ export async function gatherSections(cik: string): Promise<{ name: string; secti
   if (reports["10-Q"] && reports["10-K"] && reports["10-Q"].filingDate < reports["10-K"].filingDate) {
     delete reports["10-Q"];
   }
+  return reports;
+}
+
+/** A short ID for "which reports": when a company files a new one, this changes. */
+export function filingsKey(reports: Partial<Record<"10-K" | "10-Q", { accessionNumber: string }>>): string {
+  return [reports["10-K"]?.accessionNumber, reports["10-Q"]?.accessionNumber].filter(Boolean).join("+");
+}
+
+export async function gatherSections(
+  cik: string,
+): Promise<{ name: string; sections: SourceSection[]; filingsKey: string }> {
+  const filings = await loadFilings(cik);
+  const reports = currentReports(filings);
 
   const loaded: Partial<Record<"10-K" | "10-Q", Awaited<ReturnType<typeof loadSections>>>> = {};
   for (const form of ["10-K", "10-Q"] as const) {
@@ -55,5 +68,5 @@ export async function gatherSections(cik: string): Promise<{ name: string; secti
       text: trimAtParagraph(section.text, p.maxChars),
     });
   }
-  return { name: filings.name, sections };
+  return { name: filings.name, sections, filingsKey: filingsKey(reports) };
 }
