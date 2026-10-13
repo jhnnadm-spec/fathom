@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/*
+  Fathom's colours and fonts, defined once and used everywhere.
+  In the code, "bg-ocean" or "text-ink" refers to these.
+*/
+@theme {
+  --color-surface: #cde7f0; /* lightest layer: level 1 "Surface" */
+  --color-shallow: #7fc4d8; /* level 2 "Below" */
+  --color-mid: #2f8fb3;
+  --color-ocean: #0b4f6c; /* deepest layer: level 3 "Deep", main brand colour */
+  --color-ocean-dark: #073447;
+  --color-ink: #0a2a3a; /* main text */
+  --color-muted: #3d5a69; /* secondary text */
+  --color-line: #dce8ee; /* borders */
+  --color-mist: #f4f9fb; /* page background */
+
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+a {
+  color: var(--color-ocean);
+}
+a:hover {
+  color: var(--color-ocean-dark);
+}
