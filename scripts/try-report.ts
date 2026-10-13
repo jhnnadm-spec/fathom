@@ -15,7 +15,7 @@ import { figureAppearsInText } from "../lib/financials/crosscheck";
 import { computeNumbers, type Figure } from "../lib/financials/metrics";
 import { buildStatements, plainText } from "../lib/financials/templates";
 import { describeAnnouncement } from "../lib/sec/events";
-import { loadCompanyFacts } from "../lib/sec/facts";
+import { availableConcepts, getSeries, loadCompanyFacts } from "../lib/sec/facts";
 import {
   checkSupport,
   latestFiling,
@@ -106,6 +106,14 @@ async function run(query: string) {
         numbers,
         statements,
         crossCheck: checks,
+        // Which debt-related tags this company uses, newest first, to help choose tags.
+        debtTags: availableConcepts(facts)
+          .filter((t) => /Debt|Borrowing|CommercialPaper/.test(t))
+          .map((t) => ({ tag: t, latest: getSeries(facts, [t], "instant")[0] }))
+          .filter((x) => x.latest)
+          .sort((a, b) => b.latest!.end.localeCompare(a.latest!.end))
+          .slice(0, 15)
+          .map((x) => ({ tag: x.tag, end: x.latest!.end, value: x.latest!.value })),
         fetchedAt: new Date().toISOString(),
       },
       null,
