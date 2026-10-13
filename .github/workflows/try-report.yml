@@ -11,6 +11,9 @@ on:
         required: true
         default: "AAPL"
 
+permissions:
+  contents: write # lets the job publish its results to the sec-data branch
+
 jobs:
   try:
     runs-on: ubuntu-latest
@@ -27,11 +30,16 @@ jobs:
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
           TICKERS: ${{ inputs.tickers }}
         run: npx tsx scripts/try-report.ts $TICKERS
-      - name: Save the results
+      - name: Publish the results to the sec-data branch
         if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: sec-output
-          path: out/
-          if-no-files-found: warn
-          retention-days: 7
+        env:
+          TICKERS: ${{ inputs.tickers }}
+        run: |
+          if [ ! -d out ]; then echo "No results to publish"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan sec-data
+          git rm -rf --cached . > /dev/null
+          git add -f out
+          git commit -q -m "SEC data for: $TICKERS"
+          git push -f origin sec-data
