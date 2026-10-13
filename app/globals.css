@@ -31,3 +31,27 @@ a {
 a:hover {
   color: var(--color-ocean-dark);
 }
+
+/* Loading animation: the dot drops down the line while the water gently moves. */
+@keyframes fathom-drop {
+  0% { transform: translateY(-62px); opacity: 0; }
+  15% { opacity: 1; }
+  70% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+@keyframes fathom-wave {
+  from { transform: translateX(0); }
+  to { transform: translateX(50px); }
+}
+.fathom-loader-dot {
+  animation: fathom-drop 1.6s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+}
+.fathom-loader-wave {
+  animation: fathom-wave 3.2s linear infinite;
+}
+.fathom-loader-wave-2 { animation-duration: 4.4s; }
+.fathom-loader-wave-3 { animation-duration: 5.6s; }
+@media (prefers-reduced-motion: reduce) {
+  .fathom-loader-dot,
+  .fathom-loader-wave { animation: none; }
+}
