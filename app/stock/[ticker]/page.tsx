@@ -1,58 +1,21 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, type ReactNode } from "react";
 import { DepthTabs } from "@/components/DepthTabs";
+import { ExplainButton } from "@/components/ExplainButton";
 import { CompanyNews, MarketData, PriceChart } from "@/components/MarketWidgets";
 import { RevenueChart } from "@/components/RevenueChart";
 import { RichText } from "@/components/RichText";
 import { SourceLink } from "@/components/SourceLink";
+import { explanationState, type ExplanationState } from "@/lib/explain/ondemand";
+import type { CheckedClaim, SavedExplanation } from "@/lib/explain/types";
 import { formatDate, formatMoney, formatPerDollar, formatPercent, formatPerShare, formatShare } from "@/lib/financials/format";
 import type { Comparison } from "@/lib/financials/metrics";
 import type { Statement } from "@/lib/financials/templates";
 import { termsIn } from "@/lib/financials/templates";
 import { lookupTerm } from "@/lib/glossary";
 import { getCompanyReport, type CompanyReport } from "@/lib/report/company";
-import { leftOutNames } from "@/lib/report/outline";
-import { ExplainButton } from "@/components/ExplainButton";
-import { explanationState, type ExplanationState } from "@/lib/explain/ondemand";
-import type { CheckedClaim, SavedExplanation, TopicId } from "@/lib/explain/types";
-
-
-/** AI-written points, each linked to the exact words in the report it came from. */
-function Claims({ claims, empty }: { claims: CheckedClaim[]; empty?: string }) {
-  if (claims.length === 0) {
-    return empty ? <p className="text-[16px] leading-relaxed text-muted">{empty}</p> : null;
-  }
-  return (
-    <ul className="flex flex-col gap-4">
-      {claims.map((c) => (
-        <li key={c.text} className="flex flex-col gap-1.5">
-          <p className="text-[17px] leading-relaxed">{c.text}</p>
-          <SourceLink href={c.source.url} label={c.source.label} />
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function Topic({ e, id, title, empty }: { e: SavedExplanation; id: TopicId; title: string; empty?: string }) {
-  if (e.topics[id].length === 0 && !empty) return null;
-  return (
-    <div className="flex flex-col gap-3">
-      <h3 className="font-display text-lg font-bold">{title}</h3>
-      <Claims claims={e.topics[id]} empty={empty} />
-    </div>
-  );
-}
-
-function AiNote({ e }: { e: SavedExplanation }) {
-  return (
-    <p className="rounded-xl bg-mist px-3.5 py-2.5 text-[13px] leading-relaxed text-muted">
-      Written by AI from the company&apos;s own reports on {formatDate(e.generatedAt.slice(0, 10))}. Every point was
-      checked word-for-word against the report it links to; points that failed the check were removed.
-    </p>
-  );
-}
+import { areasFor, claimsFor, leftOutNames, statementsFor, SURFACE, type Block, type Item } from "@/lib/report/outline";
 
 export async function generateMetadata(props: PageProps<"/stock/[ticker]">): Promise<Metadata> {
   const { ticker } = await props.params;
@@ -87,9 +50,9 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
             <ExplainStatus ticker={report.company.ticker} state={state} />
             <DepthTabs
               panels={[
-                { id: "surface", label: "Surface", hint: "30 seconds", color: "#CDE7F0", content: <Surface report={report} e={e} /> },
-                { id: "below", label: "Below", hint: "Breakdown", color: "#7FC4D8", content: <Below report={report} e={e} /> },
-                { id: "deep", label: "Deep", hint: "Detail", color: "#0B4F6C", content: <Deep report={report} e={e} /> },
+                { id: "surface", label: "Surface", hint: "1 minute", color: "#CDE7F0", content: <Surface report={report} e={e} level="surface" /> },
+                { id: "below", label: "Below", hint: "Explained", color: "#7FC4D8", content: <Detail report={report} e={e} level="below" /> },
+                { id: "deep", label: "Deep", hint: "Everything", color: "#0B4F6C", content: <Detail report={report} e={e} level="deep" /> },
               ]}
             />
             <Disclaimer />
@@ -175,37 +138,6 @@ function Said({ statement }: { statement?: Statement }) {
   );
 }
 
-function SaidAll({ report, ids }: { report: CompanyReport; ids: string[] }) {
-  const found = ids.map((id) => find(report, id)).filter(Boolean) as Statement[];
-  if (found.length === 0) {
-    return <p className="text-[15px] text-muted">The company doesn&apos;t report these figures in SEC&apos;s standard data, so they&apos;re left out.</p>;
-  }
-  return (
-    <>
-      {found.map((s) => (
-        <Said key={s.id} statement={s} />
-      ))}
-    </>
-  );
-}
-
-function find(report: CompanyReport, id: string) {
-  return report.statements.find((s) => s.id === id);
-}
-
-function BigChange({ c, noun }: { c?: Comparison; noun: string }) {
-  if (!c || c.change === undefined) return null;
-  const flat = Math.abs(c.change) < 0.005;
-  return (
-    <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-      <span className="font-display text-3xl font-bold text-ocean sm:text-4xl">
-        {flat ? "About the same" : `${c.change > 0 ? "Up" : "Down"} ${formatPercent(c.change)}`}
-      </span>
-      <span className="text-[15px] text-muted">{noun} vs the year before</span>
-    </div>
-  );
-}
-
 /** Above the levels: offer to write the explanation, or say it's on its way. */
 function ExplainStatus({ ticker, state }: { ticker: string; state: ExplanationState }) {
   if (state.status === "unavailable") return null;
@@ -223,124 +155,223 @@ function ExplainStatus({ ticker, state }: { ticker: string; state: ExplanationSt
   return <ExplainButton ticker={ticker} initial={state.status} update={Boolean(state.explanation)} />;
 }
 
-/** A section that the AI step will fill in, listing what it will cover. */
-function ComingSoon({ title, items }: { title: string; items: string[] }) {
+// ---------------------------------------------------------------- the three levels
+
+type Level = "surface" | "below" | "deep";
+type Ctx = { report: CompanyReport; e?: SavedExplanation; level: Level };
+
+/** AI-written points. On Deep, each also shows the exact words from the report it came from. */
+function Claims({ claims, quotes }: { claims: CheckedClaim[]; quotes?: boolean }) {
   return (
-    <Card title={title}>
-      <p className="text-[16px] leading-relaxed text-muted">
-        Not written yet for this company. Fathom&apos;s plain-English explanation, written from the company&apos;s own
-        reports with every point linked to its source, will cover:
-      </p>
-      <ul className="flex list-disc flex-col gap-1 pl-5 text-[16px] leading-relaxed text-muted">
-        {items.map((i) => (
-          <li key={i}>{i}</li>
-        ))}
-      </ul>
-    </Card>
+    <ul className="flex flex-col gap-4">
+      {claims.map((c) => (
+        <li key={c.text} className="flex flex-col gap-1.5">
+          <p className="text-[17px] leading-relaxed">{c.text}</p>
+          {quotes && (
+            <p className="border-l-2 border-[#CDE7F0] pl-3 text-[14px] leading-relaxed text-muted">
+              From the report: &ldquo;{c.quote}&rdquo;
+            </p>
+          )}
+          <SourceLink href={c.source.url} label={c.source.label} />
+        </li>
+      ))}
+    </ul>
   );
 }
 
-// ---------------------------------------------------------------- level 1: Surface
+function AiNote({ e }: { e: SavedExplanation }) {
+  return (
+    <p className="rounded-xl bg-white px-4 py-3 text-[13px] leading-relaxed text-muted">
+      Points about the business, its industry and its risks were written by AI from the company&apos;s own reports on{" "}
+      {formatDate(e.generatedAt.slice(0, 10))}. Every point was checked word-for-word against the report it links to;
+      points that failed the check were removed. All numbers come straight from the reports, not from AI.
+    </p>
+  );
+}
 
-function Surface({ report, e }: { report: CompanyReport; e?: SavedExplanation }) {
-  const n = report.numbers;
+function NotWritten() {
+  return (
+    <p className="text-[16px] leading-relaxed text-muted">
+      Not written yet for this company. Use the button at the top of the page to ask Fathom to write it.
+    </p>
+  );
+}
+
+/** Does this item have anything to show? (Used to hide empty rows and show "left out" notes.) */
+function hasContent(item: Item, { report, e }: Ctx): boolean {
+  switch (item.kind) {
+    case "topic":
+      return claimsFor(e, item).length > 0 || Boolean(e && item.empty);
+    case "statements":
+    case "firstOf":
+      return statementsFor(report.statements, item).length > 0 || Boolean(item.kind === "statements" && item.none);
+    case "block":
+      return blockHasContent(item.block, report);
+  }
+}
+
+function renderItem(item: Item, ctx: Ctx, key: string): ReactNode {
+  const { report, e, level } = ctx;
+  switch (item.kind) {
+    case "topic": {
+      const claims = claimsFor(e, item);
+      if (claims.length === 0 && !(e && item.empty)) return null;
+      const body = claims.length > 0 ? <Claims claims={claims} quotes={level === "deep"} /> : <p className="text-[16px] leading-relaxed text-muted">{item.empty}</p>;
+      if (!item.title) return <div key={key}>{body}</div>;
+      return (
+        <div key={key} className="flex flex-col gap-3">
+          <h3 className="font-display text-lg font-bold">{item.title}</h3>
+          {body}
+        </div>
+      );
+    }
+    case "statements":
+    case "firstOf": {
+      const found = statementsFor(report.statements, item);
+      if (found.length === 0) {
+        return item.kind === "statements" && item.none ? (
+          <p key={key} className="text-[15px] text-muted">
+            {item.none}
+          </p>
+        ) : null;
+      }
+      return found.map((s) => <Said key={`${key}-${s.id}`} statement={s} />);
+    }
+    case "block":
+      return <BlockView key={key} block={item.block} report={report} />;
+  }
+}
+
+function Surface(ctx: Ctx) {
+  const rows = SURFACE.map((row) => {
+    const needsAi = row.items.some((i) => i.kind === "topic");
+    const shown = row.items.filter((i) => hasContent(i, ctx));
+    if (shown.length === 0 && !(needsAi && !ctx.e)) return null;
+    return (
+      <div key={row.label} className="grid gap-x-6 gap-y-1.5 border-b border-line py-4 first:pt-0 last:border-0 last:pb-0 sm:grid-cols-[190px_1fr]">
+        <h3 className="pt-0.5 text-[15px] font-semibold text-ocean">{row.label}</h3>
+        <div className="flex flex-col gap-3">{shown.length === 0 ? <NotWritten /> : shown.map((i, n) => renderItem(i, ctx, `${row.label}-${n}`))}</div>
+      </div>
+    );
+  });
   return (
     <div className="flex flex-col gap-5">
-      {e && (
-        <Card title="In short">
-          <Claims claims={[...e.topics.whatItDoes.slice(0, 1), ...e.topics.howItMakesMoney.slice(0, 1)]} />
-          {e.topics.biggestRisks[0] && (
-            <div className="flex flex-col gap-3 border-t border-line pt-4">
-              <h3 className="text-[13px] font-semibold uppercase tracking-wider text-[#2F7A99]">A key risk the company highlights</h3>
-              <Claims claims={e.topics.biggestRisks.slice(0, 1)} />
-            </div>
-          )}
-          <AiNote e={e} />
-        </Card>
-      )}
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
-        <Card title="Is it growing?">
-          <BigChange c={n?.annual.revenue} noun="sales" />
-          <Said statement={find(report, "revenue-year")} />
-        </Card>
-        <Card title="Is it making a profit?">
-          <Said statement={find(report, "net-income-year")} />
-          <Said statement={find(report, "net-margin")} />
-        </Card>
-        <Card title="Is it financially healthy?">
-          <Said statement={find(report, "current-ratio") ?? find(report, "cash")} />
-          <Said statement={find(report, "cash-vs-debt")} />
-        </Card>
-        <Card title="Does the business produce cash?">
-          <SaidAll report={report} ids={["free-cash-flow"]} />
-        </Card>
-      </div>
+      <section className="flex flex-col gap-4 rounded-[20px] border border-line bg-white p-6">
+        <div className="flex flex-col gap-1">
+          <h2 className="font-display text-2xl font-bold">The whole company in a minute</h2>
+          <p className="text-[15px] text-muted">
+            Every part of the company in one or two plain sentences. Open <strong className="text-ink">Below</strong> for
+            each part explained, or <strong className="text-ink">Deep</strong> for everything.
+          </p>
+        </div>
+        <div className="flex flex-col">{rows}</div>
+      </section>
       <Card
         title="Share price"
         note="The price moves every trading day. Fathom shows it for context; it doesn't say whether the price is right."
       >
-        <PriceChart symbol={report.tradingViewSymbol} />
+        <PriceChart symbol={ctx.report.tradingViewSymbol} />
       </Card>
+      {ctx.e && <AiNote e={ctx.e} />}
     </div>
   );
 }
 
-// ---------------------------------------------------------------- level 2: Below
-
-function Below({ report, e }: { report: CompanyReport; e?: SavedExplanation }) {
-  const n = report.numbers;
-  const leftOut = leftOutNames(n);
+function Detail(ctx: Ctx & { level: "below" | "deep" }) {
   return (
     <div className="flex flex-col gap-5">
-      {e ? (
-        <Card title="Business model and competitive edge">
-          <Topic e={e} id="whatItDoes" title="What the company does" />
-          <Topic e={e} id="howItMakesMoney" title="How it makes money" />
-          <Topic
-            e={e}
-            id="competitiveEdge"
-            title="What the company says gives it an edge"
-            empty="The report doesn't describe this clearly, so it's left out."
-          />
-          <Topic e={e} id="marketPosition" title="Where it says it stands in its industry" />
-          <AiNote e={e} />
-        </Card>
-      ) : (
-        <ComingSoon
-          title="Business model and competitive edge"
-          items={[
-            "What the company sells and how it makes money",
-            "What the company says gives it an edge over competitors, such as its brand, costs or customer loyalty",
-            "Where it says it stands in its industry",
-          ]}
-        />
-      )}
-      <Card title="Growth and profit" note="From the income statement: what the company sold and what it kept.">
-        <Said statement={find(report, "revenue-year")} />
-        {n && <RevenueChart history={n.revenueHistory} />}
-        <SaidAll report={report} ids={["revenue-quarter", "net-income-year", "gross-margin", "net-margin", "margin-trend", "eps"]} />
-      </Card>
-      <Card title="Financial health" note="From the balance sheet: what the company owns and what it owes.">
-        <SaidAll report={report} ids={["cash", "long-term-debt", "cash-vs-debt", "current-ratio", "assets-vs-liabilities", "debt-to-equity", "negative-equity"]} />
-      </Card>
-      <Card title="Cash flow" note="From the cash flow statement: the actual cash in and out, not just accounting profit.">
-        <SaidAll report={report} ids={["operating-cash-flow", "free-cash-flow", "fcf-vs-profit"]} />
-      </Card>
-      <Card title="How management used the money" note="Choices about reinvesting, rewarding shareholders and buying other companies.">
-        <SaidAll report={report} ids={["capital-allocation"]} />
-      </Card>
-      {leftOut.length > 0 && (
-        <p className="rounded-2xl border border-line bg-white px-5 py-4 text-[15px] leading-relaxed text-muted">
-          <strong className="text-ink">Left out on purpose:</strong> {leftOut.join(", ")}. The company either
-          doesn&apos;t report {leftOut.length > 1 ? "these" : "this"} in SEC&apos;s standard data, or the latest figure
-          isn&apos;t available yet. Fathom leaves a number out rather than guess.
-        </p>
-      )}
+      {areasFor(ctx.level).map((area) => {
+        const needsAi = area.items.some((i) => i.kind === "topic");
+        const content = needsAi && !ctx.e ? [<NotWritten key="nw" />] : area.items.map((i, n) => renderItem(i, ctx, `${area.id}-${n}`));
+        return (
+          <section key={area.id} id={`${ctx.level}-${area.id}`} className="flex flex-col gap-4 rounded-[20px] border border-line bg-white p-6">
+            <div className="flex flex-col gap-1">
+              <h2 className="font-display text-2xl font-bold">{area.title}</h2>
+              <p className="text-[15px] leading-relaxed text-muted">{area.why}</p>
+            </div>
+            {content}
+          </section>
+        );
+      })}
+      {ctx.e && <AiNote e={ctx.e} />}
     </div>
   );
 }
 
-// ---------------------------------------------------------------- level 3: Deep
+// ---------------------------------------------------------------- blocks: charts, tables and widgets
+
+function blockHasContent(block: Block, report: CompanyReport): boolean {
+  const n = report.numbers;
+  switch (block) {
+    case "revenueChart":
+      return (n?.revenueHistory.length ?? 0) >= 2;
+    case "marginHistory":
+      return (n?.marginHistory.length ?? 0) >= 2;
+    case "keyRatios":
+    case "whatChanged":
+      return Boolean(n);
+    case "accountsSummary":
+    case "accountsCheck":
+      return Boolean(report.governance);
+    case "leftOut":
+      return leftOutNames(n).length > 0;
+    case "originalReports":
+      return Boolean(report.annualReport || report.quarterlyReport);
+    case "priceChart":
+    case "marketData":
+      return true;
+  }
+}
+
+function BlockView({ block, report }: { block: Block; report: CompanyReport }) {
+  if (!blockHasContent(block, report)) return null;
+  const n = report.numbers;
+  switch (block) {
+    case "revenueChart":
+      return <RevenueChart history={n!.revenueHistory} />;
+    case "marginHistory":
+      return <MarginHistory report={report} />;
+    case "keyRatios":
+      return <KeyRatios report={report} />;
+    case "whatChanged":
+      return <WhatChanged report={report} />;
+    case "accountsSummary":
+      return <AccountsSummary report={report} />;
+    case "accountsCheck":
+      return <AccountsCheck report={report} />;
+    case "leftOut":
+      return <LeftOut report={report} />;
+    case "originalReports":
+      return <OriginalReports report={report} />;
+    case "priceChart":
+      return <PriceChart symbol={report.tradingViewSymbol} />;
+    case "marketData":
+      return (
+        <div className="flex flex-col gap-3">
+          <p className="text-[16px] leading-relaxed">
+            Two numbers people look at most: <RichText text="[[market-cap|market value]]" /> (what the whole company is
+            worth on the stock market) and the <RichText text="[[pe-ratio|P/E ratio]]" /> (the share price compared with
+            a year of profit per share; a higher number means buyers are paying more for each dollar of profit).
+            They&apos;re shown as TradingView provides them. Fathom doesn&apos;t give target prices or say whether to buy,
+            sell or hold.
+          </p>
+          <MarketData symbol={report.tradingViewSymbol} />
+        </div>
+      );
+  }
+}
+
+function Sub({ title, note, children }: { title: string; note?: string; children: ReactNode }) {
+  return (
+    <div className="flex flex-col gap-2.5">
+      <div className="flex flex-col gap-1">
+        <h3 className="font-display text-lg font-bold">{title}</h3>
+        {note && <p className="text-[14px] text-muted">{note}</p>}
+      </div>
+      {children}
+    </div>
+  );
+}
 
 function Row({ name, term, value, detail }: { name: string; term?: string; value?: string; detail?: string }) {
   if (!value) return null;
@@ -354,71 +385,6 @@ function Row({ name, term, value, detail }: { name: string; term?: string; value
       <td className="whitespace-nowrap py-3 pr-4 text-right font-semibold tabular-nums">{value}</td>
       <td className="py-3 text-right text-[13px] text-muted">{detail}</td>
     </tr>
-  );
-}
-
-function KeyRatios({ report }: { report: CompanyReport }) {
-  const n = report.numbers;
-  if (!n) return null;
-  const r = n.ratios;
-  const eps = n.annual.eps;
-  const year = (end?: string) => (end ? `Year ended ${formatDate(end)}` : undefined);
-  const on = (end?: string) => (end ? `On ${formatDate(end)}` : undefined);
-  return (
-    <Card title="Key ratios" note="Worked out from SEC data. Each ratio only combines figures from the same period or date.">
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[520px] border-collapse text-[15px]">
-          <tbody>
-            <Row name="Return on equity" term="return-on-equity" value={r.returnOnEquity && formatShare(r.returnOnEquity.value)} detail={year(r.returnOnEquity?.end)} />
-            <Row name="Debt-to-equity" term="debt-to-equity" value={r.debtToEquity && `${formatPerDollar(r.debtToEquity.value)} per $1`} detail={on(r.debtToEquity?.end)} />
-            <Row name="Current ratio" term="current-ratio" value={r.currentRatio && r.currentRatio.value.toFixed(2)} detail={on(r.currentRatio?.end)} />
-            <Row name="Assets per $1 owed" term="total-liabilities" value={r.assetsToLiabilities && formatPerDollar(r.assetsToLiabilities.value)} detail={on(r.assetsToLiabilities?.end)} />
-            <Row name="Gross margin" term="gross-margin" value={n.margins.gross !== undefined ? formatShare(n.margins.gross) : undefined} detail={year(n.margins.periodEnd)} />
-            <Row name="Operating margin" term="operating-margin" value={n.margins.operating !== undefined ? formatShare(n.margins.operating) : undefined} detail={year(n.margins.periodEnd)} />
-            <Row name="Profit margin" term="profit-margin" value={n.margins.net !== undefined ? formatShare(n.margins.net) : undefined} detail={year(n.margins.periodEnd)} />
-            <Row
-              name="Earnings per share"
-              term="eps"
-              value={eps && formatPerShare(eps.latest.value)}
-              detail={eps ? `${year(eps.latest.end)}${eps.change !== undefined ? `, ${eps.change >= 0 ? "up" : "down"} ${formatPercent(eps.change)}` : ""}` : undefined}
-            />
-            <Row name="Free cash flow" term="free-cash-flow" value={r.freeCashFlow && formatMoney(r.freeCashFlow.value)} detail={year(r.freeCashFlow?.end)} />
-          </tbody>
-        </table>
-      </div>
-    </Card>
-  );
-}
-
-function MarginHistory({ report }: { report: CompanyReport }) {
-  const rows = report.numbers?.marginHistory ?? [];
-  if (rows.length < 2) return null;
-  const pct = (v?: number) => (v === undefined ? "–" : formatShare(v));
-  return (
-    <Card title="Margins year by year" note="How much of each dollar of sales the company kept, at each level of profit.">
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[480px] border-collapse text-[15px]">
-          <thead>
-            <tr className="border-b-2 border-line text-[13px] text-muted">
-              <th className="py-2 pr-4 text-left font-semibold">Year ended</th>
-              <th className="py-2 pr-4 text-right font-semibold">Gross margin</th>
-              <th className="py-2 pr-4 text-right font-semibold">Operating margin</th>
-              <th className="py-2 text-right font-semibold">Profit margin</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((y) => (
-              <tr key={y.end} className="border-b border-line">
-                <td className="py-2.5 pr-4">{formatDate(y.end)}</td>
-                <td className="py-2.5 pr-4 text-right tabular-nums">{pct(y.gross)}</td>
-                <td className="py-2.5 pr-4 text-right tabular-nums">{pct(y.operating)}</td>
-                <td className="py-2.5 text-right tabular-nums">{pct(y.net)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Card>
   );
 }
 
@@ -441,10 +407,76 @@ function ChangeRow({ name, c, period }: { name: string; c?: Comparison; period: 
   );
 }
 
+function KeyRatios({ report }: { report: CompanyReport }) {
+  const n = report.numbers!;
+  const r = n.ratios;
+  const eps = n.annual.eps;
+  const year = (end?: string) => (end ? `Year ended ${formatDate(end)}` : undefined);
+  const on = (end?: string) => (end ? `On ${formatDate(end)}` : undefined);
+  return (
+    <Sub title="Key ratios" note="Worked out from SEC data. Each ratio only combines figures from the same period or date.">
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[520px] border-collapse text-[15px]">
+          <tbody>
+            <Row name="Return on equity" term="return-on-equity" value={r.returnOnEquity && formatShare(r.returnOnEquity.value)} detail={year(r.returnOnEquity?.end)} />
+            <Row name="Debt-to-equity" term="debt-to-equity" value={r.debtToEquity && `${formatPerDollar(r.debtToEquity.value)} per $1`} detail={on(r.debtToEquity?.end)} />
+            <Row name="Current ratio" term="current-ratio" value={r.currentRatio && r.currentRatio.value.toFixed(2)} detail={on(r.currentRatio?.end)} />
+            <Row name="Assets per $1 owed" term="total-liabilities" value={r.assetsToLiabilities && formatPerDollar(r.assetsToLiabilities.value)} detail={on(r.assetsToLiabilities?.end)} />
+            <Row name="Gross margin" term="gross-margin" value={n.margins.gross !== undefined ? formatShare(n.margins.gross) : undefined} detail={year(n.margins.periodEnd)} />
+            <Row name="Operating margin" term="operating-margin" value={n.margins.operating !== undefined ? formatShare(n.margins.operating) : undefined} detail={year(n.margins.periodEnd)} />
+            <Row name="Profit margin" term="profit-margin" value={n.margins.net !== undefined ? formatShare(n.margins.net) : undefined} detail={year(n.margins.periodEnd)} />
+            <Row
+              name="Earnings per share"
+              term="eps"
+              value={eps && formatPerShare(eps.latest.value)}
+              detail={eps ? `${year(eps.latest.end)}${eps.change !== undefined ? `, ${eps.change >= 0 ? "up" : "down"} ${formatPercent(eps.change)}` : ""}` : undefined}
+            />
+            <Row name="Free cash flow" term="free-cash-flow" value={r.freeCashFlow && formatMoney(r.freeCashFlow.value)} detail={year(r.freeCashFlow?.end)} />
+          </tbody>
+        </table>
+      </div>
+    </Sub>
+  );
+}
+
+function MarginHistory({ report }: { report: CompanyReport }) {
+  const rows = report.numbers!.marginHistory;
+  const pct = (v?: number) => (v === undefined ? "–" : formatShare(v));
+  return (
+    <Sub title="Margins year by year" note="How much of each dollar of sales the company kept, at each level of profit.">
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[480px] border-collapse text-[15px]">
+          <thead>
+            <tr className="border-b-2 border-line text-[13px] text-muted">
+              <th className="py-2 pr-4 text-left font-semibold">Year ended</th>
+              <th className="py-2 pr-4 text-right font-semibold">Gross margin</th>
+              <th className="py-2 pr-4 text-right font-semibold">Operating margin</th>
+              <th className="py-2 text-right font-semibold">Profit margin</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((y) => (
+              <tr key={y.end} className="border-b border-line">
+                <td className="py-2.5 pr-4">{formatDate(y.end)}</td>
+                <td className="py-2.5 pr-4 text-right tabular-nums">{pct(y.gross)}</td>
+                <td className="py-2.5 pr-4 text-right tabular-nums">{pct(y.operating)}</td>
+                <td className="py-2.5 text-right tabular-nums">{pct(y.net)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </Sub>
+  );
+}
+
 function WhatChanged({ report }: { report: CompanyReport }) {
   const n = report.numbers;
   return (
-    <Card title="What changed in a year">
+    <Sub
+      title="What changed in a year"
+      note="Years are compared with the previous year, and quarters with the same quarter a year earlier, because many businesses are seasonal."
+    >
       <div className="overflow-x-auto">
         <table className="w-full min-w-[520px] border-collapse text-[15px]">
           <thead>
@@ -467,19 +499,47 @@ function WhatChanged({ report }: { report: CompanyReport }) {
           </tbody>
         </table>
       </div>
-      <p className="text-[13px] text-muted">
-        Years are compared with the previous year, and quarters with the same quarter a year earlier, because many
-        businesses are seasonal.
+    </Sub>
+  );
+}
+
+/** One plain sentence: did the company file either official warning sign? */
+function AccountsSummary({ report }: { report: CompanyReport }) {
+  const g = report.governance!;
+  if (g.events.length === 0) {
+    return (
+      <p className="text-[17px] leading-relaxed">
+        None found. Since {formatDate(g.since)}, the company hasn&apos;t announced a change of{" "}
+        <RichText text="[[auditor|auditor]]" /> or said its past accounts were wrong (
+        <RichText text="[[restatement|a restatement]]" />
+        ).
       </p>
-    </Card>
+    );
+  }
+  const changes = g.events.filter((x) => x.kind === "auditor-change").length;
+  const restatements = g.events.length - changes;
+  const parts = [
+    changes ? `${changes === 1 ? "one change" : `${changes} changes`} of [[auditor|auditor]]` : "",
+    restatements ? `${restatements === 1 ? "one notice" : `${restatements} notices`} that past accounts were wrong ([[restatement|restatement]])` : "",
+  ].filter(Boolean);
+  return (
+    <div className="flex flex-col gap-1.5">
+      <p className="text-[17px] leading-relaxed">
+        <RichText text={`Since ${formatDate(g.since)}, the company filed ${parts.join(" and ")}. These have many possible reasons; the filings explain them.`} />
+      </p>
+      <div className="flex flex-wrap gap-x-4 gap-y-1">
+        {g.events.map((x) => (
+          <SourceLink key={x.url + x.kind} href={x.url} label={`8-K filed ${formatDate(x.filingDate)}`} />
+        ))}
+      </div>
+    </div>
   );
 }
 
 function AccountsCheck({ report }: { report: CompanyReport }) {
-  const g = report.governance;
-  if (!g) return null;
+  const g = report.governance!;
   return (
-    <Card
+    <Sub
       title="Accounts check"
       note="Two official warning signs a company must announce: changing its auditor, and saying earlier accounts can't be relied on."
     >
@@ -490,17 +550,17 @@ function AccountsCheck({ report }: { report: CompanyReport }) {
         </p>
       ) : (
         <ul className="flex flex-col gap-3">
-          {g.events.map((e) => (
-            <li key={e.url + e.kind} className="flex flex-col gap-1.5">
+          {g.events.map((x) => (
+            <li key={x.url + x.kind} className="flex flex-col gap-1.5">
               <span className="text-[17px] leading-relaxed">
-                {formatDate(e.filingDate)}:{" "}
-                {e.kind === "auditor-change" ? (
+                {formatDate(x.filingDate)}:{" "}
+                {x.kind === "auditor-change" ? (
                   <RichText text="the company changed its [[auditor|auditor]]." />
                 ) : (
                   <RichText text="the company said earlier financial statements should no longer be relied on ([[restatement|restatement notice]])." />
                 )}
               </span>
-              <SourceLink href={e.url} label="Read the 8-K" />
+              <SourceLink href={x.url} label="Read the 8-K" />
             </li>
           ))}
         </ul>
@@ -508,76 +568,33 @@ function AccountsCheck({ report }: { report: CompanyReport }) {
       <p className="text-[13px] text-muted">
         An auditor change has many ordinary reasons; the filing explains why. This check only reports what was filed.
       </p>
-    </Card>
+    </Sub>
   );
 }
 
-function Valuation({ report }: { report: CompanyReport }) {
+function LeftOut({ report }: { report: CompanyReport }) {
+  const leftOut = leftOutNames(report.numbers);
   return (
-    <Card
-      title="Market value and valuation numbers"
-      note="Shown as TradingView provides them. Fathom doesn't give target prices or say whether to buy, sell or hold."
-    >
-      <p className="text-[15px] leading-relaxed text-muted">
-        Two numbers people look at most: <RichText text="[[market-cap|market value]]" /> (what the whole company is
-        worth on the stock market) and the <RichText text="[[pe-ratio|P/E ratio]]" /> (the share price compared with a
-        year of profit per share).
-      </p>
-      <MarketData symbol={report.tradingViewSymbol} />
-    </Card>
+    <p className="rounded-2xl bg-mist px-5 py-4 text-[15px] leading-relaxed text-muted">
+      <strong className="text-ink">Left out on purpose:</strong> {leftOut.join(", ")}. The company either doesn&apos;t
+      report {leftOut.length > 1 ? "these" : "this"} in SEC&apos;s standard data, or the latest figure isn&apos;t available
+      yet. Fathom leaves a number out rather than guess.
+    </p>
   );
 }
 
-function Deep({ report, e }: { report: CompanyReport; e?: SavedExplanation }) {
+function OriginalReports({ report }: { report: CompanyReport }) {
   return (
-    <div className="flex flex-col gap-5">
-      <KeyRatios report={report} />
-      <MarginHistory report={report} />
-      <WhatChanged report={report} />
-      <AccountsCheck report={report} />
-      {e ? (
-        <Card title="Industry, risks and what's coming up">
-          <Topic e={e} id="industryTrends" title="Trends in its industry" />
-          <Topic e={e} id="demandDrivers" title="What drives demand" />
-          <Topic e={e} id="biggestRisks" title="Key risks the company highlights" />
-          <Topic
-            e={e}
-            id="newRisks"
-            title="New or changed risks"
-            empty="The latest quarterly report doesn't describe any new or changed risks."
-          />
-          <Topic
-            e={e}
-            id="outlook"
-            title="What management expects"
-            empty="The reports don't give a forward outlook."
-          />
-          <Topic e={e} id="upcoming" title="What the company says is coming up" />
-          <AiNote e={e} />
-        </Card>
-      ) : (
-      <ComingSoon
-        title="Industry, risks and what's coming up"
-        items={[
-          "Trends in its industry and what drives demand, as the company describes them",
-          "Its biggest risks, and which risks are new or have grown since the last report",
-          "Events the company says are coming, such as launches or expansions",
-          "Management's outlook, or a clear note when the report gives none",
-        ]}
-      />
-      )}
-      <Valuation report={report} />
-      <Card title="Read the original reports">
-        <div className="flex flex-col gap-2">
-          {report.annualReport && (
-            <SourceLink href={report.annualReport.url} label={`Annual report (10-K) filed ${formatDate(report.annualReport.filingDate)}`} />
-          )}
-          {report.quarterlyReport && (
-            <SourceLink href={report.quarterlyReport.url} label={`Quarterly report (10-Q) filed ${formatDate(report.quarterlyReport.filingDate)}`} />
-          )}
-        </div>
-      </Card>
-    </div>
+    <Sub title="Read the original reports">
+      <div className="flex flex-col gap-2">
+        {report.annualReport && (
+          <SourceLink href={report.annualReport.url} label={`Annual report (10-K) filed ${formatDate(report.annualReport.filingDate)}`} />
+        )}
+        {report.quarterlyReport && (
+          <SourceLink href={report.quarterlyReport.url} label={`Quarterly report (10-Q) filed ${formatDate(report.quarterlyReport.filingDate)}`} />
+        )}
+      </div>
+    </Sub>
   );
 }
 

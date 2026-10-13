@@ -14,6 +14,7 @@ Rules:
 - The quote must directly support EVERYTHING the claim says. If part of the claim is not in the quote, remove that part.
 - Never add your own conclusion, such as "showing...", "which proves..." or "meaning it leads...", unless the quote itself says it.
 - Aim for 2 or 3 claims per topic when the report supports them, each with its own quote.
+- Put the most important point first in every topic. For howItMakesMoney, the first point should name where most of the money comes from, if the report says so.
 - Only state what the report says. Do not add facts from your own knowledge. If the report does not cover a topic, return an empty list for it.
 - Do not write any number unless the same number appears in your quote.
 - For "competitiveEdge" and "marketPosition", describe what the COMPANY says about itself, e.g. "The company says...". Do not give your own opinion.

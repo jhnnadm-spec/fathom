@@ -11,13 +11,13 @@ import path from "node:path";
 import { Circle, ClipPath, Defs, Document, Font, G, Line, Link, Page, Path, Rect, StyleSheet, Svg, Text, View } from "@react-pdf/renderer";
 import { cloneElement, Fragment, isValidElement, type ReactElement, type ReactNode } from "react";
 import type { DocumentProps } from "@react-pdf/renderer";
-import type { CheckedClaim, SavedExplanation, TopicId } from "../explain/types";
+import type { CheckedClaim, SavedExplanation } from "../explain/types";
 import { formatDate, formatMoney, formatPerDollar, formatPercent, formatPerShare, formatShare } from "../financials/format";
 import type { Comparison } from "../financials/metrics";
 import { plainText, termsIn, type Statement } from "../financials/templates";
 import { lookupTerm } from "../glossary";
 import type { CompanyReport } from "../report/company";
-import { leftOutNames } from "../report/outline";
+import { areasFor, claimsFor, leftOutNames, statementsFor, SURFACE, type Block, type Item } from "../report/outline";
 
 // ---------------------------------------------------------------- fonts and colours
 
@@ -62,6 +62,7 @@ const s = StyleSheet.create({
   levelHint: { color: C.muted, fontSize: 10, marginLeft: 4 },
   h2: { fontSize: 9, fontWeight: 700, color: C.label, letterSpacing: 1, textTransform: "uppercase", marginTop: 16, marginBottom: 2 },
   note: { color: C.muted, fontSize: 9, marginBottom: 6 },
+  area: { fontFamily: "Bricolage", fontWeight: 700, fontSize: 15, marginTop: 18, marginBottom: 2 },
   h3: { fontFamily: "Bricolage", fontWeight: 700, fontSize: 12, marginTop: 10, marginBottom: 4 },
   point: { flexDirection: "row", gap: 6, marginBottom: 6 },
   bullet: { width: 8, color: C.mid },
@@ -112,9 +113,8 @@ export function ReportPdf({ report, explanation: e, pageUrl, createdAt }: PdfInp
   const body = (
     <>
       {cover(ctx, created, pageUrl)}
-      {surface(ctx)}
-      {below(ctx)}
-      {deep(ctx, pageUrl)}
+      {surfaceRows(ctx)}
+      {detailAreas(ctx, pageUrl)}
       {announcements(ctx)}
     </>
   );
@@ -196,6 +196,16 @@ function section(title: string, note: string | undefined, children: ReactNode) {
   );
 }
 
+function sub(title: string, note: string | undefined, children: ReactNode) {
+  return keepWithFirst(
+    <>
+      <Text style={s.h3}>{title}</Text>
+      {note && <Text style={s.note}>{note}</Text>}
+    </>,
+    children,
+  );
+}
+
 function level(name: string, hint: string, color: string) {
   return (
     <View style={s.level} wrap={false} minPresenceAhead={120}>
@@ -206,13 +216,20 @@ function level(name: string, hint: string, color: string) {
   );
 }
 
-function point(text: string, refs: number[], quote?: string) {
+/** Swap characters the PDF font doesn't have (special hyphens and spaces) for ones it does. */
+function clean(text: string): string {
+  return text.replace(/[\u2010\u2011\u2012]/g, "-").replace(/[\u00a0\u202f\u2009]/g, " ");
+}
+
+function point(rawText: string, refs: number[], rawQuote?: string, plain = false) {
+  const text = clean(rawText);
+  const quote = rawQuote && clean(rawQuote);
   return (
     <View style={s.point} wrap={false} key={text}>
-      <Text style={s.bullet}>•</Text>
+      {!plain && <Text style={s.bullet}>•</Text>}
       <View style={{ flex: 1 }}>
         <Text>
-          {text} <Text style={s.ref}>{refs.map((r) => `[${r}]`).join("")}</Text>
+          {text} {refs.length > 0 && <Text style={s.ref}>{refs.map((r) => `[${r}]`).join("")}</Text>}
         </Text>
         {quote && <Text style={s.quote}>From the report: “{quote}”</Text>}
       </View>
@@ -220,39 +237,21 @@ function point(text: string, refs: number[], quote?: string) {
   );
 }
 
-function statement(ctx: Ctx, st?: Statement) {
-  if (!st) return null;
+function statement(ctx: Ctx, st: Statement, plain = false) {
   termsIn(st.text).forEach((t) => ctx.terms.add(t));
-  return point(plainText(st.text), st.sources.map((x) => ctx.src.ref(x.label, x.url)));
+  return point(plainText(st.text), st.sources.map((x) => ctx.src.ref(x.label, x.url)), undefined, plain);
 }
 
-function statements(ctx: Ctx, ids: string[]) {
-  const found = ids.map((id) => find(ctx.report, id)).filter(Boolean) as Statement[];
-  if (found.length === 0) {
-    return <Text style={s.note}>The company doesn&apos;t report these figures in SEC&apos;s standard data, so they&apos;re left out.</Text>;
-  }
-  return found.map((st) => statement(ctx, st));
-}
-
-function find(report: CompanyReport, id: string) {
-  return report.statements.find((x) => x.id === id);
-}
-
-function claims(ctx: Ctx, list: CheckedClaim[]) {
-  return list.map((c) => point(c.text, [ctx.src.ref(c.source.label, c.source.url)], c.quote));
-}
-
-function topic(ctx: Ctx, id: TopicId, title: string, empty?: string) {
-  const list = ctx.e?.topics[id] ?? [];
-  if (list.length === 0 && !empty) return null;
-  return keepWithFirst(<Text style={s.h3}>{title}</Text>, list.length === 0 ? <Text style={s.note}>{empty}</Text> : claims(ctx, list));
+function claims(ctx: Ctx, list: CheckedClaim[], quotes = true) {
+  return list.map((c) => point(c.text, [ctx.src.ref(c.source.label, c.source.url)], quotes ? c.quote : undefined, !quotes));
 }
 
 function aiNote(e: SavedExplanation) {
   return (
     <Text style={s.aiNote}>
-      Written by AI from the company&apos;s own reports on {formatDate(e.generatedAt.slice(0, 10))}. Every point was
-      checked word-for-word against the report it cites; points that failed the check were removed.
+      Points about the business, its industry and its risks were written by AI from the company&apos;s own reports on{" "}
+      {formatDate(e.generatedAt.slice(0, 10))}. Every point was checked word-for-word against the report it cites; points
+      that failed the check were removed. All numbers come straight from the reports, not from AI.
     </Text>
   );
 }
@@ -260,8 +259,7 @@ function aiNote(e: SavedExplanation) {
 function notWritten() {
   return (
     <Text style={s.note}>
-      The plain-English explanation of this part hasn&apos;t been written for this company yet. It can be requested on
-      the company&apos;s Fathom page.
+      This part hasn&apos;t been written for this company yet. It can be requested on the company&apos;s Fathom page.
     </Text>
   );
 }
@@ -335,8 +333,8 @@ function cover(ctx: Ctx, created: string, pageUrl: string) {
         </Text>
         <Text style={{ marginTop: 6 }}>
           <Text style={s.strong}>How to read this. </Text>
-          Three levels, from a 30-second summary to the detail. Numbers come straight from the company&apos;s reports to
-          the SEC. Each point ends with a [number] that matches the source list at the end. The live page, with the share
+          First the whole company in a minute, then everything explained in full. Numbers come straight from the
+          company&apos;s reports to the SEC. Each point ends with a [number] that matches the source list at the end. The live page, with the share
           price chart and news, is at{" "}
           <Link src={pageUrl} style={s.link}>
             {pageUrl.replace(/^https?:\/\//, "")}
@@ -348,111 +346,142 @@ function cover(ctx: Ctx, created: string, pageUrl: string) {
   );
 }
 
-// ---------------------------------------------------------------- level 1: Surface
+// ---------------------------------------------------------------- the one-minute version, then everything
 
-function surface(ctx: Ctx) {
-  const { e } = ctx;
+function surfaceRows(ctx: Ctx) {
+  const rows = SURFACE.map((row) => {
+    const needsAi = row.items.some((i) => i.kind === "topic");
+    const content = row.items.flatMap((i) => blocks(item(ctx, i, "surface")));
+    if (content.length === 0 && !(needsAi && !ctx.e)) return null;
+    return (
+      <View key={row.label} style={{ flexDirection: "row", gap: 12, borderBottomWidth: 1, borderBottomColor: C.line, paddingVertical: 7 }} wrap={false}>
+        <Text style={{ width: 118, fontWeight: 600, color: C.ocean }}>{row.label}</Text>
+        <View style={{ flex: 1 }}>{content.length === 0 ? <Text style={s.note}>Not written yet for this company.</Text> : content}</View>
+      </View>
+    );
+  });
   return (
     <View>
-      {level("Surface", "The 30-second version", C.surface)}
-      {e &&
-        section(
-          "In short",
-          undefined,
-          <>
-            {claims(ctx, [...e.topics.whatItDoes.slice(0, 1), ...e.topics.howItMakesMoney.slice(0, 1)])}
-            {e.topics.biggestRisks[0] && (
-              <>
-                <Text style={s.h3}>A key risk the company highlights</Text>
-                {claims(ctx, e.topics.biggestRisks.slice(0, 1))}
-              </>
-            )}
-          </>,
-        )}
-      {section("Is it growing?", undefined, <>{bigChange(ctx.report.numbers?.annual.revenue, "sales")}{statement(ctx, find(ctx.report, "revenue-year"))}</>)}
-      {section("Is it making a profit?", undefined, <>{statements(ctx, ["net-income-year", "net-margin"])}</>)}
-      {section(
-        "Is it financially healthy?",
-        undefined,
-        <>
-          {statement(ctx, find(ctx.report, "current-ratio") ?? find(ctx.report, "cash"))}
-          {statement(ctx, find(ctx.report, "cash-vs-debt"))}
-        </>,
-      )}
-      {section("Does the business produce cash?", undefined, <>{statements(ctx, ["free-cash-flow"])}</>)}
+      {level("Surface", "The whole company in a minute", C.surface)}
+      {rows}
     </View>
   );
 }
 
-function bigChange(c: Comparison | undefined, noun: string) {
-  if (!c || c.change === undefined) return null;
-  const flat = Math.abs(c.change) < 0.005;
+function detailAreas(ctx: Ctx, pageUrl: string) {
   return (
-    <Text style={{ marginBottom: 4 }}>
-      <Text style={{ fontFamily: "Bricolage", fontWeight: 700, fontSize: 18, color: C.ocean }}>
-        {flat ? "About the same" : `${c.change > 0 ? "Up" : "Down"} ${formatPercent(c.change)}`}
-      </Text>
-      <Text style={{ color: C.muted }}>  {noun} vs the year before</Text>
-    </Text>
+    <View>
+      {level("Deep", "Everything, explained", C.ocean)}
+      {areasFor("deep").map((area) => {
+        const needsAi = area.items.some((i) => i.kind === "topic");
+        const content = needsAi && !ctx.e ? notWritten() : area.items.map((i) => item(ctx, i, "deep", pageUrl));
+        return (
+          <View key={area.id}>
+            {keepWithFirst(
+              <>
+                <Text style={s.area}>{area.title}</Text>
+                <Text style={s.note}>{area.why}</Text>
+              </>,
+              content,
+            )}
+          </View>
+        );
+      })}
+      {ctx.e && aiNote(ctx.e)}
+    </View>
   );
 }
 
-// ---------------------------------------------------------------- level 2: Below
+/** One outline item as PDF blocks. On the Surface level, points are shown without the report's words. */
+function item(ctx: Ctx, it: Item, lvl: "surface" | "deep", pageUrl = ""): ReactNode {
+  switch (it.kind) {
+    case "topic": {
+      const list = claimsFor(ctx.e, it);
+      if (list.length === 0 && !(ctx.e && it.empty)) return null;
+      const body = list.length > 0 ? claims(ctx, list, lvl === "deep") : <Text style={s.note}>{it.empty}</Text>;
+      return it.title ? keepWithFirst(<Text style={s.h3}>{it.title}</Text>, body) : body;
+    }
+    case "statements":
+    case "firstOf": {
+      const found = statementsFor(ctx.report.statements, it);
+      if (found.length === 0) return it.kind === "statements" && it.none ? <Text style={s.note}>{it.none}</Text> : null;
+      return found.map((st) => statement(ctx, st, lvl === "surface"));
+    }
+    case "block":
+      return blockPdf(ctx, it.block, pageUrl);
+  }
+}
 
-function below(ctx: Ctx) {
-  const { e, report } = ctx;
+function blockPdf(ctx: Ctx, block: Block, pageUrl: string): ReactNode {
+  const { report } = ctx;
   const n = report.numbers;
-  const leftOut = leftOutNames(n);
-  return (
-    <View>
-      {level("Below", "The breakdown", C.shallow)}
-      {section(
-        "Business model and competitive edge",
-        undefined,
-        e ? (
-          <>
-            {topic(ctx, "whatItDoes", "What the company does")}
-            {topic(ctx, "howItMakesMoney", "How it makes money")}
-            {topic(ctx, "competitiveEdge", "What the company says gives it an edge", "The report doesn't describe this clearly, so it's left out.")}
-            {topic(ctx, "marketPosition", "Where it says it stands in its industry")}
-            {aiNote(e)}
-          </>
-        ) : (
-          notWritten()
-        ),
-      )}
-      {section(
-        "Growth and profit",
-        "From the income statement: what the company sold and what it kept.",
-        <>
-          {statement(ctx, find(report, "revenue-year"))}
-          {n && revenueBars(n.revenueHistory)}
-          {statements(ctx, ["revenue-quarter", "net-income-year", "gross-margin", "net-margin", "margin-trend", "eps"])}
-        </>,
-      )}
-      {section(
-        "Financial health",
-        "From the balance sheet: what the company owns and what it owes.",
-        <>{statements(ctx, ["cash", "long-term-debt", "cash-vs-debt", "current-ratio", "assets-vs-liabilities", "debt-to-equity", "negative-equity"])}</>,
-      )}
-      {section(
-        "Cash flow",
-        "From the cash flow statement: the actual cash in and out, not just accounting profit.",
-        <>{statements(ctx, ["operating-cash-flow", "free-cash-flow", "fcf-vs-profit"])}</>,
-      )}
-      {section(
-        "How management used the money",
-        "Choices about reinvesting, rewarding shareholders and buying other companies.",
-        <>{statements(ctx, ["capital-allocation"])}</>,
-      )}
-      {leftOut.length > 0 && (
+  switch (block) {
+    case "revenueChart":
+      return n ? revenueBars(n.revenueHistory) : null;
+    case "marginHistory":
+      return marginHistory(ctx);
+    case "keyRatios":
+      return keyRatios(ctx);
+    case "whatChanged":
+      return n ? whatChanged(ctx) : null;
+    case "accountsSummary":
+      return accountsSummary(ctx);
+    case "accountsCheck":
+      return accountsCheck(ctx);
+    case "leftOut": {
+      const leftOut = leftOutNames(n);
+      if (leftOut.length === 0) return null;
+      return (
         <Text style={s.box}>
           <Text style={s.strong}>Left out on purpose: </Text>
           {leftOut.join(", ")}. The company either doesn&apos;t report {leftOut.length > 1 ? "these" : "this"} in SEC&apos;s
           standard data, or the latest figure isn&apos;t available yet. Fathom leaves a number out rather than guess.
         </Text>
-      )}
-    </View>
+      );
+    }
+    case "originalReports":
+      return keepWithFirst(
+        <Text style={s.h3}>Read the original reports</Text>,
+        <>
+          {report.annualReport &&
+            point(`Annual report (10-K) filed ${formatDate(report.annualReport.filingDate)}`, [ctx.src.ref(`10-K filed ${formatDate(report.annualReport.filingDate)}`, report.annualReport.url)])}
+          {report.quarterlyReport &&
+            point(`Quarterly report (10-Q) filed ${formatDate(report.quarterlyReport.filingDate)}`, [
+              ctx.src.ref(`10-Q filed ${formatDate(report.quarterlyReport.filingDate)}`, report.quarterlyReport.url),
+            ])}
+        </>,
+      );
+    case "priceChart":
+    case "marketData":
+      ctx.terms.add("market-cap");
+      ctx.terms.add("pe-ratio");
+      return (
+        <Text>
+          Market value (what the whole company is worth on the stock market) and the P/E ratio (the share price compared
+          with a year of profit per share) change every trading day, so they aren&apos;t printed here. See them, with the
+          share price chart, on the live page:{" "}
+          <Link src={pageUrl} style={s.link}>
+            {pageUrl.replace(/^https?:\/\//, "")}
+          </Link>
+          . Fathom doesn&apos;t give target prices or say whether to buy, sell or hold.
+        </Text>
+      );
+  }
+}
+
+function accountsSummary(ctx: Ctx) {
+  const g = ctx.report.governance;
+  if (!g) return null;
+  ctx.terms.add("auditor");
+  ctx.terms.add("restatement");
+  if (g.events.length === 0) {
+    return point(`None found. Since ${formatDate(g.since)}, the company hasn't announced a change of auditor or said its past accounts were wrong (a restatement).`, [], undefined, true);
+  }
+  return point(
+    `Since ${formatDate(g.since)}, the company filed ${g.events.length} official notice${g.events.length > 1 ? "s" : ""} of an auditor change or a restatement. These have many possible reasons; the filings explain them.`,
+    g.events.map((x) => ctx.src.ref(`8-K filed ${formatDate(x.filingDate)}`, x.url)),
+    undefined,
+    true,
   );
 }
 
@@ -482,62 +511,7 @@ function revenueBars(history: { end: string; value: number }[]) {
   );
 }
 
-// ---------------------------------------------------------------- level 3: Deep
-
-function deep(ctx: Ctx, pageUrl: string) {
-  const { report, e } = ctx;
-  return (
-    <View>
-      {level("Deep", "The detail", C.ocean)}
-      {keyRatios(ctx)}
-      {marginHistory(ctx)}
-      {whatChanged(ctx)}
-      {accountsCheck(ctx)}
-      {section(
-        "Industry, risks and what's coming up",
-        undefined,
-        e ? (
-          <>
-            {topic(ctx, "industryTrends", "Trends in its industry")}
-            {topic(ctx, "demandDrivers", "What drives demand")}
-            {topic(ctx, "biggestRisks", "Key risks the company highlights")}
-            {topic(ctx, "newRisks", "New or changed risks", "The latest quarterly report doesn't describe any new or changed risks.")}
-            {topic(ctx, "outlook", "What management expects", "The reports don't give a forward outlook.")}
-            {topic(ctx, "upcoming", "What the company says is coming up")}
-            {aiNote(e)}
-          </>
-        ) : (
-          notWritten()
-        ),
-      )}
-      {section(
-        "Market value and valuation numbers",
-        undefined,
-        <Text>
-          Market value (what the whole company is worth on the stock market) and the P/E ratio (the share price compared
-          with a year of profit per share) change every trading day, so they aren&apos;t printed here. See them, with the
-          share price chart, on the live page:{" "}
-          <Link src={pageUrl} style={s.link}>
-            {pageUrl.replace(/^https?:\/\//, "")}
-          </Link>
-          . Fathom doesn&apos;t give target prices or say whether to buy, sell or hold.
-        </Text>,
-      )}
-      {section(
-        "Read the original reports",
-        undefined,
-        <>
-          {report.annualReport &&
-            point(`Annual report (10-K) filed ${formatDate(report.annualReport.filingDate)}`, [ctx.src.ref(`10-K filed ${formatDate(report.annualReport.filingDate)}`, report.annualReport.url)])}
-          {report.quarterlyReport &&
-            point(`Quarterly report (10-Q) filed ${formatDate(report.quarterlyReport.filingDate)}`, [
-              ctx.src.ref(`10-Q filed ${formatDate(report.quarterlyReport.filingDate)}`, report.quarterlyReport.url),
-            ])}
-        </>,
-      )}
-    </View>
-  );
-}
+// ---------------------------------------------------------------- tables
 
 function keyRatios(ctx: Ctx) {
   const n = ctx.report.numbers;
@@ -555,7 +529,7 @@ function keyRatios(ctx: Ctx) {
       { text: detail, width: "44%", align: "right" },
     ];
   };
-  return section(
+  return sub(
     "Key ratios",
     "Worked out from SEC data. Each ratio only combines figures from the same period or date. Definitions are in “Terms used”.",
     table(undefined, [], [
@@ -582,7 +556,7 @@ function marginHistory(ctx: Ctx) {
   if (rows.length < 2) return null;
   const pct = (v?: number) => (v === undefined ? "–" : formatShare(v));
   const w = ["34%", "22%", "22%", "22%"];
-  return section(
+  return sub(
     "Margins year by year",
     "How much of each dollar of sales the company kept, at each level of profit.",
     table(
@@ -612,7 +586,7 @@ function whatChanged(ctx: Ctx) {
       { text: change, width: w[3], align: "right", bold: true },
     ];
   };
-  return section(
+  return sub(
     "What changed in a year",
     "Years are compared with the previous year, and quarters with the same quarter a year earlier, because many businesses are seasonal.",
     table(["Figure", "Latest", "A year earlier", "Change"], w, [
@@ -633,7 +607,7 @@ function accountsCheck(ctx: Ctx) {
   if (!g) return null;
   ctx.terms.add("auditor");
   ctx.terms.add("restatement");
-  return section(
+  return sub(
     "Accounts check",
     "Two official warning signs a company must announce: changing its auditor, and saying earlier accounts can't be relied on.",
     <>

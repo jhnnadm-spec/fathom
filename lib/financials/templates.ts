@@ -16,7 +16,8 @@ export type StatementSection =
   | "health"
   | "cashFlow"
   | "capital"
-  | "returns";
+  | "returns"
+  | "summary"; // the short, very plain sentences on the Surface level
 
 export type Statement = {
   id: string;
@@ -174,6 +175,7 @@ export function buildStatements(numbers: CompanyNumbers): Statement[] {
   }
 
   out.push(...healthStatements(numbers), ...cashFlowStatements(numbers), ...capitalStatements(numbers), ...returnStatements(numbers));
+  out.push(...summaryStatements(numbers));
   return out;
 }
 
@@ -352,6 +354,116 @@ function returnStatements(n: CompanyNumbers): Statement[] {
         figures,
       ),
     );
+  }
+  return out;
+}
+
+// ---------------------------------------------------------------- the one-minute version (Surface)
+
+/** "2025-09-27" → "September 2025" */
+function monthYear(isoDate: string): string {
+  const d = new Date(`${isoDate}T00:00:00Z`);
+  return d.toLocaleDateString("en-US", { year: "numeric", month: "long", timeZone: "UTC" });
+}
+
+function changeWords(change: number | undefined, more: string, less: string): string | undefined {
+  if (change === undefined) return undefined;
+  if (Math.abs(change) < FLAT) return "about the same as";
+  return `${formatPercent(change)} ${change > 0 ? more : less} than`;
+}
+
+/** Very short, very plain sentences, one per question on the Surface level. */
+function summaryStatements(n: CompanyNumbers): Statement[] {
+  const out: Statement[] = [];
+  const { annual, quarter, balance, ratios, margins } = n;
+
+  // Is it growing?
+  const rev = annual.revenue;
+  if (rev) {
+    const vs = changeWords(rev.change, "more", "less");
+    let text = `In the year to ${monthYear(rev.latest.end)}, it made ${formatMoney(rev.latest.value)} in [[revenue|sales]]${vs ? `, ${vs} the year before` : ""}.`;
+    const figures = figuresOf(rev);
+    const q = quarter.revenue;
+    if (q && q.change !== undefined && q.latest.end > rev.latest.end) {
+      text += Math.abs(q.change) < FLAT
+        ? ` Sales in its latest three months (to ${monthYear(q.latest.end)}) were about the same as a year earlier.`
+        : ` Sales in its latest three months (to ${monthYear(q.latest.end)}) were ${q.change > 0 ? "up" : "down"} ${formatPercent(q.change)} on a year earlier.`;
+      figures.push(...figuresOf(q));
+    }
+    out.push(statement("s-growth", "summary", text, figures));
+  }
+
+  // Is it making money?
+  const ni = annual.netIncome;
+  if (ni) {
+    const v = ni.latest.value;
+    const when = `In the year to ${monthYear(ni.latest.end)}`;
+    const text =
+      v < 0
+        ? `${when}, it lost ${formatMoney(Math.abs(v))}: its costs were bigger than its income.`
+        : `${when}, it kept ${formatMoney(v)} as [[net-income|profit]] after paying all its costs and taxes${margins.net !== undefined && margins.net > 0 && rev ? `: about ${perHundred(margins.net)} of every $100 it made in sales` : ""}.`;
+    out.push(statement("s-profit", "summary", text, rev && v >= 0 ? [ni.latest, rev.latest] : [ni.latest]));
+  }
+
+  // Can it pay its bills?
+  const cr = ratios.currentRatio;
+  if (cr) {
+    const near = Math.abs(cr.value - 1) < 0.05;
+    const verdict = near ? "about what it owed soon" : cr.value > 1 ? "more than enough to cover them" : "less than it owed soon, so it relied on money still to come in";
+    out.push(
+      statement(
+        "s-bills",
+        "summary",
+        `On ${formatDate(cr.end)}, for every $1 of bills due within a year, it had about ${formatPerDollar(cr.value)} in cash and other things it expected to turn into cash in that time: ${verdict}.`,
+        cr.figures,
+      ),
+    );
+  }
+
+  // How much does it owe?
+  const cash = balance.cash?.latest;
+  const debt = balance.longTermDebt?.latest;
+  if (debt || cash) {
+    const parts: string[] = [];
+    if (debt) parts.push(`owed ${formatMoney(debt.value)} in [[long-term-debt|loans and bonds]] not due for repayment within a year`);
+    if (cash && (!debt || cash.end === debt.end)) parts.push(`held ${formatMoney(cash.value)} in [[cash-and-equivalents|cash]]`);
+    const end = (debt ?? cash)!.end;
+    out.push(
+      statement("s-debt", "summary", `On ${formatDate(end)}, it ${parts.join(" and ")}.`, [debt, cash && (!debt || cash.end === debt.end) ? cash : undefined].filter(Boolean) as Figure[]),
+    );
+  }
+
+  // Does the business bring in cash?
+  const fcf = ratios.freeCashFlow;
+  if (fcf) {
+    const [ocf, capex] = fcf.figures;
+    const text =
+      fcf.value >= 0
+        ? `In the year to ${monthYear(fcf.end)}, its everyday business brought in ${formatMoney(ocf.value)} in cash. After paying for new buildings and equipment, ${formatMoney(fcf.value)} was [[free-cash-flow|left over]].`
+        : `In the year to ${monthYear(fcf.end)}, its everyday business brought in ${formatMoney(ocf.value)} in cash, but it spent ${formatMoney(capex.value)} on new buildings and equipment, so it used more cash than the business brought in.`;
+    out.push(statement("s-cash", "summary", text, fcf.figures));
+  } else if (annual.operatingCashFlow) {
+    const c = annual.operatingCashFlow.latest;
+    out.push(statement("s-cash", "summary", `In the year to ${monthYear(c.end)}, its everyday business ${c.value >= 0 ? "brought in" : "used up"} ${formatMoney(Math.abs(c.value))} in cash.`, [c]));
+  }
+
+  // What did it do with its money?
+  const year = annual.operatingCashFlow?.latest ?? rev?.latest;
+  if (year) {
+    const same = (c?: Comparison) => (c && c.latest.start === year.start && c.latest.end === year.end && c.latest.value > 0 ? c.latest : undefined);
+    const uses = [
+      { f: same(annual.buybacks), t: (v: string) => `buying back its own shares (${v})` },
+      { f: same(annual.dividends), t: (v: string) => `paying [[dividend|dividends]] to shareholders (${v})` },
+      { f: same(annual.capex), t: (v: string) => `spending on new buildings and equipment (${v})` },
+      { f: same(annual.acquisitions), t: (v: string) => `buying other businesses (${v})` },
+    ]
+      .filter((u) => u.f)
+      .sort((a, b) => b.f!.value - a.f!.value);
+    if (uses.length > 0) {
+      const words = uses.map((u) => u.t(formatMoney(u.f!.value)));
+      const list = words.length === 1 ? words[0] : `${words.slice(0, -1).join(", ")} and ${words.at(-1)}`;
+      out.push(statement("s-spending", "summary", `In the year to ${monthYear(year.end)}, its biggest uses of money were ${list}.`, uses.map((u) => u.f!)));
+    }
   }
   return out;
 }
