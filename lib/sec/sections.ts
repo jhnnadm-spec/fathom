@@ -48,6 +48,46 @@ export function htmlToText(html: string): string {
     .trim();
 }
 
+/** SEC's official section names, used so titles are always consistent. */
+const OFFICIAL_TITLES: Record<string, string> = {
+  // Annual report (10-K)
+  "1": "Business",
+  "1A": "Risk Factors",
+  "1B": "Unresolved Staff Comments",
+  "1C": "Cybersecurity",
+  "2": "Properties",
+  "3": "Legal Proceedings",
+  "4": "Mine Safety Disclosures",
+  "5": "Market for the Company's Stock",
+  "6": "[Reserved]",
+  "7": "Management's Discussion and Analysis",
+  "7A": "Market Risk",
+  "8": "Financial Statements",
+  "9": "Changes in and Disagreements with Accountants",
+  "9A": "Controls and Procedures",
+  "9B": "Other Information",
+  "9C": "Foreign Jurisdictions that Prevent Inspections",
+  "10": "Directors, Executive Officers and Corporate Governance",
+  "11": "Executive Compensation",
+  "12": "Security Ownership",
+  "13": "Relationships and Director Independence",
+  "14": "Accountant Fees and Services",
+  "15": "Exhibits and Financial Statement Schedules",
+  "16": "Form 10-K Summary",
+  // Quarterly report (10-Q)
+  "I-1": "Financial Statements",
+  "I-2": "Management's Discussion and Analysis",
+  "I-3": "Market Risk",
+  "I-4": "Controls and Procedures",
+  "II-1": "Legal Proceedings",
+  "II-1A": "Risk Factors",
+  "II-2": "Share Sales and Buybacks",
+  "II-3": "Defaults upon Senior Securities",
+  "II-4": "Mine Safety Disclosures",
+  "II-5": "Other Information",
+  "II-6": "Exhibits",
+};
+
 const PART_RE = /^part\s+(iv|i{1,3})\b[.:\s-]*/i;
 const ITEM_RE = /^item\s+(\d{1,2}[a-c]?)\s*[.:\-–—]?\s*(.*)$/i;
 const MAX_HEADING_CHARS = 200;
@@ -137,7 +177,7 @@ export function splitSections(text: string, form: string): Section[] {
       id: g.id,
       part: g.part,
       item: g.item,
-      title: g.title,
+      title: OFFICIAL_TITLES[g.id] ?? g.title,
       text: lines.slice(g.line, endLine).join("\n").trim(),
     };
   });

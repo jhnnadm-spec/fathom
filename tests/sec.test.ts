@@ -250,7 +250,7 @@ describe("filing sections", () => {
     const sections = splitSections(htmlToText(html), "10-K");
     expect(sections.map((s) => s.id)).toEqual(["6", "7", "7A"]);
     const md = findSection(sections, "7")!;
-    expect(md.title).toBe("MANAGEMENT'S DISCUSSION AND ANALYSIS");
+    expect(md.title).toBe("Management's Discussion and Analysis");
     expect(md.text).toContain("First page");
     expect(md.text).toContain("Second page");
     expect(findSection(sections, "6")?.text).not.toContain("discussion");
