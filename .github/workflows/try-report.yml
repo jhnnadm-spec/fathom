@@ -29,6 +29,8 @@ jobs:
         env:
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
           TICKERS: ${{ inputs.tickers }}
+          # Keep the raw SEC responses too, so pages can be previewed offline.
+          FATHOM_CACHE_DIR: out/.sec-cache
         run: npx tsx scripts/try-report.ts $TICKERS
       - name: Publish the results to the sec-data branch
         if: always()
