@@ -10,9 +10,9 @@ const POPULAR = [
 ];
 
 const LEVELS = [
-  { name: "Surface", color: "#7FC4D8", text: "The whole company in a minute: what it does, whether it's growing, what it owes and its main risks." },
-  { name: "Below", color: "#2F8FB3", text: "Each part explained, with the main numbers and every finance word made clear." },
-  { name: "Deep", color: "#0B4F6C", text: "Everything, with the tables, five-year trends and the reports' exact words." },
+  { name: "Surface", color: "#CDE7F0", text: "The whole company in a minute: what it does, whether it's growing, what it owes and its main risks." },
+  { name: "Below", color: "#7FC4D8", text: "Each part explained, with the main numbers and every finance word made clear." },
+  { name: "Deep", color: "#2F8FB3", text: "Everything, with the tables, five-year trends and the reports' exact words." },
 ];
 
 export default function Home() {

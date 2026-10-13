@@ -72,7 +72,7 @@ export function ExplainButton({
   }
 
   return (
-    <section className="flex flex-col gap-3 rounded-2xl bg-mist p-6" aria-live="polite">
+    <section className="flex flex-col gap-3 rounded-2xl bg-panel p-6" aria-live="polite">
       {(phase === "idle" || phase === "sending" || phase === "failed") && (
         <>
           <h2 className="font-display text-xl font-bold text-ink">
@@ -84,14 +84,14 @@ export function ExplainButton({
               : "Fathom can write one now from the company's own reports: what it does, how it makes money, its edge, its industry and its risks. Every point is checked against the report it links to."}
           </p>
           {phase === "failed" && (
-            <p className="text-[15px] text-[#9A3B1F]">That didn&apos;t work this time. Please try again later.</p>
+            <p className="text-[15px] text-[#FF8FA3]">That didn&apos;t work this time. Please try again later.</p>
           )}
           <div>
             <button
               type="button"
               onClick={ask}
               disabled={phase === "sending"}
-              className="rounded-xl bg-ocean px-5 py-3 text-[16px] font-semibold text-white transition hover:bg-ocean-dark disabled:opacity-60"
+              className="rounded-xl bg-ocean px-5 py-3 text-[16px] font-semibold text-abyss transition hover:bg-ocean-dark disabled:opacity-60"
             >
               {phase === "sending" ? "Asking…" : update ? "Update the explanation" : "Write the plain-English explanation"}
             </button>

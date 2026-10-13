@@ -41,7 +41,7 @@ export function Term({
         aria-expanded={open}
         aria-controls={id}
         onClick={() => setOpen((o) => !o)}
-        className="cursor-help font-semibold text-ocean underline decoration-mid decoration-dotted decoration-2 underline-offset-4"
+        className="cursor-help font-semibold text-ocean underline decoration-ocean/50 decoration-dotted decoration-2 underline-offset-4"
       >
         {children}
       </button>
@@ -49,7 +49,7 @@ export function Term({
         <span
           id={id}
           role="note"
-          className="absolute left-0 top-full z-20 mt-2 block w-72 max-w-[80vw] rounded-xl bg-ocean p-3.5 text-left text-[15px] font-normal leading-relaxed text-white shadow-lg"
+          className="absolute left-0 top-full z-20 mt-2 block w-72 max-w-[80vw] rounded-xl border border-line bg-panel-2 p-3.5 text-left text-[15px] font-normal leading-relaxed text-ink shadow-[0_12px_32px_rgba(0,0,0,0.45)]"
         >
           <strong className="font-semibold">{term}:</strong> {definition}
         </span>

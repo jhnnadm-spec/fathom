@@ -5,18 +5,19 @@ import { DepthTabs } from "@/components/DepthTabs";
 import { Loader } from "@/components/Loader";
 import { ExplainButton } from "@/components/ExplainButton";
 import { CompanyNews, MarketData, PriceChart } from "@/components/MarketWidgets";
-import { RevenueChart } from "@/components/RevenueChart";
+import { BillsGauge, Columns, Headline, Lines, PairBars, StackedBar } from "@/components/viz/Charts";
 import { RichText } from "@/components/RichText";
 import { SourceLink } from "@/components/SourceLink";
 import { explanationState, type ExplanationState } from "@/lib/explain/ondemand";
 import type { CheckedClaim, SavedExplanation } from "@/lib/explain/types";
-import { formatDate, formatShare } from "@/lib/financials/format";
+import { formatDate, formatMoney, formatPercent, formatShare } from "@/lib/financials/format";
 import type { Statement } from "@/lib/financials/templates";
 import { lookupTerm } from "@/lib/glossary";
 import { getCompanyReport, type CompanyReport } from "@/lib/report/company";
-import { changeRows, hundredDollarSteps, keyRatioRows, marginTrends } from "@/lib/financials/explain-numbers";
+import { changeRows, keyRatioRows, marginTrends } from "@/lib/financials/explain-numbers";
 import { MARKET_TERMS } from "@/lib/report/market-terms";
-import { areasFor, claimsFor, leftOutNames, statementsFor, SURFACE, type Block, type Item } from "@/lib/report/outline";
+import { areasFor, claimsFor, leftOutNames, statementsFor, SURFACE, type Block, type Item, type SurfaceRow } from "@/lib/report/outline";
+import { billsGauge, cashVsDebt, marginLines, moneyUses, salesHistory, salesSplit, SERIES } from "@/lib/report/visuals";
 
 export async function generateMetadata(props: PageProps<"/stock/[ticker]">): Promise<Metadata> {
   const { ticker } = await props.params;
@@ -145,7 +146,7 @@ function ExplainStatus({ ticker, state }: { ticker: string; state: ExplanationSt
   }
   if (state.explanation && state.status === "queued") {
     return (
-      <p className="rounded-2xl border border-line bg-white px-5 py-4 text-[15px] leading-relaxed text-muted">
+      <p className="rounded-2xl bg-panel px-5 py-4 text-[15px] leading-relaxed text-muted">
         A newer report has been filed. An updated explanation is in the queue; until then, the one below was written
         from the earlier report.
       </p>
@@ -167,7 +168,7 @@ function Claims({ claims, quotes }: { claims: CheckedClaim[]; quotes?: boolean }
         <li key={c.text} className="flex flex-col gap-1">
           <p className="text-[17px] leading-[1.65]">{c.text}</p>
           {quotes && (
-            <p className="my-1 border-l-2 border-surface pl-3 text-[14px] leading-relaxed text-muted">
+            <p className="my-1 border-l-2 border-line pl-3 text-[14px] leading-relaxed text-muted">
               From the report: &ldquo;{c.quote}&rdquo;
             </p>
           )}
@@ -254,36 +255,134 @@ function renderItem(item: Item, ctx: Ctx, key: string): ReactNode {
 }
 
 function Surface(ctx: Ctx) {
-  const rows = SURFACE.map((row) => {
-    const needsAi = row.items.some((i) => i.kind === "topic");
+  const { report, e } = ctx;
+  const n = report.numbers;
+  const rowsIn = (group: SurfaceRow["group"]) => SURFACE.filter((r) => r.group === group);
+
+  /** The words for one question, or a "not written yet" note for AI questions with no explanation. */
+  const words = (row: SurfaceRow) => {
     const shown = row.items.filter((i) => hasContent(i, ctx));
-    if (shown.length === 0 && !(needsAi && !ctx.e)) return null;
+    const needsAi = row.items.some((i) => i.kind === "topic");
+    if (shown.length === 0) return needsAi && !e ? <NotWritten /> : null;
+    return shown.map((i, k) => renderItem(i, ctx, `${row.label}-${k}`));
+  };
+
+  const textPanel = (row: SurfaceRow) => {
+    const w = words(row);
+    if (!w) return null;
     return (
-      <div key={row.label} className="grid gap-x-8 gap-y-1 border-t border-line py-5 sm:grid-cols-[170px_1fr]">
-        <h3 className="pt-0.5 text-[15px] font-semibold text-ocean">{row.label}</h3>
-        <div className="flex flex-col gap-3">
-          {shown.length === 0 ? <NotWritten /> : shown.map((i, n) => renderItem(i, ctx, `${row.label}-${n}`))}
-          <DeeperLink href={`#below-${row.area}`}>Explain more</DeeperLink>
-        </div>
-      </div>
-    );
-  });
-  return (
-    <div className="flex flex-col gap-10">
-      <section className="flex flex-col gap-5">
-        <p className="text-[15px] leading-relaxed text-muted">
-          The whole company in a minute. For more on each part, open Below; for everything, open Deep.
-        </p>
-        <div className="flex flex-col border-b border-line">{rows}</div>
+      <section key={row.label} className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
+        <h3 className="text-[14px] font-semibold text-ocean">{row.label}</h3>
+        {w}
+        <DeeperLink href={`#below-${row.area}`}>Explain more</DeeperLink>
       </section>
-      <Card
-        title="Share price"
-        note="The price moves every trading day. Fathom shows it for context; it doesn't say whether the price is right."
-      >
-        <PriceChart symbol={ctx.report.tradingViewSymbol} />
+    );
+  };
+
+  const visualFor = (row: SurfaceRow): ReactNode => {
+    switch (row.visual) {
+      case "salesSplit": {
+        const d = salesSplit(n);
+        if (!d) return null;
+        const profit = d.segments.at(-1)!;
+        return (
+          <>
+            <Headline value={`${profit.display} of every $100`} caption="of sales was left as profit" />
+            <StackedBar segments={d.segments} caption={`Where each $100 of sales went. ${d.period}.`} />
+          </>
+        );
+      }
+      case "salesGrowth": {
+        const d = salesHistory(n);
+        if (!d) return null;
+        return (
+          <>
+            {d.change !== undefined && (
+              <Headline value={`${d.change >= 0 ? "+" : "−"}${formatPercent(d.change)}`} caption="sales compared with the year before" />
+            )}
+            <Columns bars={d.bars} color={SERIES.blue} highlight="#4FE3D0" />
+          </>
+        );
+      }
+      case "billsGauge": {
+        const d = billsGauge(n);
+        if (!d) return null;
+        return (
+          <>
+            <Headline value={`$${d.value.toFixed(2)}`} caption="for every $1 of bills due within a year" />
+            <BillsGauge value={d.value} />
+          </>
+        );
+      }
+      case "cashVsDebt": {
+        const d = cashVsDebt(n);
+        if (!d) return null;
+        return (
+          <PairBars
+            items={[
+              { label: "Cash", value: d.cash, display: formatMoney(d.cash), color: SERIES.green },
+              { label: "Long-term debt", value: d.debt, display: formatMoney(d.debt), color: SERIES.orange },
+            ]}
+          />
+        );
+      }
+      case "spareCash": {
+        const f = n?.ratios.freeCashFlow;
+        return f ? <Headline value={formatMoney(f.value)} caption={f.value >= 0 ? "spare cash, after investing in itself" : "more spent than the business brought in"} /> : null;
+      }
+      case "moneyUses": {
+        const d = moneyUses(n);
+        if (!d) return null;
+        return <StackedBar segments={d.segments} caption={`What it spent its money on. ${d.period}.`} selectHint="Tap a part of the bar" />;
+      }
+      default:
+        return null;
+    }
+  };
+
+  const tile = (row: SurfaceRow) => {
+    const w = words(row);
+    const v = visualFor(row);
+    if (!w && !v) return null;
+    return (
+      <section key={row.label} className={`flex flex-col gap-4 rounded-2xl bg-panel p-5 ${row.wide ? "sm:col-span-2" : ""}`}>
+        <h3 className="text-[14px] font-semibold text-ocean">{row.label}</h3>
+        {v}
+        {w && <div className="flex flex-col gap-3 border-t border-line pt-3 [&_p]:text-[15px]">{w}</div>}
+        <DeeperLink href={`#below-${row.area}`}>Explain more</DeeperLink>
+      </section>
+    );
+  };
+
+  return (
+    <div className="flex flex-col gap-12">
+      <p className="text-[15px] leading-relaxed text-muted">
+        The whole company in a minute. Tap the charts to explore; follow <span className="text-ink">Explain more</span> to
+        go deeper on any part.
+      </p>
+      <section className="flex flex-col gap-4">
+        <h2 className="font-display text-2xl font-bold">The business in brief</h2>
+        <div className="grid gap-3">{rowsIn("business").map(textPanel)}</div>
+      </section>
+      <section className="flex flex-col gap-4">
+        <h2 className="font-display text-2xl font-bold">The numbers at a glance</h2>
+        <div className="grid gap-3 sm:grid-cols-2">{rowsIn("numbers").map(tile)}</div>
+      </section>
+      <section className="flex flex-col gap-4">
+        <h2 className="font-display text-2xl font-bold">The bigger picture</h2>
+        <div className="grid gap-3 sm:grid-cols-2">{rowsIn("world").map(textPanel)}</div>
+      </section>
+      <section className="flex flex-col gap-4">
+        <h2 className="font-display text-2xl font-bold">Share price</h2>
+        <p className="text-[15px] leading-relaxed text-muted">
+          The price moves every trading day. Fathom shows it for context; it doesn&apos;t say whether the price is right.
+        </p>
+        <div className="rounded-2xl bg-panel p-4">
+          <PriceChart symbol={report.tradingViewSymbol} />
+        </div>
         <DeeperLink href="#below-value">What the market value and P/E mean</DeeperLink>
-      </Card>
-      {ctx.e && <AiNote e={ctx.e} />}
+      </section>
+      {e && <AiNote e={e} />}
     </div>
   );
 }
@@ -342,6 +441,16 @@ function blockHasContent(block: Block, report: CompanyReport): boolean {
     case "priceChart":
     case "marketData":
       return true;
+    case "salesSplit":
+      return Boolean(salesSplit(n));
+    case "billsGauge":
+      return Boolean(billsGauge(n));
+    case "cashVsDebt":
+      return Boolean(cashVsDebt(n));
+    case "moneyUses":
+      return Boolean(moneyUses(n));
+    case "marginLines":
+      return Boolean(marginLines(n));
   }
 }
 
@@ -349,8 +458,59 @@ function BlockView({ block, report }: { block: Block; report: CompanyReport }) {
   if (!blockHasContent(block, report)) return null;
   const n = report.numbers;
   switch (block) {
-    case "revenueChart":
-      return <RevenueChart history={n!.revenueHistory} />;
+    case "revenueChart": {
+      const d = salesHistory(n)!;
+      return (
+        <ChartPanel title="Sales by year" note="Tap a year to see its sales.">
+          <Columns bars={d.bars} color={SERIES.blue} highlight="#4FE3D0" />
+        </ChartPanel>
+      );
+    }
+    case "salesSplit": {
+      const d = salesSplit(n)!;
+      return (
+        <ChartPanel title="Where each $100 of sales went" note={`${d.period}. Tap a part of the bar to see what it pays for.`}>
+          <StackedBar segments={d.segments} />
+        </ChartPanel>
+      );
+    }
+    case "marginLines": {
+      const d = marginLines(n)!;
+      return (
+        <ChartPanel title="Margins over the years" note="Move along the chart, or tap a year, to see each margin that year.">
+          <Lines years={d.years} series={d.series} />
+        </ChartPanel>
+      );
+    }
+    case "billsGauge": {
+      const d = billsGauge(n)!;
+      return (
+        <ChartPanel title="Can it pay its bills?" note={`On ${d.date}: $${d.value.toFixed(2)} of cash and short-term assets for every $1 due within a year.`}>
+          <BillsGauge value={d.value} />
+        </ChartPanel>
+      );
+    }
+    case "cashVsDebt": {
+      const d = cashVsDebt(n)!;
+      return (
+        <ChartPanel title="Cash and long-term debt" note={`On ${d.date}.`}>
+          <PairBars
+            items={[
+              { label: "Cash", value: d.cash, display: formatMoney(d.cash), color: SERIES.green },
+              { label: "Long-term debt", value: d.debt, display: formatMoney(d.debt), color: SERIES.orange },
+            ]}
+          />
+        </ChartPanel>
+      );
+    }
+    case "moneyUses": {
+      const d = moneyUses(n)!;
+      return (
+        <ChartPanel title="What it spent its money on" note={`${d.period}. Tap a part of the bar to see what it means.`}>
+          <StackedBar segments={d.segments} />
+        </ChartPanel>
+      );
+    }
     case "marginHistory":
       return <MarginHistory report={report} />;
     case "keyRatios":
@@ -420,6 +580,19 @@ function MarketKey() {
   );
 }
 
+/** A raised panel that holds one chart. */
+function ChartPanel({ title, note, children }: { title: string; note?: string; children: ReactNode }) {
+  return (
+    <div className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
+      <div className="flex flex-col gap-0.5">
+        <h3 className="text-[15px] font-semibold">{title}</h3>
+        {note && <p className="text-[13px] text-muted">{note}</p>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
 function Sub({ title, note, children }: { title: string; note?: string; children: ReactNode }) {
   return (
     <div className="flex flex-col gap-2.5">
@@ -468,7 +641,6 @@ function KeyRatios({ report }: { report: CompanyReport }) {
 function MarginHistory({ report }: { report: CompanyReport }) {
   const n = report.numbers!;
   const rows = n.marginHistory;
-  const steps = hundredDollarSteps(n);
   const trends = marginTrends(n);
   const pct = (v?: number) => (v === undefined ? "–" : formatShare(v));
   return (
@@ -476,28 +648,7 @@ function MarginHistory({ report }: { report: CompanyReport }) {
       title="Margins year by year"
       note="A margin is how much of each $100 of sales is left after a set of costs. There are three, one after another."
     >
-      {steps && (
-        <figure className="m-0 flex flex-col gap-2.5">
-          <figcaption className="text-[15px] font-semibold">
-            Where each $100 of sales went{n.margins.periodEnd ? ` in the year ended ${formatDate(n.margins.periodEnd)}` : ""}
-          </figcaption>
-          {steps.map((st, i) => (
-            <div key={st.label} className="grid grid-cols-[1fr_auto] items-center gap-x-3 gap-y-1 sm:grid-cols-[230px_1fr_64px]">
-              <span className="text-[15px]">
-                {st.label}
-                {i > 0 && <span className="block text-[13px] text-muted">{st.note}</span>}
-              </span>
-              <div className="order-3 col-span-2 h-3 rounded-sm bg-mist sm:order-none sm:col-span-1">
-                <div
-                  className="h-3 rounded-sm"
-                  style={{ width: `${Math.max(0, Math.min(100, st.amount))}%`, background: ["#CDE7F0", "#7FC4D8", "#2F8FB3", "#0B4F6C"][i] }}
-                />
-              </div>
-              <span className="text-right font-semibold tabular-nums">${Math.round(st.amount)}</span>
-            </div>
-          ))}
-        </figure>
-      )}
+
       {trends.length > 0 && (
         <ul className="flex flex-col gap-2 text-[17px] leading-[1.65]">
           {trends.map((t) => (

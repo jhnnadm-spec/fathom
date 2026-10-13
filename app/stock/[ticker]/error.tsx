@@ -11,7 +11,7 @@ export default function ReportError({ reset }: { error: Error; reset: () => void
       <button
         type="button"
         onClick={reset}
-        className="rounded-xl bg-ocean px-5 py-3 text-[15px] font-semibold text-white"
+        className="rounded-xl bg-ocean px-5 py-3 text-[15px] font-semibold text-abyss"
       >
         Try again
       </button>

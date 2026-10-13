@@ -45,7 +45,7 @@ export function DepthTabs({ panels }: { panels: DepthPanel[] }) {
 
   return (
     <div id="levels" className="flex scroll-mt-6 flex-col gap-8">
-      <div role="tablist" aria-label="How much detail" className="flex gap-6 border-b border-line sm:gap-8">
+      <div role="tablist" aria-label="How much detail" className="sticky top-0 z-10 -mx-5 flex gap-2 bg-abyss/90 px-5 py-3 backdrop-blur">
         {panels.map((p) => {
           const on = p.id === active;
           return (
@@ -60,13 +60,12 @@ export function DepthTabs({ panels }: { panels: DepthPanel[] }) {
                 setActive(p.id);
                 history.replaceState(null, "", `#${p.id}`);
               }}
-              className={`-mb-px flex min-h-11 items-baseline gap-2 border-b-[3px] pb-2.5 pt-1 text-[17px] font-semibold transition-colors ${
-                on ? "text-ink" : "border-transparent text-muted hover:text-ink"
+              className={`flex min-h-11 items-baseline gap-2 rounded-full px-4 py-2.5 text-[16px] font-semibold transition-colors ${
+                on ? "bg-ocean text-abyss" : "bg-panel-2 text-muted hover:text-ink"
               }`}
-              style={on ? { borderColor: p.color === "#CDE7F0" ? "#7FC4D8" : p.color } : undefined}
             >
               {p.label}
-              <span className="hidden text-[13px] font-normal text-muted sm:inline">{p.hint}</span>
+              <span className={`hidden text-[13px] font-normal sm:inline ${on ? "text-abyss/70" : "text-muted"}`}>{p.hint}</span>
             </button>
           );
         })}

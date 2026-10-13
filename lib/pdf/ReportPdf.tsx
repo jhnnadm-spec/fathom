@@ -17,6 +17,7 @@ import { changeRows, hundredDollarSteps, keyRatioRows, marginTrends } from "../f
 import { plainText, termsIn, type Statement } from "../financials/templates";
 import { lookupTerm } from "../glossary";
 import type { CompanyReport } from "../report/company";
+import { moneyUses, salesSplit } from "../report/visuals";
 import { areasFor, claimsFor, leftOutNames, statementsFor, SURFACE, type Block, type Item } from "../report/outline";
 
 // ---------------------------------------------------------------- fonts and colours
@@ -418,6 +419,18 @@ function blockPdf(ctx: Ctx, block: Block, pageUrl: string): ReactNode {
   switch (block) {
     case "revenueChart":
       return n ? revenueBars(n.revenueHistory) : null;
+    case "salesSplit": {
+      const d = salesSplit(n);
+      return d ? splitBars(`Where each $100 of sales went. ${d.period}.`, d.segments) : null;
+    }
+    case "moneyUses": {
+      const d = moneyUses(n);
+      return d ? splitBars(`What it spent its money on. ${d.period}.`, d.segments) : null;
+    }
+    case "billsGauge":
+    case "cashVsDebt":
+    case "marginLines":
+      return null; // the sentences and tables beside them already give these figures
     case "marginHistory":
       return marginHistory(ctx);
     case "keyRatios":
@@ -482,6 +495,25 @@ function accountsSummary(ctx: Ctx) {
     g.events.map((x) => ctx.src.ref(`8-K filed ${formatDate(x.filingDate)}`, x.url)),
     undefined,
     true,
+  );
+}
+
+/** Labelled bars for a breakdown, such as where each $100 of sales went. */
+function splitBars(title: string, segments: { label: string; value: number; display: string; color: string }[]) {
+  const max = Math.max(...segments.map((x) => x.value), 1);
+  return (
+    <View style={{ marginVertical: 6 }} wrap={false}>
+      <Text style={s.th}>{title}</Text>
+      {segments.map((x) => (
+        <View key={x.label} style={{ flexDirection: "row", alignItems: "center", marginTop: 4 }}>
+          <Text style={{ width: 150, fontSize: 9, color: C.muted }}>{x.label}</Text>
+          <View style={{ flex: 1 }}>
+            <View style={{ width: `${Math.max(1, (x.value / max) * 100)}%`, height: 10, borderRadius: 2, backgroundColor: x.color }} />
+          </View>
+          <Text style={{ width: 70, fontSize: 9, textAlign: "right" }}>{x.display}</Text>
+        </View>
+      ))}
+    </View>
   );
 }
 

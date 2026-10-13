@@ -49,7 +49,13 @@ export type Block =
   | "priceChart"
   | "marketData"
   | "originalReports"
-  | "leftOut";
+  | "leftOut"
+  // charts
+  | "salesSplit" // where each $100 of sales goes
+  | "billsGauge" // can it pay its bills
+  | "cashVsDebt"
+  | "moneyUses" // what it spent its money on
+  | "marginLines"; // margins over the years
 
 export type Item =
   | { kind: "statements"; ids: string[]; none?: string } // every one of these that exists
@@ -57,7 +63,18 @@ export type Item =
   | { kind: "topic"; topic: TopicId; fallback?: TopicId[]; title?: string; max?: number; empty?: string } // AI-written points; `fallback` is used when the topic is empty
   | { kind: "block"; block: Block };
 
-export type SurfaceRow = { label: string; area: string; items: Item[] }; // `area`: where Below and Deep explain this row
+/**
+ * One question on the Surface level. `area`: where Below and Deep explain it.
+ * `group`: which part of Surface it sits in. `visual`: the chart shown on its tile.
+ */
+export type SurfaceRow = {
+  label: string;
+  area: string;
+  group: "business" | "numbers" | "world";
+  visual?: Extract<Block, "salesSplit" | "billsGauge" | "cashVsDebt" | "moneyUses"> | "salesGrowth" | "spareCash";
+  wide?: boolean;
+  items: Item[];
+};
 
 export type Area = {
   id: string;
@@ -70,19 +87,19 @@ export type Area = {
 const NOT_REPORTED = "The company doesn't report these figures in SEC's standard data, so they're left out.";
 
 export const SURFACE: SurfaceRow[] = [
-  { label: "What it does", area: "business", items: [{ kind: "topic", topic: "whatItDoes", max: 1 }] },
-  { label: "How it makes money", area: "business", items: [{ kind: "topic", topic: "howItMakesMoney", max: 2 }] },
-  { label: "What makes it stand out", area: "business", items: [{ kind: "topic", topic: "competitiveEdge", fallback: ["marketPosition"], max: 1 }] },
-  { label: "Is it growing?", area: "performance", items: [{ kind: "statements", ids: ["s-growth"] }] },
-  { label: "Is it making money?", area: "performance", items: [{ kind: "statements", ids: ["s-profit"] }] },
-  { label: "Can it pay its bills?", area: "health", items: [{ kind: "statements", ids: ["s-bills"] }] },
-  { label: "How much does it owe?", area: "health", items: [{ kind: "statements", ids: ["s-debt"] }] },
-  { label: "Does it bring in cash?", area: "cash", items: [{ kind: "statements", ids: ["s-cash"] }] },
-  { label: "What does it spend money on?", area: "management", items: [{ kind: "statements", ids: ["s-spending"] }] },
-  { label: "Any warning signs in its accounts?", area: "management", items: [{ kind: "block", block: "accountsSummary" }] },
-  { label: "Its industry", area: "industry", items: [{ kind: "topic", topic: "industryTrends", fallback: ["demandDrivers"], max: 1 }] },
-  { label: "A key risk it names", area: "risks", items: [{ kind: "topic", topic: "biggestRisks", max: 1 }] },
-  { label: "What's coming up", area: "risks", items: [{ kind: "topic", topic: "upcoming", fallback: ["outlook"], max: 1 }] },
+  { label: "What it does", area: "business", group: "business", items: [{ kind: "topic", topic: "whatItDoes", max: 1 }] },
+  { label: "How it makes money", area: "business", group: "business", items: [{ kind: "topic", topic: "howItMakesMoney", max: 2 }] },
+  { label: "What makes it stand out", area: "business", group: "business", items: [{ kind: "topic", topic: "competitiveEdge", fallback: ["marketPosition"], max: 1 }] },
+  { label: "Is it making money?", area: "performance", group: "numbers", visual: "salesSplit", wide: true, items: [{ kind: "statements", ids: ["s-profit"] }] },
+  { label: "Is it growing?", area: "performance", group: "numbers", visual: "salesGrowth", items: [{ kind: "statements", ids: ["s-growth"] }] },
+  { label: "Can it pay its bills?", area: "health", group: "numbers", visual: "billsGauge", items: [{ kind: "statements", ids: ["s-bills"] }] },
+  { label: "How much does it owe?", area: "health", group: "numbers", visual: "cashVsDebt", items: [{ kind: "statements", ids: ["s-debt"] }] },
+  { label: "Does it bring in cash?", area: "cash", group: "numbers", visual: "spareCash", items: [{ kind: "statements", ids: ["s-cash"] }] },
+  { label: "What does it spend money on?", area: "management", group: "numbers", visual: "moneyUses", wide: true, items: [{ kind: "statements", ids: ["s-spending"] }] },
+  { label: "Any warning signs in its accounts?", area: "management", group: "world", items: [{ kind: "block", block: "accountsSummary" }] },
+  { label: "Its industry", area: "industry", group: "world", items: [{ kind: "topic", topic: "industryTrends", fallback: ["demandDrivers"], max: 1 }] },
+  { label: "A key risk it names", area: "risks", group: "world", items: [{ kind: "topic", topic: "biggestRisks", max: 1 }] },
+  { label: "What's coming up", area: "risks", group: "world", items: [{ kind: "topic", topic: "upcoming", fallback: ["outlook"], max: 1 }] },
 ];
 
 export const AREAS: Area[] = [
@@ -111,11 +128,14 @@ export const AREAS: Area[] = [
       { kind: "statements", ids: ["revenue-year"] },
       { kind: "block", block: "revenueChart" },
       { kind: "statements", ids: ["revenue-quarter", "net-income-year", "net-margin", "gross-margin"], none: NOT_REPORTED },
+      { kind: "block", block: "salesSplit" },
     ],
     deep: [
       { kind: "statements", ids: ["revenue-year"] },
       { kind: "block", block: "revenueChart" },
       { kind: "statements", ids: ["revenue-quarter", "net-income-year", "gross-margin", "net-margin", "eps", "margin-trend"], none: NOT_REPORTED },
+      { kind: "block", block: "salesSplit" },
+      { kind: "block", block: "marginLines" },
       { kind: "block", block: "marginHistory" },
     ],
   },
@@ -123,8 +143,14 @@ export const AREAS: Area[] = [
     id: "health",
     title: "Debt and financial health",
     why: "Whether the company can pay its bills, and how much it relies on borrowed money.",
-    below: [{ kind: "statements", ids: ["cash", "long-term-debt", "cash-vs-debt", "current-ratio", "negative-equity"], none: NOT_REPORTED }],
+    below: [
+      { kind: "block", block: "cashVsDebt" },
+      { kind: "block", block: "billsGauge" },
+      { kind: "statements", ids: ["cash", "long-term-debt", "cash-vs-debt", "current-ratio", "negative-equity"], none: NOT_REPORTED },
+    ],
     deep: [
+      { kind: "block", block: "cashVsDebt" },
+      { kind: "block", block: "billsGauge" },
       { kind: "statements", ids: ["cash", "long-term-debt", "cash-vs-debt", "current-ratio", "assets-vs-liabilities", "debt-to-equity", "negative-equity"], none: NOT_REPORTED },
     ],
   },
@@ -140,10 +166,12 @@ export const AREAS: Area[] = [
     title: "How it is run",
     why: "How the company's leaders use its money, how much profit they make with shareholders' money, and official warning signs about its accounts.",
     below: [
+      { kind: "block", block: "moneyUses" },
       { kind: "statements", ids: ["capital-allocation"], none: NOT_REPORTED },
       { kind: "block", block: "accountsSummary" },
     ],
     deep: [
+      { kind: "block", block: "moneyUses" },
       { kind: "statements", ids: ["capital-allocation", "return-on-equity"], none: NOT_REPORTED },
       { kind: "block", block: "accountsCheck" },
     ],

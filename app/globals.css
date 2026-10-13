@@ -5,22 +5,33 @@
   In the code, "bg-ocean" or "text-ink" refers to these.
 */
 @theme {
-  --color-surface: #cde7f0; /* lightest layer: level 1 "Surface" */
-  --color-shallow: #7fc4d8; /* level 2 "Below" */
+  /* Night dive: Fathom's colours, defined once and used everywhere. */
+  --color-abyss: #0a1622; /* page background */
+  --color-panel: #122536; /* raised areas: tiles, boxes */
+  --color-panel-2: #183450; /* inside panels: tracks, inputs, inactive tabs */
+  --color-ink: #e6f1f5; /* main text */
+  --color-muted: #9db4c2; /* secondary text */
+  --color-line: #23405a; /* dividers */
+  --color-ocean: #4fe3d0; /* the glow: links, key numbers, active tab */
+  --color-ocean-dark: #8cf2e5; /* glow on hover */
+  --color-mist: #122536; /* same as panel (older name) */
+
+  /* The logo's water layers, used as small swatches. */
+  --color-surface: #cde7f0;
+  --color-shallow: #7fc4d8;
   --color-mid: #2f8fb3;
-  --color-ocean: #0b4f6c; /* deepest layer: level 3 "Deep", main brand colour */
-  --color-ocean-dark: #073447;
-  --color-ink: #0a2a3a; /* main text */
-  --color-muted: #3d5a69; /* secondary text */
-  --color-line: #dce8ee; /* borders */
-  --color-mist: #f4f9fb; /* page background */
+  --color-deep: #0b4f6c;
 
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
 }
 
+html {
+  color-scheme: dark;
+}
+
 body {
-  background: #ffffff;
+  background: var(--color-abyss);
   color: var(--color-ink);
   font-family: var(--font-sans);
 }

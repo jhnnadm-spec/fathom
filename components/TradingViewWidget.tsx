@@ -44,9 +44,9 @@ export function TradingViewWidget({
   return (
     <div className="tradingview-widget-container w-full">
       <div ref={container} style={{ height }} className="w-full" />
-      <div className="tradingview-widget-copyright text-center text-[13px] leading-8 text-[#6B8592]">
+      <div className="tradingview-widget-copyright text-center text-[13px] leading-8 text-muted">
         <a href={attribution.href} rel="noopener nofollow" target="_blank" className="no-underline">
-          <span className="text-[#2962FF]">{attribution.text}</span>
+          <span className="text-ocean">{attribution.text}</span>
         </a>{" "}
         by TradingView
       </div>
