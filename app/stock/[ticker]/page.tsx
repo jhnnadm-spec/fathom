@@ -17,7 +17,8 @@ import { getCompanyReport, type CompanyReport } from "@/lib/report/company";
 import { changeRows, keyRatioRows, marginTrends } from "@/lib/financials/explain-numbers";
 import { MARKET_TERMS } from "@/lib/report/market-terms";
 import { areasFor, claimsFor, leftOutNames, statementsFor, SURFACE, type Block, type Item, type SurfaceRow } from "@/lib/report/outline";
-import { billsGauge, cashVsDebt, marginLines, moneyUses, salesHistory, salesSplit, SERIES } from "@/lib/report/visuals";
+import { billsGauge, cashVsDebt, compareFor, marginLines, moneyUses, pairFor, salesHistory, salesSplit, SERIES, shareFor } from "@/lib/report/visuals";
+import { DotGrid, Meter, StatusBadge, TopicIcon } from "@/components/viz/Static";
 
 export async function generateMetadata(props: PageProps<"/stock/[ticker]">): Promise<Metadata> {
   const { ticker } = await props.params;
@@ -122,13 +123,14 @@ function Card({ title, children, note }: { title: string; children: React.ReactN
   );
 }
 
-function Said({ statement }: { statement?: Statement }) {
+function Said({ statement, visual }: { statement?: Statement; visual?: ReactNode }) {
   if (!statement) return null;
   return (
     <div className="flex flex-col gap-1">
       <p className="text-[17px] leading-[1.65]">
         <RichText text={statement.text} />
       </p>
+      {visual && <div className="my-2 rounded-xl bg-panel p-4">{visual}</div>}
       <div className="flex flex-wrap gap-x-4 gap-y-1">
         {statement.sources.map((s) => (
           <SourceLink key={s.url} href={s.url} label={s.label} />
@@ -232,7 +234,10 @@ function renderItem(item: Item, ctx: Ctx, key: string): ReactNode {
       if (!item.title) return <div key={key}>{body}</div>;
       return (
         <div key={key} className="flex flex-col gap-3">
-          <h3 className="font-display text-lg font-bold">{item.title}</h3>
+          <h3 className="flex items-center gap-2.5 font-display text-lg font-bold">
+            <TopicIcon name={item.topic} />
+            {item.title}
+          </h3>
           {body}
         </div>
       );
@@ -247,7 +252,9 @@ function renderItem(item: Item, ctx: Ctx, key: string): ReactNode {
           </p>
         ) : null;
       }
-      return found.map((s) => <Said key={`${key}-${s.id}`} statement={s} />);
+      return found.map((s) => (
+        <Said key={`${key}-${s.id}`} statement={s} visual={level === "surface" ? undefined : <NumberVisual id={s.id} report={report} />} />
+      ));
     }
     case "block":
       return <BlockView key={key} block={item.block} report={report} />;
@@ -272,7 +279,10 @@ function Surface(ctx: Ctx) {
     if (!w) return null;
     return (
       <section key={row.label} className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
-        <h3 className="text-[14px] font-semibold text-ocean">{row.label}</h3>
+        <h3 className="flex items-center gap-2.5 text-[14px] font-semibold text-ocean">
+          <TopicIcon name={row.items[0].kind === "topic" ? row.items[0].topic : "accounts"} />
+          {row.label}
+        </h3>
         {w}
         <DeeperLink href={`#below-${row.area}`}>Explain more</DeeperLink>
       </section>
@@ -328,7 +338,14 @@ function Surface(ctx: Ctx) {
       }
       case "spareCash": {
         const f = n?.ratios.freeCashFlow;
-        return f ? <Headline value={formatMoney(f.value)} caption={f.value >= 0 ? "spare cash, after investing in itself" : "more spent than the business brought in"} /> : null;
+        if (!f) return null;
+        const flow = pairFor("s-cash", n);
+        return (
+          <>
+            <Headline value={formatMoney(f.value)} caption={f.value >= 0 ? "spare cash, after investing in itself" : "more spent than the business brought in"} />
+            {flow && <PairBars items={flow} />}
+          </>
+        );
       }
       case "moneyUses": {
         const d = moneyUses(n);
@@ -417,6 +434,22 @@ function Detail(ctx: Ctx & { level: "below" | "deep" }) {
       {ctx.e && <AiNote e={ctx.e} />}
     </div>
   );
+}
+
+// ---------------------------------------------------------------- a small visual beside a single number
+
+/** Sentences whose picture is already drawn by a bigger chart right beside them. */
+const DRAWN_NEARBY = new Set(["revenue-year", "current-ratio", "cash-vs-debt", "capital-allocation", "margin-trend", "negative-equity", "return-on-equity"]);
+
+/** The right picture for one number: a dot grid for shares of $100, bars for comparisons. */
+function NumberVisual({ id, report, compact = false }: { id: string; report: CompanyReport; compact?: boolean }) {
+  if (!compact && DRAWN_NEARBY.has(id)) return null;
+  const n = report.numbers;
+  const share = shareFor(id, n);
+  if (share) return compact ? <Meter value={share.value} /> : <DotGrid value={share.value} label={share.label} />;
+  if (id === "current-ratio" && n?.ratios.currentRatio) return <BillsGauge value={n.ratios.currentRatio.value} />;
+  const pair = pairFor(id, n) ?? compareFor(id, n);
+  return pair ? <PairBars items={pair} /> : null;
 }
 
 // ---------------------------------------------------------------- blocks: charts, tables and widgets
@@ -631,7 +664,7 @@ function KeyRatios({ report }: { report: CompanyReport }) {
     <Sub title="Key ratios" note="Ratios compare two numbers so companies of different sizes can be compared. Each one only combines figures from the same period or date.">
       <ul className="flex flex-col">
         {rows.map((r) => (
-          <Explained key={r.id} {...r} />
+          <Explained key={r.id} {...r} extra={<NumberVisual id={r.id} report={report} compact />} />
         ))}
       </ul>
     </Sub>
@@ -703,10 +736,13 @@ function WhatChanged({ report }: { report: CompanyReport }) {
             when={r.when}
             meaning={r.meaning}
             extra={
-              <p className="text-[15px] tabular-nums">
-                {r.latest}
-                {r.previous && <span className="text-muted"> vs {r.previous} a year earlier</span>}
-              </p>
+              <>
+                <p className="text-[15px] tabular-nums">
+                  {r.latest}
+                  {r.previous && <span className="text-muted"> vs {r.previous} a year earlier</span>}
+                </p>
+                <NumberVisual id={r.id} report={report} compact />
+              </>
             }
           />
         ))}
@@ -720,12 +756,15 @@ function AccountsSummary({ report }: { report: CompanyReport }) {
   const g = report.governance!;
   if (g.events.length === 0) {
     return (
+      <div className="flex flex-col gap-2">
+      <StatusBadge ok>No warning signs filed</StatusBadge>
       <p className="text-[17px] leading-relaxed">
         None found. Since {formatDate(g.since)}, the company hasn&apos;t announced a change of{" "}
         <RichText text="[[auditor|auditor]]" /> or said its past accounts were wrong (
         <RichText text="[[restatement|a restatement]]" />
         ).
       </p>
+      </div>
     );
   }
   const changes = g.events.filter((x) => x.kind === "auditor-change").length;
@@ -736,6 +775,9 @@ function AccountsSummary({ report }: { report: CompanyReport }) {
   ].filter(Boolean);
   return (
     <div className="flex flex-col gap-1.5">
+      <StatusBadge ok={false}>
+        {g.events.length} notice{g.events.length > 1 ? "s" : ""} filed
+      </StatusBadge>
       <p className="text-[17px] leading-relaxed">
         <RichText text={`Since ${formatDate(g.since)}, the company filed ${parts.join(" and ")}. These have many possible reasons; the filings explain them.`} />
       </p>
@@ -755,6 +797,7 @@ function AccountsCheck({ report }: { report: CompanyReport }) {
       title="Accounts check"
       note="Two official warning signs a company must announce: changing its auditor, and saying earlier accounts can't be relied on."
     >
+      <StatusBadge ok={g.events.length === 0}>{g.events.length === 0 ? "No warning signs filed" : `${g.events.length} notice${g.events.length > 1 ? "s" : ""} filed`}</StatusBadge>
       {g.events.length === 0 ? (
         <p className="text-[17px] leading-relaxed">
           No <RichText text="[[auditor|auditor]]" /> changes or <RichText text="[[restatement|restatement notices]]" /> were
@@ -820,15 +863,16 @@ function MoreInfo({ report }: { report: CompanyReport }) {
         {report.announcements.length === 0 ? (
           <p className="text-[16px] text-muted">None filed in the last four months.</p>
         ) : (
-          <ul className="flex flex-col">
+          <ol className="relative flex flex-col gap-5 border-l-2 border-surface pl-6">
             {report.announcements.map((a) => (
-              <li key={a.url} className="flex flex-col gap-1 border-t border-line py-4 first:border-0 first:pt-0">
-                <span className="text-[13px] text-muted">{formatDate(a.filingDate)}</span>
+              <li key={a.url} className="relative flex flex-col gap-1">
+                <span aria-hidden="true" className="absolute -left-[31px] top-1 h-3.5 w-3.5 rounded-full border-[3px] border-white bg-mid shadow-[0_0_0_1px_var(--color-line)]" />
+                <span className="text-[13px] font-semibold text-ocean">{formatDate(a.filingDate)}</span>
                 <span className="text-[17px] leading-snug">{a.events.join(", ")}</span>
                 <SourceLink href={a.url} label="8-K filing" />
               </li>
             ))}
-          </ul>
+          </ol>
         )}
       </Card>
       <Card title="In the news" note="Headlines from news outlets, via TradingView. These are reporters' views, not official company filings.">

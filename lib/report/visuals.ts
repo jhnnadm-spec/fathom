@@ -2,7 +2,7 @@
  * The numbers behind Fathom's charts, worked out from the same SEC figures as
  * the sentences. Each chart gets plain data; the drawing happens in components/viz.
  */
-import { formatDate, formatMoney } from "../financials/format";
+import { formatDate, formatMoney, formatPerShare } from "../financials/format";
 import type { CompanyNumbers, Comparison } from "../financials/metrics";
 
 /** Chart colours, checked for colour-blind readers on Fathom's light glass tiles (in this order). */
@@ -104,4 +104,82 @@ export function marginLines(n?: CompanyNumbers) {
     years: h.map((y) => ({ label: y.end.slice(0, 4), detail: `Year ended ${formatDate(y.end)}` })),
     series: series.map((s) => ({ name: s.name, color: s.color, values: h.map((y) => y[s.key]) })),
   };
+}
+
+// ---------------------------------------------------------------- small visuals beside single numbers
+
+
+export type PairItem = { label: string; value: number; display: string; color: string };
+const EARLIER = "#9fb7c3"; // a quiet grey-blue for "a year earlier", so the latest figure stands out
+
+/** The figure a year earlier next to the latest one, for anything compared over a year. */
+export function compareFor(id: string, n?: CompanyNumbers): PairItem[] | undefined {
+  if (!n) return undefined;
+  const map: Record<string, { c?: Comparison; perShare?: boolean; period: "year" | "quarter" | "date" }> = {
+    "revenue-year": { c: n.annual.revenue, period: "year" },
+    "revenue-quarter": { c: n.quarter.revenue, period: "quarter" },
+    "net-income-year": { c: n.annual.netIncome, period: "year" },
+    "net-income-quarter": { c: n.quarter.netIncome, period: "quarter" },
+    "operating-cash-flow": { c: n.annual.operatingCashFlow, period: "year" },
+    cash: { c: n.balance.cash, period: "date" },
+    "long-term-debt": { c: n.balance.longTermDebt, period: "date" },
+    equity: { c: n.balance.equity, period: "date" },
+    eps: { c: n.annual.eps, perShare: true, period: "year" },
+  };
+  const m = map[id];
+  if (!m?.c?.previous) return undefined;
+  const fmt = (v: number) => (m.perShare ? formatPerShare(v) : formatMoney(v));
+  const earlier = m.period === "year" ? "The year before" : m.period === "quarter" ? "Same quarter a year earlier" : "A year earlier";
+  const latest = m.period === "year" ? "Latest year" : m.period === "quarter" ? "Latest quarter" : "Latest";
+  return [
+    { label: earlier, value: Math.abs(m.c.previous.value), display: fmt(m.c.previous.value), color: EARLIER },
+    { label: latest, value: Math.abs(m.c.latest.value), display: fmt(m.c.latest.value), color: SERIES.blue },
+  ];
+}
+
+/** Two related amounts side by side: what it owns vs owes, debt vs equity, spare cash vs profit. */
+export function pairFor(id: string, n?: CompanyNumbers): PairItem[] | undefined {
+  if (!n) return undefined;
+  const r = n.ratios;
+  if ((id === "assets-vs-liabilities" || id === "assets-per-dollar-owed") && r.assetsToLiabilities) {
+    const [a, l] = r.assetsToLiabilities.figures;
+    return [
+      { label: "What it owns (assets)", value: a.value, display: formatMoney(a.value), color: SERIES.green },
+      { label: "What it owes (liabilities)", value: l.value, display: formatMoney(l.value), color: SERIES.orange },
+    ];
+  }
+  if (id === "debt-to-equity" && r.debtToEquity) {
+    const [d, e] = r.debtToEquity.figures;
+    return [
+      { label: "Long-term debt", value: d.value, display: formatMoney(d.value), color: SERIES.orange },
+      { label: "Shareholders' equity", value: e.value, display: formatMoney(e.value), color: SERIES.blue },
+    ];
+  }
+  if (id === "fcf-vs-profit" && r.freeCashFlow && n.annual.netIncome) {
+    const f = r.freeCashFlow.value;
+    const p = n.annual.netIncome.latest.value;
+    return [
+      { label: "Free cash flow", value: Math.abs(f), display: formatMoney(f), color: SERIES.green },
+      { label: "Net income (profit)", value: Math.abs(p), display: formatMoney(p), color: SERIES.blue },
+    ];
+  }
+  if ((id === "free-cash-flow" || id === "s-cash") && r.freeCashFlow) {
+    const [ocf, capex] = r.freeCashFlow.figures;
+    return [
+      { label: "Cash its business brought in", value: Math.abs(ocf.value), display: formatMoney(ocf.value), color: SERIES.blue },
+      { label: "Spent on buildings and equipment", value: Math.abs(capex.value), display: `−${formatMoney(Math.abs(capex.value))}`, color: SERIES.orange },
+      { label: "Left over (free cash flow)", value: Math.abs(r.freeCashFlow.value), display: formatMoney(r.freeCashFlow.value), color: SERIES.green },
+    ];
+  }
+  return undefined;
+}
+
+/** A share of each $100 of sales, for the dot grid. */
+export function shareFor(id: string, n?: CompanyNumbers): { value: number; label: string } | undefined {
+  const m = n?.margins;
+  if (!m) return undefined;
+  if (id === "gross-margin" && m.gross !== undefined) return { value: m.gross, label: "left after the cost of what it sold" };
+  if (id === "operating-margin" && m.operating !== undefined) return { value: m.operating, label: "left after also running the business" };
+  if ((id === "net-margin" || id === "profit-margin") && m.net !== undefined) return { value: m.net, label: "left as final profit" };
+  return undefined;
 }
