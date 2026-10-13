@@ -8,6 +8,7 @@ import "@fontsource/figtree/500.css";
 import "@fontsource/figtree/600.css";
 import "./globals.css";
 import { Logo } from "@/components/Logo";
+import { SearchForm } from "@/components/SearchForm";
 
 export const metadata: Metadata = {
   title: {
@@ -27,11 +28,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Link href="/" className="no-underline" aria-label="Fathom home">
               <Logo />
             </Link>
-            <nav className="flex gap-2 text-[15px] font-medium">
-              <Link href="/about" className="px-3 py-3 no-underline">
-                About
-              </Link>
-            </nav>
+            <div className="flex flex-[0_1_420px] flex-wrap items-center justify-end gap-2">
+              <SearchForm size="small" />
+              <nav className="flex gap-2 text-[15px] font-medium">
+                <Link href="/about" className="px-3 py-3 no-underline">
+                  About
+                </Link>
+              </nav>
+            </div>
           </div>
         </header>
 
