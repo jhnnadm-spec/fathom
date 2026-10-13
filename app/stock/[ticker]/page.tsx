@@ -12,6 +12,7 @@ import type { Statement } from "@/lib/financials/templates";
 import { termsIn } from "@/lib/financials/templates";
 import { lookupTerm } from "@/lib/glossary";
 import { getCompanyReport, type CompanyReport } from "@/lib/report/company";
+import { leftOutNames } from "@/lib/report/outline";
 import { ExplainButton } from "@/components/ExplainButton";
 import { explanationState, type ExplanationState } from "@/lib/explain/ondemand";
 import type { CheckedClaim, SavedExplanation, TopicId } from "@/lib/explain/types";
@@ -122,6 +123,23 @@ function Header({ report }: { report: CompanyReport }) {
           {annualReport && quarterlyReport && " and "}
           {quarterlyReport && <>the quarterly report (10-Q) filed {formatDate(quarterlyReport.filingDate)}</>}.
         </p>
+      )}
+      {report.support.supported && (
+        <div className="mt-1">
+          {/* A plain link: the browser downloads the file the server makes. */}
+          <a
+            href={`/stock/${encodeURIComponent(company.ticker)}/pdf`}
+            download
+            className="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-4 py-2.5 text-[15px] font-semibold text-ocean transition hover:border-[#7FC4D8] hover:bg-[#F2F9FB]"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M12 3v12" />
+              <path d="m7 10 5 5 5-5" />
+              <path d="M5 21h14" />
+            </svg>
+            Download PDF
+          </a>
+        </div>
       )}
     </div>
   );
@@ -269,32 +287,9 @@ function Surface({ report, e }: { report: CompanyReport; e?: SavedExplanation })
 
 // ---------------------------------------------------------------- level 2: Below
 
-const METRIC_NAMES: Record<string, string> = {
-  revenue: "revenue",
-  grossProfit: "gross profit",
-  operatingIncome: "operating income",
-  netIncome: "net income",
-  eps: "earnings per share",
-  operatingCashFlow: "cash from operations",
-  capex: "spending on buildings and equipment",
-  cash: "cash",
-  longTermDebt: "long-term debt",
-  equity: "shareholders' equity",
-  assets: "total assets",
-  liabilities: "total liabilities",
-  currentAssets: "current assets",
-  currentLiabilities: "current liabilities",
-};
-
 function Below({ report, e }: { report: CompanyReport; e?: SavedExplanation }) {
   const n = report.numbers;
-  const leftOut = [
-    ...new Set(
-      (n?.omitted ?? [])
-        .filter((o) => o.period !== "quarterly" && METRIC_NAMES[o.id])
-        .map((o) => METRIC_NAMES[o.id]),
-    ),
-  ];
+  const leftOut = leftOutNames(n);
   return (
     <div className="flex flex-col gap-5">
       {e ? (
