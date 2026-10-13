@@ -31,7 +31,7 @@ export const TOPICS = {
   marketPosition: "Where it says it stands in its industry",
   industryTrends: "Trends in its industry",
   demandDrivers: "What drives demand",
-  biggestRisks: "Its biggest risks",
+  biggestRisks: "Key risks the company highlights",
   newRisks: "New or changed risks in the latest quarterly report",
   outlook: "What management expects",
   upcoming: "What the company says is coming up",

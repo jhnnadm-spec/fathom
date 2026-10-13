@@ -135,10 +135,10 @@ export function checkExplanation(rawJson: unknown, sections: SourceSection[]) {
   if (!parsed.success) throw new Error(`AI answer was not in the expected shape: ${parsed.error.message.slice(0, 300)}`);
 
   const topics = {} as Record<TopicId, CheckedClaim[]>;
+  const seen = new Set<string>(); // the same point is only kept once, under the first topic it appears in
   const dropped: { topic: string; reason: string; text: string; quote?: string }[] = [];
   for (const topic of Object.keys(TOPICS) as TopicId[]) {
     const kept: CheckedClaim[] = [];
-    const seen = new Set<string>();
     for (const raw of parsed.data[topic]) {
       const result = checkClaim(raw, sections);
       if (!result.ok) {

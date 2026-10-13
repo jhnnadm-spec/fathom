@@ -214,7 +214,7 @@ function Surface({ report }: { report: CompanyReport }) {
           <Claims claims={[...e.topics.whatItDoes.slice(0, 1), ...e.topics.howItMakesMoney.slice(0, 1)]} />
           {e.topics.biggestRisks[0] && (
             <div className="flex flex-col gap-3 border-t border-line pt-4">
-              <h3 className="text-[13px] font-semibold uppercase tracking-wider text-[#2F7A99]">Biggest risk</h3>
+              <h3 className="text-[13px] font-semibold uppercase tracking-wider text-[#2F7A99]">A key risk the company highlights</h3>
               <Claims claims={e.topics.biggestRisks.slice(0, 1)} />
             </div>
           )}
@@ -525,7 +525,7 @@ function Deep({ report }: { report: CompanyReport }) {
         <Card title="Industry, risks and what's coming up">
           <Topic e={explanationFor(report)!} id="industryTrends" title="Trends in its industry" />
           <Topic e={explanationFor(report)!} id="demandDrivers" title="What drives demand" />
-          <Topic e={explanationFor(report)!} id="biggestRisks" title="Its biggest risks" />
+          <Topic e={explanationFor(report)!} id="biggestRisks" title="Key risks the company highlights" />
           <Topic
             e={explanationFor(report)!}
             id="newRisks"

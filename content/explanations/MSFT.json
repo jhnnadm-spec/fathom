@@ -83,15 +83,6 @@
           "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=Our%20goal%20is%20to%20lead%20the%20industry%20in%20several%20distinct",
           "section": "10-K Item 1"
         }
-      },
-      {
-        "text": "The company says Microsoft Cloud revenue grew 27% to $214.4 billion, showing its leading market position.",
-        "quote": "Microsoft Cloud revenue increased 27% to $214.4 billion.",
-        "source": {
-          "label": "10-K filed July 29, 2026 · Item 7, Management's Discussion and Analysis",
-          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm#:~:text=Microsoft%20Cloud%20revenue%20increased%2027%25%20to%20%24214.4%20billion.",
-          "section": "10-K Item 7"
-        }
       }
     ],
     "industryTrends": [
@@ -189,6 +180,12 @@
       "reason": "quote not found in report",
       "text": "The company says its investments in cloud, AI infrastructure and devices will raise operating costs and may lower operating margins.",
       "quote": "Our investments in cloud and AI infrastructure and devices will continue to increase our operating costs and may decrease our operating margins."
+    },
+    {
+      "topic": "marketPosition",
+      "reason": "editor review: claim adds a conclusion its quote doesn't state",
+      "text": "The company says Microsoft Cloud revenue grew 27% to $214.4 billion, showing its leading market position.",
+      "quote": "Microsoft Cloud revenue increased 27% to $214.4 billion."
     }
   ]
 }
