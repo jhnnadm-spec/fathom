@@ -72,7 +72,7 @@ export function ExplainButton({
   }
 
   return (
-    <section className="flex flex-col gap-3 rounded-[20px] border border-[#7FC4D8] bg-[#F2F9FB] p-6" aria-live="polite">
+    <section className="flex flex-col gap-3 rounded-2xl bg-mist p-6" aria-live="polite">
       {(phase === "idle" || phase === "sending" || phase === "failed") && (
         <>
           <h2 className="font-display text-xl font-bold text-ink">

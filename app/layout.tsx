@@ -42,7 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex flex-1 flex-col">{children}</main>
 
         <footer className="border-t border-line">
-          <p className="mx-auto max-w-6xl px-6 py-8 text-sm leading-relaxed text-muted">
+          <p className="mx-auto max-w-[720px] px-5 py-8 text-sm leading-relaxed text-muted">
             Fathom explains information from public sources for education only.
             It is not financial advice and does not recommend buying, selling or
             holding any investment.

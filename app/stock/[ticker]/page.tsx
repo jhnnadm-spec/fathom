@@ -12,7 +12,6 @@ import type { CheckedClaim, SavedExplanation } from "@/lib/explain/types";
 import { formatDate, formatMoney, formatPerDollar, formatPercent, formatPerShare, formatShare } from "@/lib/financials/format";
 import type { Comparison } from "@/lib/financials/metrics";
 import type { Statement } from "@/lib/financials/templates";
-import { termsIn } from "@/lib/financials/templates";
 import { lookupTerm } from "@/lib/glossary";
 import { getCompanyReport, type CompanyReport } from "@/lib/report/company";
 import { areasFor, claimsFor, leftOutNames, statementsFor, SURFACE, type Block, type Item } from "@/lib/report/outline";
@@ -24,7 +23,7 @@ export async function generateMetadata(props: PageProps<"/stock/[ticker]">): Pro
 
 export default function StockPage(props: PageProps<"/stock/[ticker]">) {
   return (
-    <div className="bg-mist">
+    <div>
       <Suspense fallback={<ReportLoading />}>
         <Report params={props.params} />
       </Suspense>
@@ -42,11 +41,11 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
   const e = state.explanation;
 
   return (
-    <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-8">
+    <div className="mx-auto flex w-full max-w-[720px] flex-col gap-10 px-5 py-10 sm:py-14">
       <Header report={report} />
       {report.support.supported ? (
-        <div className="flex flex-wrap items-start gap-6">
-          <div className="flex min-w-0 flex-[999_1_560px] flex-col gap-5">
+        <>
+          <div className="flex flex-col gap-8">
             <ExplainStatus ticker={report.company.ticker} state={state} />
             <DepthTabs
               panels={[
@@ -55,10 +54,10 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
                 { id: "deep", label: "Deep", hint: "Everything", color: "#0B4F6C", content: <Detail report={report} e={e} level="deep" /> },
               ]}
             />
-            <Disclaimer />
           </div>
-          <Sidebar report={report} />
-        </div>
+          <MoreInfo report={report} />
+          <Disclaimer />
+        </>
       ) : (
         <Unsupported reason={report.support.reason} name={report.company.name} />
       )}
@@ -71,15 +70,13 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
 function Header({ report }: { report: CompanyReport }) {
   const { company, annualReport, quarterlyReport } = report;
   return (
-    <div className="flex flex-col gap-2.5">
-      <div className="flex flex-wrap items-center gap-3">
-        <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">{company.name}</h1>
-        <span className="rounded-lg bg-[#E1F0F5] px-2.5 py-1 text-sm font-semibold text-ocean">
-          {company.ticker}
-          {company.exchanges[0] ? ` · ${company.exchanges[0]}` : ""}
-        </span>
-      </div>
-      {company.industry && <p className="text-[15px] text-muted">Industry (SEC classification): {company.industry}</p>}
+    <div className="flex flex-col gap-3">
+      <p className="text-[15px] font-semibold text-ocean">
+        {company.ticker}
+        {company.exchanges[0] ? ` on ${company.exchanges[0]}` : ""}
+        {company.industry ? <span className="font-normal text-muted">, {company.industry.toLowerCase()}</span> : null}
+      </p>
+      <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">{company.name}</h1>
       {(annualReport || quarterlyReport) && (
         <p className="text-[15px] text-muted">
           Based on {annualReport && <>the annual report (10-K) filed {formatDate(annualReport.filingDate)}</>}
@@ -88,12 +85,12 @@ function Header({ report }: { report: CompanyReport }) {
         </p>
       )}
       {report.support.supported && (
-        <div className="mt-1">
+        <div>
           {/* A plain link: the browser downloads the file the server makes. */}
           <a
             href={`/stock/${encodeURIComponent(company.ticker)}/pdf`}
             download
-            className="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-4 py-2.5 text-[15px] font-semibold text-ocean transition hover:border-[#7FC4D8] hover:bg-[#F2F9FB]"
+            className="inline-flex min-h-11 items-center gap-2 text-[15px] font-semibold text-ocean no-underline hover:underline"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M12 3v12" />
@@ -112,10 +109,10 @@ function Header({ report }: { report: CompanyReport }) {
 
 function Card({ title, children, note }: { title: string; children: React.ReactNode; note?: string }) {
   return (
-    <section className="flex flex-col gap-3.5 rounded-[20px] border border-line bg-white p-6">
-      <div className="flex flex-col gap-1">
-        <h2 className="text-[13px] font-semibold uppercase tracking-wider text-[#2F7A99]">{title}</h2>
-        {note && <p className="text-[14px] text-muted">{note}</p>}
+    <section className="flex flex-col gap-4 border-t border-line pt-8">
+      <div className="flex flex-col gap-1.5">
+        <h2 className="font-display text-2xl font-bold">{title}</h2>
+        {note && <p className="text-[15px] leading-relaxed text-muted">{note}</p>}
       </div>
       {children}
     </section>
@@ -125,8 +122,8 @@ function Card({ title, children, note }: { title: string; children: React.ReactN
 function Said({ statement }: { statement?: Statement }) {
   if (!statement) return null;
   return (
-    <div className="flex flex-col gap-2">
-      <p className="text-[17px] leading-relaxed">
+    <div className="flex flex-col gap-1">
+      <p className="text-[17px] leading-[1.65]">
         <RichText text={statement.text} />
       </p>
       <div className="flex flex-wrap gap-x-4 gap-y-1">
@@ -163,12 +160,12 @@ type Ctx = { report: CompanyReport; e?: SavedExplanation; level: Level };
 /** AI-written points. On Deep, each also shows the exact words from the report it came from. */
 function Claims({ claims, quotes }: { claims: CheckedClaim[]; quotes?: boolean }) {
   return (
-    <ul className="flex flex-col gap-4">
+    <ul className="flex flex-col gap-5">
       {claims.map((c) => (
-        <li key={c.text} className="flex flex-col gap-1.5">
-          <p className="text-[17px] leading-relaxed">{c.text}</p>
+        <li key={c.text} className="flex flex-col gap-1">
+          <p className="text-[17px] leading-[1.65]">{c.text}</p>
           {quotes && (
-            <p className="border-l-2 border-[#CDE7F0] pl-3 text-[14px] leading-relaxed text-muted">
+            <p className="my-1 border-l-2 border-surface pl-3 text-[14px] leading-relaxed text-muted">
               From the report: &ldquo;{c.quote}&rdquo;
             </p>
           )}
@@ -181,7 +178,7 @@ function Claims({ claims, quotes }: { claims: CheckedClaim[]; quotes?: boolean }
 
 function AiNote({ e }: { e: SavedExplanation }) {
   return (
-    <p className="rounded-xl bg-white px-4 py-3 text-[13px] leading-relaxed text-muted">
+    <p className="text-[13px] leading-relaxed text-muted">
       Points about the business, its industry and its risks were written by AI from the company&apos;s own reports on{" "}
       {formatDate(e.generatedAt.slice(0, 10))}. Every point was checked word-for-word against the report it links to;
       points that failed the check were removed. All numbers come straight from the reports, not from AI.
@@ -248,23 +245,19 @@ function Surface(ctx: Ctx) {
     const shown = row.items.filter((i) => hasContent(i, ctx));
     if (shown.length === 0 && !(needsAi && !ctx.e)) return null;
     return (
-      <div key={row.label} className="grid gap-x-6 gap-y-1.5 border-b border-line py-4 first:pt-0 last:border-0 last:pb-0 sm:grid-cols-[190px_1fr]">
+      <div key={row.label} className="grid gap-x-8 gap-y-1 border-t border-line py-5 sm:grid-cols-[170px_1fr]">
         <h3 className="pt-0.5 text-[15px] font-semibold text-ocean">{row.label}</h3>
         <div className="flex flex-col gap-3">{shown.length === 0 ? <NotWritten /> : shown.map((i, n) => renderItem(i, ctx, `${row.label}-${n}`))}</div>
       </div>
     );
   });
   return (
-    <div className="flex flex-col gap-5">
-      <section className="flex flex-col gap-4 rounded-[20px] border border-line bg-white p-6">
-        <div className="flex flex-col gap-1">
-          <h2 className="font-display text-2xl font-bold">The whole company in a minute</h2>
-          <p className="text-[15px] text-muted">
-            Every part of the company in one or two plain sentences. Open <strong className="text-ink">Below</strong> for
-            each part explained, or <strong className="text-ink">Deep</strong> for everything.
-          </p>
-        </div>
-        <div className="flex flex-col">{rows}</div>
+    <div className="flex flex-col gap-10">
+      <section className="flex flex-col gap-5">
+        <p className="text-[15px] leading-relaxed text-muted">
+          The whole company in a minute. For more on each part, open Below; for everything, open Deep.
+        </p>
+        <div className="flex flex-col border-b border-line">{rows}</div>
       </section>
       <Card
         title="Share price"
@@ -279,13 +272,13 @@ function Surface(ctx: Ctx) {
 
 function Detail(ctx: Ctx & { level: "below" | "deep" }) {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-12">
       {areasFor(ctx.level).map((area) => {
         const needsAi = area.items.some((i) => i.kind === "topic");
         const content = needsAi && !ctx.e ? [<NotWritten key="nw" />] : area.items.map((i, n) => renderItem(i, ctx, `${area.id}-${n}`));
         return (
-          <section key={area.id} id={`${ctx.level}-${area.id}`} className="flex flex-col gap-4 rounded-[20px] border border-line bg-white p-6">
-            <div className="flex flex-col gap-1">
+          <section key={area.id} id={`${ctx.level}-${area.id}`} className="flex flex-col gap-5 border-t border-line pt-8 first:border-0 first:pt-0">
+            <div className="flex flex-col gap-1.5">
               <h2 className="font-display text-2xl font-bold">{area.title}</h2>
               <p className="text-[15px] leading-relaxed text-muted">{area.why}</p>
             </div>
@@ -598,62 +591,38 @@ function OriginalReports({ report }: { report: CompanyReport }) {
   );
 }
 
-// ---------------------------------------------------------------- sidebar
+// ---------------------------------------------------------------- below the levels
 
-function Sidebar({ report }: { report: CompanyReport }) {
-  const terms = [...new Set(report.statements.flatMap((s) => termsIn(s.text)))]
-    .map((key) => lookupTerm(key)?.term)
-    .filter(Boolean);
+/** Announcements, news and where everything comes from, in the same single column. */
+function MoreInfo({ report }: { report: CompanyReport }) {
   return (
-    <aside className="flex flex-[1_1_300px] flex-col gap-5">
-      <section className="flex flex-col gap-3.5 rounded-[20px] border border-line bg-white p-5">
-        <h2 className="font-display text-xl font-bold">Official announcements</h2>
-        {report.announcements.length === 0 && (
-          <p className="text-[15px] text-muted">No major announcements filed in the last four months.</p>
-        )}
-        {report.announcements.map((a) => (
-          <div key={a.url} className="flex flex-col gap-1.5 border-b border-line pb-3 last:border-0 last:pb-0">
-            <span className="text-[13px] text-muted">{formatDate(a.filingDate)} · 8-K</span>
-            <span className="text-[15px] leading-snug">{a.events.join(" · ")}</span>
-            <SourceLink href={a.url} label="Read the filing" />
-          </div>
-        ))}
-      </section>
-      <section className="flex flex-col gap-2 rounded-[20px] border border-line bg-white p-5">
-        <h2 className="font-display text-xl font-bold">In the news</h2>
-        <p className="text-[13px] leading-snug text-muted">
-          Headlines from news outlets, via TradingView. These are reporters&apos; views, not official company filings.
-        </p>
-        <CompanyNews symbol={report.tradingViewSymbol} />
-      </section>
-      {terms.length > 0 && (
-        <section className="flex flex-col gap-2.5 rounded-[20px] bg-ocean p-5 text-white">
-          <h2 className="font-display text-xl font-bold">Terms on this page</h2>
-          <p className="text-sm text-[#D6EBF2]">Tap any underlined word to see what it means.</p>
-          <div className="flex flex-wrap gap-2">
-            {terms.map((t) => (
-              <span key={t} className="rounded-full bg-white/15 px-2.5 py-1 text-sm">
-                {t}
-              </span>
+    <div className="flex flex-col gap-10">
+      <Card title="Official announcements" note="Major events the company reported to the SEC in the last four months.">
+        {report.announcements.length === 0 ? (
+          <p className="text-[16px] text-muted">None filed in the last four months.</p>
+        ) : (
+          <ul className="flex flex-col">
+            {report.announcements.map((a) => (
+              <li key={a.url} className="flex flex-col gap-1 border-t border-line py-4 first:border-0 first:pt-0">
+                <span className="text-[13px] text-muted">{formatDate(a.filingDate)}</span>
+                <span className="text-[17px] leading-snug">{a.events.join(", ")}</span>
+                <SourceLink href={a.url} label="8-K filing" />
+              </li>
             ))}
-          </div>
-        </section>
-      )}
-      <section className="flex flex-col gap-2.5 rounded-[20px] border border-line bg-white p-5 text-sm">
-        <h2 className="font-display text-xl font-bold">Sources for this page</h2>
-        <p className="leading-relaxed text-muted">
-          <strong className="text-ink">SEC EDGAR</strong>: the company&apos;s annual and quarterly reports,
-          announcements, and the financial data tagged in them. All of Fathom&apos;s explanations come from these.
+          </ul>
+        )}
+      </Card>
+      <Card title="In the news" note="Headlines from news outlets, via TradingView. These are reporters' views, not official company filings.">
+        <CompanyNews symbol={report.tradingViewSymbol} />
+      </Card>
+      <Card title="Where this comes from">
+        <p className="text-[16px] leading-relaxed">
+          Every number and every point about the business comes from the company&apos;s own reports to the US Securities and
+          Exchange Commission (SEC EDGAR). The share price, market value and news are shown as TradingView provides them.
+          Fathom doesn&apos;t create financial data; it explains these sources in plain English.
         </p>
-        <p className="leading-relaxed text-muted">
-          <strong className="text-ink">TradingView</strong>: the share price chart, market value and valuation numbers,
-          and news headlines, shown as TradingView provides them.
-        </p>
-        <p className="leading-relaxed text-muted">
-          Fathom doesn&apos;t create financial data. It explains information from these sources in plain English.
-        </p>
-      </section>
-    </aside>
+      </Card>
+    </div>
   );
 }
 
@@ -661,16 +630,16 @@ function Sidebar({ report }: { report: CompanyReport }) {
 
 function Disclaimer() {
   return (
-    <p className="rounded-2xl border border-line bg-white px-5 py-4 text-sm leading-relaxed text-muted">
-      <strong className="text-ink">Not financial advice.</strong> Fathom explains public information for education only.
-      It does not recommend buying, selling or holding any investment, and does not give price targets.
+    <p className="border-t border-line pt-8 text-sm leading-relaxed text-muted">
+      <strong className="font-semibold text-ink">Not financial advice.</strong> Fathom explains public information for
+      education only. It does not recommend buying, selling or holding any investment, and does not give price targets.
     </p>
   );
 }
 
 function Unsupported({ reason, name }: { reason: "foreign-filer" | "no-recent-reports"; name: string }) {
   return (
-    <div className="rounded-[20px] border border-line bg-white p-6 text-[17px] leading-relaxed">
+    <div className="text-[17px] leading-relaxed">
       {reason === "foreign-filer" ? (
         <p>
           {name} is based outside the US and files a different kind of annual report with the SEC. Fathom doesn&apos;t
@@ -685,12 +654,12 @@ function Unsupported({ reason, name }: { reason: "foreign-filer" | "no-recent-re
 
 function ReportLoading() {
   return (
-    <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-8" aria-busy="true">
-      <div className="h-12 w-72 animate-pulse rounded-xl bg-[#DCEBF1]" />
-      <div className="h-5 w-96 max-w-full animate-pulse rounded bg-[#E3EFF4]" />
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
-        {[0, 1, 2, 3].map((i) => (
-          <div key={i} className="h-48 animate-pulse rounded-[20px] bg-white" />
+    <div className="mx-auto flex w-full max-w-[720px] flex-col gap-5 px-5 py-14" aria-busy="true">
+      <div className="h-5 w-40 animate-pulse rounded bg-mist" />
+      <div className="h-12 w-80 max-w-full animate-pulse rounded-lg bg-mist" />
+      <div className="mt-6 flex flex-col gap-3">
+        {[0, 1, 2, 3, 4].map((i) => (
+          <div key={i} className="h-5 animate-pulse rounded bg-mist" style={{ width: `${90 - i * 9}%` }} />
         ))}
       </div>
       <p className="text-[15px] text-muted">Reading the latest reports from the SEC…</p>

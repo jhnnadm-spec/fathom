@@ -5,8 +5,8 @@ import { useState } from "react";
 export type DepthPanel = {
   id: string;
   label: string; // "Surface"
-  hint: string; // "30 seconds"
-  color: string; // swatch colour from the logo's layers
+  hint: string; // "1 minute"
+  color: string; // the matching layer colour from the logo
   content: React.ReactNode;
 };
 
@@ -15,12 +15,8 @@ export function DepthTabs({ panels }: { panels: DepthPanel[] }) {
   const [active, setActive] = useState(panels[0]?.id);
 
   return (
-    <div className="flex flex-col gap-6">
-      <div
-        role="tablist"
-        aria-label="How deep to go"
-        className="flex flex-wrap gap-1.5 self-start rounded-2xl border border-line bg-white p-1.5"
-      >
+    <div className="flex flex-col gap-8">
+      <div role="tablist" aria-label="How much detail" className="flex gap-6 border-b border-line sm:gap-8">
         {panels.map((p) => {
           const on = p.id === active;
           return (
@@ -32,29 +28,19 @@ export function DepthTabs({ panels }: { panels: DepthPanel[] }) {
               aria-selected={on}
               aria-controls={`panel-${p.id}`}
               onClick={() => setActive(p.id)}
-              className={`flex min-h-11 items-center gap-2 rounded-xl px-3.5 py-2.5 sm:px-4 text-[15px] font-semibold transition-colors ${
-                on ? "bg-ocean text-white" : "text-ink hover:bg-mist"
+              className={`-mb-px flex min-h-11 items-baseline gap-2 border-b-[3px] pb-2.5 pt-1 text-[17px] font-semibold transition-colors ${
+                on ? "text-ink" : "border-transparent text-muted hover:text-ink"
               }`}
+              style={on ? { borderColor: p.color === "#CDE7F0" ? "#7FC4D8" : p.color } : undefined}
             >
-              <span
-                aria-hidden="true"
-                className={`h-3 w-3 rounded ${on ? "ring-2 ring-white" : "ring-1 ring-[#A9CBD8]"}`}
-                style={{ background: p.color }}
-              />
               {p.label}
-              <span className="hidden text-[13px] font-medium opacity-80 sm:inline">{p.hint}</span>
+              <span className="hidden text-[13px] font-normal text-muted sm:inline">{p.hint}</span>
             </button>
           );
         })}
       </div>
       {panels.map((p) => (
-        <div
-          key={p.id}
-          role="tabpanel"
-          id={`panel-${p.id}`}
-          aria-labelledby={`tab-${p.id}`}
-          hidden={p.id !== active}
-        >
+        <div key={p.id} role="tabpanel" id={`panel-${p.id}`} aria-labelledby={`tab-${p.id}`} hidden={p.id !== active}>
           {p.content}
         </div>
       ))}
