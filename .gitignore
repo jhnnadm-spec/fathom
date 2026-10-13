@@ -42,3 +42,7 @@ next-env.d.ts
 
 # keep the example file (it has no secrets)
 !.env.example
+
+# output from scripts/try-report.ts and local SEC cache
+/out
+/.cache
