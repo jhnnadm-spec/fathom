@@ -12,8 +12,8 @@ import { Circle, ClipPath, Defs, Document, Font, G, Line, Link, Page, Path, Rect
 import { cloneElement, Fragment, isValidElement, type ReactElement, type ReactNode } from "react";
 import type { DocumentProps } from "@react-pdf/renderer";
 import type { CheckedClaim, SavedExplanation } from "../explain/types";
-import { formatDate, formatMoney, formatPerDollar, formatPercent, formatPerShare, formatShare } from "../financials/format";
-import type { Comparison } from "../financials/metrics";
+import { formatDate, formatMoney, formatShare } from "../financials/format";
+import { changeRows, hundredDollarSteps, keyRatioRows, marginTrends } from "../financials/explain-numbers";
 import { plainText, termsIn, type Statement } from "../financials/templates";
 import { lookupTerm } from "../glossary";
 import type { CompanyReport } from "../report/company";
@@ -513,92 +513,88 @@ function revenueBars(history: { end: string; value: number }[]) {
 
 // ---------------------------------------------------------------- tables
 
+/** A number, what it says about this company, and what the term means. */
+function explained(ctx: Ctx, key: string, name: string, value: string, when: string, meaning: string, term?: string, extra?: string) {
+  if (term) ctx.terms.add(term);
+  return (
+    <View key={key} style={{ borderBottomWidth: 1, borderBottomColor: C.line, paddingVertical: 6 }} wrap={false}>
+      <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+        <Text style={{ fontWeight: 600 }}>{name}</Text>
+        <Text style={{ fontWeight: 700, color: C.ocean }}>{value}</Text>
+      </View>
+      {extra && <Text style={{ fontSize: 9 }}>{extra}</Text>}
+      <Text style={{ fontSize: 8, color: C.muted }}>{when}</Text>
+      <Text style={{ marginTop: 2 }}>{meaning}</Text>
+    </View>
+  );
+}
+
 function keyRatios(ctx: Ctx) {
   const n = ctx.report.numbers;
   if (!n) return null;
-  const r = n.ratios;
-  const eps = n.annual.eps;
-  const year = (end?: string) => (end ? `Year ended ${formatDate(end)}` : "");
-  const on = (end?: string) => (end ? `On ${formatDate(end)}` : "");
-  const row = (name: string, term: string, value: string | undefined, detail: string): Cell[] | null => {
-    if (!value) return null;
-    ctx.terms.add(term);
-    return [
-      { text: name, width: "36%", bold: true },
-      { text: value, width: "20%", align: "right", bold: true },
-      { text: detail, width: "44%", align: "right" },
-    ];
-  };
+  const rows = keyRatioRows(n);
+  if (rows.length === 0) return null;
   return sub(
     "Key ratios",
-    "Worked out from SEC data. Each ratio only combines figures from the same period or date. Definitions are in “Terms used”.",
-    table(undefined, [], [
-      row("Return on equity", "return-on-equity", r.returnOnEquity && formatShare(r.returnOnEquity.value), year(r.returnOnEquity?.end)),
-      row("Debt-to-equity", "debt-to-equity", r.debtToEquity && `${formatPerDollar(r.debtToEquity.value)} per $1`, on(r.debtToEquity?.end)),
-      row("Current ratio", "current-ratio", r.currentRatio && r.currentRatio.value.toFixed(2), on(r.currentRatio?.end)),
-      row("Assets per $1 owed", "total-liabilities", r.assetsToLiabilities && formatPerDollar(r.assetsToLiabilities.value), on(r.assetsToLiabilities?.end)),
-      row("Gross margin", "gross-margin", n.margins.gross !== undefined ? formatShare(n.margins.gross) : undefined, year(n.margins.periodEnd)),
-      row("Operating margin", "operating-margin", n.margins.operating !== undefined ? formatShare(n.margins.operating) : undefined, year(n.margins.periodEnd)),
-      row("Profit margin", "profit-margin", n.margins.net !== undefined ? formatShare(n.margins.net) : undefined, year(n.margins.periodEnd)),
-      row(
-        "Earnings per share",
-        "eps",
-        eps && formatPerShare(eps.latest.value),
-        eps ? `${year(eps.latest.end)}${eps.change !== undefined ? `, ${eps.change >= 0 ? "up" : "down"} ${formatPercent(eps.change)}` : ""}` : "",
-      ),
-      row("Free cash flow", "free-cash-flow", r.freeCashFlow && formatMoney(r.freeCashFlow.value), year(r.freeCashFlow?.end)),
-    ]),
+    "Ratios compare two numbers so companies of different sizes can be compared. Definitions are in “Terms used”.",
+    rows.map((r) => explained(ctx, r.id, r.name, r.value, r.when, r.meaning, r.term)),
   );
 }
 
 function marginHistory(ctx: Ctx) {
-  const rows = ctx.report.numbers?.marginHistory ?? [];
-  if (rows.length < 2) return null;
+  const n = ctx.report.numbers;
+  if (!n) return null;
+  const rows = n.marginHistory;
+  const steps = hundredDollarSteps(n);
+  const trends = marginTrends(n);
   const pct = (v?: number) => (v === undefined ? "–" : formatShare(v));
   const w = ["34%", "22%", "22%", "22%"];
+  const colors = [C.surface, C.shallow, C.mid, C.ocean];
   return sub(
     "Margins year by year",
-    "How much of each dollar of sales the company kept, at each level of profit.",
-    table(
-      ["Year ended", "Gross margin", "Operating margin", "Profit margin"],
-      w,
-      rows.map((y) => [
-        { text: formatDate(y.end), width: w[0] },
-        { text: pct(y.gross), width: w[1], align: "right" },
-        { text: pct(y.operating), width: w[2], align: "right" },
-        { text: pct(y.net), width: w[3], align: "right" },
-      ]),
-    ),
+    "A margin is how much of each $100 of sales is left after a set of costs. There are three, one after another.",
+    <>
+      {steps && (
+        <View style={{ marginBottom: 6 }} wrap={false}>
+          <Text style={[s.th, { marginBottom: 2 }]}>
+            Where each $100 of sales went{n.margins.periodEnd ? ` in the year ended ${formatDate(n.margins.periodEnd)}` : ""}
+          </Text>
+          {steps.map((st, i) => (
+            <View key={st.label} style={{ flexDirection: "row", alignItems: "center", marginTop: 4 }}>
+              <Text style={{ width: 150, fontSize: 9 }}>{st.label}</Text>
+              <View style={{ flex: 1, height: 9, backgroundColor: C.mist, borderRadius: 2 }}>
+                <View style={{ width: `${Math.max(0, Math.min(100, st.amount))}%`, height: 9, borderRadius: 2, backgroundColor: colors[i] }} />
+              </View>
+              <Text style={{ width: 40, fontSize: 9, textAlign: "right", fontWeight: 600 }}>${Math.round(st.amount)}</Text>
+            </View>
+          ))}
+        </View>
+      )}
+      {trends.map((t) => point(t, []))}
+      {rows.length >= 2 &&
+        table(
+          ["Year ended", "Gross margin", "Operating margin", "Profit margin"],
+          w,
+          rows.map((y) => [
+            { text: formatDate(y.end), width: w[0] },
+            { text: pct(y.gross), width: w[1], align: "right" },
+            { text: pct(y.operating), width: w[2], align: "right" },
+            { text: pct(y.net), width: w[3], align: "right" },
+          ]),
+        )}
+    </>,
   );
 }
 
 function whatChanged(ctx: Ctx) {
   const n = ctx.report.numbers;
-  const w = ["34%", "22%", "22%", "22%"];
-  const row = (name: string, c: Comparison | undefined, period: string): Cell[] | null => {
-    if (!c) return null;
-    const change =
-      c.change === undefined ? "–" : Math.abs(c.change) < 0.005 ? "About the same" : `${c.change > 0 ? "Up" : "Down"} ${formatPercent(c.change)}`;
-    return [
-      { text: name, width: w[0], bold: true, sub: period === "On" ? `On ${formatDate(c.latest.end)}` : `${period} ended ${formatDate(c.latest.end)}` },
-      { text: formatMoney(c.latest.value), width: w[1], align: "right" },
-      { text: c.previous ? formatMoney(c.previous.value) : "–", width: w[2], align: "right" },
-      { text: change, width: w[3], align: "right", bold: true },
-    ];
-  };
+  if (!n) return null;
+  const rows = changeRows(n);
+  if (rows.length === 0) return null;
   return sub(
     "What changed in a year",
-    "Years are compared with the previous year, and quarters with the same quarter a year earlier, because many businesses are seasonal.",
-    table(["Figure", "Latest", "A year earlier", "Change"], w, [
-      row("Revenue", n?.annual.revenue, "Year"),
-      row("Revenue", n?.quarter.revenue, "Quarter"),
-      row("Net income", n?.annual.netIncome, "Year"),
-      row("Net income", n?.quarter.netIncome, "Quarter"),
-      row("Cash from operations", n?.annual.operatingCashFlow, "Year"),
-      row("Cash", n?.balance.cash, "On"),
-      row("Long-term debt", n?.balance.longTermDebt, "On"),
-      row("Shareholders' equity", n?.balance.equity, "On"),
-    ]),
+    "Each figure next to the same figure a year earlier. Quarters are compared with the same quarter a year before, because many businesses are busier in some seasons.",
+    rows.map((r) => explained(ctx, r.id, r.name, r.change, r.when, r.meaning, r.term, `${r.latest}${r.previous ? ` vs ${r.previous} a year earlier` : ""}`)),
   );
 }
 

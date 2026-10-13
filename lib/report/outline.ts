@@ -57,7 +57,7 @@ export type Item =
   | { kind: "topic"; topic: TopicId; fallback?: TopicId[]; title?: string; max?: number; empty?: string } // AI-written points; `fallback` is used when the topic is empty
   | { kind: "block"; block: Block };
 
-export type SurfaceRow = { label: string; items: Item[] };
+export type SurfaceRow = { label: string; area: string; items: Item[] }; // `area`: where Below and Deep explain this row
 
 export type Area = {
   id: string;
@@ -70,19 +70,19 @@ export type Area = {
 const NOT_REPORTED = "The company doesn't report these figures in SEC's standard data, so they're left out.";
 
 export const SURFACE: SurfaceRow[] = [
-  { label: "What it does", items: [{ kind: "topic", topic: "whatItDoes", max: 1 }] },
-  { label: "How it makes money", items: [{ kind: "topic", topic: "howItMakesMoney", max: 2 }] },
-  { label: "What makes it stand out", items: [{ kind: "topic", topic: "competitiveEdge", fallback: ["marketPosition"], max: 1 }] },
-  { label: "Is it growing?", items: [{ kind: "statements", ids: ["s-growth"] }] },
-  { label: "Is it making money?", items: [{ kind: "statements", ids: ["s-profit"] }] },
-  { label: "Can it pay its bills?", items: [{ kind: "statements", ids: ["s-bills"] }] },
-  { label: "How much does it owe?", items: [{ kind: "statements", ids: ["s-debt"] }] },
-  { label: "Does it bring in cash?", items: [{ kind: "statements", ids: ["s-cash"] }] },
-  { label: "What does it spend money on?", items: [{ kind: "statements", ids: ["s-spending"] }] },
-  { label: "Any warning signs in its accounts?", items: [{ kind: "block", block: "accountsSummary" }] },
-  { label: "Its industry", items: [{ kind: "topic", topic: "industryTrends", fallback: ["demandDrivers"], max: 1 }] },
-  { label: "A key risk it names", items: [{ kind: "topic", topic: "biggestRisks", max: 1 }] },
-  { label: "What's coming up", items: [{ kind: "topic", topic: "upcoming", fallback: ["outlook"], max: 1 }] },
+  { label: "What it does", area: "business", items: [{ kind: "topic", topic: "whatItDoes", max: 1 }] },
+  { label: "How it makes money", area: "business", items: [{ kind: "topic", topic: "howItMakesMoney", max: 2 }] },
+  { label: "What makes it stand out", area: "business", items: [{ kind: "topic", topic: "competitiveEdge", fallback: ["marketPosition"], max: 1 }] },
+  { label: "Is it growing?", area: "performance", items: [{ kind: "statements", ids: ["s-growth"] }] },
+  { label: "Is it making money?", area: "performance", items: [{ kind: "statements", ids: ["s-profit"] }] },
+  { label: "Can it pay its bills?", area: "health", items: [{ kind: "statements", ids: ["s-bills"] }] },
+  { label: "How much does it owe?", area: "health", items: [{ kind: "statements", ids: ["s-debt"] }] },
+  { label: "Does it bring in cash?", area: "cash", items: [{ kind: "statements", ids: ["s-cash"] }] },
+  { label: "What does it spend money on?", area: "management", items: [{ kind: "statements", ids: ["s-spending"] }] },
+  { label: "Any warning signs in its accounts?", area: "management", items: [{ kind: "block", block: "accountsSummary" }] },
+  { label: "Its industry", area: "industry", items: [{ kind: "topic", topic: "industryTrends", fallback: ["demandDrivers"], max: 1 }] },
+  { label: "A key risk it names", area: "risks", items: [{ kind: "topic", topic: "biggestRisks", max: 1 }] },
+  { label: "What's coming up", area: "risks", items: [{ kind: "topic", topic: "upcoming", fallback: ["outlook"], max: 1 }] },
 ];
 
 export const AREAS: Area[] = [

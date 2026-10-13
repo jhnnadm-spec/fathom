@@ -9,11 +9,12 @@ import { RichText } from "@/components/RichText";
 import { SourceLink } from "@/components/SourceLink";
 import { explanationState, type ExplanationState } from "@/lib/explain/ondemand";
 import type { CheckedClaim, SavedExplanation } from "@/lib/explain/types";
-import { formatDate, formatMoney, formatPerDollar, formatPercent, formatPerShare, formatShare } from "@/lib/financials/format";
-import type { Comparison } from "@/lib/financials/metrics";
+import { formatDate, formatShare } from "@/lib/financials/format";
 import type { Statement } from "@/lib/financials/templates";
 import { lookupTerm } from "@/lib/glossary";
 import { getCompanyReport, type CompanyReport } from "@/lib/report/company";
+import { changeRows, hundredDollarSteps, keyRatioRows, marginTrends } from "@/lib/financials/explain-numbers";
+import { MARKET_TERMS } from "@/lib/report/market-terms";
 import { areasFor, claimsFor, leftOutNames, statementsFor, SURFACE, type Block, type Item } from "@/lib/report/outline";
 
 export async function generateMetadata(props: PageProps<"/stock/[ticker]">): Promise<Metadata> {
@@ -186,6 +187,18 @@ function AiNote({ e }: { e: SavedExplanation }) {
   );
 }
 
+/** The link from one level to the next, so a reader can follow one topic down (or back up). */
+function DeeperLink({ href, children, up = false }: { href: string; children: ReactNode; up?: boolean }) {
+  return (
+    <a href={href} className="inline-flex min-h-11 items-center gap-1.5 self-start text-[15px] font-semibold no-underline hover:underline">
+      {children}
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        {up ? <path d="m6 15 6-6 6 6" /> : <path d="m6 9 6 6 6-6" />}
+      </svg>
+    </a>
+  );
+}
+
 function NotWritten() {
   return (
     <p className="text-[16px] leading-relaxed text-muted">
@@ -247,7 +260,10 @@ function Surface(ctx: Ctx) {
     return (
       <div key={row.label} className="grid gap-x-8 gap-y-1 border-t border-line py-5 sm:grid-cols-[170px_1fr]">
         <h3 className="pt-0.5 text-[15px] font-semibold text-ocean">{row.label}</h3>
-        <div className="flex flex-col gap-3">{shown.length === 0 ? <NotWritten /> : shown.map((i, n) => renderItem(i, ctx, `${row.label}-${n}`))}</div>
+        <div className="flex flex-col gap-3">
+          {shown.length === 0 ? <NotWritten /> : shown.map((i, n) => renderItem(i, ctx, `${row.label}-${n}`))}
+          <DeeperLink href={`#below-${row.area}`}>Explain more</DeeperLink>
+        </div>
       </div>
     );
   });
@@ -264,6 +280,7 @@ function Surface(ctx: Ctx) {
         note="The price moves every trading day. Fathom shows it for context; it doesn't say whether the price is right."
       >
         <PriceChart symbol={ctx.report.tradingViewSymbol} />
+        <DeeperLink href="#below-value">What the market value and P/E mean</DeeperLink>
       </Card>
       {ctx.e && <AiNote e={ctx.e} />}
     </div>
@@ -277,12 +294,23 @@ function Detail(ctx: Ctx & { level: "below" | "deep" }) {
         const needsAi = area.items.some((i) => i.kind === "topic");
         const content = needsAi && !ctx.e ? [<NotWritten key="nw" />] : area.items.map((i, n) => renderItem(i, ctx, `${area.id}-${n}`));
         return (
-          <section key={area.id} id={`${ctx.level}-${area.id}`} className="flex flex-col gap-5 border-t border-line pt-8 first:border-0 first:pt-0">
+          <section
+            key={area.id}
+            id={`${ctx.level}-${area.id}`}
+            tabIndex={-1}
+            className="flex scroll-mt-6 flex-col gap-5 border-t border-line pt-8 outline-none first:border-0 first:pt-0"
+          >
             <div className="flex flex-col gap-1.5">
               <h2 className="font-display text-2xl font-bold">{area.title}</h2>
               <p className="text-[15px] leading-relaxed text-muted">{area.why}</p>
             </div>
             {content}
+            {ctx.level === "below" && area.deep.length > 0 && <DeeperLink href={`#deep-${area.id}`}>See every detail on this</DeeperLink>}
+            {ctx.level === "deep" && area.below.length > 0 && (
+              <DeeperLink href={`#below-${area.id}`} up>
+                Back to the simpler version
+              </DeeperLink>
+            )}
           </section>
         );
       })}
@@ -349,9 +377,46 @@ function BlockView({ block, report }: { block: Block; report: CompanyReport }) {
             sell or hold.
           </p>
           <MarketData symbol={report.tradingViewSymbol} />
+          <MarketKey />
         </div>
       );
   }
+}
+
+/** A plain-English key to the labels in TradingView's market data box. */
+function MarketKey() {
+  return (
+    <details className="group rounded-2xl bg-mist px-5 py-4">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-[16px] font-semibold text-ocean">
+        What every term in this box means
+        <svg className="transition-transform group-open:rotate-180" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </summary>
+      <div className="flex flex-col gap-6 pb-2 pt-4">
+        <p className="text-[15px] leading-relaxed text-muted">
+          These numbers come from TradingView and change every trading day. Fathom can&apos;t read them, so here is what
+          each label means and how to read it.
+        </p>
+        {MARKET_TERMS.map((g) => (
+          <div key={g.group} className="flex flex-col gap-3">
+            <h4 className="text-[15px] font-semibold">{g.group}</h4>
+            <dl className="flex flex-col gap-3">
+              {g.terms.map((t) => (
+                <div key={t.term} className="flex flex-col gap-0.5">
+                  <dt className="text-[15px] font-semibold text-ocean">{t.term}</dt>
+                  <dd className="text-[15px] leading-relaxed">
+                    {t.plain}
+                    {t.read && <span className="block text-muted">{t.read}</span>}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))}
+      </div>
+    </details>
+  );
 }
 
 function Sub({ title, note, children }: { title: string; note?: string; children: ReactNode }) {
@@ -366,132 +431,134 @@ function Sub({ title, note, children }: { title: string; note?: string; children
   );
 }
 
-function Row({ name, term, value, detail }: { name: string; term?: string; value?: string; detail?: string }) {
-  if (!value) return null;
+
+
+/** A number with its name, what it is, and what it says about this company. */
+function Explained({ name, term, value, when, meaning, extra }: { name: string; term?: string; value: string; when: string; meaning: string; extra?: ReactNode }) {
   const entry = term ? lookupTerm(term) : undefined;
   return (
-    <tr className="border-b border-line align-top">
-      <th scope="row" className="py-3 pr-4 text-left font-medium">
-        {name}
-        {entry && <span className="block max-w-md text-[13px] font-normal leading-snug text-muted">{entry.definition}</span>}
-      </th>
-      <td className="whitespace-nowrap py-3 pr-4 text-right font-semibold tabular-nums">{value}</td>
-      <td className="py-3 text-right text-[13px] text-muted">{detail}</td>
-    </tr>
-  );
-}
-
-function ChangeRow({ name, c, period }: { name: string; c?: Comparison; period: string }) {
-  if (!c) return null;
-  const change =
-    c.change === undefined ? "–" : Math.abs(c.change) < 0.005 ? "About the same" : `${c.change > 0 ? "Up" : "Down"} ${formatPercent(c.change)}`;
-  return (
-    <tr className="border-b border-line">
-      <th scope="row" className="py-3 pr-4 text-left font-medium">
-        {name}
-        <span className="block text-[13px] font-normal text-muted">
-          {period === "On" ? `On ${formatDate(c.latest.end)}` : `${period} ended ${formatDate(c.latest.end)}`}
-        </span>
-      </th>
-      <td className="py-3 pr-4 text-right tabular-nums">{formatMoney(c.latest.value)}</td>
-      <td className="py-3 pr-4 text-right tabular-nums text-muted">{c.previous ? formatMoney(c.previous.value) : "–"}</td>
-      <td className="py-3 text-right font-medium">{change}</td>
-    </tr>
+    <li className="flex flex-col gap-1.5 border-t border-line py-5 first:border-0 first:pt-0">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h4 className="text-[17px] font-semibold">{name}</h4>
+        <span className="font-display text-2xl font-bold tabular-nums text-ocean">{value}</span>
+      </div>
+      {extra}
+      <p className="text-[13px] text-muted">{when}</p>
+      <p className="text-[17px] leading-[1.65]">{meaning}</p>
+      {entry && <p className="text-[14px] leading-relaxed text-muted">What it is: {entry.definition}</p>}
+    </li>
   );
 }
 
 function KeyRatios({ report }: { report: CompanyReport }) {
-  const n = report.numbers!;
-  const r = n.ratios;
-  const eps = n.annual.eps;
-  const year = (end?: string) => (end ? `Year ended ${formatDate(end)}` : undefined);
-  const on = (end?: string) => (end ? `On ${formatDate(end)}` : undefined);
+  const rows = keyRatioRows(report.numbers!);
+  if (rows.length === 0) return null;
   return (
-    <Sub title="Key ratios" note="Worked out from SEC data. Each ratio only combines figures from the same period or date.">
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[520px] border-collapse text-[15px]">
-          <tbody>
-            <Row name="Return on equity" term="return-on-equity" value={r.returnOnEquity && formatShare(r.returnOnEquity.value)} detail={year(r.returnOnEquity?.end)} />
-            <Row name="Debt-to-equity" term="debt-to-equity" value={r.debtToEquity && `${formatPerDollar(r.debtToEquity.value)} per $1`} detail={on(r.debtToEquity?.end)} />
-            <Row name="Current ratio" term="current-ratio" value={r.currentRatio && r.currentRatio.value.toFixed(2)} detail={on(r.currentRatio?.end)} />
-            <Row name="Assets per $1 owed" term="total-liabilities" value={r.assetsToLiabilities && formatPerDollar(r.assetsToLiabilities.value)} detail={on(r.assetsToLiabilities?.end)} />
-            <Row name="Gross margin" term="gross-margin" value={n.margins.gross !== undefined ? formatShare(n.margins.gross) : undefined} detail={year(n.margins.periodEnd)} />
-            <Row name="Operating margin" term="operating-margin" value={n.margins.operating !== undefined ? formatShare(n.margins.operating) : undefined} detail={year(n.margins.periodEnd)} />
-            <Row name="Profit margin" term="profit-margin" value={n.margins.net !== undefined ? formatShare(n.margins.net) : undefined} detail={year(n.margins.periodEnd)} />
-            <Row
-              name="Earnings per share"
-              term="eps"
-              value={eps && formatPerShare(eps.latest.value)}
-              detail={eps ? `${year(eps.latest.end)}${eps.change !== undefined ? `, ${eps.change >= 0 ? "up" : "down"} ${formatPercent(eps.change)}` : ""}` : undefined}
-            />
-            <Row name="Free cash flow" term="free-cash-flow" value={r.freeCashFlow && formatMoney(r.freeCashFlow.value)} detail={year(r.freeCashFlow?.end)} />
-          </tbody>
-        </table>
-      </div>
+    <Sub title="Key ratios" note="Ratios compare two numbers so companies of different sizes can be compared. Each one only combines figures from the same period or date.">
+      <ul className="flex flex-col">
+        {rows.map((r) => (
+          <Explained key={r.id} {...r} />
+        ))}
+      </ul>
     </Sub>
   );
 }
 
 function MarginHistory({ report }: { report: CompanyReport }) {
-  const rows = report.numbers!.marginHistory;
+  const n = report.numbers!;
+  const rows = n.marginHistory;
+  const steps = hundredDollarSteps(n);
+  const trends = marginTrends(n);
   const pct = (v?: number) => (v === undefined ? "–" : formatShare(v));
   return (
-    <Sub title="Margins year by year" note="How much of each dollar of sales the company kept, at each level of profit.">
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[480px] border-collapse text-[15px]">
-          <thead>
-            <tr className="border-b-2 border-line text-[13px] text-muted">
-              <th className="py-2 pr-4 text-left font-semibold">Year ended</th>
-              <th className="py-2 pr-4 text-right font-semibold">Gross margin</th>
-              <th className="py-2 pr-4 text-right font-semibold">Operating margin</th>
-              <th className="py-2 text-right font-semibold">Profit margin</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((y) => (
-              <tr key={y.end} className="border-b border-line">
-                <td className="py-2.5 pr-4">{formatDate(y.end)}</td>
-                <td className="py-2.5 pr-4 text-right tabular-nums">{pct(y.gross)}</td>
-                <td className="py-2.5 pr-4 text-right tabular-nums">{pct(y.operating)}</td>
-                <td className="py-2.5 text-right tabular-nums">{pct(y.net)}</td>
+    <Sub
+      title="Margins year by year"
+      note="A margin is how much of each $100 of sales is left after a set of costs. There are three, one after another."
+    >
+      {steps && (
+        <figure className="m-0 flex flex-col gap-2.5">
+          <figcaption className="text-[15px] font-semibold">
+            Where each $100 of sales went{n.margins.periodEnd ? ` in the year ended ${formatDate(n.margins.periodEnd)}` : ""}
+          </figcaption>
+          {steps.map((st, i) => (
+            <div key={st.label} className="grid grid-cols-[1fr_auto] items-center gap-x-3 gap-y-1 sm:grid-cols-[230px_1fr_64px]">
+              <span className="text-[15px]">
+                {st.label}
+                {i > 0 && <span className="block text-[13px] text-muted">{st.note}</span>}
+              </span>
+              <div className="order-3 col-span-2 h-3 rounded-sm bg-mist sm:order-none sm:col-span-1">
+                <div
+                  className="h-3 rounded-sm"
+                  style={{ width: `${Math.max(0, Math.min(100, st.amount))}%`, background: ["#CDE7F0", "#7FC4D8", "#2F8FB3", "#0B4F6C"][i] }}
+                />
+              </div>
+              <span className="text-right font-semibold tabular-nums">${Math.round(st.amount)}</span>
+            </div>
+          ))}
+        </figure>
+      )}
+      {trends.length > 0 && (
+        <ul className="flex flex-col gap-2 text-[17px] leading-[1.65]">
+          {trends.map((t) => (
+            <li key={t}>{t}</li>
+          ))}
+        </ul>
+      )}
+      {rows.length >= 2 && (
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[480px] border-collapse text-[15px]">
+            <caption className="sr-only">Margins by year</caption>
+            <thead>
+              <tr className="border-b-2 border-line text-[13px] text-muted">
+                <th className="py-2 pr-4 text-left font-semibold">Year ended</th>
+                <th className="py-2 pr-4 text-right font-semibold">Gross margin</th>
+                <th className="py-2 pr-4 text-right font-semibold">Operating margin</th>
+                <th className="py-2 text-right font-semibold">Profit margin</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {rows.map((y) => (
+                <tr key={y.end} className="border-b border-line">
+                  <td className="py-2.5 pr-4">{formatDate(y.end)}</td>
+                  <td className="py-2.5 pr-4 text-right tabular-nums">{pct(y.gross)}</td>
+                  <td className="py-2.5 pr-4 text-right tabular-nums">{pct(y.operating)}</td>
+                  <td className="py-2.5 text-right tabular-nums">{pct(y.net)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </Sub>
   );
 }
 
 function WhatChanged({ report }: { report: CompanyReport }) {
-  const n = report.numbers;
+  const rows = changeRows(report.numbers!);
+  if (rows.length === 0) return null;
   return (
     <Sub
       title="What changed in a year"
-      note="Years are compared with the previous year, and quarters with the same quarter a year earlier, because many businesses are seasonal."
+      note="Each figure next to the same figure a year earlier. Quarters are compared with the same quarter a year before, because many businesses are busier in some seasons."
     >
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[520px] border-collapse text-[15px]">
-          <thead>
-            <tr className="border-b-2 border-line text-[13px] text-muted">
-              <th className="py-2 pr-4 text-left font-semibold">Figure</th>
-              <th className="py-2 pr-4 text-right font-semibold">Latest</th>
-              <th className="py-2 pr-4 text-right font-semibold">A year earlier</th>
-              <th className="py-2 text-right font-semibold">Change</th>
-            </tr>
-          </thead>
-          <tbody>
-            <ChangeRow name="Revenue" c={n?.annual.revenue} period="Year" />
-            <ChangeRow name="Revenue" c={n?.quarter.revenue} period="Quarter" />
-            <ChangeRow name="Net income" c={n?.annual.netIncome} period="Year" />
-            <ChangeRow name="Net income" c={n?.quarter.netIncome} period="Quarter" />
-            <ChangeRow name="Cash from operations" c={n?.annual.operatingCashFlow} period="Year" />
-            <ChangeRow name="Cash" c={n?.balance.cash} period="On" />
-            <ChangeRow name="Long-term debt" c={n?.balance.longTermDebt} period="On" />
-            <ChangeRow name="Shareholders' equity" c={n?.balance.equity} period="On" />
-          </tbody>
-        </table>
-      </div>
+      <ul className="flex flex-col">
+        {rows.map((r) => (
+          <Explained
+            key={r.id}
+            name={r.name}
+            term={r.term}
+            value={r.change}
+            when={r.when}
+            meaning={r.meaning}
+            extra={
+              <p className="text-[15px] tabular-nums">
+                {r.latest}
+                {r.previous && <span className="text-muted"> vs {r.previous} a year earlier</span>}
+              </p>
+            }
+          />
+        ))}
+      </ul>
     </Sub>
   );
 }
