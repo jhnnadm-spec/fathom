@@ -10,7 +10,7 @@
 import { mkdir, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { checkExplanation, extractJson } from "../lib/explain/check";
-import { buildUserPrompt, SYSTEM_PROMPT } from "../lib/explain/prompt";
+import { buildRetryPrompt, buildUserPrompt, RETRY_TOPICS, SYSTEM_PROMPT } from "../lib/explain/prompt";
 import { cloudflareProvider } from "../lib/explain/provider";
 import { gatherSections } from "../lib/explain/sources";
 import { TOPICS, type SavedExplanation, type TopicId } from "../lib/explain/types";
@@ -30,19 +30,38 @@ async function explain(query: string) {
   console.log(`Prompt size: about ${Math.round((SYSTEM_PROMPT.length + user.length) / 4).toLocaleString()} tokens`);
 
   const provider = cloudflareProvider();
-  let raw: unknown;
-  for (let attempt = 1; attempt <= 2; attempt++) {
-    const reply = await provider.complete(SYSTEM_PROMPT, user);
-    try {
-      raw = extractJson(reply);
-      break;
-    } catch (err) {
-      console.log(`Attempt ${attempt}: reply wasn't valid JSON (${(err as Error).message}). First 300 chars: ${reply.slice(0, 300)}`);
-      if (attempt === 2) throw err;
+  const ask = async (prompt: string): Promise<unknown> => {
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      const reply = await provider.complete(SYSTEM_PROMPT, prompt);
+      try {
+        return extractJson(reply);
+      } catch (err) {
+        console.log(`Attempt ${attempt}: reply wasn't valid JSON (${(err as Error).message}). First 300 chars: ${reply.slice(0, 300)}`);
+        if (attempt === 2) throw err;
+      }
     }
-  }
+  };
 
-  const { topics, dropped } = checkExplanation(raw, sections);
+  const { topics, dropped } = checkExplanation(await ask(user), sections);
+
+  // Second chance for important topics that came back empty because every claim failed.
+  const failures = dropped.filter(
+    (d) => (RETRY_TOPICS as readonly string[]).includes(d.topic) && topics[d.topic as TopicId].length === 0,
+  );
+  if (failures.length > 0) {
+    const cited = new Set(failures.map((f) => f.topic));
+    const relevant = sections.filter((s) => s.id.startsWith("10-K Item 1") || (cited.has("biggestRisks") && s.id.includes("1A")));
+    console.log(`Retrying ${[...cited].join(", ")} with ${relevant.map((s) => s.id).join(", ")}`);
+    const retry = checkExplanation(await ask(buildRetryPrompt(name, relevant, failures)), relevant);
+    for (const t of cited) {
+      const id = t as TopicId;
+      if (topics[id].length === 0 && retry.topics[id].length > 0) {
+        topics[id] = retry.topics[id];
+        console.log(`  ${id}: ${retry.topics[id].length} kept on retry`);
+      }
+    }
+    dropped.push(...retry.dropped.filter((d) => cited.has(d.topic)).map((d) => ({ ...d, reason: `retry: ${d.reason}` })));
+  }
   const saved: SavedExplanation = {
     ticker: company.ticker,
     generatedAt: new Date().toISOString(),

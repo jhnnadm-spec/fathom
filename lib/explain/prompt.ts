@@ -36,3 +36,29 @@ export function buildUserPrompt(companyName: string, sections: SourceSection[]):
   );
   return `Company: ${companyName}\nAllowed section names: ${sections.map((s) => `"${s.id}"`).join(", ")}\n\n${parts.join("\n\n")}`;
 }
+
+/** Topics worth a second try when every claim for them failed the checks. */
+export const RETRY_TOPICS = ["whatItDoes", "howItMakesMoney", "competitiveEdge", "biggestRisks"] as const;
+
+/**
+ * A second, smaller request: the AI sees only the sections it cited, is told which
+ * quotes failed and why, and tries again for just those topics.
+ */
+export function buildRetryPrompt(
+  companyName: string,
+  sections: SourceSection[],
+  failures: { topic: string; text: string; quote?: string; reason: string }[],
+): string {
+  const list = failures
+    .map((f) => `- Topic "${f.topic}": your claim "${f.text}" used the quote "${f.quote ?? ""}", which failed because: ${f.reason}.`)
+    .join("\n");
+  const topics = [...new Set(failures.map((f) => f.topic))];
+  return `${buildUserPrompt(companyName, sections)}
+
+Your previous answer had claims that failed the checks:
+${list}
+
+Try again for these topics only: ${topics.map((t) => `"${t}"`).join(", ")}.
+Find a sentence in the sections above that supports each claim, and copy one continuous passage of it EXACTLY as the quote.
+If no passage supports a claim, leave it out. Return the same JSON shape; topics not listed may be empty lists.`;
+}
