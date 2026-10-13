@@ -96,7 +96,19 @@ export function splitSections(text: string, form: string): Section[] {
     candidates.push({ id, part, item, title, line: i });
   }
 
-  // How much text follows each candidate before the next heading of any kind.
+  // Some companies repeat the heading at the top of every page ("PART II / Item 7").
+  // A run of the same heading in a row is one section, starting at the first one.
+  const groups: Candidate[] = [];
+  for (const c of candidates) {
+    const last = groups[groups.length - 1];
+    if (last && last.id === c.id) {
+      if (!last.title && c.title) last.title = c.title;
+      continue;
+    }
+    groups.push({ ...c });
+  }
+
+  // How much text follows each heading before the next different heading.
   const lineStarts: number[] = [];
   let offset = 0;
   for (const l of lines) {
@@ -104,29 +116,29 @@ export function splitSections(text: string, form: string): Section[] {
     offset += l.length + 1;
   }
   const followingChars = (idx: number) => {
-    const start = lineStarts[candidates[idx].line];
-    const end = idx + 1 < candidates.length ? lineStarts[candidates[idx + 1].line] : text.length;
+    const start = lineStarts[groups[idx].line];
+    const end = idx + 1 < groups.length ? lineStarts[groups[idx + 1].line] : text.length;
     return end - start;
   };
 
-  // For each section, keep the heading followed by the most text.
+  // Each heading appears in the table of contents and in the body.
+  // For each section, keep the one followed by the most text.
   const best = new Map<string, number>();
-  candidates.forEach((c, idx) => {
-    const current = best.get(c.id);
-    if (current === undefined || followingChars(idx) > followingChars(current)) best.set(c.id, idx);
+  groups.forEach((g, idx) => {
+    const current = best.get(g.id);
+    if (current === undefined || followingChars(idx) > followingChars(current)) best.set(g.id, idx);
   });
 
-  const chosen = [...best.values()].sort((a, b) => candidates[a].line - candidates[b].line);
+  const chosen = [...best.values()].sort((a, b) => groups[a].line - groups[b].line);
   return chosen.map((idx, n) => {
-    const c = candidates[idx];
-    const startLine = c.line;
-    const endLine = n + 1 < chosen.length ? candidates[chosen[n + 1]].line : lines.length;
+    const g = groups[idx];
+    const endLine = n + 1 < chosen.length ? groups[chosen[n + 1]].line : lines.length;
     return {
-      id: c.id,
-      part: c.part,
-      item: c.item,
-      title: c.title,
-      text: lines.slice(startLine, endLine).join("\n").trim(),
+      id: g.id,
+      part: g.part,
+      item: g.item,
+      title: g.title,
+      text: lines.slice(g.line, endLine).join("\n").trim(),
     };
   });
 }

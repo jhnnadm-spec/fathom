@@ -234,6 +234,28 @@ describe("filing sections", () => {
     expect(findSection(sections, "7")?.text).toContain("Net sales increased");
   });
 
+  it("treats headings repeated at the top of every page as one section", () => {
+    // Like Microsoft's reports: "PART II / Item 7" printed on each page of the section.
+    const html = `<body>
+      <p>Item 6. [Reserved]</p>
+      <p>PART II</p><p>Item 7</p>
+      <p>ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS</p>
+      <p>First page of the discussion.</p><p>41</p>
+      <p>PART II</p><p>Item 7</p>
+      <p>Second page of the discussion, which is longer than the first page by quite a bit.</p><p>42</p>
+      <p>PART II</p><p>Item 7A</p>
+      <p>ITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK</p>
+      <p>Market risk text.</p>
+    </body>`;
+    const sections = splitSections(htmlToText(html), "10-K");
+    expect(sections.map((s) => s.id)).toEqual(["6", "7", "7A"]);
+    const md = findSection(sections, "7")!;
+    expect(md.title).toBe("MANAGEMENT'S DISCUSSION AND ANALYSIS");
+    expect(md.text).toContain("First page");
+    expect(md.text).toContain("Second page");
+    expect(findSection(sections, "6")?.text).not.toContain("discussion");
+  });
+
   it("keeps Part I and Part II apart in quarterly reports", () => {
     const sections = splitSections(htmlToText(tenQ), "10-Q");
     expect(sections.map((s) => s.id)).toEqual(["I-1", "I-2", "II-1", "II-1A"]);
