@@ -1,0 +1,130 @@
+{
+  "ticker": "AAPL",
+  "generatedAt": "2026-10-13T13:19:00.260Z",
+  "model": "cloudflare:@cf/openai/gpt-oss-120b",
+  "sources": [
+    {
+      "id": "10-K Item 1",
+      "form": "10-K",
+      "filingDate": "2025-10-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+    },
+    {
+      "id": "10-K Item 1A",
+      "form": "10-K",
+      "filingDate": "2025-10-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+    },
+    {
+      "id": "10-K Item 7",
+      "form": "10-K",
+      "filingDate": "2025-10-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+    },
+    {
+      "id": "10-Q Part I Item 2",
+      "form": "10-Q",
+      "filingDate": "2026-07-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm"
+    },
+    {
+      "id": "10-Q Part II Item 1A",
+      "form": "10-Q",
+      "filingDate": "2026-07-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm"
+    }
+  ],
+  "topics": {
+    "whatItDoes": [
+      {
+        "text": "Apple designs, makes and sells smartphones, computers, tablets, wearables, accessories and related services.",
+        "quote": "The Company designs, manufactures and markets smartphones, personal computers, tablets, wearables and accessories, and sells a variety of related services.",
+        "source": {
+          "label": "10-K filed October 31, 2025 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm#:~:text=The%20Company%20designs%2C%20manufactures%20and%20markets%20smartphones%2C%20personal%20computers%2C%20tablets%2C",
+          "section": "10-K Item 1"
+        }
+      }
+    ],
+    "howItMakesMoney": [
+      {
+        "text": "It earns revenue from selling hardware and from fee‑based services such as AppleCare.",
+        "quote": "The Company offers a portfolio of fee‑based service and support products under the AppleCare® brand.",
+        "source": {
+          "label": "10-K filed October 31, 2025 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm#:~:text=The%20Company%20offers%20a%20portfolio%20of%20fee%E2%80%91based%20service%20and%20support",
+          "section": "10-K Item 1"
+        }
+      }
+    ],
+    "competitiveEdge": [
+      {
+        "text": "Apple says its edge comes from designing and developing almost the entire product solution, from hardware to software and services.",
+        "quote": "The Company designs and develops nearly the entire solution for its products, including the hardware, operating system, numerous software applications and related services.",
+        "source": {
+          "label": "10-K filed October 31, 2025 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm#:~:text=The%20Company%20designs%20and%20develops%20nearly%20the%20entire%20solution%20for",
+          "section": "10-K Item 1"
+        }
+      }
+    ],
+    "marketPosition": [],
+    "industryTrends": [],
+    "demandDrivers": [],
+    "biggestRisks": [
+      {
+        "text": "Reliance on single‑source components creates significant supply and pricing risk.",
+        "quote": "Because the Company currently obtains certain components from single or limited sources, the Company is subject to significant supply and pricing risks.",
+        "source": {
+          "label": "10-K filed October 31, 2025 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm#:~:text=Because%20the%20Company%20currently%20obtains%20certain%20components%20from%20single%20or",
+          "section": "10-K Item 1A"
+        }
+      },
+      {
+        "text": "Success depends on protecting its intellectual property against infringement.",
+        "quote": "The Company’s ability to compete successfully also depends on the effective protection and enforcement of its intellectual property rights.",
+        "source": {
+          "label": "10-K filed October 31, 2025 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm#:~:text=The%20Company%E2%80%99s%20ability%20to%20compete%20successfully%20also%20depends%20on%20the",
+          "section": "10-K Item 1A"
+        }
+      }
+    ],
+    "newRisks": [],
+    "outlook": [],
+    "upcoming": []
+  },
+  "dropped": [
+    {
+      "topic": "marketPosition",
+      "reason": "quote not found in report",
+      "text": "Apple states it holds only a minority share of the global smartphone, PC, tablet and wearables markets."
+    },
+    {
+      "topic": "industryTrends",
+      "reason": "quote not found in report",
+      "text": "The company notes ongoing supply constraints and rising component costs due to industry‑wide supply‑demand imbalances."
+    },
+    {
+      "topic": "demandDrivers",
+      "reason": "quote not found in report",
+      "text": "Service revenue growth is driven by higher sales of advertising, the App Store and cloud services."
+    },
+    {
+      "topic": "biggestRisks",
+      "reason": "quote not found in report",
+      "text": "Adverse macroeconomic conditions could reduce consumer confidence and spending."
+    },
+    {
+      "topic": "outlook",
+      "reason": "quote not found in report",
+      "text": "Apple expects its cash and marketable securities to cover cash needs and its capital return program for at least the next year."
+    },
+    {
+      "topic": "upcoming",
+      "reason": "number not in quote (3)",
+      "text": "In Q3 2026 Apple announced iOS 27, macOS 27 Golden Gate, iPadOS 27, watchOS 27, visionOS 27, tvOS 27 and introduced Siri AI."
+    }
+  ]
+}
