@@ -1,11 +1,12 @@
 /**
  * The numbers engine: picks the right figures from SEC data and works out
- * comparisons. Every figure keeps a link to the filing it came from.
+ * comparisons and ratios. Every figure keeps a link to the filing it came from.
  *
  * Rules that protect accuracy:
  *  - use the tag with the newest data, and only that tag for a comparison
  *  - leave a number out if it is stale compared with the company's latest report
  *  - compare a year with the previous year, and a quarter with the same quarter a year earlier
+ *  - only combine two numbers into a ratio when they cover exactly the same period or date
  */
 import { SEC_URLS } from "../sec/client";
 import { getSeries, type CompanyFacts, type PeriodKind, type SeriesPoint } from "../sec/facts";
@@ -38,13 +39,27 @@ export type Comparison = {
 
 export type Omission = { id: MetricId; period: PeriodKind; reason: "not-reported" | "stale" };
 
+/** A ratio worked out from two or more figures, with the figures kept for sources. */
+export type Ratio = { value: number; end: string; figures: Figure[] };
+
+export type YearMargins = { end: string; gross?: number; operating?: number; net?: number };
+
 export type CompanyNumbers = {
   asOf: string; // end of the latest period covered by the company's reports
   annual: Partial<Record<MetricId, Comparison>>;
   quarter: Partial<Record<MetricId, Comparison>>;
   balance: Partial<Record<MetricId, Comparison>>;
   margins: { gross?: number; operating?: number; net?: number; periodEnd?: string };
+  marginHistory: YearMargins[]; // oldest first
   revenueHistory: Figure[]; // up to 5 years, oldest first
+  ratios: {
+    freeCashFlow?: Ratio; // cash from operations minus spending on buildings and equipment (a $ amount)
+    currentRatio?: Ratio;
+    debtToEquity?: Ratio;
+    assetsToLiabilities?: Ratio;
+    returnOnEquity?: Ratio;
+  };
+  negativeEquity?: Figure; // when shareholders' equity is below zero, ratios using it are skipped
   omitted: Omission[];
 };
 
@@ -79,7 +94,7 @@ function toFigure(point: SeriesPoint, label: string, filings: CompanyFilings): F
 function chooseSeries(facts: CompanyFacts, def: MetricDefinition, kind: PeriodKind) {
   let best: { series: SeriesPoint[]; label: string } | undefined;
   for (const { tag, label } of def.tags) {
-    const series = getSeries(facts, [tag], kind);
+    const series = getSeries(facts, [tag], kind, def.unit ?? "USD");
     if (series.length === 0) continue;
     if (!best || series[0].end > best.series[0].end) best = { series, label };
   }
@@ -89,6 +104,11 @@ function chooseSeries(facts: CompanyFacts, def: MetricDefinition, kind: PeriodKi
 /** The point roughly one year before `end` (within 3 weeks), if there is one. */
 function yearEarlier(series: SeriesPoint[], end: string): SeriesPoint | undefined {
   return series.find((p) => Math.abs(days(p.end, end) - 365) <= 21);
+}
+
+/** The point on (or within a week of) a given date. */
+function onDate(series: SeriesPoint[], date: string): SeriesPoint | undefined {
+  return series.find((p) => Math.abs(days(p.end, date)) <= 7);
 }
 
 function compare(
@@ -129,6 +149,9 @@ export function latestPeriodEnd(filings: CompanyFilings): string | undefined {
     .at(-1);
 }
 
+const samePeriod = (a?: Figure, b?: Figure) => Boolean(a && b && a.start === b.start && a.end === b.end);
+const sameDate = (a?: Figure, b?: Figure) => Boolean(a && b && a.end === b.end);
+
 export function computeNumbers(facts: CompanyFacts, filings: CompanyFilings): CompanyNumbers {
   const asOf = latestPeriodEnd(filings) ?? new Date().toISOString().slice(0, 10);
   const omitted: Omission[] = [];
@@ -143,23 +166,24 @@ export function computeNumbers(facts: CompanyFacts, filings: CompanyFilings): Co
     } else {
       const a = compare(facts, filings, def.id, "annual", asOf, omitted);
       if (a) annual[def.id] = a;
-      const q = compare(facts, filings, def.id, "quarterly", asOf, omitted);
-      if (q) quarter[def.id] = q;
+      if (def.quarterly) {
+        const q = compare(facts, filings, def.id, "quarterly", asOf, omitted);
+        if (q) quarter[def.id] = q;
+      }
     }
   }
 
-  // Margins: only when both numbers cover exactly the same year.
+  // ---- Margins for the latest year: only when both numbers cover exactly the same year.
   const margins: CompanyNumbers["margins"] = {};
   const revenue = annual.revenue?.latest;
   if (revenue && revenue.value > 0) {
     margins.periodEnd = revenue.end;
-    const samePeriod = (f?: Figure) => f && f.start === revenue.start && f.end === revenue.end;
-    if (samePeriod(annual.grossProfit?.latest)) margins.gross = annual.grossProfit!.latest.value / revenue.value;
-    if (samePeriod(annual.operatingIncome?.latest)) margins.operating = annual.operatingIncome!.latest.value / revenue.value;
-    if (samePeriod(annual.netIncome?.latest)) margins.net = annual.netIncome!.latest.value / revenue.value;
+    if (samePeriod(annual.grossProfit?.latest, revenue)) margins.gross = annual.grossProfit!.latest.value / revenue.value;
+    if (samePeriod(annual.operatingIncome?.latest, revenue)) margins.operating = annual.operatingIncome!.latest.value / revenue.value;
+    if (samePeriod(annual.netIncome?.latest, revenue)) margins.net = annual.netIncome!.latest.value / revenue.value;
   }
 
-  // Revenue over up to five years, all from the same tag, oldest first.
+  // ---- Revenue over up to five years, all from the same tag, oldest first.
   const revenueHistory: Figure[] = [];
   const chosenRevenue = chooseSeries(facts, METRICS.revenue, "annual");
   if (chosenRevenue && annual.revenue) {
@@ -170,5 +194,70 @@ export function computeNumbers(facts: CompanyFacts, filings: CompanyFilings): Co
     }
   }
 
-  return { asOf, annual, quarter, balance, margins, revenueHistory, omitted };
+  // ---- Margins year by year, for the years we have revenue.
+  const seriesOf = (id: MetricId) => (annual[id] ? chooseSeries(facts, METRICS[id], "annual")?.series ?? [] : []);
+  const gross = seriesOf("grossProfit");
+  const operating = seriesOf("operatingIncome");
+  const net = seriesOf("netIncome");
+  const marginHistory: YearMargins[] = revenueHistory
+    .filter((r) => r.value > 0)
+    .map((r) => {
+      const match = (s: SeriesPoint[]) => s.find((p) => p.start === r.start && p.end === r.end);
+      const g = match(gross);
+      const o = match(operating);
+      const n = match(net);
+      return {
+        end: r.end,
+        gross: g ? g.value / r.value : undefined,
+        operating: o ? o.value / r.value : undefined,
+        net: n ? n.value / r.value : undefined,
+      };
+    });
+
+  // ---- Ratios
+  const ratios: CompanyNumbers["ratios"] = {};
+  const ocf = annual.operatingCashFlow?.latest;
+  const capex = annual.capex?.latest;
+  if (ocf && capex && samePeriod(ocf, capex)) {
+    ratios.freeCashFlow = { value: ocf.value - capex.value, end: ocf.end, figures: [ocf, capex] };
+  }
+
+  const ca = balance.currentAssets?.latest;
+  const cl = balance.currentLiabilities?.latest;
+  if (ca && cl && sameDate(ca, cl) && cl.value > 0) {
+    ratios.currentRatio = { value: ca.value / cl.value, end: ca.end, figures: [ca, cl] };
+  }
+
+  const assets = balance.assets?.latest;
+  const liabilities = balance.liabilities?.latest;
+  if (assets && liabilities && sameDate(assets, liabilities) && liabilities.value > 0) {
+    ratios.assetsToLiabilities = { value: assets.value / liabilities.value, end: assets.end, figures: [assets, liabilities] };
+  }
+
+  const equity = balance.equity?.latest;
+  let negativeEquity: Figure | undefined;
+  if (equity && equity.value <= 0) negativeEquity = equity;
+
+  const debt = balance.longTermDebt?.latest;
+  if (debt && equity && sameDate(debt, equity) && equity.value > 0) {
+    ratios.debtToEquity = { value: debt.value / equity.value, end: equity.end, figures: [debt, equity] };
+  }
+
+  // Return on equity: a year's profit divided by the average equity at the start and end of that year.
+  const ni = annual.netIncome?.latest;
+  const equitySeries = annual.netIncome && balance.equity ? chooseSeries(facts, METRICS.equity, "instant") : undefined;
+  if (ni && ni.start && equitySeries) {
+    const endPoint = onDate(equitySeries.series, ni.end);
+    const startPoint = onDate(equitySeries.series, new Date(Date.parse(ni.start) - DAY).toISOString().slice(0, 10));
+    if (endPoint && startPoint && endPoint.value > 0 && startPoint.value > 0) {
+      const average = (endPoint.value + startPoint.value) / 2;
+      ratios.returnOnEquity = {
+        value: ni.value / average,
+        end: ni.end,
+        figures: [ni, toFigure(endPoint, equitySeries.label, filings), toFigure(startPoint, equitySeries.label, filings)],
+      };
+    }
+  }
+
+  return { asOf, annual, quarter, balance, margins, marginHistory, revenueHistory, ratios, negativeEquity, omitted };
 }

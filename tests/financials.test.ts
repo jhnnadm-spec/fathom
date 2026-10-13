@@ -57,11 +57,14 @@ function quarterOf(endYear: number, val: number, accn = Q26): FactValue {
 function onDate(date: string, val: number, accn = Q26): FactValue {
   return { end: date, val, accn, form: "10-Q", filed: "2026-05-01" };
 }
-function tag(values: FactValue[]) {
-  return { units: { USD: values } };
+function tag(values: FactValue[], unit = "USD") {
+  return { units: { [unit]: values } };
+}
+function onYearEnd(endYear: number, val: number, accn = K25): FactValue {
+  return { end: `${endYear}-12-31`, val, accn, form: "10-K", filed: "2026-02-20" };
 }
 
-function makeFacts(overrides: Record<string, FactValue[]> = {}): CompanyFacts {
+function makeFacts(overrides: Record<string, FactValue[]> = {}, perShare?: FactValue[]): CompanyFacts {
   const base: Record<string, FactValue[]> = {
     Revenues: [year(2021, 60e9), year(2022, 70e9), year(2023, 80e9), year(2024, 100e9), year(2025, 108e9), quarterOf(2025, 25e9), quarterOf(2026, 24e9)],
     GrossProfit: [year(2025, 43.2e9)],
@@ -72,10 +75,19 @@ function makeFacts(overrides: Record<string, FactValue[]> = {}): CompanyFacts {
     LongTermDebtNoncurrent: [onDate("2024-03-29", 35e9, K25)],
     // ...and the newer tag the company uses now.
     LongTermDebt: [onDate("2026-03-31", 40e9)],
+    PaymentsToAcquirePropertyPlantAndEquipment: [year(2025, 8e9)],
+    PaymentsOfDividends: [year(2025, 4e9)],
+    PaymentsForRepurchaseOfCommonStock: [year(2025, 10e9)],
+    StockholdersEquity: [onYearEnd(2024, 50e9), onYearEnd(2025, 58e9), onDate("2026-03-31", 80e9)],
+    Assets: [onDate("2026-03-31", 200e9)],
+    Liabilities: [onDate("2026-03-31", 120e9)],
+    AssetsCurrent: [onDate("2026-03-31", 60e9)],
+    LiabilitiesCurrent: [onDate("2026-03-31", 48e9)],
     ...overrides,
   };
   const facts: CompanyFacts["facts"] = { "us-gaap": {} };
   for (const [name, values] of Object.entries(base)) facts["us-gaap"][name] = tag(values);
+  facts["us-gaap"].EarningsPerShareDiluted = tag(perShare ?? [year(2024, 5), year(2025, 6.25)], "USD/shares");
   return { cik: 1234, entityName: "Example Corp", facts };
 }
 
@@ -179,5 +191,63 @@ describe("plain-English sentences", () => {
   it("never uses buy, sell or hold language", () => {
     const advice = /\b(buy|sell|hold|price target|undervalued|overvalued|recommend)\b/i;
     for (const s of statements) expect(plainText(s.text)).not.toMatch(advice);
+  });
+});
+
+describe("financial health and cash flow", () => {
+  const numbers = computeNumbers(makeFacts(), filings);
+  const statements = buildStatements(numbers);
+  const text = (id: string) => plainText(statements.find((s) => s.id === id)!.text);
+
+  it("works out free cash flow from the same year's figures", () => {
+    expect(numbers.ratios.freeCashFlow?.value).toBe(22e9);
+    expect(text("free-cash-flow")).toContain("leaving $22 billion of free cash flow");
+    expect(text("fcf-vs-profit")).toContain("smaller than its net income ($27 billion)");
+  });
+
+  it("works out balance-sheet ratios only from figures on the same date", () => {
+    expect(numbers.ratios.currentRatio?.value).toBeCloseTo(1.25);
+    expect(numbers.ratios.assetsToLiabilities?.value).toBeCloseTo(200 / 120);
+    expect(numbers.ratios.debtToEquity?.value).toBeCloseTo(0.5);
+    expect(text("current-ratio")).toContain("about $1.25 for every $1 it owes soon, more than enough");
+    expect(text("debt-to-equity")).toContain("owed about $0.50 in long-term debt");
+  });
+
+  it("works out return on equity from the average equity over the year", () => {
+    // Profit 27bn, equity 50bn at the start of the year and 58bn at the end: 27 / 54 = 50%.
+    expect(numbers.ratios.returnOnEquity?.value).toBeCloseTo(0.5);
+    expect(text("return-on-equity")).toContain("about $50 of profit for every $100");
+  });
+
+  it("describes how the money was used, with per-share results", () => {
+    expect(text("capital-allocation")).toBe(
+      "In the year ended December 31, 2025, the company spent $10 billion buying back its own shares (buybacks), paid $4 billion in dividends to shareholders and invested $8 billion in buildings and equipment.",
+    );
+    expect(text("eps")).toBe("Earnings per share (diluted) rose 25% to $6.25 in the year ended December 31, 2025.");
+  });
+
+  it("describes the margin trend over the years", () => {
+    const withMargins = computeNumbers(
+      makeFacts({ GrossProfit: [year(2021, 24e9), year(2022, 28e9), year(2023, 32e9), year(2024, 40e9), year(2025, 43.2e9)] }),
+      filings,
+    );
+    expect(withMargins.marginHistory).toHaveLength(5);
+    const trend = buildStatements(withMargins).find((s) => s.id === "margin-trend")!;
+    expect(plainText(trend.text)).toBe("Over the 5 years to December 31, 2025, its gross margin stayed about the same, at 40%.");
+  });
+
+  it("skips equity ratios and explains why when equity is negative", () => {
+    const negative = computeNumbers(
+      makeFacts({ StockholdersEquity: [onYearEnd(2024, -5e9), onYearEnd(2025, -4e9), onDate("2026-03-31", -3e9)] }),
+      filings,
+    );
+    expect(negative.ratios.debtToEquity).toBeUndefined();
+    expect(negative.ratios.returnOnEquity).toBeUndefined();
+    const s = buildStatements(negative).find((x) => x.id === "negative-equity")!;
+    expect(plainText(s.text)).toContain("was below zero");
+  });
+
+  it("only uses glossary terms that exist, everywhere", () => {
+    for (const s of statements) for (const key of termsIn(s.text)) expect(lookupTerm(key), key).toBeDefined();
   });
 });

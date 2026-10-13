@@ -32,3 +32,18 @@ export function percentChange(current: number, previous: number): number | undef
   if (previous <= 0 || current < 0) return undefined;
   return (current - previous) / previous;
 }
+
+/** Per-share amounts keep cents: $7.46 */
+export function formatPerShare(value: number): string {
+  return `${value < 0 ? "-" : ""}$${Math.abs(value).toFixed(2)}`;
+}
+
+/** A share written as a percentage with one decimal: 46.9% */
+export function formatShare(fraction: number): string {
+  return `${(Math.round(fraction * 1000) / 10).toLocaleString("en-US", { maximumFractionDigits: 1 })}%`;
+}
+
+/** "about $1.35" for "for every $1" comparisons */
+export function formatPerDollar(ratio: number): string {
+  return `$${ratio.toFixed(2)}`;
+}

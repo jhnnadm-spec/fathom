@@ -12,6 +12,7 @@ import {
   latestFiling,
   loadFilings,
   recentAnnouncements,
+  type CompanyFilings,
   type Filing,
   type Support,
 } from "../sec/filings";
@@ -27,6 +28,12 @@ export type ReportFiling = {
 
 export type Announcement = { filingDate: string; events: string[]; url: string };
 
+/** Official notices that matter for trust in the accounts: auditor changes and restatements. */
+export type GovernanceCheck = {
+  since: string; // start of the period checked
+  events: { filingDate: string; kind: "auditor-change" | "restatement"; url: string }[];
+};
+
 export type CompanyReport = {
   company: {
     name: string;
@@ -41,6 +48,8 @@ export type CompanyReport = {
   numbers?: CompanyNumbers;
   statements: Statement[];
   announcements: Announcement[];
+  governance?: GovernanceCheck;
+  tradingViewSymbol: string; // e.g. "NASDAQ:AAPL", for the price chart and market data
   generatedAt: string;
 };
 
@@ -63,6 +72,29 @@ export function displayName(secName: string): string {
     .toLowerCase()
     .replace(/\b([a-z])/g, (c) => c.toUpperCase())
     .replace(/\b(Ii|Iii|Iv)\b/g, (r) => r.toUpperCase());
+}
+
+/** TradingView writes symbols as EXCHANGE:TICKER, with "." in share classes (BRK.B). */
+export function tradingViewSymbol(ticker: string, exchanges: string[]): string {
+  const symbol = ticker.replace(/-/g, ".");
+  const exchange = (exchanges[0] ?? "").toLowerCase();
+  const prefix = exchange.includes("nasdaq") ? "NASDAQ" : exchange.includes("nyse") ? (exchange.includes("american") || exchange.includes("mkt") ? "AMEX" : "NYSE") : exchange.includes("cboe") ? "CBOE" : "";
+  return prefix ? `${prefix}:${symbol}` : symbol;
+}
+
+function governanceCheck(filings: CompanyFilings, today = new Date()): GovernanceCheck {
+  // SEC's quick filing list may only reach back a year or so for busy filers,
+  // so the check only claims the period it actually covered.
+  const threeYearsAgo = new Date(today.getTime() - 3 * 365 * 86_400_000).toISOString().slice(0, 10);
+  const oldestListed = filings.filings.at(-1)?.filingDate ?? threeYearsAgo;
+  const since = oldestListed > threeYearsAgo ? oldestListed : threeYearsAgo;
+  const events: GovernanceCheck["events"] = [];
+  for (const f of filings.filings) {
+    if (!f.form.startsWith("8-K") || f.filingDate < since) continue;
+    if (f.items.includes("4.01")) events.push({ filingDate: f.filingDate, kind: "auditor-change", url: f.url });
+    if (f.items.includes("4.02")) events.push({ filingDate: f.filingDate, kind: "restatement", url: f.url });
+  }
+  return { since, events };
 }
 
 function toReportFiling(f: Filing | undefined): ReportFiling | undefined {
@@ -93,6 +125,7 @@ export async function getCompanyReport(ticker: string): Promise<CompanyReport | 
     support,
     statements: [],
     announcements: [],
+    tradingViewSymbol: tradingViewSymbol(ref.ticker, filings.exchanges),
     generatedAt: new Date().toISOString(),
   };
   if (!support.supported) return base;
@@ -110,5 +143,6 @@ export async function getCompanyReport(ticker: string): Promise<CompanyReport | 
       .map((f) => ({ filingDate: f.filingDate, events: describeAnnouncement(f.items), url: f.url }))
       .filter((a) => a.events.length > 0)
       .slice(0, 6),
+    governance: governanceCheck(filings),
   };
 }

@@ -62,5 +62,73 @@
   "risk-factors": {
     "term": "Risk factors",
     "definition": "The section of a report where the company lists the things that could hurt its business or its share price."
+  },
+  "operating-margin": {
+    "term": "Operating margin",
+    "definition": "The share of each dollar of sales left as profit from the main business, before interest and taxes."
+  },
+  "eps": {
+    "term": "Earnings per share (EPS)",
+    "definition": "The company's profit divided by the number of its shares. \"Diluted\" counts shares that could be created later, for example from employee stock awards."
+  },
+  "free-cash-flow": {
+    "term": "Free cash flow",
+    "definition": "The cash the business brought in, minus what it spent on buildings, equipment and other long-term investments. It shows how much spare cash the company produced."
+  },
+  "capital-expenditure": {
+    "term": "Capital spending",
+    "definition": "Money spent on long-lasting things like factories, stores, data centres and equipment. Also called capital expenditure or capex."
+  },
+  "current-ratio": {
+    "term": "Current ratio",
+    "definition": "Short-term assets (cash and things expected to turn into cash within a year) divided by bills due within a year. Above 1 means it has more than enough to cover them."
+  },
+  "debt-to-equity": {
+    "term": "Debt-to-equity ratio",
+    "definition": "How much the company has borrowed compared with the money that belongs to its shareholders. Higher means it relies more on borrowing."
+  },
+  "shareholders-equity": {
+    "term": "Shareholders' equity",
+    "definition": "What would be left for shareholders if the company sold everything it owns and paid off everything it owes, based on its accounts."
+  },
+  "return-on-equity": {
+    "term": "Return on equity (ROE)",
+    "definition": "A year's profit divided by shareholders' equity. It shows how much profit the company made with the money that belongs to its shareholders."
+  },
+  "assets": {
+    "term": "Assets",
+    "definition": "Everything the company owns that has value: cash, buildings, equipment, money owed to it, and more."
+  },
+  "total-liabilities": {
+    "term": "Total liabilities",
+    "definition": "Everything the company owes: loans, bonds, bills to suppliers, taxes due, and other obligations."
+  },
+  "share-buyback": {
+    "term": "Share buyback",
+    "definition": "When a company buys its own shares from the market. It leaves fewer shares, so each remaining share owns a bigger slice of the company."
+  },
+  "dividend": {
+    "term": "Dividend",
+    "definition": "Cash a company pays out to its shareholders, usually every quarter, from its profits."
+  },
+  "auditor": {
+    "term": "Auditor",
+    "definition": "An independent accounting firm that checks a company's financial statements every year and says whether they are fairly presented."
+  },
+  "restatement": {
+    "term": "Restatement notice",
+    "definition": "A filing where a company says financial statements it published earlier contained errors and should no longer be relied on."
+  },
+  "pe-ratio": {
+    "term": "P/E ratio (price-to-earnings)",
+    "definition": "The share price divided by earnings per share. It shows how many dollars investors are paying for each dollar of yearly profit. It describes the price; it doesn't say whether the price is right."
+  },
+  "market-cap": {
+    "term": "Market value (market cap)",
+    "definition": "The share price multiplied by the number of shares: what the whole company is worth on the stock market at that moment."
+  },
+  "share-price": {
+    "term": "Share price",
+    "definition": "What one share of the company costs on the stock market. It moves every trading day as people buy and sell."
   }
 }

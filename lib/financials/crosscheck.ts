@@ -15,5 +15,7 @@ export function figureAppearsInText(figure: Figure, text: string): boolean {
   // Some filings print one decimal in millions, e.g. 1,234.5
   const oneDecimal = abs / 1e5;
   if (Number.isInteger(oneDecimal)) forms.add((abs / 1e6).toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 }));
+  // Per-share amounts are printed with cents, e.g. 7.46
+  if (!Number.isInteger(abs)) forms.add(abs.toFixed(2));
   return [...forms].some((f) => new RegExp(`(^|[^\\d,.])${f.replace(/[.,]/g, "\\$&")}($|[^\\d,])`).test(text));
 }

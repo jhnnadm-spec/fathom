@@ -9,69 +9,112 @@
  * different things (debt "due after 12 months" versus debt "including the part
  * due within 12 months"). We always say exactly what the number is.
  */
-import type { PeriodKind } from "../sec/facts";
 
 export type MetricId =
   | "revenue"
   | "grossProfit"
   | "operatingIncome"
   | "netIncome"
+  | "eps"
   | "operatingCashFlow"
+  | "capex"
+  | "dividends"
+  | "buybacks"
+  | "acquisitions"
   | "cash"
-  | "longTermDebt";
+  | "longTermDebt"
+  | "equity"
+  | "assets"
+  | "liabilities"
+  | "currentAssets"
+  | "currentLiabilities";
 
 export type MetricDefinition = {
   id: MetricId;
   kind: "duration" | "instant"; // over a period (sales) or on a date (cash)
+  unit?: string; // SEC unit, "USD" unless stated
+  quarterly?: boolean; // also compare quarters (duration metrics only)
   tags: { tag: string; label: string }[];
 };
 
+const usd = (tag: string, label: string) => ({ tag, label });
+
 export const METRICS: Record<MetricId, MetricDefinition> = {
+  // ---- Income statement
   revenue: {
     id: "revenue",
     kind: "duration",
+    quarterly: true,
     tags: [
-      { tag: "RevenueFromContractWithCustomerExcludingAssessedTax", label: "revenue" },
-      { tag: "Revenues", label: "revenue" },
-      { tag: "RevenueFromContractWithCustomerIncludingAssessedTax", label: "revenue" },
-      { tag: "SalesRevenueNet", label: "revenue" },
+      usd("RevenueFromContractWithCustomerExcludingAssessedTax", "revenue"),
+      usd("Revenues", "revenue"),
+      usd("RevenueFromContractWithCustomerIncludingAssessedTax", "revenue"),
+      usd("SalesRevenueNet", "revenue"),
     ],
   },
-  grossProfit: {
-    id: "grossProfit",
+  grossProfit: { id: "grossProfit", kind: "duration", tags: [usd("GrossProfit", "gross profit")] },
+  operatingIncome: { id: "operatingIncome", kind: "duration", tags: [usd("OperatingIncomeLoss", "operating income")] },
+  netIncome: { id: "netIncome", kind: "duration", quarterly: true, tags: [usd("NetIncomeLoss", "net income")] },
+  eps: {
+    id: "eps",
     kind: "duration",
-    tags: [{ tag: "GrossProfit", label: "gross profit" }],
+    unit: "USD/shares",
+    tags: [
+      usd("EarningsPerShareDiluted", "diluted earnings per share"),
+      usd("EarningsPerShareBasic", "basic earnings per share"),
+    ],
   },
-  operatingIncome: {
-    id: "operatingIncome",
-    kind: "duration",
-    tags: [{ tag: "OperatingIncomeLoss", label: "operating income" }],
-  },
-  netIncome: {
-    id: "netIncome",
-    kind: "duration",
-    tags: [{ tag: "NetIncomeLoss", label: "net income" }],
-  },
+
+  // ---- Cash flow statement
   operatingCashFlow: {
     id: "operatingCashFlow",
     kind: "duration",
-    tags: [{ tag: "NetCashProvidedByUsedInOperatingActivities", label: "cash from operations" }],
+    tags: [usd("NetCashProvidedByUsedInOperatingActivities", "cash from operations")],
   },
-  cash: {
-    id: "cash",
-    kind: "instant",
-    tags: [{ tag: "CashAndCashEquivalentsAtCarryingValue", label: "cash and cash equivalents" }],
+  capex: {
+    id: "capex",
+    kind: "duration",
+    tags: [
+      usd("PaymentsToAcquirePropertyPlantAndEquipment", "spending on buildings and equipment"),
+      usd("PaymentsToAcquireProductiveAssets", "spending on buildings, equipment and other long-term assets"),
+    ],
   },
+  dividends: {
+    id: "dividends",
+    kind: "duration",
+    tags: [usd("PaymentsOfDividends", "dividends paid"), usd("PaymentsOfDividendsCommonStock", "dividends paid")],
+  },
+  buybacks: {
+    id: "buybacks",
+    kind: "duration",
+    tags: [usd("PaymentsForRepurchaseOfCommonStock", "share buybacks")],
+  },
+  acquisitions: {
+    id: "acquisitions",
+    kind: "duration",
+    tags: [usd("PaymentsToAcquireBusinessesNetOfCashAcquired", "buying other businesses")],
+  },
+
+  // ---- Balance sheet
+  cash: { id: "cash", kind: "instant", tags: [usd("CashAndCashEquivalentsAtCarryingValue", "cash and cash equivalents")] },
   longTermDebt: {
     id: "longTermDebt",
     kind: "instant",
     tags: [
-      { tag: "LongTermDebtNoncurrent", label: "long-term debt due after the next 12 months" },
-      { tag: "LongTermDebt", label: "long-term debt, including the part due within 12 months" },
+      usd("LongTermDebtNoncurrent", "long-term debt due after the next 12 months"),
+      usd("LongTermDebt", "long-term debt, including the part due within 12 months"),
     ],
   },
+  equity: {
+    id: "equity",
+    kind: "instant",
+    tags: [
+      usd("StockholdersEquity", "shareholders' equity"),
+      usd("StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest", "total equity"),
+    ],
+  },
+  assets: { id: "assets", kind: "instant", tags: [usd("Assets", "total assets")] },
+  liabilities: { id: "liabilities", kind: "instant", tags: [usd("Liabilities", "total liabilities")] },
+  currentAssets: { id: "currentAssets", kind: "instant", tags: [usd("AssetsCurrent", "current assets")] },
+  currentLiabilities: { id: "currentLiabilities", kind: "instant", tags: [usd("LiabilitiesCurrent", "current liabilities")] },
 };
-
-export function periodKinds(def: MetricDefinition): PeriodKind[] {
-  return def.kind === "instant" ? ["instant"] : ["annual", "quarterly"];
-}
