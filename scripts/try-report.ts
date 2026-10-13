@@ -11,8 +11,11 @@
  */
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { figureAppearsInText } from "../lib/financials/crosscheck";
+import { computeNumbers, type Figure } from "../lib/financials/metrics";
+import { buildStatements, plainText } from "../lib/financials/templates";
 import { describeAnnouncement } from "../lib/sec/events";
-import { getSeries, loadCompanyFacts } from "../lib/sec/facts";
+import { loadCompanyFacts } from "../lib/sec/facts";
 import {
   checkSupport,
   latestFiling,
@@ -23,14 +26,6 @@ import {
 } from "../lib/sec/filings";
 import { loadSections } from "../lib/sec/sections";
 import { findCompanies, loadTickers } from "../lib/sec/tickers";
-
-// A first list of tags to look at. The numbers step decides the final choice per company.
-const CHECKS = {
-  revenue: ["RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues", "SalesRevenueNet"],
-  netIncome: ["NetIncomeLoss"],
-  cash: ["CashAndCashEquivalentsAtCarryingValue"],
-  longTermDebt: ["LongTermDebtNoncurrent", "LongTermDebt"],
-};
 
 async function run(query: string) {
   const all = await loadTickers();
@@ -52,8 +47,10 @@ async function run(query: string) {
   await mkdir(path.join(outDir, "sections"), { recursive: true });
 
   const reports: Record<string, unknown>[] = [];
+  const filingText = new Map<string, string>(); // filing address -> its text
   for (const filing of [tenK, tenQ].filter((f): f is Filing => Boolean(f))) {
     const { text, sections } = await loadSections(filing.url, filing.form);
+    filingText.set(filing.url, text);
     console.log(`${filing.form} filed ${filing.filingDate}: ${text.length.toLocaleString()} characters, ${sections.length} sections`);
     for (const s of sections) {
       const file = `${filing.form}_${s.id}.txt`.replace(/[^\w.-]/g, "_");
@@ -79,14 +76,25 @@ async function run(query: string) {
   console.log(`8-K announcements in the last 120 days: ${announcements.length}`);
 
   const facts = await loadCompanyFacts(company.cik);
-  const numbers: Record<string, unknown> = {};
-  for (const [name, tags] of Object.entries(CHECKS)) {
-    const kind = name === "cash" || name === "longTermDebt" ? "instant" : "annual";
-    const series = getSeries(facts, tags, kind).slice(0, 3);
-    numbers[name] = series;
-    const latest = series[0];
-    console.log(`  ${name.padEnd(13)} ${latest ? `${latest.value.toLocaleString()} ${latest.unit} at ${latest.end} (${latest.concept}, ${latest.form})` : "not found"}`);
+  const numbers = computeNumbers(facts, filings);
+  const statements = buildStatements(numbers);
+  console.log(`Numbers as of ${numbers.asOf}:`);
+  for (const st of statements) console.log(`  [${st.section}] ${plainText(st.text)}`);
+  if (numbers.omitted.length) {
+    console.log(`  Left out: ${numbers.omitted.map((o) => `${o.id}/${o.period} (${o.reason})`).join(", ")}`);
   }
+
+  // Safety check: each figure should appear in the text of the filing it came from.
+  const figures: Figure[] = [];
+  for (const group of [numbers.annual, numbers.quarter, numbers.balance]) {
+    for (const c of Object.values(group)) if (c) figures.push(c.latest, ...(c.previous ? [c.previous] : []));
+  }
+  const checks = figures
+    .filter((f) => filingText.has(f.source.url))
+    .map((f) => ({ tag: f.tag, end: f.end, value: f.value, filing: f.source.label, found: figureAppearsInText(f, filingText.get(f.source.url)!) }));
+  const missing = checks.filter((c) => !c.found);
+  console.log(`  Cross-check: ${checks.length - missing.length} of ${checks.length} figures found in the filing text`);
+  for (const m of missing) console.log(`    NOT FOUND: ${m.tag} ${m.end} ${m.value} (${m.filing})`);
 
   await writeFile(
     path.join(outDir, "summary.json"),
@@ -96,6 +104,8 @@ async function run(query: string) {
         reports,
         announcements,
         numbers,
+        statements,
+        crossCheck: checks,
         fetchedAt: new Date().toISOString(),
       },
       null,

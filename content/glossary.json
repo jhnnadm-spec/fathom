@@ -1,0 +1,66 @@
+{
+  "revenue": {
+    "term": "Revenue",
+    "definition": "All the money a company takes in from selling its products and services, before paying any costs. Also called sales."
+  },
+  "net-income": {
+    "term": "Net income",
+    "definition": "The profit left after paying every cost, including wages, interest and taxes. Often called the bottom line."
+  },
+  "net-loss": {
+    "term": "Net loss",
+    "definition": "When a company's costs, including interest and taxes, add up to more than it earned during the period."
+  },
+  "gross-margin": {
+    "term": "Gross margin",
+    "definition": "The share of each dollar of sales left after paying the direct cost of making or buying what was sold. Higher means more is left for everything else."
+  },
+  "profit-margin": {
+    "term": "Profit margin",
+    "definition": "The share of each dollar of sales left as profit after all costs and taxes."
+  },
+  "operating-income": {
+    "term": "Operating income",
+    "definition": "Profit from the company's main business, before interest and taxes."
+  },
+  "cash-from-operations": {
+    "term": "Cash from operations",
+    "definition": "The cash the company's everyday business actually brought in during the period. It can differ from profit because of timing, such as customers paying later."
+  },
+  "cash-and-equivalents": {
+    "term": "Cash and cash equivalents",
+    "definition": "Money in the bank plus very safe investments that can be turned into cash almost immediately."
+  },
+  "long-term-debt": {
+    "term": "Long-term debt",
+    "definition": "Money the company has borrowed and must pay back over more than a year, such as bonds and bank loans."
+  },
+  "quarter": {
+    "term": "Quarter",
+    "definition": "A three-month period. US public companies report their results every quarter."
+  },
+  "fiscal-year": {
+    "term": "Fiscal year",
+    "definition": "The 12-month period a company uses for its accounts. It doesn't have to match the calendar year; Apple's ends in late September, for example."
+  },
+  "10-k": {
+    "term": "10-K (annual report)",
+    "definition": "The detailed yearly report US public companies must file with the SEC. It covers the business, its risks and audited financial statements."
+  },
+  "10-q": {
+    "term": "10-Q (quarterly report)",
+    "definition": "The report US public companies file with the SEC for each of the first three quarters of their year. It is shorter than the annual report and not fully audited."
+  },
+  "8-k": {
+    "term": "8-K (announcement)",
+    "definition": "A filing companies make with the SEC within days of a major event, such as results, a new chief executive or a big acquisition."
+  },
+  "sec": {
+    "term": "SEC",
+    "definition": "The US Securities and Exchange Commission, the government agency that oversees stock markets and collects company filings."
+  },
+  "risk-factors": {
+    "term": "Risk factors",
+    "definition": "The section of a report where the company lists the things that could hurt its business or its share price."
+  }
+}
