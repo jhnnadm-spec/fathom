@@ -41,7 +41,10 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_MODEL: ${{ inputs.model }}
           TICKERS: ${{ inputs.tickers }}
-        run: npx tsx scripts/explain.ts $TICKERS
+        run: |
+          mkdir -p run-log
+          npx tsx scripts/explain.ts $TICKERS 2>&1 | tee run-log/explain.txt
+          exit ${PIPESTATUS[0]}
       - name: Save the explanations into the project
         if: always()
         env:
@@ -54,3 +57,14 @@ jobs:
           git commit -q -m "Add explanations for: $TICKERS"
           git pull --rebase -q origin main
           git push origin HEAD:main
+      - name: Publish the run log to the explain-log branch
+        if: always()
+        run: |
+          [ -f run-log/explain.txt ] || exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q --orphan explain-log
+          git rm -rq --cached . > /dev/null
+          git add -f run-log vercel.json
+          git commit -q -m "Explain run log"
+          git push -fq origin explain-log
