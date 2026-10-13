@@ -7,13 +7,13 @@ export function SearchForm({ size = "large", autoFocus = false }: { size?: "larg
       method="get"
       role="search"
       className={`flex w-full flex-wrap gap-2.5 rounded-2xl border border-[#CFE2EA] bg-white ${
-        large ? "max-w-2xl p-2 shadow-[0_12px_32px_rgba(11,79,108,0.10)]" : "max-w-sm p-1"
+        large ? "max-w-2xl p-2 shadow-[0_12px_32px_rgba(11,79,108,0.10)]" : "min-w-0 flex-1 p-1 sm:w-72 sm:flex-none"
       }`}
     >
       <label htmlFor={`q-${size}`} className="sr-only">
         Company name or ticker
       </label>
-      <div className="flex flex-[1_1_220px] items-center gap-2.5 px-3">
+      <div className={`flex items-center gap-2.5 px-3 ${large ? "flex-[1_1_220px]" : "min-w-0 flex-1"}`}>
         <svg width={large ? 22 : 18} height={large ? 22 : 18} viewBox="0 0 24 24" fill="none" stroke="#4A6573" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
           <circle cx="11" cy="11" r="7" />
           <line x1="16.5" y1="16.5" x2="21" y2="21" />

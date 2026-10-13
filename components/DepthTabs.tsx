@@ -32,7 +32,7 @@ export function DepthTabs({ panels }: { panels: DepthPanel[] }) {
               aria-selected={on}
               aria-controls={`panel-${p.id}`}
               onClick={() => setActive(p.id)}
-              className={`flex min-h-11 items-center gap-2 rounded-xl px-4 py-2.5 text-[15px] font-semibold transition-colors ${
+              className={`flex min-h-11 items-center gap-2 rounded-xl px-3.5 py-2.5 sm:px-4 text-[15px] font-semibold transition-colors ${
                 on ? "bg-ocean text-white" : "text-ink hover:bg-mist"
               }`}
             >
@@ -42,7 +42,7 @@ export function DepthTabs({ panels }: { panels: DepthPanel[] }) {
                 style={{ background: p.color }}
               />
               {p.label}
-              <span className="text-[13px] font-medium opacity-80">{p.hint}</span>
+              <span className="hidden text-[13px] font-medium opacity-80 sm:inline">{p.hint}</span>
             </button>
           );
         })}

@@ -121,8 +121,8 @@ function BigChange({ c, noun }: { c?: Comparison; noun: string }) {
   if (!c || c.change === undefined) return null;
   const word = Math.abs(c.change) < 0.005 ? "flat" : c.change > 0 ? "up" : "down";
   return (
-    <div className="flex items-baseline gap-2.5">
-      <span className="font-display text-4xl font-bold text-ocean">
+    <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+      <span className="font-display text-3xl font-bold text-ocean sm:text-4xl">
         {word === "flat" ? "About the same" : `${word === "up" ? "Up" : "Down"} ${formatPercent(c.change)}`}
       </span>
       <span className="text-[15px] text-muted">{noun} vs the year before</span>
@@ -223,7 +223,7 @@ function ChangeRow({ name, c, period }: { name: string; c?: Comparison; period: 
       <th scope="row" className="py-3 pr-4 text-left font-medium">
         {name}
         <span className="block text-[13px] font-normal text-muted">
-          {period} ended {formatDate(c.latest.end)}
+          {period === "On" ? `On ${formatDate(c.latest.end)}` : `${period} ended ${formatDate(c.latest.end)}`}
         </span>
       </th>
       <td className="py-3 pr-4 text-right tabular-nums">{formatMoney(c.latest.value)}</td>
@@ -254,8 +254,8 @@ function Deep({ report }: { report: CompanyReport }) {
               <ChangeRow name="Net income" c={n?.annual.netIncome} period="Year" />
               <ChangeRow name="Net income" c={n?.quarter.netIncome} period="Quarter" />
               <ChangeRow name="Cash from operations" c={n?.annual.operatingCashFlow} period="Year" />
-              <ChangeRow name="Cash" c={n?.balance.cash} period="Balance on date" />
-              <ChangeRow name="Long-term debt" c={n?.balance.longTermDebt} period="Balance on date" />
+              <ChangeRow name="Cash" c={n?.balance.cash} period="On" />
+              <ChangeRow name="Long-term debt" c={n?.balance.longTermDebt} period="On" />
             </tbody>
           </table>
         </div>

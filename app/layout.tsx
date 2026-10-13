@@ -28,9 +28,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Link href="/" className="no-underline" aria-label="Fathom home">
               <Logo />
             </Link>
-            <div className="flex flex-[0_1_420px] flex-wrap items-center justify-end gap-2">
+            <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:flex-none">
               <SearchForm size="small" />
-              <nav className="flex gap-2 text-[15px] font-medium">
+              <nav className="flex flex-none gap-2 text-[15px] font-medium">
                 <Link href="/about" className="px-3 py-3 no-underline">
                   About
                 </Link>
