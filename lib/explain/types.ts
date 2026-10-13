@@ -61,7 +61,7 @@ export type SavedExplanation = {
   model: string;
   sources: { id: string; form: string; filingDate: string; url: string }[];
   topics: Record<TopicId, CheckedClaim[]>;
-  dropped: { topic: string; reason: string; text: string }[]; // claims that failed the checks, kept for review
+  dropped: { topic: string; reason: string; text: string; quote?: string }[]; // claims that failed the checks, kept for review
 };
 
 /** The longest each topic may be, so pages stay readable. */

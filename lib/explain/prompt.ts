@@ -10,7 +10,9 @@ You will be given sections of a company's official SEC reports. Using ONLY those
 Rules:
 - Write in plain, friendly, professional English. No jargon; if a finance word is unavoidable, explain it in the same sentence. No hype, no slang.
 - Each claim is one or two short sentences (under 40 words) in your own words.
-- Every claim must include "section" (exactly one of the section names given) and "quote": a phrase of 8 to 30 words copied EXACTLY, character for character, from that section, that supports the claim.
+- Every claim must include "section" (exactly one of the section names given) and "quote": one continuous passage of 8 to 30 words copied EXACTLY, character for character, from that section. Copy it; do not shorten, reword or join separate sentences.
+- The quote must directly support EVERYTHING the claim says. If part of the claim is not in the quote, remove that part.
+- Aim for 2 or 3 claims per topic when the report supports them, each with its own quote.
 - Only state what the report says. Do not add facts from your own knowledge. If the report does not cover a topic, return an empty list for it.
 - Do not write any number unless the same number appears in your quote.
 - For "competitiveEdge" and "marketPosition", describe what the COMPANY says about itself, e.g. "The company says...". Do not give your own opinion.

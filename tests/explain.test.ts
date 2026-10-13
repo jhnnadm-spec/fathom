@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { checkClaim, checkExplanation, extractJson, highlightLink, normalise } from "@/lib/explain/check";
+import { checkClaim, checkExplanation, extractJson, highlightLink, locateQuote, normalise } from "@/lib/explain/check";
 import { readReply } from "@/lib/explain/provider";
 import { trimAtParagraph } from "@/lib/explain/sources";
 import type { SourceSection } from "@/lib/explain/types";
@@ -104,7 +104,9 @@ describe("checking a whole AI answer", () => {
     expect(topics.whatItDoes).toHaveLength(1);
     expect(topics.biggestRisks).toHaveLength(1);
     expect(topics.outlook).toEqual([]);
-    expect(dropped).toEqual([{ topic: "whatItDoes", reason: "quote not found in report", text: good.text }]);
+    expect(dropped).toEqual([
+      { topic: "whatItDoes", reason: "quote not found in report", text: good.text, quote: "made up words that are not anywhere in the report" },
+    ]);
   });
 
   it("refuses an answer in the wrong shape", () => {
@@ -143,5 +145,40 @@ describe("helpers", () => {
     expect(highlightLink("https://x.test/doc.htm", "fiscal year is the 52- or 53-week period")).toBe(
       "https://x.test/doc.htm#:~:text=fiscal%20year%20is%20the%2052%2D%20or%2053%2Dweek%20period",
     );
+  });
+});
+
+describe("repairing almost-exact quotes", () => {
+  const text = sections[1].text;
+
+  it("returns the report's real words when the quote differs by one word", () => {
+    const repaired = locateQuote(text, "The Company depends on component and product manufacturing and logistics services provided by outsourcing partners");
+    expect(repaired).toBe("The Company depends on component and product manufacturing and logistical services provided by outsourcing partners");
+  });
+
+  it("returns the real words when the quote drops a word", () => {
+    expect(locateQuote(text, "depends on component and product manufacturing and logistical services provided by partners, many of which")).toBe(
+      "depends on component and product manufacturing and logistical services provided by outsourcing partners, many of which",
+    );
+  });
+
+  it("refuses a quote that only shares some words", () => {
+    expect(locateQuote(text, "The Company depends on its own factories and logistics teams located inside the U.S.")).toBeUndefined();
+  });
+
+  it("refuses short quotes it can't match exactly", () => {
+    expect(locateQuote(text, "Company relies on outsourcing partners")).toBeUndefined();
+  });
+
+  it("uses the repaired quote in a checked claim", () => {
+    const r = checkClaim(
+      {
+        text: "It relies on outside partners to make and ship its products.",
+        section: "10-K Item 1A",
+        quote: "The Company depends on component and product manufacturing and logistics services provided by outsourcing partners",
+      },
+      sections,
+    );
+    expect(r.ok && r.claim.quote).toContain("logistical services");
   });
 });
