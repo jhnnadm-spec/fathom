@@ -1,0 +1,24 @@
+Share Sales and Buybacks
+Source: https://www.sec.gov/Archives/edgar/data/21344/000162828026050503/ko-20260703.htm
+
+Item 2. Unregistered Sales of Equity Securities and Use of Proceeds
+The following table presents information with respect to purchases of common stock of the Company made during the three months ended July 3, 2026 by the Company or any “affiliated purchaser” of the Company as defined in Rule 10b-18(a)(3) under the Exchange Act:
+
+Period Total Number of Shares Purchased1
+Average
+Price Paid
+Per Share Total Number of
+Shares Purchased as Part of the Publicly
+Announced Plan2
+Maximum Number
+of Shares That May
+Yet Be Purchased
+Under the Publicly
+Announced Plan
+April 4, 2026 through May 1, 2026 1,093,205 $ 76.63 1,085,577 60,981,263
+May 2, 2026 through May 29, 2026 528,481 79.95 525,800 60,455,463
+May 30, 2026 through July 3, 2026 772,808 80.23 770,349 59,685,114
+Total 2,394,494 $ 78.53 2,381,726
+
+1The total number of shares purchased includes: (1) shares purchased, if any, pursuant to the plan described in footnote 2 below and (2) shares surrendered, if any, to the Company to pay the exercise price and/or to satisfy tax withholding obligations in connection with stock swap exercises of employee stock options and/or the vesting of restricted stock issued to employees.
+2In February 2019, the Company publicly announced that our Board of Directors had authorized a plan (“2019 Plan”) for the Company to purchase up to 150 million shares of our common stock. This column discloses the number of shares purchased, if any, pursuant to the 2019 Plan during the indicated time periods (including shares purchased pursuant to the terms of preset trading plans meeting the requirements of Rule 10b5-1 under the Exchange Act).

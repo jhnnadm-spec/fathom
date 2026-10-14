@@ -1,0 +1,42 @@
+[
+  {
+    "id": "short-rate",
+    "value": 4.26,
+    "yearAgo": 4.02,
+    "date": "2026-10-13",
+    "source": {
+      "name": "US Treasury",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
+    }
+  },
+  {
+    "id": "long-rate",
+    "value": 5.21,
+    "yearAgo": 4.05,
+    "date": "2026-10-13",
+    "source": {
+      "name": "US Treasury",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
+    }
+  },
+  {
+    "id": "inflation",
+    "value": 3.4,
+    "yearAgo": 2.9,
+    "date": "2026-08-01",
+    "source": {
+      "name": "US Bureau of Labor Statistics",
+      "url": "https://data.bls.gov/timeseries/CUUR0000SA0"
+    }
+  },
+  {
+    "id": "unemployment",
+    "value": 4.2,
+    "yearAgo": 4.4,
+    "date": "2026-09-01",
+    "source": {
+      "name": "US Bureau of Labor Statistics",
+      "url": "https://data.bls.gov/timeseries/LNS14000000"
+    }
+  }
+]

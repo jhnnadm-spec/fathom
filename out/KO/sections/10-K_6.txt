@@ -1,0 +1,60 @@
+[Reserved]
+Source: https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm
+
+Item 6.
+Reserved
+35
+
+Item 7.
+Management’s Discussion and Analysis of Financial Condition and Results of Operations
+35
+
+Item 7A.
+Quantitative and Qualitative Disclosures About Market Risk
+58
+
+Item 8.
+Financial Statements and Supplementary Data
+60
+
+Item 9.
+Changes in and Disagreements with Accountants on Accounting and Financial Disclosure
+124
+
+Item 9A.
+Controls and Procedures
+124
+
+Item 9B.
+Other Information
+124
+
+Item 9C.
+Disclosure Regarding Foreign Jurisdictions That Prevent Inspections
+124
+
+Part III
+Item 10.
+Directors, Executive Officers and Corporate Governance
+124
+
+Item 11.
+Executive Compensation
+124
+
+Item 12.
+Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters
+124
+
+Item 13.
+Certain Relationships and Related Transactions, and Director Independence
+124
+
+Item 14.
+Principal Accountant Fees and Services
+125
+
+Part IV
+Item 15.
+Exhibits and Financial Statement Schedules
+125
