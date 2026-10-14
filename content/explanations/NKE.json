@@ -1,6 +1,6 @@
 {
   "ticker": "NKE",
-  "generatedAt": "2026-10-13T13:26:03.452Z",
+  "generatedAt": "2026-10-14T00:22:58.300Z",
   "model": "cloudflare:@cf/openai/gpt-oss-120b",
   "sources": [
     {
@@ -44,21 +44,40 @@
           "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm#:~:text=Our%20principal%20business%20activity%20is%20the%20design%2C%20development%20and%20worldwide",
           "section": "10-K Item 1"
         }
+      }
+    ],
+    "howItMakesMoney": [
+      {
+        "text": "NIKE Brand wholesale generated $27.5 billion in fiscal 2026.",
+        "quote": "NIKE Brand wholesale revenues were $27.5 billion in fiscal 2026 compared to $25.9 billion in fiscal 2025.",
+        "source": {
+          "label": "10-K filed July 15, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm#:~:text=NIKE%20Brand%20wholesale%20revenues%20were%20%2427.5%20billion%20in%20fiscal%202026",
+          "section": "10-K Item 7"
+        }
       },
       {
-        "text": "Nike sells its products under the Nike, Jordan and Converse brands.",
-        "quote": "We offer our products under the NIKE, Jordan and Converse brands.",
+        "text": "NIKE Direct generated $17.7 billion in fiscal 2026.",
+        "quote": "NIKE Direct revenues were $17.7 billion in fiscal 2026 compared to $18.8 billion in fiscal 2025, primarily driven by a decrease in traffic.",
         "source": {
-          "label": "10-K filed July 15, 2026 · Item 1, Business",
-          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm#:~:text=We%20offer%20our%20products%20under%20the%20NIKE%2C%20Jordan%20and%20Converse",
-          "section": "10-K Item 1"
+          "label": "10-K filed July 15, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm#:~:text=NIKE%20Direct%20revenues%20were%20%2417.7%20billion%20in%20fiscal%202026%20compared",
+          "section": "10-K Item 7"
         }
       }
     ],
-    "howItMakesMoney": [],
     "competitiveEdge": [
       {
-        "text": "Nike says it is competitive in all of its product and market areas.",
+        "text": "Nike says it competes on product quality, innovation, performance and design.",
+        "quote": "Product attributes such as quality; innovation and development; performance and reliability; new product style and design; as well as consumer price/value.",
+        "source": {
+          "label": "10-K filed July 15, 2026 · Item 1, Business",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm#:~:text=Product%20attributes%20such%20as%20quality%3B%20innovation%20and%20development%3B%20performance%20and",
+          "section": "10-K Item 1"
+        }
+      },
+      {
+        "text": "Nike believes it is competitive in all areas.",
         "quote": "We believe that we are competitive in all of these areas.",
         "source": {
           "label": "10-K filed July 15, 2026 · Item 1, Business",
@@ -69,7 +88,7 @@
     ],
     "marketPosition": [
       {
-        "text": "Nike states it is the largest seller of athletic footwear and apparel globally.",
+        "text": "Nike states it is the largest seller of athletic footwear and apparel worldwide.",
         "quote": "NIKE is the largest seller of athletic footwear and apparel in the world.",
         "source": {
           "label": "10-K filed July 15, 2026 · Item 1, Business",
@@ -82,29 +101,48 @@
     "demandDrivers": [],
     "biggestRisks": [
       {
-        "text": "Nike warns its products, services and experiences face intense competition.",
-        "quote": "Our products, services and experiences face intense competition.",
+        "text": "Sales depend on discretionary consumer spending.",
+        "quote": "Our sales are impacted by discretionary spending by consumers.",
         "source": {
           "label": "10-K filed July 15, 2026 · Item 1A, Risk Factors",
-          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm#:~:text=Our%20products%2C%20services%20and%20experiences%20face%20intense%20competition.",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm#:~:text=Our%20sales%20are%20impacted%20by%20discretionary%20spending%20by%20consumers.",
           "section": "10-K Item 1A"
         }
       },
       {
-        "text": "Nike says failing to respond quickly to consumer trends could hurt sales and profits.",
-        "quote": "Failure to respond in a timely and adequate manner could have a material adverse effect on our sales and profitability.",
+        "text": "The company may be unable to obtain financing at reasonable rates.",
+        "quote": "we may be unable to access financing in the credit and capital markets at reasonable rates",
         "source": {
-          "label": "10-K filed July 15, 2026 · Item 1, Business",
-          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm#:~:text=Failure%20to%20respond%20in%20a%20timely%20and%20adequate%20manner%20could",
-          "section": "10-K Item 1"
+          "label": "10-K filed July 15, 2026 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm#:~:text=we%20may%20be%20unable%20to%20access%20financing%20in%20the%20credit",
+          "section": "10-K Item 1A"
+        }
+      },
+      {
+        "text": "Currency fluctuations create exposure to exchange‑rate risk.",
+        "quote": "We transact in various currencies, which creates exposure to fluctuations in foreign currency exchange rates",
+        "source": {
+          "label": "10-K filed July 15, 2026 · Item 1A, Risk Factors",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm#:~:text=We%20transact%20in%20various%20currencies%2C%20which%20creates%20exposure%20to%20fluctuations",
+          "section": "10-K Item 1A"
         }
       }
     ],
     "newRisks": [],
-    "outlook": [],
+    "outlook": [
+      {
+        "text": "Nike expects negative impacts from Greater China and Converse to continue through fiscal 2027.",
+        "quote": "We expect negative impacts from Greater China and Converse to continue throughout fiscal 2027.",
+        "source": {
+          "label": "10-K filed July 15, 2026 · Item 7, Management's Discussion and Analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm#:~:text=We%20expect%20negative%20impacts%20from%20Greater%20China%20and%20Converse%20to",
+          "section": "10-K Item 7"
+        }
+      }
+    ],
     "upcoming": [
       {
-        "text": "Nike plans to organize into three geographies in fiscal 2028.",
+        "text": "Nike plans to reorganize into three geographies in fiscal 2028.",
         "quote": "NIKE plans to organize into three geographies in fiscal 2028",
         "source": {
           "label": "10-Q filed October 2, 2026 · Part I Item 2, Management's Discussion and Analysis",
@@ -116,34 +154,28 @@
   },
   "dropped": [
     {
-      "topic": "howItMakesMoney",
-      "reason": "quote not found in report",
-      "text": "Nike generates revenue by selling products through its own stores and digital platforms and through wholesale accounts worldwide.",
-      "quote": "We sell our products through NIKE Direct operations and to wholesale accounts worldwide."
-    },
-    {
       "topic": "industryTrends",
       "reason": "quote not found in report",
-      "text": "Nike notes the athletic footwear, apparel and equipment industry is highly competitive worldwide.",
+      "text": "The company notes the industry is highly competitive worldwide.",
       "quote": "The athletic footwear, apparel and equipment industry is highly competitive on a worldwide basis."
     },
     {
       "topic": "demandDrivers",
       "reason": "quote not found in report",
-      "text": "Nike says sports popularity and shifting consumer preferences drive demand for its products.",
-      "quote": "The popularity of sports and fitness activities and changing consumer preferences affect demand for our products."
+      "text": "Demand is driven by the popularity of sports, fitness activities, design trends and consumer preferences.",
+      "quote": "the relative popularity and availability of various sports and fitness activities, as well as changing design trends and consumer preferences, affect the demand for our products."
     },
     {
       "topic": "outlook",
       "reason": "quote not found in report",
-      "text": "Nike expects its actions to reignite brand momentum and reposition the business for long‑term shareholder value.",
+      "text": "Management believes the actions will reignite brand momentum and drive long‑term shareholder value.",
       "quote": "We believe these actions will reignite brand momentum and reposition our business to drive long-term shareholder value."
     },
     {
       "topic": "upcoming",
       "reason": "quote not found in report",
-      "text": "Nike expects its cost‑saving program to deliver about $2.5 billion in cumulative savings through fiscal 2031.",
-      "quote": "The program is expected to deliver approximately $2.5 billion in cumulative savings through fiscal 2031."
+      "text": "The new enterprise program is expected to incur about $1.0 billion of pre‑tax charges.",
+      "quote": "The program is expected to result in pre-tax charges of approximately $1.0 billion."
     }
   ]
 }
