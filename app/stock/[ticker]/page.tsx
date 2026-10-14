@@ -20,7 +20,9 @@ import { changeRows, keyRatioRows, marginTrends } from "@/lib/financials/explain
 import { MARKET_TERMS } from "@/lib/report/market-terms";
 import { AREAS, claimsFor, leftOutNames, statementsFor, STEPS, SURFACE, type Block, type Item, type SurfaceRow } from "@/lib/report/outline";
 import { getCompanyProfile, type CompanyProfile } from "@/lib/profile/wiki";
-import { quizFor } from "@/lib/report/quiz";
+import { TermName } from "@/components/TermName";
+import { ConceptMap } from "@/components/ConceptMap";
+import { conceptMap } from "@/lib/report/concept-map";
 import { billsGauge, cashVsDebt, compareFor, marginLines, moneyUses, pairFor, salesHistory, salesSplit, SERIES, shareFor } from "@/lib/report/visuals";
 import { DotGrid, Meter, StatusBadge, TopicIcon } from "@/components/viz/Static";
 
@@ -55,6 +57,7 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
       {report.support.supported ? (
         <>
           <ExplainStatus ticker={report.company.ticker} state={state} />
+          <ConceptMap nodes={conceptMap(report.numbers)} company={shortCompany(report.company.name)} />
           <Path report={report} e={e} level="surface" profile={profile} />
           <AllNumbers report={report} />
           <MoreInfo report={report} />
@@ -66,6 +69,11 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
       )}
     </div>
   );
+}
+
+/** "Coca Cola Co" → "Coca Cola", for use inside sentences. */
+function shortCompany(name: string): string {
+  return name.replace(/,?\s+(Inc\.?|Corp(oration)?\.?|Co\.?|Company|Ltd\.?|plc|Holdings?|Group)$/i, "").replace(/^The\s+/i, "");
 }
 
 // ---------------------------------------------------------------- header
@@ -264,7 +272,15 @@ function textPanel(row: SurfaceRow, ctx: Ctx): ReactNode {
     <section key={row.label} className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
       <h3 className="flex items-center gap-2.5 text-[14px] font-semibold text-ocean">
         <TopicIcon name={row.items[0].kind === "topic" ? row.items[0].topic : "accounts"} />
-        {row.label}
+        <span>
+          {row.label}
+          {row.term && (
+            <span className="font-normal text-muted">
+              {" "}
+              (<TermName k={row.term} />)
+            </span>
+          )}
+        </span>
       </h3>
       {w}
     </section>
@@ -280,7 +296,7 @@ function rowVisual(row: SurfaceRow, ctx: Ctx): ReactNode {
       const profit = d.segments.at(-1)!;
       return (
         <>
-          <Headline value={`${profit.display} of every $100`} caption="of sales was left as profit" />
+          <Headline value={`${profit.display} of every $100`} caption="of sales was left as profit (net profit margin)" />
           <StackedBar segments={d.segments} caption={`Where each $100 of sales went. ${d.period}.`} />
         </>
       );
@@ -290,7 +306,7 @@ function rowVisual(row: SurfaceRow, ctx: Ctx): ReactNode {
       if (!d) return null;
       return (
         <>
-          {d.change !== undefined && <Headline value={`${d.change >= 0 ? "+" : "−"}${formatPercent(d.change)}`} caption="sales compared with the year before" />}
+          {d.change !== undefined && <Headline value={`${d.change >= 0 ? "+" : "−"}${formatPercent(d.change)}`} caption="sales compared with the year before (revenue growth)" />}
           <Columns bars={d.bars} color={SERIES.blue} highlight="#0B4F6C" />
         </>
       );
@@ -300,7 +316,7 @@ function rowVisual(row: SurfaceRow, ctx: Ctx): ReactNode {
       if (!d) return null;
       return (
         <>
-          <Headline value={`$${d.value.toFixed(2)}`} caption="for every $1 of bills due within a year" />
+          <Headline value={`$${d.value.toFixed(2)}`} caption="for every $1 of bills due within a year (current ratio)" />
           <BillsGauge value={d.value} />
         </>
       );
@@ -311,8 +327,8 @@ function rowVisual(row: SurfaceRow, ctx: Ctx): ReactNode {
       return (
         <PairBars
           items={[
-            { label: "Cash", value: d.cash, display: formatMoney(d.cash), color: SERIES.green },
-            { label: "Long-term debt", value: d.debt, display: formatMoney(d.debt), color: SERIES.orange },
+            { label: "Cash (cash and cash equivalents)", value: d.cash, display: formatMoney(d.cash), color: SERIES.green },
+            { label: "Borrowing due after a year (long-term debt)", value: d.debt, display: formatMoney(d.debt), color: SERIES.orange },
           ]}
         />
       );
@@ -323,7 +339,7 @@ function rowVisual(row: SurfaceRow, ctx: Ctx): ReactNode {
       const flow = pairFor("s-cash", n);
       return (
         <>
-          <Headline value={formatMoney(f.value)} caption={f.value >= 0 ? "spare cash, after investing in itself" : "more spent than the business brought in"} />
+          <Headline value={formatMoney(f.value)} caption={f.value >= 0 ? "spare cash, after investing in itself (free cash flow)" : "more spent than the business brought in (negative free cash flow)"} />
           {flow && <PairBars items={flow} />}
         </>
       );
@@ -344,7 +360,15 @@ function tile(row: SurfaceRow, ctx: Ctx): ReactNode {
   if (!w && !v) return null;
   return (
     <section key={row.label} className={`flex flex-col gap-4 rounded-2xl bg-panel p-5 ${row.wide ? "sm:col-span-2" : ""}`}>
-      <h3 className="text-[14px] font-semibold text-ocean">{row.label}</h3>
+      <h3 className="text-[14px] font-semibold text-ocean">
+        {row.label}
+        {row.term && (
+          <span className="font-normal text-muted">
+            {" "}
+            (<TermName k={row.term} />)
+          </span>
+        )}
+      </h3>
       {v}
       {w && <div className="flex flex-col gap-3 border-t border-line pt-3 [&_p]:text-[15px]">{w}</div>}
     </section>
@@ -393,9 +417,9 @@ function Path(ctx: Ctx & { profile?: CompanyProfile }) {
     <div className="flex flex-col gap-10">
       <ResearchProgress ticker={report.company.ticker} steps={STEPS.map((s) => ({ id: s.id, title: s.title }))} />
       <p className="text-[16px] leading-relaxed text-muted">
-        Work through the company the way an analyst would, one question at a time. Each step starts with the short
-        answer. Tap <strong className="font-semibold text-ink">Go deeper</strong> when you want more, and try the
-        question at the end.
+        Now work through the company the way an analyst would, one question at a time. Each step says why it matters
+        and starts with the short answer. Tap <strong className="font-semibold text-ink">Go deeper</strong> when you want
+        more. Point at any underlined term to see what it means.
       </p>
       {STEPS.map((step, i) => {
         const rows = SURFACE.filter((r) => step.areas.includes(r.area));
@@ -437,7 +461,8 @@ function Path(ctx: Ctx & { profile?: CompanyProfile }) {
             surface={surface}
             below={below}
             deep={deep}
-            quiz={quizFor(step.id, report)}
+            why={step.why}
+            term={<TermName k={step.term} />}
           />
         );
       })}
@@ -611,8 +636,8 @@ function BlockView({ block, report }: { block: Block; report: CompanyReport }) {
         <ChartPanel title="Cash and long-term debt" note={`On ${d.date}.`}>
           <PairBars
             items={[
-              { label: "Cash", value: d.cash, display: formatMoney(d.cash), color: SERIES.green },
-              { label: "Long-term debt", value: d.debt, display: formatMoney(d.debt), color: SERIES.orange },
+              { label: "Cash (cash and cash equivalents)", value: d.cash, display: formatMoney(d.cash), color: SERIES.green },
+              { label: "Borrowing due after a year (long-term debt)", value: d.debt, display: formatMoney(d.debt), color: SERIES.orange },
             ]}
           />
         </ChartPanel>

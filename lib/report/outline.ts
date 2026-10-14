@@ -73,6 +73,7 @@ export type SurfaceRow = {
   group: "business" | "numbers" | "world";
   visual?: Extract<Block, "salesSplit" | "billsGauge" | "cashVsDebt" | "moneyUses"> | "salesGrowth" | "spareCash";
   wide?: boolean;
+  term?: string; // glossary key for the real name of what this question measures
   items: Item[];
 };
 
@@ -87,18 +88,18 @@ export type Area = {
 const NOT_REPORTED = "The company doesn't report these figures in SEC's standard data, so they're left out.";
 
 export const SURFACE: SurfaceRow[] = [
-  { label: "What it does", area: "business", group: "business", items: [{ kind: "topic", topic: "whatItDoes", max: 1 }] },
+  { label: "What it does", term: "business-model", area: "business", group: "business", items: [{ kind: "topic", topic: "whatItDoes", max: 1 }] },
   { label: "How it makes money", area: "business", group: "business", items: [{ kind: "topic", topic: "howItMakesMoney", max: 2 }] },
   { label: "What makes it stand out", area: "business", group: "business", items: [{ kind: "topic", topic: "competitiveEdge", fallback: ["marketPosition"], max: 1 }] },
-  { label: "Is it making money?", area: "performance", group: "numbers", visual: "salesSplit", wide: true, items: [{ kind: "statements", ids: ["s-profit"] }] },
-  { label: "Is it growing?", area: "performance", group: "numbers", visual: "salesGrowth", items: [{ kind: "statements", ids: ["s-growth"] }] },
-  { label: "Can it pay its bills?", area: "health", group: "numbers", visual: "billsGauge", items: [{ kind: "statements", ids: ["s-bills"] }] },
-  { label: "How much does it owe?", area: "health", group: "numbers", visual: "cashVsDebt", items: [{ kind: "statements", ids: ["s-debt"] }] },
-  { label: "Does it bring in cash?", area: "cash", group: "numbers", visual: "spareCash", items: [{ kind: "statements", ids: ["s-cash"] }] },
-  { label: "What does it spend money on?", area: "management", group: "numbers", visual: "moneyUses", wide: true, items: [{ kind: "statements", ids: ["s-spending"] }] },
-  { label: "Any warning signs in its accounts?", area: "management", group: "world", items: [{ kind: "block", block: "accountsSummary" }] },
+  { label: "Is it making money?", term: "profit-margin", area: "performance", group: "numbers", visual: "salesSplit", wide: true, items: [{ kind: "statements", ids: ["s-profit"] }] },
+  { label: "Is it growing?", term: "revenue", area: "performance", group: "numbers", visual: "salesGrowth", items: [{ kind: "statements", ids: ["s-growth"] }] },
+  { label: "Can it pay its bills?", term: "current-ratio", area: "health", group: "numbers", visual: "billsGauge", items: [{ kind: "statements", ids: ["s-bills"] }] },
+  { label: "How much does it owe?", term: "long-term-debt", area: "health", group: "numbers", visual: "cashVsDebt", items: [{ kind: "statements", ids: ["s-debt"] }] },
+  { label: "Does it bring in cash?", term: "free-cash-flow", area: "cash", group: "numbers", visual: "spareCash", items: [{ kind: "statements", ids: ["s-cash"] }] },
+  { label: "What does it spend money on?", term: "capital-allocation", area: "management", group: "numbers", visual: "moneyUses", wide: true, items: [{ kind: "statements", ids: ["s-spending"] }] },
+  { label: "Any warning signs in its accounts?", term: "restatement", area: "management", group: "world", items: [{ kind: "block", block: "accountsSummary" }] },
   { label: "Its industry", area: "industry", group: "world", items: [{ kind: "topic", topic: "industryTrends", fallback: ["demandDrivers"], max: 1 }] },
-  { label: "A key risk it names", area: "risks", group: "world", items: [{ kind: "topic", topic: "biggestRisks", max: 1 }] },
+  { label: "A key risk it names", term: "risk-factors", area: "risks", group: "world", items: [{ kind: "topic", topic: "biggestRisks", max: 1 }] },
   { label: "What's coming up", area: "risks", group: "world", items: [{ kind: "topic", topic: "upcoming", fallback: ["outlook"], max: 1 }] },
 ];
 
@@ -257,12 +258,61 @@ export function statementsFor(all: Statement[], item: Extract<Item, { kind: "sta
  * The seven steps an equity researcher works through, in order. Each step
  * gathers the Surface questions and the Below/Deep areas that answer it.
  */
-export const STEPS: { id: string; title: string; question: string; areas: string[] }[] = [
-  { id: "business", title: "The business", question: "What does it do, and how does it make money?", areas: ["business"] },
-  { id: "performance", title: "Growth and profit", question: "Is it selling more, and how much does it keep?", areas: ["performance"] },
-  { id: "health", title: "Financial health", question: "Can it pay its bills and handle its debt?", areas: ["health"] },
-  { id: "cash", title: "Cash", question: "Does the business actually bring in cash?", areas: ["cash"] },
-  { id: "management", title: "How it's run", question: "What do its leaders do with the money?", areas: ["management"] },
-  { id: "outlook", title: "Industry and risks", question: "What's happening around it, and what could go wrong?", areas: ["industry", "risks"] },
-  { id: "value", title: "The share price", question: "What does the stock market think it's worth?", areas: ["value"] },
+export const STEPS: { id: string; title: string; question: string; areas: string[]; term: string; why: string }[] = [
+  {
+    id: "business",
+    title: "The business",
+    question: "What does it do, and how does it make money?",
+    areas: ["business"],
+    term: "business-model",
+    why: "Before any number makes sense, you need to know what the company sells and who pays for it. Everything further down builds on this.",
+  },
+  {
+    id: "performance",
+    title: "Growth and profit",
+    question: "Is it selling more, and how much does it keep?",
+    areas: ["performance"],
+    term: "income-statement",
+    why: "This is the first test of any business: is it selling more over time, and does it keep a healthy share of each sale as profit? Profit is what ultimately pays the owners.",
+  },
+  {
+    id: "health",
+    title: "Financial health",
+    question: "Can it pay its bills and handle its debt?",
+    areas: ["health"],
+    term: "balance-sheet",
+    why: "A profitable company can still get into trouble if it owes too much or runs short of cash. This shows how big a cushion it has for bad times.",
+  },
+  {
+    id: "cash",
+    title: "Cash",
+    question: "Does the business actually bring in cash?",
+    areas: ["cash"],
+    term: "cash-flow-statement",
+    why: "Profit follows accounting rules; cash is what actually lands in the bank. The spare cash left over (free cash flow) is what a company can use to pay its owners, cut debt or grow.",
+  },
+  {
+    id: "management",
+    title: "How it's run",
+    question: "What do its leaders do with the money?",
+    areas: ["management"],
+    term: "capital-allocation",
+    why: "How leaders spend the company's money shows their priorities. Buying back shares, paying dividends, investing in the business or buying other firms each mean something different for the owners.",
+  },
+  {
+    id: "outlook",
+    title: "Industry and risks",
+    question: "What's happening around it, and what could go wrong?",
+    areas: ["industry", "risks"],
+    term: "risk-factors",
+    why: "Every company is shaped by its industry and faces risks. Knowing the main ones, in the company's own words, helps you see what could change the picture.",
+  },
+  {
+    id: "value",
+    title: "The share price",
+    question: "What does the stock market think it's worth?",
+    areas: ["value"],
+    term: "valuation",
+    why: "So far you've looked at the business itself. The share price is what the stock market will pay for a piece of it. Measures like market value (market capitalisation) and the P/E ratio compare that price with the company's size and profit, so you can see how much the market expects from it. Fathom never says whether the price is right.",
+  },
 ];

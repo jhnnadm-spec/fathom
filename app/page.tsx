@@ -34,7 +34,7 @@ export default function Home() {
         <p className="flex flex-wrap gap-x-5 gap-y-2 text-[15px] text-muted">
           Try
           {POPULAR.map((c) => (
-            <Link key={c.ticker} href={`/stock/${c.ticker}`} className="font-medium">
+            <Link key={c.ticker} href={`/stock/${c.ticker}`} className="fathom-grow font-medium">
               {c.name}
             </Link>
           ))}
@@ -83,8 +83,9 @@ export default function Home() {
       <section className="flex flex-col gap-5 border-t border-line pt-10">
         <h2 className="font-display text-2xl font-bold">How Fathom works</h2>
         <p className="text-[16px] leading-relaxed text-muted">
-          Every company page is a research path with seven steps. Each starts with the short answer; open it up to go
-          deeper, then check your understanding with a quick question.
+          Every company page starts with a map of how the main ideas connect, then a research path of seven steps. Each
+          step says why it matters, gives the short answer, and opens up when you want more. Finance words are written in
+          plain English with the real term in brackets; point at one to see what it means.
         </p>
         <ol className="grid gap-2 sm:grid-cols-2">
           {STEPS.map((s, i) => (

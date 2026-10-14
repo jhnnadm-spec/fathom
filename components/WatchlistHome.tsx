@@ -61,7 +61,7 @@ export function WatchlistHome() {
                     <span aria-hidden="true" className="absolute -left-[27px] top-1 h-3 w-3 rounded-full border-2 border-white bg-mid" />
                     <span className="text-[13px] font-semibold text-ocean">
                       {new Date(`${a.date}T00:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })} ·{" "}
-                      <Link href={`/stock/${a.ticker}`}>{a.name}</Link>
+                      <Link href={`/stock/${a.ticker}`} className="fathom-grow">{a.name}</Link>
                     </span>
                     <a href={a.url} target="_blank" rel="noopener noreferrer" className="text-[16px] text-ink">
                       {a.events.join(", ")}

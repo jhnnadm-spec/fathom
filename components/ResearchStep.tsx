@@ -3,11 +3,9 @@
 /**
  * One step of the research path. It starts with the short version; the reader
  * chooses to go deeper (Below), then all the way (Deep), right where they are.
- * A quick question at the end checks the idea sank in.
  */
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { markStep } from "@/lib/client/store";
-import type { Quiz } from "@/lib/report/quiz";
 
 export function ResearchStep({
   ticker,
@@ -18,7 +16,8 @@ export function ResearchStep({
   surface,
   below,
   deep,
-  quiz,
+  why,
+  term,
 }: {
   ticker: string;
   id: string;
@@ -28,7 +27,8 @@ export function ResearchStep({
   surface: ReactNode;
   below?: ReactNode;
   deep?: ReactNode;
-  quiz?: Quiz;
+  why: string; // why a first-timer is being shown this step
+  term?: ReactNode; // the real name for what this step covers, e.g. "income statement"
 }) {
   const [depth, setDepth] = useState(0);
   const top = useRef<HTMLElement>(null);
@@ -50,8 +50,14 @@ export function ResearchStep({
             {title}
           </h2>
           <p className="text-[16px] text-muted">{question}</p>
+          {term && <p className="mt-1 text-[13px] text-muted">The finance term for this: {term}</p>}
         </div>
       </header>
+
+      <p className="rounded-xl bg-surface/40 px-4 py-3 text-[15px] leading-relaxed">
+        <strong className="font-semibold">Why this matters: </strong>
+        {why}
+      </p>
 
       <div className="flex flex-col gap-4">{surface}</div>
 
@@ -72,7 +78,6 @@ export function ResearchStep({
         )}
       </div>
 
-      {quiz && <QuizCard ticker={ticker} step={id} quiz={quiz} />}
     </section>
   );
 }
@@ -89,49 +94,5 @@ function DepthButton({ onClick, children }: { onClick: () => void; children: Rea
         <path d="m6 9 6 6 6-6" />
       </svg>
     </button>
-  );
-}
-
-function QuizCard({ ticker, step, quiz }: { ticker: string; step: string; quiz: Quiz }) {
-  const [picked, setPicked] = useState<number | null>(null);
-  const right = picked === quiz.answer;
-  useEffect(() => {
-    if (right) markStep(ticker, step, "understood");
-  }, [right, ticker, step]);
-
-  return (
-    <div className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
-      <p className="text-[13px] font-semibold text-mid">Check your understanding</p>
-      <p className="text-[17px] font-semibold leading-snug">{quiz.question}</p>
-      <div className="flex flex-col gap-2" role="group" aria-label="Answers">
-        {quiz.options.map((o, i) => {
-          const chosen = picked === i;
-          const show = picked !== null && (i === quiz.answer || chosen);
-          return (
-            <button
-              key={o}
-              type="button"
-              disabled={right}
-              onClick={() => setPicked(i)}
-              className={`flex min-h-11 items-center justify-between gap-3 rounded-xl border px-4 py-2.5 text-left text-[16px] transition-colors ${
-                show && i === quiz.answer
-                  ? "border-[#199e70] bg-[#dff3ea] text-[#0f6b4c]"
-                  : show && chosen
-                    ? "border-[#d55181] bg-[#fbe7ee] text-[#8a2347]"
-                    : "border-line bg-white/70 hover:border-mid"
-              }`}
-            >
-              {o}
-              {show && <span className="text-[14px] font-semibold">{i === quiz.answer ? "Right" : "Not quite"}</span>}
-            </button>
-          );
-        })}
-      </div>
-      {picked !== null && (
-        <p className="text-[15px] leading-relaxed" aria-live="polite">
-          {right ? <span className="text-muted">{quiz.explain}</span> : "Not quite. Have another go: the answer is in this step."}
-        </p>
-      )}
-    </div>
   );
 }

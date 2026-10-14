@@ -80,3 +80,29 @@ body {
   border: 1px solid rgb(255 255 255 / 0.9);
   box-shadow: 0 8px 24px rgb(11 79 108 / 0.08);
 }
+
+@layer components {
+  /* A term's explanation fades and rises into place. */
+  @keyframes fathom-pop {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fathom-pop {
+    animation: fathom-pop 160ms ease-out;
+  }
+
+  /* Company names grow a little when pointed at, so it's clear they lead somewhere. */
+  .fathom-grow {
+    display: inline-block;
+    transition: transform 180ms ease-out;
+    transform-origin: left center;
+  }
+  .fathom-grow:hover,
+  .fathom-grow:focus-visible {
+    transform: scale(1.06);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fathom-pop { animation: none; }
+    .fathom-grow { transition: none; }
+  }
+}

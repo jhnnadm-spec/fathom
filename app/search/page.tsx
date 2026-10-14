@@ -48,7 +48,7 @@ async function Results({ searchParams }: { searchParams: Promise<Record<string, 
               href={`/stock/${m.ticker}`}
               className="flex items-center justify-between gap-4 rounded-2xl border border-line bg-panel px-5 py-4 no-underline hover:border-mid"
             >
-              <span className="text-[17px] font-semibold text-ink">{displayName(m.name)}</span>
+              <span className="fathom-grow text-[17px] font-semibold text-ink">{displayName(m.name)}</span>
               <span className="rounded-lg bg-panel-2 px-2.5 py-1 text-sm font-semibold text-ocean">{m.ticker}</span>
             </Link>
           </li>

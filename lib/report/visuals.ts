@@ -23,7 +23,7 @@ export function salesSplit(n?: CompanyNumbers): { segments: Segment[]; period: s
   const per100 = (f: number) => Math.round(f * 1000) / 10;
   const segments: Segment[] = [
     {
-      label: "Making or buying what it sold",
+      label: "Making or buying what it sold (cost of sales)",
       value: per100(1 - m.gross),
       display: "",
       color: SERIES.blue,
@@ -32,13 +32,13 @@ export function salesSplit(n?: CompanyNumbers): { segments: Segment[]; period: s
   ];
   if (m.operating !== undefined && m.operating <= m.gross && m.operating >= m.net) {
     segments.push(
-      { label: "Running the business", value: per100(m.gross - m.operating), display: "", color: SERIES.magenta, note: "Staff, research, marketing and offices: the cost of keeping the company going." },
-      { label: "Interest, tax and other", value: per100(m.operating - m.net), display: "", color: SERIES.violet, note: "Interest on its debts, taxes, and other gains and costs outside the main business." },
+      { label: "Running the business (operating expenses)", value: per100(m.gross - m.operating), display: "", color: SERIES.magenta, note: "Staff, research, marketing and offices: the cost of keeping the company going." },
+      { label: "Interest, tax and other items", value: per100(m.operating - m.net), display: "", color: SERIES.violet, note: "Interest on its debts, taxes, and other gains and costs outside the main business." },
     );
   } else {
     segments.push({ label: "All other costs", value: per100(m.gross - m.net), display: "", color: SERIES.magenta, note: "Running the business, interest, tax and other costs." });
   }
-  segments.push({ label: "Profit", value: per100(m.net), display: "", color: SERIES.green, note: "What's left for the company after every cost: its profit." });
+  segments.push({ label: "Profit (net income)", value: per100(m.net), display: "", color: SERIES.green, note: "What's left for the company after every cost: its profit." });
   for (const s of segments) s.display = `$${Math.round(s.value)}`;
   return { segments, period: m.periodEnd ? `Year ended ${formatDate(m.periodEnd)}` : "" };
 }
@@ -76,10 +76,10 @@ export function moneyUses(n?: CompanyNumbers): { segments: Segment[]; period: st
   if (!year) return undefined;
   const same = (c?: Comparison) => (c && c.latest.start === year.start && c.latest.end === year.end && c.latest.value > 0 ? c.latest.value : undefined);
   const raw = [
-    { label: "Buying back its own shares", value: same(n.annual.buybacks), note: "Buying its own shares from the market, which leaves fewer shares, so each remaining one owns a bigger slice." },
-    { label: "Dividends to shareholders", value: same(n.annual.dividends), note: "Cash paid out to the people who own its shares." },
-    { label: "Buildings and equipment", value: same(n.annual.capex), note: "Investing in long-lasting things like factories, stores, data centres and machines." },
-    { label: "Buying other businesses", value: same(n.annual.acquisitions), note: "Paying to take over other companies." },
+    { label: "Buying back its own shares (share buybacks)", value: same(n.annual.buybacks), note: "Buying its own shares from the market, which leaves fewer shares, so each remaining one owns a bigger slice." },
+    { label: "Cash paid to shareholders (dividends)", value: same(n.annual.dividends), note: "Cash paid out to the people who own its shares." },
+    { label: "Buildings and equipment (capital expenditure)", value: same(n.annual.capex), note: "Investing in long-lasting things like factories, stores, data centres and machines." },
+    { label: "Buying other businesses (acquisitions)", value: same(n.annual.acquisitions), note: "Paying to take over other companies." },
   ].filter((u) => u.value !== undefined) as { label: string; value: number; note: string }[];
   if (raw.length === 0) return undefined;
   raw.sort((a, b) => b.value - a.value);
@@ -151,24 +151,24 @@ export function pairFor(id: string, n?: CompanyNumbers): PairItem[] | undefined 
   if (id === "debt-to-equity" && r.debtToEquity) {
     const [d, e] = r.debtToEquity.figures;
     return [
-      { label: "Long-term debt", value: d.value, display: formatMoney(d.value), color: SERIES.orange },
-      { label: "Shareholders' equity", value: e.value, display: formatMoney(e.value), color: SERIES.blue },
+      { label: "Borrowing due after a year (long-term debt)", value: d.value, display: formatMoney(d.value), color: SERIES.orange },
+      { label: "What belongs to the owners (shareholders' equity)", value: e.value, display: formatMoney(e.value), color: SERIES.blue },
     ];
   }
   if (id === "fcf-vs-profit" && r.freeCashFlow && n.annual.netIncome) {
     const f = r.freeCashFlow.value;
     const p = n.annual.netIncome.latest.value;
     return [
-      { label: "Free cash flow", value: Math.abs(f), display: formatMoney(f), color: SERIES.green },
-      { label: "Net income (profit)", value: Math.abs(p), display: formatMoney(p), color: SERIES.blue },
+      { label: "Spare cash (free cash flow)", value: Math.abs(f), display: formatMoney(f), color: SERIES.green },
+      { label: "Profit (net income)", value: Math.abs(p), display: formatMoney(p), color: SERIES.blue },
     ];
   }
   if ((id === "free-cash-flow" || id === "s-cash") && r.freeCashFlow) {
     const [ocf, capex] = r.freeCashFlow.figures;
     return [
-      { label: "Cash its business brought in", value: Math.abs(ocf.value), display: formatMoney(ocf.value), color: SERIES.blue },
-      { label: "Spent on buildings and equipment", value: Math.abs(capex.value), display: `−${formatMoney(Math.abs(capex.value))}`, color: SERIES.orange },
-      { label: "Left over (free cash flow)", value: Math.abs(r.freeCashFlow.value), display: formatMoney(r.freeCashFlow.value), color: SERIES.green },
+      { label: "Cash its business brought in (operating cash flow)", value: Math.abs(ocf.value), display: formatMoney(ocf.value), color: SERIES.blue },
+      { label: "Spent on buildings and equipment (capital expenditure)", value: Math.abs(capex.value), display: `−${formatMoney(Math.abs(capex.value))}`, color: SERIES.orange },
+      { label: "Left over as spare cash (free cash flow)", value: Math.abs(r.freeCashFlow.value), display: formatMoney(r.freeCashFlow.value), color: SERIES.green },
     ];
   }
   return undefined;
@@ -178,8 +178,8 @@ export function pairFor(id: string, n?: CompanyNumbers): PairItem[] | undefined 
 export function shareFor(id: string, n?: CompanyNumbers): { value: number; label: string } | undefined {
   const m = n?.margins;
   if (!m) return undefined;
-  if (id === "gross-margin" && m.gross !== undefined) return { value: m.gross, label: "left after the cost of what it sold" };
-  if (id === "operating-margin" && m.operating !== undefined) return { value: m.operating, label: "left after also running the business" };
-  if ((id === "net-margin" || id === "profit-margin") && m.net !== undefined) return { value: m.net, label: "left as final profit" };
+  if (id === "gross-margin" && m.gross !== undefined) return { value: m.gross, label: "left after the cost of what it sold (gross margin)" };
+  if (id === "operating-margin" && m.operating !== undefined) return { value: m.operating, label: "left after also running the business (operating margin)" };
+  if ((id === "net-margin" || id === "profit-margin") && m.net !== undefined) return { value: m.net, label: "left as final profit (net profit margin)" };
   return undefined;
 }

@@ -401,7 +401,7 @@ function summaryStatements(n: CompanyNumbers): Statement[] {
     const text =
       v < 0
         ? `${when}, it lost ${formatMoney(Math.abs(v))}: its costs were bigger than its income.`
-        : `${when}, it kept ${formatMoney(v)} as [[net-income|profit]] after paying all its costs and taxes${margins.net !== undefined && margins.net > 0 && rev ? `: about ${perHundred(margins.net)} of every $100 it made in sales` : ""}.`;
+        : `${when}, it kept ${formatMoney(v)} as [[net-income|profit]] after paying all its costs and taxes${margins.net !== undefined && margins.net > 0 && rev ? `: about ${perHundred(margins.net)} of every $100 it made in sales, its [[profit-margin|profit margin]]` : ""}.`;
     out.push(statement("s-profit", "summary", text, rev && v >= 0 ? [ni.latest, rev.latest] : [ni.latest]));
   }
 
@@ -414,7 +414,7 @@ function summaryStatements(n: CompanyNumbers): Statement[] {
       statement(
         "s-bills",
         "summary",
-        `On ${formatDate(cr.end)}, for every $1 of bills due within a year, it had about ${formatPerDollar(cr.value)} in cash and other things it expected to turn into cash in that time: ${verdict}.`,
+        `On ${formatDate(cr.end)}, for every $1 of bills due within a year, it had about ${formatPerDollar(cr.value)} in cash and other things it expected to turn into cash in that time: ${verdict}. This is its [[current-ratio|current ratio]].`,
         cr.figures,
       ),
     );
@@ -439,8 +439,8 @@ function summaryStatements(n: CompanyNumbers): Statement[] {
     const [ocf, capex] = fcf.figures;
     const text =
       fcf.value >= 0
-        ? `In the year to ${monthYear(fcf.end)}, its everyday business brought in ${formatMoney(ocf.value)} in cash. After paying for new buildings and equipment, ${formatMoney(fcf.value)} was [[free-cash-flow|left over]].`
-        : `In the year to ${monthYear(fcf.end)}, its everyday business brought in ${formatMoney(ocf.value)} in cash, but it spent ${formatMoney(capex.value)} on new buildings and equipment, so it used more cash than the business brought in.`;
+        ? `In the year to ${monthYear(fcf.end)}, its everyday business brought in ${formatMoney(ocf.value)} in [[cash-from-operations|cash]]. After paying for [[capital-expenditure|new buildings and equipment]], ${formatMoney(fcf.value)} was [[free-cash-flow|left over]].`
+        : `In the year to ${monthYear(fcf.end)}, its everyday business brought in ${formatMoney(ocf.value)} in [[cash-from-operations|cash]], but it spent ${formatMoney(capex.value)} on [[capital-expenditure|new buildings and equipment]], so it used more cash than the business brought in ([[free-cash-flow|spare cash]] was below zero).`;
     out.push(statement("s-cash", "summary", text, fcf.figures));
   } else if (annual.operatingCashFlow) {
     const c = annual.operatingCashFlow.latest;
@@ -452,17 +452,17 @@ function summaryStatements(n: CompanyNumbers): Statement[] {
   if (year) {
     const same = (c?: Comparison) => (c && c.latest.start === year.start && c.latest.end === year.end && c.latest.value > 0 ? c.latest : undefined);
     const uses = [
-      { f: same(annual.buybacks), t: (v: string) => `buying back its own shares (${v})` },
-      { f: same(annual.dividends), t: (v: string) => `paying [[dividend|dividends]] to shareholders (${v})` },
-      { f: same(annual.capex), t: (v: string) => `spending on new buildings and equipment (${v})` },
-      { f: same(annual.acquisitions), t: (v: string) => `buying other businesses (${v})` },
+      { f: same(annual.buybacks), t: (v: string) => `[[share-buyback|buying back its own shares]]: ${v}` },
+      { f: same(annual.dividends), t: (v: string) => `paying [[dividend|dividends]] to shareholders: ${v}` },
+      { f: same(annual.capex), t: (v: string) => `[[capital-expenditure|new buildings and equipment]]: ${v}` },
+      { f: same(annual.acquisitions), t: (v: string) => `[[acquisitions|buying other businesses]]: ${v}` },
     ]
       .filter((u) => u.f)
       .sort((a, b) => b.f!.value - a.f!.value);
     if (uses.length > 0) {
       const words = uses.map((u) => u.t(formatMoney(u.f!.value)));
-      const list = words.length === 1 ? words[0] : `${words.slice(0, -1).join(", ")} and ${words.at(-1)}`;
-      out.push(statement("s-spending", "summary", `In the year to ${monthYear(year.end)}, its biggest uses of money were ${list}.`, uses.map((u) => u.f!)));
+      const list = words.length === 1 ? words[0] : `${words.slice(0, -1).join("; ")}; and ${words.at(-1)}`;
+      out.push(statement("s-spending", "summary", `In the year to ${monthYear(year.end)}, its biggest uses of money were: ${list}.`, uses.map((u) => u.f!)));
     }
   }
   return out;

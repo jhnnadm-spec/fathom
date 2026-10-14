@@ -57,12 +57,12 @@ export function WatchlistView() {
     <ul className="grid gap-3 sm:grid-cols-2">
       {list.map((w) => {
         const s = snaps[w.ticker];
-        const understood = Object.values(getProgress(w.ticker)).filter((v) => v === "understood").length;
+        const understood = Object.keys(getProgress(w.ticker)).length;
         return (
           <li key={w.ticker} className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
             <div className="flex items-start justify-between gap-3">
               <div className="flex flex-col">
-                <Link href={`/stock/${w.ticker}`} className="font-display text-xl font-bold text-ink">
+                <Link href={`/stock/${w.ticker}`} className="fathom-grow font-display text-xl font-bold text-ink">
                   {s?.name ?? w.name}
                 </Link>
                 <span className="text-[13px] text-muted">

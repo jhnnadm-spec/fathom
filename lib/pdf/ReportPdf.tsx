@@ -14,8 +14,8 @@ import type { DocumentProps } from "@react-pdf/renderer";
 import type { CheckedClaim, SavedExplanation } from "../explain/types";
 import { formatDate, formatMoney, formatShare } from "../financials/format";
 import { changeRows, hundredDollarSteps, keyRatioRows, marginTrends } from "../financials/explain-numbers";
-import { plainText, termsIn, type Statement } from "../financials/templates";
-import { lookupTerm } from "../glossary";
+import { termsIn, type Statement } from "../financials/templates";
+import { lookupTerm, withTerms } from "../glossary";
 import type { CompanyReport } from "../report/company";
 import { moneyUses, salesSplit } from "../report/visuals";
 import { areasFor, claimsFor, leftOutNames, statementsFor, SURFACE, type Block, type Item } from "../report/outline";
@@ -240,7 +240,7 @@ function point(rawText: string, refs: number[], rawQuote?: string, plain = false
 
 function statement(ctx: Ctx, st: Statement, plain = false) {
   termsIn(st.text).forEach((t) => ctx.terms.add(t));
-  return point(plainText(st.text), st.sources.map((x) => ctx.src.ref(x.label, x.url)), undefined, plain);
+  return point(withTerms(st.text), st.sources.map((x) => ctx.src.ref(x.label, x.url)), undefined, plain);
 }
 
 function claims(ctx: Ctx, list: CheckedClaim[], quotes = true) {

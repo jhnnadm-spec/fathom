@@ -1,134 +1,260 @@
 {
   "revenue": {
     "term": "Revenue",
-    "definition": "All the money a company takes in from selling its products and services, before paying any costs. Also called sales."
+    "definition": "All the money a company takes in from selling its products and services, before paying any costs. Also called sales.",
+    "short": "revenue",
+    "why": "It's the starting point for everything else: a company can't make a profit without selling something first. Growing sales usually means more customers or higher prices."
   },
   "net-income": {
     "term": "Net income",
-    "definition": "The profit left after paying every cost, including wages, interest and taxes. Often called the bottom line."
+    "definition": "The profit left after paying every cost, including wages, interest and taxes. Often called the bottom line.",
+    "short": "net income",
+    "why": "It's the money that's actually left for the owners after every bill is paid. A company can sell a lot and still make little or none."
   },
   "net-loss": {
     "term": "Net loss",
-    "definition": "When a company's costs, including interest and taxes, add up to more than it earned during the period."
+    "definition": "When a company's costs, including interest and taxes, add up to more than it earned during the period.",
+    "short": "net loss",
+    "why": "A loss isn't always bad (young companies often lose money while growing), but a company can't lose money forever."
   },
   "gross-margin": {
     "term": "Gross margin",
-    "definition": "The share of each dollar of sales left after paying the direct cost of making or buying what was sold. Higher means more is left for everything else."
+    "definition": "The share of each dollar of sales left after paying the direct cost of making or buying what was sold. Higher means more is left for everything else.",
+    "short": "gross margin",
+    "why": "It shows how much room a company has to pay for everything else. A high gross margin often means a strong brand or something hard to copy."
   },
   "profit-margin": {
     "term": "Profit margin",
-    "definition": "The share of each dollar of sales left as profit after all costs and taxes."
+    "definition": "The share of each dollar of sales left as profit after all costs and taxes.",
+    "short": "net profit margin",
+    "why": "It lets you compare companies of any size: $27 of profit per $100 of sales means the same thing for a small company and a giant."
   },
   "operating-income": {
     "term": "Operating income",
-    "definition": "Profit from the company's main business, before interest and taxes."
+    "definition": "Profit from the company's main business, before interest and taxes.",
+    "short": "operating income",
+    "why": "It shows whether the core business makes money, separate from one-off gains or interest."
   },
   "cash-from-operations": {
     "term": "Cash from operations",
-    "definition": "The cash the company's everyday business actually brought in during the period. It can differ from profit because of timing, such as customers paying later."
+    "definition": "The cash the company's everyday business actually brought in during the period. It can differ from profit because of timing, such as customers paying later.",
+    "short": "operating cash flow",
+    "why": "Profit is an accounting figure; this is real cash. A company that earns profit but brings in little cash can run into trouble."
   },
   "cash-and-equivalents": {
     "term": "Cash and cash equivalents",
-    "definition": "Money in the bank plus very safe investments that can be turned into cash almost immediately."
+    "definition": "Money in the bank plus very safe investments that can be turned into cash almost immediately.",
+    "short": "cash and cash equivalents",
+    "why": "Cash is a safety cushion for bad times and a source of money for new plans."
   },
   "long-term-debt": {
     "term": "Long-term debt",
-    "definition": "Money the company has borrowed and must pay back over more than a year, such as bonds and bank loans."
+    "definition": "Money the company has borrowed and must pay back over more than a year, such as bonds and bank loans.",
+    "short": "long-term debt",
+    "why": "Debt isn't bad on its own, but it has to be repaid with interest whatever happens to sales."
   },
   "quarter": {
     "term": "Quarter",
-    "definition": "A three-month period. US public companies report their results every quarter."
+    "definition": "A three-month period. US public companies report their results every quarter.",
+    "short": "quarter"
   },
   "fiscal-year": {
     "term": "Fiscal year",
-    "definition": "The 12-month period a company uses for its accounts. It doesn't have to match the calendar year; Apple's ends in late September, for example."
+    "definition": "The 12-month period a company uses for its accounts. It doesn't have to match the calendar year; Apple's ends in late September, for example.",
+    "short": "fiscal year"
   },
   "10-k": {
     "term": "10-K (annual report)",
-    "definition": "The detailed yearly report US public companies must file with the SEC. It covers the business, its risks and audited financial statements."
+    "definition": "The detailed yearly report US public companies must file with the SEC. It covers the business, its risks and audited financial statements.",
+    "short": "10-K"
   },
   "10-q": {
     "term": "10-Q (quarterly report)",
-    "definition": "The report US public companies file with the SEC for each of the first three quarters of their year. It is shorter than the annual report and not fully audited."
+    "definition": "The report US public companies file with the SEC for each of the first three quarters of their year. It is shorter than the annual report and not fully audited.",
+    "short": "10-Q"
   },
   "8-k": {
     "term": "8-K (announcement)",
-    "definition": "A filing companies make with the SEC within days of a major event, such as results, a new chief executive or a big acquisition."
+    "definition": "A filing companies make with the SEC within days of a major event, such as results, a new chief executive or a big acquisition.",
+    "short": "8-K"
   },
   "sec": {
     "term": "SEC",
-    "definition": "The US Securities and Exchange Commission, the government agency that oversees stock markets and collects company filings."
+    "definition": "The US Securities and Exchange Commission, the government agency that oversees stock markets and collects company filings.",
+    "short": "SEC"
   },
   "risk-factors": {
     "term": "Risk factors",
-    "definition": "The section of a report where the company lists the things that could hurt its business or its share price."
+    "definition": "The section of a report where the company lists the things that could hurt its business or its share price.",
+    "short": "risk factors",
+    "why": "Companies must list what could go wrong. Reading them helps you understand what could hurt the business."
   },
   "operating-margin": {
     "term": "Operating margin",
-    "definition": "The share of each dollar of sales left as profit from the main business, before interest and taxes."
+    "definition": "The share of each dollar of sales left as profit from the main business, before interest and taxes.",
+    "short": "operating margin",
+    "why": "It shows how profitable the main business is on its own, before borrowing costs and taxes."
   },
   "eps": {
     "term": "Earnings per share (EPS)",
-    "definition": "The company's profit divided by the number of its shares. \"Diluted\" counts shares that could be created later, for example from employee stock awards."
+    "definition": "The company's profit divided by the number of its shares. \"Diluted\" counts shares that could be created later, for example from employee stock awards.",
+    "short": "EPS",
+    "why": "It turns the company's profit into a per-share figure, so you can see what each share 'earns'. It's also half of the P/E ratio."
   },
   "free-cash-flow": {
     "term": "Free cash flow",
-    "definition": "The cash the business brought in, minus what it spent on buildings, equipment and other long-term investments. It shows how much spare cash the company produced."
+    "definition": "The cash the business brought in, minus what it spent on buildings, equipment and other long-term investments. It shows how much spare cash the company produced.",
+    "short": "free cash flow",
+    "why": "It's the money a company can actually choose what to do with: pay shareholders, pay off debt or grow. Many investors watch it more closely than profit."
   },
   "capital-expenditure": {
     "term": "Capital spending",
-    "definition": "Money spent on long-lasting things like factories, stores, data centres and equipment. Also called capital expenditure or capex."
+    "definition": "Money spent on long-lasting things like factories, stores, data centres and equipment. Also called capital expenditure or capex.",
+    "short": "capital expenditure",
+    "why": "It's how a company invests in its future. Heavy spending can mean growth plans, or a business that needs a lot of upkeep."
   },
   "current-ratio": {
     "term": "Current ratio",
-    "definition": "Short-term assets (cash and things expected to turn into cash within a year) divided by bills due within a year. Above 1 means it has more than enough to cover them."
+    "definition": "Short-term assets (cash and things expected to turn into cash within a year) divided by bills due within a year. Above 1 means it has more than enough to cover them.",
+    "short": "current ratio",
+    "why": "It shows whether the company can comfortably pay what's due soon. Below 1 isn't automatically a problem, but it leaves less room for surprises."
   },
   "debt-to-equity": {
     "term": "Debt-to-equity ratio",
-    "definition": "How much the company has borrowed compared with the money that belongs to its shareholders. Higher means it relies more on borrowing."
+    "definition": "How much the company has borrowed compared with the money that belongs to its shareholders. Higher means it relies more on borrowing.",
+    "short": "debt-to-equity ratio",
+    "why": "Borrowing can help a company grow, but debt must be repaid with interest. The higher this is, the more a bad year can hurt."
   },
   "shareholders-equity": {
     "term": "Shareholders' equity",
-    "definition": "What would be left for shareholders if the company sold everything it owns and paid off everything it owes, based on its accounts."
+    "definition": "What would be left for shareholders if the company sold everything it owns and paid off everything it owes, based on its accounts.",
+    "short": "shareholders' equity",
+    "why": "It's the owners' share on paper. Many other measures, like return on equity, are worked out from it."
   },
   "return-on-equity": {
     "term": "Return on equity (ROE)",
-    "definition": "A year's profit divided by shareholders' equity. It shows how much profit the company made with the money that belongs to its shareholders."
+    "definition": "A year's profit divided by shareholders' equity. It shows how much profit the company made with the money that belongs to its shareholders.",
+    "short": "ROE",
+    "why": "It shows how well a company turns its owners' money into profit. Higher is generally better, though heavy borrowing can push it up too."
   },
   "assets": {
     "term": "Assets",
-    "definition": "Everything the company owns that has value: cash, buildings, equipment, money owed to it, and more."
+    "definition": "Everything the company owns that has value: cash, buildings, equipment, money owed to it, and more.",
+    "short": "assets",
+    "why": "Comparing what a company owns with what it owes shows how solid its finances are."
   },
   "total-liabilities": {
     "term": "Total liabilities",
-    "definition": "Everything the company owes: loans, bonds, bills to suppliers, taxes due, and other obligations."
+    "definition": "Everything the company owes: loans, bonds, bills to suppliers, taxes due, and other obligations.",
+    "short": "liabilities",
+    "why": "Comparing what a company owes with what it owns shows how stretched it is."
   },
   "share-buyback": {
     "term": "Share buyback",
-    "definition": "When a company buys its own shares from the market. It leaves fewer shares, so each remaining share owns a bigger slice of the company."
+    "definition": "When a company buys its own shares from the market. It leaves fewer shares, so each remaining share owns a bigger slice of the company.",
+    "short": "share buyback",
+    "why": "Buybacks are another way to reward owners: with fewer shares left, each one owns more of the company."
   },
   "dividend": {
     "term": "Dividend",
-    "definition": "Cash a company pays out to its shareholders, usually every quarter, from its profits."
+    "definition": "Cash a company pays out to its shareholders, usually every quarter, from its profits.",
+    "short": "dividend",
+    "why": "Dividends are one way owners get paid back. Some companies pay them regularly; others keep the cash to grow."
   },
   "auditor": {
     "term": "Auditor",
-    "definition": "An independent accounting firm that checks a company's financial statements every year and says whether they are fairly presented."
+    "definition": "An independent accounting firm that checks a company's financial statements every year and says whether they are fairly presented.",
+    "short": "auditor",
+    "why": "An independent check on the accounts. Changing auditors isn't unusual, but it's worth knowing about."
   },
   "restatement": {
     "term": "Restatement notice",
-    "definition": "A filing where a company says financial statements it published earlier contained errors and should no longer be relied on."
+    "definition": "A filing where a company says financial statements it published earlier contained errors and should no longer be relied on.",
+    "short": "restatement",
+    "why": "It means earlier numbers were wrong. It's one of the more serious warning signs a company can report."
   },
   "pe-ratio": {
     "term": "P/E ratio (price-to-earnings)",
-    "definition": "The share price divided by earnings per share. It shows how many dollars investors are paying for each dollar of yearly profit. It describes the price; it doesn't say whether the price is right."
+    "definition": "The share price divided by earnings per share. It shows how many dollars investors are paying for each dollar of yearly profit. It describes the price; it doesn't say whether the price is right.",
+    "short": "P/E ratio",
+    "why": "It helps you judge whether a share looks expensive or cheap compared with the profit behind it. A high P/E usually means people expect profits to grow."
   },
   "market-cap": {
     "term": "Market value (market cap)",
-    "definition": "The share price multiplied by the number of shares: what the whole company is worth on the stock market at that moment."
+    "definition": "The share price multiplied by the number of shares: what the whole company is worth on the stock market at that moment.",
+    "short": "market capitalisation",
+    "why": "It's how much the whole company is worth according to the stock market, so you can compare its size with other companies."
   },
   "share-price": {
     "term": "Share price",
-    "definition": "What one share of the company costs on the stock market. It moves every trading day as people buy and sell."
+    "definition": "What one share of the company costs on the stock market. It moves every trading day as people buy and sell.",
+    "short": "share price",
+    "why": "On its own the price says little: $10 isn't 'cheaper' than $500. It only means something next to the company's profit or size, which is why ratios like P/E exist."
+  },
+  "cost-of-sales": {
+    "term": "Cost of sales",
+    "short": "cost of sales",
+    "definition": "The direct cost of making or buying the products and services a company sold: materials, factory work and delivery.",
+    "why": "The less a company spends to make what it sells, the more is left over for everything else."
+  },
+  "operating-expenses": {
+    "term": "Operating expenses",
+    "short": "operating expenses",
+    "definition": "The cost of running the business beyond making the products: staff, research, marketing, offices.",
+    "why": "Keeping these under control lets more of each sale turn into profit."
+  },
+  "acquisitions": {
+    "term": "Acquisitions",
+    "short": "acquisitions",
+    "definition": "Buying other companies or businesses.",
+    "why": "Buying other companies can be a fast way to grow, but it's expensive and doesn't always work out."
+  },
+  "income-statement": {
+    "term": "Income statement",
+    "short": "income statement",
+    "definition": "The part of a company's report that shows what it sold and what it kept as profit over a period.",
+    "why": "It answers the most basic question about a business: is it making money?"
+  },
+  "balance-sheet": {
+    "term": "Balance sheet",
+    "short": "balance sheet",
+    "definition": "The part of a company's report that lists what it owns and what it owes on one date.",
+    "why": "It shows whether the company is on solid ground or stretched thin."
+  },
+  "cash-flow-statement": {
+    "term": "Cash flow statement",
+    "short": "cash flow statement",
+    "definition": "The part of a company's report that shows the actual cash coming in and going out.",
+    "why": "Profit can be shaped by accounting rules; cash is harder to disguise."
+  },
+  "capital-allocation": {
+    "term": "Capital allocation",
+    "short": "capital allocation",
+    "definition": "How a company's leaders decide to use its money: investing, buying other companies, paying shareholders or paying off debt.",
+    "why": "It shows what management thinks matters most, and whether they treat shareholders' money carefully."
+  },
+  "valuation": {
+    "term": "Valuation",
+    "short": "valuation",
+    "definition": "Working out what a company is worth and comparing it with its share price.",
+    "why": "A great company can still be a poor investment if its shares already cost too much. Fathom shows the measures but never says what to do."
+  },
+  "industry-risks": {
+    "term": "Risks and outlook",
+    "short": "risk factors and outlook",
+    "definition": "What the company says could go wrong, and what it says lies ahead.",
+    "why": "Every company faces risks; knowing the main ones helps you understand what could change the picture."
+  },
+  "business-model": {
+    "term": "Business model",
+    "short": "business model",
+    "definition": "What a company sells, who it sells to, and how that turns into money.",
+    "why": "Everything else on this page only makes sense once you know how the company earns its money."
+  },
+  "costs-and-expenses": {
+    "term": "Costs and expenses",
+    "short": "costs and expenses",
+    "definition": "Everything a company spends to make and sell its products and run the business, plus interest and tax.",
+    "why": "Sales minus all of these is the profit. Two companies with the same sales can keep very different amounts."
   }
 }

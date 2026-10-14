@@ -20,7 +20,7 @@ export function NewsTabs({ companies, height = 460 }: { companies: NewsCompany[]
             role="tab"
             aria-selected={i === active}
             onClick={() => setActive(i)}
-            className={`min-h-10 flex-none rounded-full px-3.5 text-[14px] font-semibold ${i === active ? "bg-ocean text-abyss" : "bg-panel-2 text-muted hover:text-ink"}`}
+            className={`fathom-grow min-h-10 flex-none rounded-full px-3.5 text-[14px] font-semibold ${i === active ? "bg-ocean text-abyss" : "bg-panel-2 text-muted hover:text-ink"}`}
           >
             {shortName(x.name)}
           </button>
