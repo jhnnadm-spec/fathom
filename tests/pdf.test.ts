@@ -5,7 +5,7 @@ import { ReportPdf } from "@/lib/pdf/ReportPdf";
 import type { CompanyReport } from "@/lib/report/company";
 
 const report: CompanyReport = {
-  company: { name: "Apple Inc.", ticker: "AAPL", cik: "0000320193", industry: "Electronic Computers", exchanges: ["Nasdaq"] },
+  company: { name: "Apple Inc.", ticker: "AAPL", cik: "0000320193", industry: "Electronic Computers", sic: 3571, exchanges: ["Nasdaq"] },
   support: { supported: true } as CompanyReport["support"],
   annualReport: {
     form: "10-K",

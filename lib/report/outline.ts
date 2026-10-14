@@ -250,3 +250,19 @@ export function statementsFor(all: Statement[], item: Extract<Item, { kind: "sta
   const found = item.ids.map((id) => all.find((s) => s.id === id)).filter(Boolean) as Statement[];
   return item.kind === "firstOf" ? found.slice(0, 1) : found;
 }
+
+// ---------------------------------------------------------------- the research path
+
+/**
+ * The seven steps an equity researcher works through, in order. Each step
+ * gathers the Surface questions and the Below/Deep areas that answer it.
+ */
+export const STEPS: { id: string; title: string; question: string; areas: string[] }[] = [
+  { id: "business", title: "The business", question: "What does it do, and how does it make money?", areas: ["business"] },
+  { id: "performance", title: "Growth and profit", question: "Is it selling more, and how much does it keep?", areas: ["performance"] },
+  { id: "health", title: "Financial health", question: "Can it pay its bills and handle its debt?", areas: ["health"] },
+  { id: "cash", title: "Cash", question: "Does the business actually bring in cash?", areas: ["cash"] },
+  { id: "management", title: "How it's run", question: "What do its leaders do with the money?", areas: ["management"] },
+  { id: "outlook", title: "Industry and risks", question: "What's happening around it, and what could go wrong?", areas: ["industry", "risks"] },
+  { id: "value", title: "The share price", question: "What does the stock market think it's worth?", areas: ["value"] },
+];

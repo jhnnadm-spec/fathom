@@ -39,11 +39,14 @@ body {
   font-family: var(--font-sans);
 }
 
-a {
-  color: var(--color-ocean);
-}
-a:hover {
-  color: var(--color-ocean-dark);
+/* Base link colours, in the base layer so a component's own colour can override them. */
+@layer base {
+  a {
+    color: var(--color-ocean);
+  }
+  a:hover {
+    color: var(--color-ocean-dark);
+  }
 }
 
 /* Loading animation: the dot drops down the line while the water gently moves. */

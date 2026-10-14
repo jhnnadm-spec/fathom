@@ -21,6 +21,7 @@ export type CompanyFilings = {
   tickers: string[];
   exchanges: string[];
   industry: string; // SEC's industry description, e.g. "Electronic Computers"
+  sic: number; // SEC's industry code, e.g. 3571 (0 when not given)
   fiscalYearEnd: string; // "MMDD", e.g. "0926"
   filings: Filing[]; // newest first
 };
@@ -30,6 +31,7 @@ type RawSubmissions = {
   name: string;
   tickers?: string[];
   exchanges?: string[];
+  sic?: string;
   sicDescription?: string;
   fiscalYearEnd?: string;
   filings: {
@@ -68,6 +70,7 @@ export function parseSubmissions(raw: RawSubmissions): CompanyFilings {
     tickers: raw.tickers ?? [],
     exchanges: raw.exchanges ?? [],
     industry: raw.sicDescription ?? "",
+    sic: Number(raw.sic) || 0,
     fiscalYearEnd: raw.fiscalYearEnd ?? "",
     filings,
   };

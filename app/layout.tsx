@@ -30,8 +30,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </Link>
             <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:flex-none">
               <SearchForm size="small" />
-              <nav className="flex flex-none gap-2 text-[15px] font-medium">
-                <Link href="/about" className="px-3 py-3 no-underline">
+              <nav aria-label="Main" className="flex flex-none gap-1 text-[15px] font-medium">
+                <Link href="/sectors" className="hidden px-2.5 py-3 no-underline sm:inline">
+                  Sectors
+                </Link>
+                <Link href="/watchlist" className="px-2.5 py-3 no-underline">
+                  Watchlist
+                </Link>
+                <Link href="/about" className="hidden px-2.5 py-3 no-underline sm:inline">
                   About
                 </Link>
               </nav>

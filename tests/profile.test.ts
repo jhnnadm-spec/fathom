@@ -27,3 +27,13 @@ describe("company background from Wikidata", () => {
     expect(parseProfile([])).toBeUndefined();
   });
 });
+
+describe("website choice", () => {
+  it("prefers the main .com site over country sites", () => {
+    const p = parseProfile([
+      row({ item: "http://www.wikidata.org/entity/Q312", website: "https://apple.com.cn/" }),
+      row({ item: "http://www.wikidata.org/entity/Q312", website: "https://www.apple.com/" }),
+    ])!;
+    expect(p.website).toBe("https://www.apple.com/");
+  });
+});

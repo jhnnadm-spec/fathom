@@ -41,6 +41,7 @@ export type CompanyReport = {
     ticker: string;
     cik: string;
     industry: string;
+    sic: number;
     exchanges: string[];
   };
   support: Support;
@@ -122,6 +123,7 @@ export async function getCompanyReport(ticker: string): Promise<CompanyReport | 
       ticker: ref.ticker,
       cik: ref.cik,
       industry: filings.industry,
+      sic: filings.sic,
       exchanges: filings.exchanges,
     },
     support,

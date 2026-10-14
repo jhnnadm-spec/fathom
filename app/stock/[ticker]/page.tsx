@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense, type ReactNode } from "react";
-import { DepthTabs } from "@/components/DepthTabs";
+import { ResearchProgress } from "@/components/ResearchProgress";
+import { ResearchStep } from "@/components/ResearchStep";
+import { WatchButton } from "@/components/WatchButton";
 import { Loader } from "@/components/Loader";
 import { ExplainButton } from "@/components/ExplainButton";
 import { CompanyNews, MarketData, PriceChart } from "@/components/MarketWidgets";
@@ -16,7 +18,9 @@ import { lookupTerm } from "@/lib/glossary";
 import { getCompanyReport, type CompanyReport } from "@/lib/report/company";
 import { changeRows, keyRatioRows, marginTrends } from "@/lib/financials/explain-numbers";
 import { MARKET_TERMS } from "@/lib/report/market-terms";
-import { areasFor, claimsFor, leftOutNames, statementsFor, SURFACE, type Block, type Item, type SurfaceRow } from "@/lib/report/outline";
+import { AREAS, claimsFor, leftOutNames, statementsFor, STEPS, SURFACE, type Block, type Item, type SurfaceRow } from "@/lib/report/outline";
+import { getCompanyProfile, type CompanyProfile } from "@/lib/profile/wiki";
+import { quizFor } from "@/lib/report/quiz";
 import { billsGauge, cashVsDebt, compareFor, marginLines, moneyUses, pairFor, salesHistory, salesSplit, SERIES, shareFor } from "@/lib/report/visuals";
 import { DotGrid, Meter, StatusBadge, TopicIcon } from "@/components/viz/Static";
 
@@ -43,23 +47,18 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
     ? await explanationState(report.company.ticker, report.explanationKey)
     : { status: "unavailable" };
   const e = state.explanation;
+  const profile = report.support.supported ? await getCompanyProfile(report.company.cik) : undefined;
 
   return (
     <div className="mx-auto flex w-full max-w-[720px] flex-col gap-10 px-5 py-10 sm:py-14">
       <Header report={report} />
       {report.support.supported ? (
         <>
-          <div className="flex flex-col gap-8">
-            <ExplainStatus ticker={report.company.ticker} state={state} />
-            <DepthTabs
-              panels={[
-                { id: "surface", label: "Surface", hint: "1 minute", color: "#CDE7F0", content: <Surface report={report} e={e} level="surface" /> },
-                { id: "below", label: "Below", hint: "Explained", color: "#7FC4D8", content: <Detail report={report} e={e} level="below" /> },
-                { id: "deep", label: "Deep", hint: "Everything", color: "#0B4F6C", content: <Detail report={report} e={e} level="deep" /> },
-              ]}
-            />
-          </div>
+          <ExplainStatus ticker={report.company.ticker} state={state} />
+          <Path report={report} e={e} level="surface" profile={profile} />
+          <AllNumbers report={report} />
           <MoreInfo report={report} />
+          {e && <AiNote e={e} />}
           <Disclaimer />
         </>
       ) : (
@@ -89,7 +88,8 @@ function Header({ report }: { report: CompanyReport }) {
         </p>
       )}
       {report.support.supported && (
-        <div>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <WatchButton ticker={company.ticker} name={company.name} />
           {/* A plain link: the browser downloads the file the server makes. */}
           <a
             href={`/stock/${encodeURIComponent(company.ticker)}/pdf`}
@@ -191,18 +191,6 @@ function AiNote({ e }: { e: SavedExplanation }) {
   );
 }
 
-/** The link from one level to the next, so a reader can follow one topic down (or back up). */
-function DeeperLink({ href, children, up = false }: { href: string; children: ReactNode; up?: boolean }) {
-  return (
-    <a href={href} className="inline-flex min-h-11 items-center gap-1.5 self-start text-[15px] font-semibold no-underline hover:underline">
-      {children}
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        {up ? <path d="m6 15 6-6 6 6" /> : <path d="m6 9 6 6 6-6" />}
-      </svg>
-    </a>
-  );
-}
-
 function NotWritten() {
   return (
     <p className="text-[16px] leading-relaxed text-muted">
@@ -253,7 +241,7 @@ function renderItem(item: Item, ctx: Ctx, key: string): ReactNode {
         ) : null;
       }
       return found.map((s) => (
-        <Said key={`${key}-${s.id}`} statement={s} visual={level === "surface" ? undefined : <NumberVisual id={s.id} report={report} />} />
+        <Said key={`${key}-${s.id}`} statement={s} visual={level === "surface" ? undefined : numberVisual(s.id, report)} />
       ));
     }
     case "block":
@@ -261,178 +249,272 @@ function renderItem(item: Item, ctx: Ctx, key: string): ReactNode {
   }
 }
 
-function Surface(ctx: Ctx) {
-  const { report, e } = ctx;
-  const n = report.numbers;
-  const rowsIn = (group: SurfaceRow["group"]) => SURFACE.filter((r) => r.group === group);
+/** The words for one Surface question, or a "not written yet" note for AI questions with no explanation. */
+function rowWords(row: SurfaceRow, ctx: Ctx): ReactNode {
+  const shown = row.items.filter((i) => hasContent(i, ctx));
+  const needsAi = row.items.some((i) => i.kind === "topic");
+  if (shown.length === 0) return needsAi && !ctx.e ? <NotWritten /> : null;
+  return shown.map((i, k) => renderItem(i, ctx, `${row.label}-${k}`));
+}
 
-  /** The words for one question, or a "not written yet" note for AI questions with no explanation. */
-  const words = (row: SurfaceRow) => {
-    const shown = row.items.filter((i) => hasContent(i, ctx));
-    const needsAi = row.items.some((i) => i.kind === "topic");
-    if (shown.length === 0) return needsAi && !e ? <NotWritten /> : null;
-    return shown.map((i, k) => renderItem(i, ctx, `${row.label}-${k}`));
-  };
-
-  const textPanel = (row: SurfaceRow) => {
-    const w = words(row);
-    if (!w) return null;
-    return (
-      <section key={row.label} className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
-        <h3 className="flex items-center gap-2.5 text-[14px] font-semibold text-ocean">
-          <TopicIcon name={row.items[0].kind === "topic" ? row.items[0].topic : "accounts"} />
-          {row.label}
-        </h3>
-        {w}
-        <DeeperLink href={`#below-${row.area}`}>Explain more</DeeperLink>
-      </section>
-    );
-  };
-
-  const visualFor = (row: SurfaceRow): ReactNode => {
-    switch (row.visual) {
-      case "salesSplit": {
-        const d = salesSplit(n);
-        if (!d) return null;
-        const profit = d.segments.at(-1)!;
-        return (
-          <>
-            <Headline value={`${profit.display} of every $100`} caption="of sales was left as profit" />
-            <StackedBar segments={d.segments} caption={`Where each $100 of sales went. ${d.period}.`} />
-          </>
-        );
-      }
-      case "salesGrowth": {
-        const d = salesHistory(n);
-        if (!d) return null;
-        return (
-          <>
-            {d.change !== undefined && (
-              <Headline value={`${d.change >= 0 ? "+" : "−"}${formatPercent(d.change)}`} caption="sales compared with the year before" />
-            )}
-            <Columns bars={d.bars} color={SERIES.blue} highlight="#0B4F6C" />
-          </>
-        );
-      }
-      case "billsGauge": {
-        const d = billsGauge(n);
-        if (!d) return null;
-        return (
-          <>
-            <Headline value={`$${d.value.toFixed(2)}`} caption="for every $1 of bills due within a year" />
-            <BillsGauge value={d.value} />
-          </>
-        );
-      }
-      case "cashVsDebt": {
-        const d = cashVsDebt(n);
-        if (!d) return null;
-        return (
-          <PairBars
-            items={[
-              { label: "Cash", value: d.cash, display: formatMoney(d.cash), color: SERIES.green },
-              { label: "Long-term debt", value: d.debt, display: formatMoney(d.debt), color: SERIES.orange },
-            ]}
-          />
-        );
-      }
-      case "spareCash": {
-        const f = n?.ratios.freeCashFlow;
-        if (!f) return null;
-        const flow = pairFor("s-cash", n);
-        return (
-          <>
-            <Headline value={formatMoney(f.value)} caption={f.value >= 0 ? "spare cash, after investing in itself" : "more spent than the business brought in"} />
-            {flow && <PairBars items={flow} />}
-          </>
-        );
-      }
-      case "moneyUses": {
-        const d = moneyUses(n);
-        if (!d) return null;
-        return <StackedBar segments={d.segments} caption={`What it spent its money on. ${d.period}.`} selectHint="Tap a part of the bar" />;
-      }
-      default:
-        return null;
-    }
-  };
-
-  const tile = (row: SurfaceRow) => {
-    const w = words(row);
-    const v = visualFor(row);
-    if (!w && !v) return null;
-    return (
-      <section key={row.label} className={`flex flex-col gap-4 rounded-2xl bg-panel p-5 ${row.wide ? "sm:col-span-2" : ""}`}>
-        <h3 className="text-[14px] font-semibold text-ocean">{row.label}</h3>
-        {v}
-        {w && <div className="flex flex-col gap-3 border-t border-line pt-3 [&_p]:text-[15px]">{w}</div>}
-        <DeeperLink href={`#below-${row.area}`}>Explain more</DeeperLink>
-      </section>
-    );
-  };
-
+function textPanel(row: SurfaceRow, ctx: Ctx): ReactNode {
+  const w = rowWords(row, ctx);
+  if (!w) return null;
   return (
-    <div className="flex flex-col gap-12">
-      <p className="text-[15px] leading-relaxed text-muted">
-        The whole company in a minute. Tap the charts to explore; follow <span className="text-ink">Explain more</span> to
-        go deeper on any part.
-      </p>
-      <section className="flex flex-col gap-4">
-        <h2 className="font-display text-2xl font-bold">The business in brief</h2>
-        <div className="grid gap-3">{rowsIn("business").map(textPanel)}</div>
-      </section>
-      <section className="flex flex-col gap-4">
-        <h2 className="font-display text-2xl font-bold">The numbers at a glance</h2>
-        <div className="grid gap-3 sm:grid-cols-2">{rowsIn("numbers").map(tile)}</div>
-      </section>
-      <section className="flex flex-col gap-4">
-        <h2 className="font-display text-2xl font-bold">The bigger picture</h2>
-        <div className="grid gap-3 sm:grid-cols-2">{rowsIn("world").map(textPanel)}</div>
-      </section>
-      <section className="flex flex-col gap-4">
-        <h2 className="font-display text-2xl font-bold">Share price</h2>
-        <p className="text-[15px] leading-relaxed text-muted">
-          The price moves every trading day. Fathom shows it for context; it doesn&apos;t say whether the price is right.
-        </p>
-        <div className="rounded-2xl bg-panel p-4">
-          <PriceChart symbol={report.tradingViewSymbol} />
-        </div>
-        <DeeperLink href="#below-value">What the market value and P/E mean</DeeperLink>
-      </section>
-      {e && <AiNote e={e} />}
+    <section key={row.label} className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
+      <h3 className="flex items-center gap-2.5 text-[14px] font-semibold text-ocean">
+        <TopicIcon name={row.items[0].kind === "topic" ? row.items[0].topic : "accounts"} />
+        {row.label}
+      </h3>
+      {w}
+    </section>
+  );
+}
+
+function rowVisual(row: SurfaceRow, ctx: Ctx): ReactNode {
+  const n = ctx.report.numbers;
+  switch (row.visual) {
+    case "salesSplit": {
+      const d = salesSplit(n);
+      if (!d) return null;
+      const profit = d.segments.at(-1)!;
+      return (
+        <>
+          <Headline value={`${profit.display} of every $100`} caption="of sales was left as profit" />
+          <StackedBar segments={d.segments} caption={`Where each $100 of sales went. ${d.period}.`} />
+        </>
+      );
+    }
+    case "salesGrowth": {
+      const d = salesHistory(n);
+      if (!d) return null;
+      return (
+        <>
+          {d.change !== undefined && <Headline value={`${d.change >= 0 ? "+" : "−"}${formatPercent(d.change)}`} caption="sales compared with the year before" />}
+          <Columns bars={d.bars} color={SERIES.blue} highlight="#0B4F6C" />
+        </>
+      );
+    }
+    case "billsGauge": {
+      const d = billsGauge(n);
+      if (!d) return null;
+      return (
+        <>
+          <Headline value={`$${d.value.toFixed(2)}`} caption="for every $1 of bills due within a year" />
+          <BillsGauge value={d.value} />
+        </>
+      );
+    }
+    case "cashVsDebt": {
+      const d = cashVsDebt(n);
+      if (!d) return null;
+      return (
+        <PairBars
+          items={[
+            { label: "Cash", value: d.cash, display: formatMoney(d.cash), color: SERIES.green },
+            { label: "Long-term debt", value: d.debt, display: formatMoney(d.debt), color: SERIES.orange },
+          ]}
+        />
+      );
+    }
+    case "spareCash": {
+      const f = n?.ratios.freeCashFlow;
+      if (!f) return null;
+      const flow = pairFor("s-cash", n);
+      return (
+        <>
+          <Headline value={formatMoney(f.value)} caption={f.value >= 0 ? "spare cash, after investing in itself" : "more spent than the business brought in"} />
+          {flow && <PairBars items={flow} />}
+        </>
+      );
+    }
+    case "moneyUses": {
+      const d = moneyUses(n);
+      if (!d) return null;
+      return <StackedBar segments={d.segments} caption={`What it spent its money on. ${d.period}.`} selectHint="Tap a part of the bar" />;
+    }
+    default:
+      return null;
+  }
+}
+
+function tile(row: SurfaceRow, ctx: Ctx): ReactNode {
+  const w = rowWords(row, ctx);
+  const v = rowVisual(row, ctx);
+  if (!w && !v) return null;
+  return (
+    <section key={row.label} className={`flex flex-col gap-4 rounded-2xl bg-panel p-5 ${row.wide ? "sm:col-span-2" : ""}`}>
+      <h3 className="text-[14px] font-semibold text-ocean">{row.label}</h3>
+      {v}
+      {w && <div className="flex flex-col gap-3 border-t border-line pt-3 [&_p]:text-[15px]">{w}</div>}
+    </section>
+  );
+}
+
+/** Tiles sit two to a row; a tile left on its own takes the full width, so there's no empty gap beside it. */
+function balanced(rows: SurfaceRow[]): SurfaceRow[] {
+  let col = 0;
+  return rows.map((r, i) => {
+    if (r.wide) {
+      col = 0;
+      return r;
+    }
+    const next = rows[i + 1];
+    const alone = col === 0 && (!next || next.wide);
+    col = alone ? 0 : (col + 1) % 2;
+    return alone ? { ...r, wide: true } : r;
+  });
+}
+
+/** One area at Below or Deep: its items, or a "not written yet" note when it needs the AI explanation. */
+function areaLayer(areaId: string, level: "below" | "deep", ctx: Ctx, titled: boolean): ReactNode {
+  const area = AREAS.find((a) => a.id === areaId)!;
+  const items = area[level];
+  if (items.length === 0) return null;
+  const c = { ...ctx, level };
+  const needsAi = items.some((i) => i.kind === "topic");
+  return (
+    <div key={`${areaId}-${level}`} className="flex flex-col gap-5">
+      {titled && <h3 className="font-display text-xl font-bold">{area.title}</h3>}
+      <p className="text-[15px] leading-relaxed text-muted">{area.why}</p>
+      {needsAi && !ctx.e ? <NotWritten /> : items.map((i, k) => renderItem(i, c, `${areaId}-${level}-${k}`))}
     </div>
   );
 }
 
-function Detail(ctx: Ctx & { level: "below" | "deep" }) {
+/** The research path: seven steps, each starting short and opening deeper in place. */
+function Path(ctx: Ctx & { profile?: CompanyProfile }) {
+  const { report, e, profile } = ctx;
+  const sameLayers = (id: string) => {
+    const a = AREAS.find((x) => x.id === id)!;
+    return JSON.stringify(a.below) === JSON.stringify(a.deep);
+  };
   return (
-    <div className="flex flex-col gap-12">
-      {areasFor(ctx.level).map((area) => {
-        const needsAi = area.items.some((i) => i.kind === "topic");
-        const content = needsAi && !ctx.e ? [<NotWritten key="nw" />] : area.items.map((i, n) => renderItem(i, ctx, `${area.id}-${n}`));
-        return (
-          <section
-            key={area.id}
-            id={`${ctx.level}-${area.id}`}
-            tabIndex={-1}
-            className="flex scroll-mt-6 flex-col gap-5 border-t border-line pt-8 outline-none first:border-0 first:pt-0"
-          >
-            <div className="flex flex-col gap-1.5">
-              <h2 className="font-display text-2xl font-bold">{area.title}</h2>
-              <p className="text-[15px] leading-relaxed text-muted">{area.why}</p>
-            </div>
-            {content}
-            {ctx.level === "below" && area.deep.length > 0 && <DeeperLink href={`#deep-${area.id}`}>See every detail on this</DeeperLink>}
-            {ctx.level === "deep" && area.below.length > 0 && (
-              <DeeperLink href={`#below-${area.id}`} up>
-                Back to the simpler version
-              </DeeperLink>
+    <div className="flex flex-col gap-10">
+      <ResearchProgress ticker={report.company.ticker} steps={STEPS.map((s) => ({ id: s.id, title: s.title }))} />
+      <p className="text-[16px] leading-relaxed text-muted">
+        Work through the company the way an analyst would, one question at a time. Each step starts with the short
+        answer. Tap <strong className="font-semibold text-ink">Go deeper</strong> when you want more, and try the
+        question at the end.
+      </p>
+      {STEPS.map((step, i) => {
+        const rows = SURFACE.filter((r) => step.areas.includes(r.area));
+        const numberRows = rows.filter((r) => r.group === "numbers");
+        const textRows = rows.filter((r) => r.group !== "numbers");
+        const surface = (
+          <>
+            {step.id === "business" && profile && <ProfileFacts profile={profile} />}
+            {step.id === "business" && profile?.wikipedia && !e && <WikipediaIntro w={profile.wikipedia} />}
+            {textRows.length > 0 && <div className="grid gap-3">{textRows.map((r) => textPanel(r, ctx))}</div>}
+            {numberRows.length > 0 && <div className="grid gap-3 sm:grid-cols-2">{balanced(numberRows).map((r) => tile(r, ctx))}</div>}
+            {step.id === "value" && (
+              <div className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
+                <h3 className="text-[14px] font-semibold text-ocean">Share price over the past year</h3>
+                <p className="text-[15px] text-muted">
+                  The price moves every trading day. Fathom shows it for context; it doesn&apos;t say whether the price is right.
+                </p>
+                <PriceChart symbol={report.tradingViewSymbol} />
+              </div>
             )}
-          </section>
+          </>
+        );
+        const below = (
+          <>
+            {step.id === "business" && profile?.wikipedia && e && <WikipediaIntro w={profile.wikipedia} />}
+            {step.areas.map((a) => areaLayer(a, "below", ctx, step.areas.length > 1))}
+          </>
+        );
+        const hasDeep = step.areas.some((a) => !sameLayers(a));
+        const deep = hasDeep ? <>{step.areas.map((a) => areaLayer(a, "deep", ctx, step.areas.length > 1))}</> : undefined;
+        return (
+          <ResearchStep
+            key={step.id}
+            ticker={report.company.ticker}
+            id={step.id}
+            number={i + 1}
+            title={step.title}
+            question={step.question}
+            surface={surface}
+            below={below}
+            deep={deep}
+            quiz={quizFor(step.id, report)}
+          />
         );
       })}
-      {ctx.e && <AiNote e={ctx.e} />}
     </div>
+  );
+}
+
+/** Background facts from Wikidata, clearly labelled as background. */
+function ProfileFacts({ profile: p }: { profile: CompanyProfile }) {
+  const facts: [string, ReactNode][] = [];
+  if (p.ceo) facts.push(["Chief executive", p.ceo]);
+  if (p.founded) facts.push(["Founded", p.founded]);
+  if (p.founders) facts.push(["Founded by", p.founders.join(", ")]);
+  if (p.headquarters) facts.push(["Headquarters", p.headquarters]);
+  if (p.employees) facts.push(["Employees", `${p.employees.count.toLocaleString("en-US")}${p.employees.asOf ? ` (${p.employees.asOf})` : ""}`]);
+  if (p.website)
+    facts.push([
+      "Website",
+      <a key="w" href={p.website} target="_blank" rel="noopener noreferrer">
+        {p.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
+      </a>,
+    ]);
+  if (facts.length === 0) return null;
+  return (
+    <section className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
+      <h3 className="text-[14px] font-semibold text-ocean">At a glance</h3>
+      <dl className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3">
+        {facts.map(([k, v]) => (
+          <div key={k} className="flex flex-col">
+            <dt className="text-[13px] text-muted">{k}</dt>
+            <dd className="text-[16px] font-semibold">{v}</dd>
+          </div>
+        ))}
+      </dl>
+      <SourceLink href={p.wikidataUrl} label="Wikidata, a free public database edited by volunteers (may lag behind)" kind="Background" />
+    </section>
+  );
+}
+
+/** The opening of the company's Wikipedia article, credited as its licence requires. */
+function WikipediaIntro({ w }: { w: NonNullable<CompanyProfile["wikipedia"]> }) {
+  return (
+    <section className="flex flex-col gap-2.5 rounded-2xl bg-panel p-5">
+      <h3 className="text-[14px] font-semibold text-ocean">Background</h3>
+      <p className="text-[16px] leading-[1.65]">{w.extract}</p>
+      <p className="text-[13px] text-muted">
+        From the Wikipedia article{" "}
+        <a href={w.url} target="_blank" rel="noopener noreferrer">
+          {w.title}
+        </a>
+        , by its contributors, shared under{" "}
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+          CC BY-SA 4.0
+        </a>
+        . Background only: Fathom&apos;s numbers come from the company&apos;s own reports.
+      </p>
+    </section>
+  );
+}
+
+/** Every key number side by side, folded away until wanted. */
+function AllNumbers({ report }: { report: CompanyReport }) {
+  const area = AREAS.find((a) => a.id === "numbers")!;
+  const ctx: Ctx = { report, level: "deep" };
+  return (
+    <details className="group flex flex-col rounded-2xl bg-panel p-5">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4">
+        <span className="flex flex-col">
+          <span className="font-display text-xl font-bold">All the key numbers</span>
+          <span className="text-[14px] text-muted">{area.why}</span>
+        </span>
+        <span aria-hidden="true" className="text-2xl text-ocean transition-transform group-open:rotate-45">
+          +
+        </span>
+      </summary>
+      <div className="mt-5 flex flex-col gap-8">{area.deep.map((i, k) => renderItem(i, ctx, `numbers-${k}`))}</div>
+    </details>
   );
 }
 
@@ -442,7 +524,7 @@ function Detail(ctx: Ctx & { level: "below" | "deep" }) {
 const DRAWN_NEARBY = new Set(["revenue-year", "current-ratio", "cash-vs-debt", "capital-allocation", "margin-trend", "negative-equity", "return-on-equity"]);
 
 /** The right picture for one number: a dot grid for shares of $100, bars for comparisons. */
-function NumberVisual({ id, report, compact = false }: { id: string; report: CompanyReport; compact?: boolean }) {
+function numberVisual(id: string, report: CompanyReport, compact = false): ReactNode {
   if (!compact && DRAWN_NEARBY.has(id)) return null;
   const n = report.numbers;
   const share = shareFor(id, n);
@@ -664,7 +746,7 @@ function KeyRatios({ report }: { report: CompanyReport }) {
     <Sub title="Key ratios" note="Ratios compare two numbers so companies of different sizes can be compared. Each one only combines figures from the same period or date.">
       <ul className="flex flex-col">
         {rows.map((r) => (
-          <Explained key={r.id} {...r} extra={<NumberVisual id={r.id} report={report} compact />} />
+          <Explained key={r.id} {...r} extra={numberVisual(r.id, report, true)} />
         ))}
       </ul>
     </Sub>
@@ -741,7 +823,7 @@ function WhatChanged({ report }: { report: CompanyReport }) {
                   {r.latest}
                   {r.previous && <span className="text-muted"> vs {r.previous} a year earlier</span>}
                 </p>
-                <NumberVisual id={r.id} report={report} compact />
+                {numberVisual(r.id, report, true)}
               </>
             }
           />

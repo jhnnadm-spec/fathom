@@ -31,3 +31,12 @@ describe("nothing is left out", () => {
     for (const a of AREAS) if (a.id !== "numbers") expect(a.below.length, a.id).toBeGreaterThan(0);
   });
 });
+
+describe("research path", () => {
+  it("puts every area except the raw numbers into exactly one step", async () => {
+    const { STEPS } = await import("@/lib/report/outline");
+    const inSteps = STEPS.flatMap((s) => s.areas);
+    for (const a of AREAS.filter((x) => x.id !== "numbers")) expect(inSteps.filter((x) => x === a.id), a.id).toHaveLength(1);
+    for (const r of SURFACE) expect(inSteps, r.label).toContain(r.area);
+  });
+});

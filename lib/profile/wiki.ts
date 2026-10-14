@@ -73,7 +73,10 @@ export function parseProfile(rows: Binding[]): Omit<CompanyProfile, "wikipedia">
       employees = { count: Math.round(count), asOf: date?.slice(0, 4) };
     }
   }
-  const website = uniq("website")[0];
+  // Some companies list several websites (one per country); prefer the main ".com" one.
+  const sites = uniq("website").filter((u) => /^https?:\/\//.test(u));
+  const host = (u: string) => new URL(u).hostname.replace(/^www\./, "");
+  const website = sites.sort((a, b) => Number(host(b).endsWith(".com")) - Number(host(a).endsWith(".com")) || host(a).split(".").length - host(b).split(".").length)[0];
   return {
     wikidataUrl: item.replace("http://", "https://"),
     ceo: ceos.length === 1 ? ceos[0] : undefined, // more than one current CEO listed means the data is unclear: leave it out
@@ -81,7 +84,7 @@ export function parseProfile(rows: Binding[]): Omit<CompanyProfile, "wikipedia">
     founders: founders.length > 0 && founders.length <= 4 ? founders : undefined,
     headquarters: hq.length === 1 ? hq[0] : undefined,
     employees,
-    website: website && /^https?:\/\//.test(website) ? website : undefined,
+    website,
     article: uniq("article")[0],
   };
 }

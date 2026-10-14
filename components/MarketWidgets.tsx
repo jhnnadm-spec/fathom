@@ -50,11 +50,11 @@ export function MarketData({ symbol }: { symbol: string }) {
 }
 
 /** News headlines about this company, from TradingView's news feed. */
-export function CompanyNews({ symbol }: { symbol: string }) {
+export function CompanyNews({ symbol, height = 520 }: { symbol: string; height?: number }) {
   return (
     <TradingViewWidget
       script="timeline"
-      height={520}
+      height={height}
       config={{
         feedMode: "symbol",
         symbol,
@@ -67,6 +67,28 @@ export function CompanyNews({ symbol }: { symbol: string }) {
         locale: "en",
       }}
       attribution={{ href: `https://www.tradingview.com/symbols/${symbol.replace(":", "-")}/news/`, text: `${symbol} news` }}
+    />
+  );
+}
+
+/** Important market-wide stock news, from TradingView's news feed. */
+export function MarketNews({ height = 520 }: { height?: number }) {
+  return (
+    <TradingViewWidget
+      script="timeline"
+      height={height}
+      config={{
+        feedMode: "market",
+        market: "stock",
+        width: "100%",
+        height: "100%",
+        autosize: true,
+        colorTheme: "light",
+        isTransparent: true,
+        displayMode: "regular",
+        locale: "en",
+      }}
+      attribution={{ href: "https://www.tradingview.com/news/markets/stocks/", text: "Stock market news" }}
     />
   );
 }

@@ -140,6 +140,27 @@ function compare(
   };
 }
 
+const DERIVED_LIABILITIES = "total liabilities (worked out as liabilities and equity, minus equity, from the balance sheet)";
+
+function deriveLiabilities(facts: CompanyFacts, filings: CompanyFilings, asOf: string): Comparison | undefined {
+  const total = getSeries(facts, ["LiabilitiesAndStockholdersEquity"], "instant");
+  const equity = getSeries(facts, ["StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"], "instant");
+  const equityPlain = getSeries(facts, ["StockholdersEquity"], "instant");
+  const at = (point: SeriesPoint): Figure | undefined => {
+    const eq = equity.find((e) => e.end === point.end) ?? equityPlain.find((e) => e.end === point.end);
+    if (!eq) return undefined;
+    const base = toFigure(point, DERIVED_LIABILITIES, filings);
+    return { ...base, value: point.value - eq.value, tag: "LiabilitiesAndStockholdersEquity minus StockholdersEquity" };
+  };
+  const [latestPoint] = total;
+  if (!latestPoint || days(latestPoint.end, asOf) > MAX_AGE_DAYS.instant) return undefined;
+  const latest = at(latestPoint);
+  if (!latest || latest.value <= 0) return undefined;
+  const prevPoint = yearEarlier(total, latestPoint.end);
+  const previous = prevPoint ? at(prevPoint) : undefined;
+  return { id: "liabilities", latest, previous, change: previous ? percentChange(latest.value, previous.value) : undefined };
+}
+
 /** The date the company's latest annual or quarterly report covers up to. */
 export function latestPeriodEnd(filings: CompanyFilings): string | undefined {
   return filings.filings
@@ -170,6 +191,18 @@ export function computeNumbers(facts: CompanyFacts, filings: CompanyFilings): Co
         const q = compare(facts, filings, def.id, "quarterly", asOf, omitted);
         if (q) quarter[def.id] = q;
       }
+    }
+  }
+
+  // ---- Total liabilities, when the company doesn't report the figure on its own:
+  // its balance sheet always gives "liabilities and equity" and "equity" for the same date,
+  // so liabilities = (liabilities and equity) − equity.
+  if (!balance.liabilities) {
+    const derived = deriveLiabilities(facts, filings, asOf);
+    if (derived) {
+      balance.liabilities = derived;
+      const i = omitted.findIndex((o) => o.id === "liabilities");
+      if (i >= 0) omitted.splice(i, 1);
     }
   }
 
