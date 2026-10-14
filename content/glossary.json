@@ -256,5 +256,41 @@
     "short": "costs and expenses",
     "definition": "Everything a company spends to make and sell its products and run the business, plus interest and tax.",
     "why": "Sales minus all of these is the profit. Two companies with the same sales can keep very different amounts."
+  },
+  "consumer-demand": {
+    "term": "Consumer demand",
+    "short": "consumer demand",
+    "definition": "How much people and businesses are willing and able to buy. It depends a lot on jobs, wages and confidence.",
+    "why": "When people feel less secure they spend less, and companies selling things people can put off feel it first."
+  },
+  "inflation": {
+    "term": "Inflation",
+    "short": "inflation",
+    "definition": "Prices rising across the economy, usually measured as how much more a typical basket of goods costs than a year earlier.",
+    "why": "It pushes up a company's costs. Companies that can raise their own prices without losing customers cope best."
+  },
+  "competition": {
+    "term": "Competition",
+    "short": "competition",
+    "definition": "Other companies trying to win the same customers.",
+    "why": "Strong competition can force a company to cut prices or spend more, squeezing its profit."
+  },
+  "interest-rates": {
+    "term": "Interest rates",
+    "short": "interest rates",
+    "definition": "The cost of borrowing money. In the US they are steered by the Federal Reserve and set day to day in markets.",
+    "why": "Higher rates make borrowing more expensive for companies and their customers, and tend to pull share prices down."
+  },
+  "regulation": {
+    "term": "Regulation",
+    "short": "regulation",
+    "definition": "Laws and rules set by governments, including taxes, tariffs and safety or competition rules.",
+    "why": "New rules can add costs or limit what a company may sell."
+  },
+  "market-sentiment": {
+    "term": "Market sentiment",
+    "short": "market sentiment",
+    "definition": "The overall mood of investors: how optimistic or worried they feel about a company or the market.",
+    "why": "Mood can move a share price a lot in the short run, even when the business itself hasn't changed."
   }
 }

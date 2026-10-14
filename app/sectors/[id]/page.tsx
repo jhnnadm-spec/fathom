@@ -16,7 +16,7 @@ export async function generateMetadata(props: PageProps<"/sectors/[id]">): Promi
 
 export default function SectorPage(props: PageProps<"/sectors/[id]">) {
   return (
-    <div className="mx-auto flex w-full max-w-[720px] flex-col gap-6 px-5 py-10 sm:py-14">
+    <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-6 px-5 py-10 sm:py-14 lg:px-8">
       <Suspense fallback={<Loader label="Loading companies…" />}>
         <Sector params={props.params} searchParams={props.searchParams} />
       </Suspense>
@@ -55,7 +55,7 @@ async function Sector({
       </Link>
       <div className="flex flex-col gap-2">
         <h1 className="font-display text-4xl font-bold tracking-tight">{SECTORS[id].name}</h1>
-        <p className="text-[16px] leading-relaxed text-muted">{SECTORS[id].blurb}</p>
+        <p className="max-w-3xl text-[16px] leading-relaxed text-muted">{SECTORS[id].blurb}</p>
       </div>
 
       {genres.length > 1 && (
@@ -81,7 +81,7 @@ async function Sector({
           <p className="text-[14px] text-muted">
             {all.length.toLocaleString("en-US")} companies{genre ? ` in ${plainIndustry(genre).toLowerCase()}` : ""}, biggest yearly sales first.
           </p>
-          <ol className="flex flex-col gap-2" start={(page - 1) * PAGE + 1}>
+          <ol className="grid gap-2 md:grid-cols-2 xl:grid-cols-3" start={(page - 1) * PAGE + 1}>
             {shown.map((c) => (
               <li key={c.t}>
                 <Link

@@ -5,11 +5,11 @@
  * (or tapping) an idea lights up what it's connected to, and the panel below
  * explains it in plain words with this company's figure.
  */
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { EDGES, GROUPS, type MapNode } from "@/lib/report/concept-map";
 
 const W = 1040;
-const H = 520;
+const H = 640;
 const NW = 180; // box width
 const NH = 54; // box height
 
@@ -32,6 +32,27 @@ function link(x1: number, y1: number, x2: number, y2: number): string {
 
 export function ConceptMap({ nodes, company }: { nodes: MapNode[]; company: string }) {
   const [active, setActive] = useState<string>("profit");
+  const section = useRef<HTMLElement>(null);
+  // After another part of the page points at an idea, the page scrolls the map under the pointer;
+  // ignore hovering for a moment so that doesn't replace the idea that was asked for.
+  const holdHover = useRef(false);
+  const hover = (id: string) => {
+    if (!holdHover.current) setActive(id);
+  };
+
+  // Other parts of the page (like "What moves this company") can point at an idea on the map.
+  useEffect(() => {
+    const focus = (e: Event) => {
+      const id = (e as CustomEvent<string>).detail;
+      if (!nodes.some((n) => n.id === id)) return;
+      setActive(id);
+      holdHover.current = true;
+      setTimeout(() => (holdHover.current = false), 1500);
+      section.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    window.addEventListener("fathom:map-focus", focus);
+    return () => window.removeEventListener("fathom:map-focus", focus);
+  }, [nodes]);
   const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
   const near = new Set(EDGES.filter((e) => e.from === active || e.to === active).flatMap((e) => [e.from, e.to]));
   const node = byId[active];
@@ -39,19 +60,19 @@ export function ConceptMap({ nodes, company }: { nodes: MapNode[]; company: stri
   const to = EDGES.filter((e) => e.from === active).map((e) => ({ n: byId[e.to], label: e.label }));
 
   return (
-    <section className="flex flex-col gap-4" aria-labelledby="map-title">
+    <section ref={section} id="map" className="flex scroll-mt-6 flex-col gap-4" aria-labelledby="map-title">
       <div className="flex flex-col gap-1">
         <h2 id="map-title" className="font-display text-2xl font-bold">
           How it all connects
         </h2>
-        <p className="text-[15px] leading-relaxed text-muted">
+        <p className="max-w-3xl text-[15px] leading-relaxed text-muted">
           The main ideas on this page and how they lead into each other. Point at or tap any box to see what it means and{" "}
           {company}&apos;s own figure.
         </p>
       </div>
 
       {/* The map, on screens wide enough to read it */}
-      <div className="hidden rounded-2xl bg-panel p-4 lg:-mx-[160px] lg:block">
+      <div className="hidden rounded-2xl bg-panel p-4 lg:block">
         <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="group" aria-label="Map of how the ideas connect">
           {EDGES.map((e, i) => {
             const a = byId[e.from];
@@ -69,6 +90,7 @@ export function ConceptMap({ nodes, company }: { nodes: MapNode[]; company: stri
                   fill="none"
                   stroke={on ? "var(--color-ocean)" : "#c9dde6"}
                   strokeWidth={on ? 2.2 : 1.25}
+                  strokeDasharray={e.from.startsWith("f-") && !on ? "4 5" : undefined}
                   className="transition-[stroke] duration-200"
                 />
               </g>
@@ -85,7 +107,7 @@ export function ConceptMap({ nodes, company }: { nodes: MapNode[]; company: stri
                 role="button"
                 aria-pressed={isActive}
                 aria-label={`${n.plain} (${n.term})`}
-                onMouseEnter={() => setActive(n.id)}
+                onMouseEnter={() => hover(n.id)}
                 onFocus={() => setActive(n.id)}
                 onClick={() => setActive(n.id)}
                 className="cursor-pointer outline-none"
@@ -153,7 +175,7 @@ export function ConceptMap({ nodes, company }: { nodes: MapNode[]; company: stri
               {node.plain} <span className="font-sans text-[15px] font-normal text-muted">({node.term})</span>
             </h3>
             <a href={`#step-${node.step}`} className="text-[14px] font-semibold">
-              Read more in the research path
+              {node.step === "forces" ? "Read more in What moves this company" : "Read more in the research path"}
             </a>
           </div>
           {node.value && (

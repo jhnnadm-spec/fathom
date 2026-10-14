@@ -23,6 +23,10 @@ import { getCompanyProfile, type CompanyProfile } from "@/lib/profile/wiki";
 import { TermName } from "@/components/TermName";
 import { ConceptMap } from "@/components/ConceptMap";
 import { conceptMap } from "@/lib/report/concept-map";
+import { Forces } from "@/components/Forces";
+import { PageNav } from "@/components/PageNav";
+import { getMacro } from "@/lib/macro/data";
+import { buildForces } from "@/lib/report/forces";
 import { billsGauge, cashVsDebt, compareFor, marginLines, moneyUses, pairFor, salesHistory, salesSplit, SERIES, shareFor } from "@/lib/report/visuals";
 import { DotGrid, Meter, StatusBadge, TopicIcon } from "@/components/viz/Static";
 
@@ -49,24 +53,52 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
     ? await explanationState(report.company.ticker, report.explanationKey)
     : { status: "unavailable" };
   const e = state.explanation;
-  const profile = report.support.supported ? await getCompanyProfile(report.company.cik) : undefined;
+  if (!report.support.supported) {
+    return (
+      <div className="mx-auto flex w-full max-w-[720px] flex-col gap-10 px-5 py-10 sm:py-14">
+        <Header report={report} />
+        <Unsupported reason={report.support.reason} name={report.company.name} />
+      </div>
+    );
+  }
+  const [profile, macro] = await Promise.all([getCompanyProfile(report.company.cik), getMacro()]);
+  const company = shortCompany(report.company.name);
+  const forces = buildForces(company, report.numbers, e, macro);
+  const now = (id: string) => forces.find((f) => f.id === id)?.now?.text;
+  const mentioned = (id: string) => (forces.some((f) => f.id === id) ? `${company} mentions this in its own reports: see "What moves ${company}"` : undefined);
+  const nodes = conceptMap(report.numbers, {
+    rates: now("rates"),
+    inflation: now("inflation"),
+    demand: now("demand"),
+    sentiment: "Changes every day with news and mood: see the live share price in step 7",
+    competition: mentioned("competition"),
+    rules: mentioned("rules"),
+  });
 
   return (
-    <div className="mx-auto flex w-full max-w-[720px] flex-col gap-10 px-5 py-10 sm:py-14">
-      <Header report={report} />
-      {report.support.supported ? (
-        <>
-          <ExplainStatus ticker={report.company.ticker} state={state} />
-          <ConceptMap nodes={conceptMap(report.numbers)} company={shortCompany(report.company.name)} />
-          <Path report={report} e={e} level="surface" profile={profile} />
-          <AllNumbers report={report} />
-          <MoreInfo report={report} />
-          {e && <AiNote e={e} />}
-          <Disclaimer />
-        </>
-      ) : (
-        <Unsupported reason={report.support.reason} name={report.company.name} />
-      )}
+    <div className="mx-auto w-full max-w-[1600px] px-5 py-10 sm:py-14 lg:grid lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10 lg:px-8 xl:gap-14">
+      <aside className="hidden lg:block">
+        <PageNav
+          ticker={report.company.ticker}
+          company={company}
+          steps={STEPS.map((s) => ({ id: s.id, title: s.title }))}
+          extra={[
+            { id: "numbers", title: "All the key numbers" },
+            { id: "news", title: "Announcements and news" },
+          ]}
+        />
+      </aside>
+      <div className="flex min-w-0 flex-col gap-12">
+        <Header report={report} />
+        <ExplainStatus ticker={report.company.ticker} state={state} />
+        <ConceptMap nodes={nodes} company={company} />
+        <Forces forces={forces} nodes={nodes} company={company} />
+        <Path report={report} e={e} level="surface" profile={profile} />
+        <AllNumbers report={report} />
+        <MoreInfo report={report} />
+        {e && <AiNote e={e} />}
+        <Disclaimer />
+      </div>
     </div>
   );
 }
@@ -119,9 +151,9 @@ function Header({ report }: { report: CompanyReport }) {
 
 // ---------------------------------------------------------------- shared pieces
 
-function Card({ title, children, note }: { title: string; children: React.ReactNode; note?: string }) {
+function Card({ title, children, note, className = "" }: { title: string; children: React.ReactNode; note?: string; className?: string }) {
   return (
-    <section className="flex flex-col gap-4 border-t border-line pt-8">
+    <section className={`flex min-w-0 flex-col gap-4 border-t border-line pt-8 ${className}`}>
       <div className="flex flex-col gap-1.5">
         <h2 className="font-display text-2xl font-bold">{title}</h2>
         {note && <p className="text-[15px] leading-relaxed text-muted">{note}</p>}
@@ -416,7 +448,7 @@ function Path(ctx: Ctx & { profile?: CompanyProfile }) {
   return (
     <div className="flex flex-col gap-10">
       <ResearchProgress ticker={report.company.ticker} steps={STEPS.map((s) => ({ id: s.id, title: s.title }))} />
-      <p className="text-[16px] leading-relaxed text-muted">
+      <p className="max-w-3xl text-[16px] leading-relaxed text-muted">
         Now work through the company the way an analyst would, one question at a time. Each step says why it matters
         and starts with the short answer. Tap <strong className="font-semibold text-ink">Go deeper</strong> when you want
         more. Point at any underlined term to see what it means.
@@ -429,8 +461,12 @@ function Path(ctx: Ctx & { profile?: CompanyProfile }) {
           <>
             {step.id === "business" && profile && <ProfileFacts profile={profile} />}
             {step.id === "business" && profile?.wikipedia && !e && <WikipediaIntro w={profile.wikipedia} />}
-            {textRows.length > 0 && <div className="grid gap-3">{textRows.map((r) => textPanel(r, ctx))}</div>}
-            {numberRows.length > 0 && <div className="grid gap-3 sm:grid-cols-2">{balanced(numberRows).map((r) => tile(r, ctx))}</div>}
+            <div className={`grid gap-4 ${textRows.length > 0 && numberRows.length > 0 ? "xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] xl:items-start" : ""}`}>
+              {textRows.length > 0 && (
+                <div className={`grid gap-3 ${numberRows.length === 0 ? "lg:grid-cols-2" : ""}`}>{textRows.map((r) => textPanel(r, ctx))}</div>
+              )}
+              {numberRows.length > 0 && <div className="grid gap-3 sm:grid-cols-2">{balanced(numberRows).map((r) => tile(r, ctx))}</div>}
+            </div>
             {step.id === "value" && (
               <div className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
                 <h3 className="text-[14px] font-semibold text-ocean">Share price over the past year</h3>
@@ -528,7 +564,7 @@ function AllNumbers({ report }: { report: CompanyReport }) {
   const area = AREAS.find((a) => a.id === "numbers")!;
   const ctx: Ctx = { report, level: "deep" };
   return (
-    <details className="group flex flex-col rounded-2xl bg-panel p-5">
+    <details id="numbers" className="group flex scroll-mt-6 flex-col rounded-2xl bg-panel p-5">
       <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4">
         <span className="flex flex-col">
           <span className="font-display text-xl font-bold">All the key numbers</span>
@@ -965,7 +1001,7 @@ function OriginalReports({ report }: { report: CompanyReport }) {
 /** Announcements, news and where everything comes from, in the same single column. */
 function MoreInfo({ report }: { report: CompanyReport }) {
   return (
-    <div className="flex flex-col gap-10">
+    <div id="news" className="grid scroll-mt-6 gap-10 lg:grid-cols-2">
       <Card title="Official announcements" note="Major events the company reported to the SEC in the last four months.">
         {report.announcements.length === 0 ? (
           <p className="text-[16px] text-muted">None filed in the last four months.</p>
@@ -985,7 +1021,7 @@ function MoreInfo({ report }: { report: CompanyReport }) {
       <Card title="In the news" note="Headlines from news outlets, via TradingView. These are reporters' views, not official company filings.">
         <CompanyNews symbol={report.tradingViewSymbol} />
       </Card>
-      <Card title="Where this comes from">
+      <Card title="Where this comes from" className="lg:col-span-2">
         <p className="text-[16px] leading-relaxed">
           Every number and every point about the business comes from the company&apos;s own reports to the US Securities and
           Exchange Commission (SEC EDGAR). The share price, market value and news are shown as TradingView provides them.

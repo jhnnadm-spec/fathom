@@ -24,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className="h-full antialiased">
       <body className="flex min-h-full flex-col">
         <header className="border-b border-line">
-          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
+          <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-4 px-5 py-4 lg:px-8">
             <Link href="/" className="no-underline" aria-label="Fathom home">
               <Logo />
             </Link>
@@ -48,7 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex flex-1 flex-col">{children}</main>
 
         <footer className="border-t border-line">
-          <p className="mx-auto max-w-[720px] px-5 py-8 text-sm leading-relaxed text-muted">
+          <p className="mx-auto max-w-[1600px] px-5 py-8 text-sm lg:px-8 leading-relaxed text-muted">
             Fathom explains information from public sources for education only.
             It is not financial advice and does not recommend buying, selling or
             holding any investment.

@@ -120,7 +120,10 @@ export async function fetchMacro(): Promise<Indicator[]> {
 
 export async function getMacro(): Promise<Indicator[]> {
   "use cache";
-  cacheLife("days");
   cacheTag("macro");
-  return fetchMacro();
+  const found = await fetchMacro();
+  // Keep a full set for days; if a source was down, try again in a few minutes rather than showing gaps for days.
+  if (found.length >= 4) cacheLife("days");
+  else cacheLife("minutes");
+  return found;
 }

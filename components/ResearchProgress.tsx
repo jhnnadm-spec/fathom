@@ -15,7 +15,7 @@ export function ResearchProgress({ ticker, steps }: { ticker: string; steps: { i
   const done = steps.filter((s) => p[s.id]).length;
 
   return (
-    <nav aria-label="Research path" className="sticky top-0 z-10 -mx-5 flex flex-col gap-2 bg-white/85 px-5 py-3 backdrop-blur">
+    <nav aria-label="Research path" className="sticky top-0 z-10 -mx-5 flex flex-col gap-2 bg-white/85 px-5 py-3 backdrop-blur lg:hidden">
       <div className="flex items-baseline justify-between gap-3 text-[13px]">
         <span className="font-semibold text-ocean">Your research path</span>
         <span className="text-muted">

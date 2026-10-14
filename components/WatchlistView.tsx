@@ -54,7 +54,7 @@ export function WatchlistView() {
   }
 
   return (
-    <ul className="grid gap-3 sm:grid-cols-2">
+    <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
       {list.map((w) => {
         const s = snaps[w.ticker];
         const understood = Object.keys(getProgress(w.ticker)).length;
