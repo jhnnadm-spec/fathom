@@ -67,3 +67,15 @@ checks every point, and saves it in a free Supabase database.
 - Settings needed on Vercel: `SUPABASE_URL`, `SUPABASE_SECRET_KEY`,
   `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN`, `VISITOR_SALT`.
   On GitHub (Actions secrets): `SUPABASE_URL`, `SUPABASE_SECRET_KEY`.
+
+## Sectors, watchlist and background facts
+
+- **Build sector list** (GitHub Actions): groups every US-listed company by the
+  industry code it gives the SEC, with yearly sales from SEC data so bigger
+  companies come first. Runs on the 2nd of each month (about 20 minutes) and
+  saves `content/sectors.json`.
+- **Watchlist**: saved in each visitor's browser only. No accounts, nothing stored by Fathom.
+- **Background facts**: chief executive, founding year, headquarters, employees
+  and website come from Wikidata (CC0, free to reuse); the short introduction
+  comes from Wikipedia (CC BY-SA 4.0, credited on the page). They're labelled as
+  background and never used for financial figures.
