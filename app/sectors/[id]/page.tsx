@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Loader } from "@/components/Loader";
 import { SECTORS } from "@/lib/sectors";
+import { displayName } from "@/lib/report/company";
 import { companiesIn, genresIn, isSectorId, plainIndustry } from "@/lib/sectors-data";
 
 const PAGE = 40;
@@ -88,7 +89,7 @@ async function Sector({
                   className="flex items-center justify-between gap-4 rounded-2xl bg-panel px-5 py-3.5 text-ink no-underline transition hover:bg-white"
                 >
                   <span className="flex min-w-0 flex-col">
-                    <span className="truncate text-[16px] font-semibold">{c.n}</span>
+                    <span className="truncate text-[16px] font-semibold">{displayName(c.n)}</span>
                     <span className="truncate text-[13px] text-muted">{plainIndustry(c.d)}</span>
                   </span>
                   <span className="flex-none rounded-lg bg-panel-2 px-2.5 py-1 text-[13px] font-semibold text-ocean">{c.t}</span>

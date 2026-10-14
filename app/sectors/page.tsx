@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { displayName } from "@/lib/report/company";
 import { sectorSummaries } from "@/lib/sectors-data";
 
 export const metadata: Metadata = { title: "Browse by sector" };
@@ -36,6 +37,8 @@ export default function SectorsPage() {
 }
 
 function shortName(name: string): string {
-  const n = name.replace(/,?\s+(Inc\.?|Corp(oration)?\.?|Co\.?|Company|Ltd\.?|plc|Holdings?|Group)$/i, "").replace(/^The\s+/i, "");
-  return n === n.toUpperCase() ? n.toLowerCase().replace(/\b[a-z]/g, (c) => c.toUpperCase()) : n;
+  return displayName(name)
+    .replace(/,?\s+(Inc\.?|Corp(oration)?\.?|Co\.?|Company|Ltd\.?|plc|Holdings?|Group)$/i, "")
+    .replace(/\s*&$/, "")
+    .replace(/^The\s+/i, "");
 }
