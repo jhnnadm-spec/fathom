@@ -10,6 +10,7 @@
  * Needs SEC_USER_AGENT to be set (your name and email).
  */
 import { fetchCompanyProfile } from "../lib/profile/wiki";
+import { fetchMacro } from "../lib/macro/data";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { figureAppearsInText } from "../lib/financials/crosscheck";
@@ -126,6 +127,10 @@ async function run(query: string) {
 }
 
 async function main() {
+  const macro = await fetchMacro();
+  console.log("Economy:", JSON.stringify(macro));
+  await mkdir("out", { recursive: true });
+  await writeFile(path.join("out", "macro.json"), JSON.stringify(macro, null, 2));
   const queries = process.argv.slice(2);
   if (queries.length === 0) {
     console.log("Usage: npx tsx scripts/try-report.ts AAPL [KO ...]");
