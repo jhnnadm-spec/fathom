@@ -3,6 +3,7 @@
 /** The main menu in the header, with the current page marked. */
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Suspense } from "react";
 
 const LINKS = [
   { href: "/sectors", label: "Sectors", phone: false },
@@ -11,8 +12,20 @@ const LINKS = [
   { href: "/about", label: "About", phone: false },
 ];
 
+/** The menu, marking the current page once the address is known (plain links until then). */
 export function NavLinks() {
-  const path = usePathname();
+  return (
+    <Suspense fallback={<Links path="" />}>
+      <Current />
+    </Suspense>
+  );
+}
+
+function Current() {
+  return <Links path={usePathname()} />;
+}
+
+function Links({ path }: { path: string }) {
   return (
     <nav aria-label="Main" className="flex flex-none gap-1 text-[15px] font-medium">
       {LINKS.map((l) => {
