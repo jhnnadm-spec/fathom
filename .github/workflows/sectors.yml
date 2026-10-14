@@ -1,0 +1,40 @@
+# Builds the "Browse by sector" list from SEC data and saves it into the project.
+# Runs on the 2nd of each month, or from the Actions tab ("Build sector list" → "Run workflow").
+name: Build sector list
+
+on:
+  schedule:
+    - cron: "17 3 2 * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write # lets the job save the list into the project
+
+concurrency:
+  group: sectors
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build the sector list
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: npx tsx scripts/build-sectors.ts
+      - name: Save it into the project
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/sectors.json
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -q -m "Update sector list"
+          git pull --rebase -q origin main
+          git push origin HEAD:main

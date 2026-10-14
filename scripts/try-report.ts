@@ -9,6 +9,7 @@
  *
  * Needs SEC_USER_AGENT to be set (your name and email).
  */
+import { fetchCompanyProfile } from "../lib/profile/wiki";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { figureAppearsInText } from "../lib/financials/crosscheck";
@@ -114,6 +115,7 @@ async function run(query: string) {
           .sort((a, b) => b.latest!.end.localeCompare(a.latest!.end))
           .slice(0, 15)
           .map((x) => ({ tag: x.tag, end: x.latest!.end, value: x.latest!.value })),
+        profile: await fetchCompanyProfile(company.cik),
         fetchedAt: new Date().toISOString(),
       },
       null,

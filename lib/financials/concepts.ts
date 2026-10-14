@@ -50,11 +50,16 @@ export const METRICS: Record<MetricId, MetricDefinition> = {
       usd("Revenues", "revenue"),
       usd("RevenueFromContractWithCustomerIncludingAssessedTax", "revenue"),
       usd("SalesRevenueNet", "revenue"),
+      usd("RevenuesNetOfInterestExpense", "revenue, after the interest it pays"), // banks and lenders
     ],
   },
   grossProfit: { id: "grossProfit", kind: "duration", tags: [usd("GrossProfit", "gross profit")] },
   operatingIncome: { id: "operatingIncome", kind: "duration", tags: [usd("OperatingIncomeLoss", "operating income")] },
-  netIncome: { id: "netIncome", kind: "duration", quarterly: true, tags: [usd("NetIncomeLoss", "net income")] },
+  netIncome: { id: "netIncome", kind: "duration", quarterly: true, tags: [
+      usd("NetIncomeLoss", "net income"),
+      usd("ProfitLoss", "net income, including the part owned by minority partners"),
+      usd("NetIncomeLossAvailableToCommonStockholdersBasic", "net income for ordinary shareholders"),
+    ] },
   eps: {
     id: "eps",
     kind: "duration",
@@ -69,7 +74,10 @@ export const METRICS: Record<MetricId, MetricDefinition> = {
   operatingCashFlow: {
     id: "operatingCashFlow",
     kind: "duration",
-    tags: [usd("NetCashProvidedByUsedInOperatingActivities", "cash from operations")],
+    tags: [
+      usd("NetCashProvidedByUsedInOperatingActivities", "cash from operations"),
+      usd("NetCashProvidedByUsedInOperatingActivitiesContinuingOperations", "cash from continuing operations"),
+    ],
   },
   capex: {
     id: "capex",
@@ -82,12 +90,16 @@ export const METRICS: Record<MetricId, MetricDefinition> = {
   dividends: {
     id: "dividends",
     kind: "duration",
-    tags: [usd("PaymentsOfDividends", "dividends paid"), usd("PaymentsOfDividendsCommonStock", "dividends paid")],
+    tags: [
+      usd("PaymentsOfDividends", "dividends paid"),
+      usd("PaymentsOfDividendsCommonStock", "dividends paid"),
+      usd("PaymentsOfOrdinaryDividends", "dividends paid"),
+    ],
   },
   buybacks: {
     id: "buybacks",
     kind: "duration",
-    tags: [usd("PaymentsForRepurchaseOfCommonStock", "share buybacks")],
+    tags: [usd("PaymentsForRepurchaseOfCommonStock", "share buybacks"), usd("PaymentsForRepurchaseOfEquity", "share buybacks")],
   },
   acquisitions: {
     id: "acquisitions",
@@ -96,13 +108,20 @@ export const METRICS: Record<MetricId, MetricDefinition> = {
   },
 
   // ---- Balance sheet
-  cash: { id: "cash", kind: "instant", tags: [usd("CashAndCashEquivalentsAtCarryingValue", "cash and cash equivalents")] },
+  cash: { id: "cash", kind: "instant", tags: [
+      usd("CashAndCashEquivalentsAtCarryingValue", "cash and cash equivalents"),
+      usd("CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents", "cash, including cash set aside for specific uses"),
+      usd("Cash", "cash"),
+    ] },
   longTermDebt: {
     id: "longTermDebt",
     kind: "instant",
     tags: [
       usd("LongTermDebtNoncurrent", "long-term debt due after the next 12 months"),
       usd("LongTermDebt", "long-term debt, including the part due within 12 months"),
+      usd("LongTermDebtAndCapitalLeaseObligations", "long-term debt and lease obligations due after the next 12 months"),
+      usd("LongTermDebtAndCapitalLeaseObligationsIncludingCurrentMaturities", "long-term debt and lease obligations, including the part due within 12 months"),
+      usd("LongTermNotesPayable", "long-term notes owed"),
     ],
   },
   equity: {
