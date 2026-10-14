@@ -48,7 +48,7 @@
     ],
     "howItMakesMoney": [
       {
-        "text": "NIKE Brand wholesale generated $27.5 billion in fiscal 2026.",
+        "text": "Selling to stores and other retailers (NIKE Brand wholesale) brought in $27.5 billion in fiscal 2026.",
         "quote": "NIKE Brand wholesale revenues were $27.5 billion in fiscal 2026 compared to $25.9 billion in fiscal 2025.",
         "source": {
           "label": "10-K filed July 15, 2026 · Item 7, Management's Discussion and Analysis",
@@ -57,7 +57,7 @@
         }
       },
       {
-        "text": "NIKE Direct generated $17.7 billion in fiscal 2026.",
+        "text": "Selling directly to shoppers (NIKE Direct) brought in $17.7 billion in fiscal 2026.",
         "quote": "NIKE Direct revenues were $17.7 billion in fiscal 2026 compared to $18.8 billion in fiscal 2025, primarily driven by a decrease in traffic.",
         "source": {
           "label": "10-K filed July 15, 2026 · Item 7, Management's Discussion and Analysis",
@@ -73,15 +73,6 @@
         "source": {
           "label": "10-K filed July 15, 2026 · Item 1, Business",
           "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm#:~:text=Product%20attributes%20such%20as%20quality%3B%20innovation%20and%20development%3B%20performance%20and",
-          "section": "10-K Item 1"
-        }
-      },
-      {
-        "text": "Nike believes it is competitive in all areas.",
-        "quote": "We believe that we are competitive in all of these areas.",
-        "source": {
-          "label": "10-K filed July 15, 2026 · Item 1, Business",
-          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm#:~:text=We%20believe%20that%20we%20are%20competitive%20in%20all%20of%20these",
           "section": "10-K Item 1"
         }
       }
@@ -176,6 +167,12 @@
       "reason": "quote not found in report",
       "text": "The new enterprise program is expected to incur about $1.0 billion of pre‑tax charges.",
       "quote": "The program is expected to result in pre-tax charges of approximately $1.0 billion."
+    },
+    {
+      "topic": "competitiveEdge",
+      "reason": "editorial: too vague on its own",
+      "text": "Nike believes it is competitive in all areas.",
+      "quote": "We believe that we are competitive in all of these areas."
     }
   ]
 }

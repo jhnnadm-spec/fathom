@@ -28,8 +28,10 @@ export async function explanationState(ticker: string, currentKey?: string): Pro
   } catch {
     // If the database can't be reached, fall back to what's bundled with the app.
   }
-  const explanation = stored?.data ?? bundled;
-  const writtenFrom = stored?.data ? stored.filings_key : bundled ? bundledKey(bundled) : undefined;
+  // A bundled copy from the same run (or later) is the reviewed one, with any editorial fixes, so it wins.
+  const useBundled = Boolean(bundled && (!stored?.data || bundled.generatedAt >= stored.data.generatedAt));
+  const explanation = useBundled ? bundled : (stored?.data ?? undefined);
+  const writtenFrom = useBundled ? bundledKey(bundled!) : (stored?.filings_key ?? undefined);
   const stale = Boolean(explanation && currentKey && writtenFrom && writtenFrom !== currentKey);
 
   if (!storeEnabled()) return { status: explanation ? "ready" : "unavailable", explanation };

@@ -91,6 +91,16 @@ describe("Supabase store", () => {
     expect(state).toMatchObject({ status: "ready", stale: true });
   });
 
+  it("prefers the reviewed bundled copy from the same run, but a newer database copy wins", async () => {
+    const row = (generatedAt: string) => [
+      { ticker: "AAPL", status: "ready", data: { ...EXPLANATIONS.AAPL, generatedAt, model: "db" }, filings_key: "k", queued: false, attempts: 1, last_error: null, updated_at: generatedAt },
+    ];
+    mockFetch(row(EXPLANATIONS.AAPL.generatedAt));
+    expect((await explanationState("AAPL")).explanation?.model).not.toBe("db");
+    mockFetch(row("2099-01-01T00:00:00Z"));
+    expect((await explanationState("AAPL")).explanation?.model).toBe("db");
+  });
+
   it("falls back to the bundled explanation when the database can't be reached", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => { throw new Error("down"); }));
     vi.stubEnv("SUPABASE_URL", "https://example.supabase.co");
