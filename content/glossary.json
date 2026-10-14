@@ -6,7 +6,25 @@
     "why": "It's the starting point for everything else: a company can't make a profit without selling something first. Growing sales usually means more customers or higher prices.",
     "analyst": "Sales are the top line that every other figure depends on. Analysts look at how fast they grow, how steady they are from year to year, and where they come from.",
     "reading": "Steady growth suggests customers want more of what it sells, or that it can raise prices. Falling sales can mean lost customers, weaker demand or tougher competition.",
-    "caveat": "Sales can grow while profit shrinks, if the company is buying growth with discounts or heavy spending. Growth from buying other companies is not the same as customers buying more."
+    "caveat": "Sales can grow while profit shrinks, if the company is buying growth with discounts or heavy spending. Growth from buying other companies is not the same as customers buying more.",
+    "sides": {
+      "high": {
+        "label": "Fast-growing sales",
+        "good": "Customers want more of what it sells, or it can raise prices. Growing sales give a company room to grow profit too.",
+        "bad": "Growth can be bought with discounts, heavy marketing or buying other companies, and may not be profitable. Very fast growth is also hard to keep up."
+      },
+      "low": {
+        "label": "Slow or falling sales",
+        "good": "A mature, steady business may grow slowly but still make reliable profit and pay dividends. A dip can also be temporary, from a weak economy.",
+        "bad": "It can mean lost customers, a shrinking market or stronger competitors. Costs rarely fall as fast as sales, so profit often drops more."
+      }
+    },
+    "aliases": [
+      "sales",
+      "top line",
+      "turnover",
+      "revenue growth"
+    ]
   },
   "net-income": {
     "term": "Net income",
@@ -15,7 +33,13 @@
     "why": "It's the money that's actually left for the owners after every bill is paid. A company can sell a lot and still make little or none.",
     "analyst": "Profit is what is left for the owners after every cost, so it's the basis for the earnings per share and P/E ratio that investors quote.",
     "reading": "Rising profit suggests the business is growing, getting more efficient, or both. A loss means costs were bigger than sales over the period.",
-    "caveat": "Profit includes one-off items (a sale of a building, a write-down, a tax change), so one year can look much better or worse than the business really is. Compare it with the cash the business actually brought in."
+    "caveat": "Profit includes one-off items (a sale of a building, a write-down, a tax change), so one year can look much better or worse than the business really is. Compare it with the cash the business actually brought in.",
+    "aliases": [
+      "profit",
+      "net profit",
+      "bottom line",
+      "earnings"
+    ]
   },
   "net-loss": {
     "term": "Net loss",
@@ -33,7 +57,23 @@
     "why": "It shows how much room a company has to pay for everything else. A high gross margin often means a strong brand or something hard to copy.",
     "analyst": "It shows how much is left from each sale after the direct cost of making or buying the product. Analysts use it to judge pricing power and how costly the product is to make.",
     "reading": "A high gross margin (software often has 70% or more) suggests the company can charge well above its costs. A low one (shops, airlines) means it must sell a lot to cover its other costs.",
-    "caveat": "Different industries have very different normal levels, so compare with similar companies, not across industries. A rising margin can also come from a change in what it sells rather than better pricing."
+    "caveat": "Different industries have very different normal levels, so compare with similar companies, not across industries. A rising margin can also come from a change in what it sells rather than better pricing.",
+    "sides": {
+      "high": {
+        "label": "A high gross margin",
+        "good": "The company can charge well above what its products cost to make, often a sign of a strong brand, patents or software that is cheap to copy.",
+        "bad": "A high margin attracts competitors, who may cut prices. It also says nothing about the other costs (staff, marketing, research) that can still eat up the profit."
+      },
+      "low": {
+        "label": "A low gross margin",
+        "good": "Some excellent businesses run on thin margins by selling huge volumes cheaply, like warehouse clubs and supermarkets.",
+        "bad": "There is little room for mistakes: a small rise in costs or a price war can wipe out profit. It can also mean the product has no real edge."
+      }
+    },
+    "aliases": [
+      "gross profit margin",
+      "gross profit"
+    ]
   },
   "profit-margin": {
     "term": "Profit margin",
@@ -42,7 +82,23 @@
     "why": "It lets you compare companies of any size: $27 of profit per $100 of sales means the same thing for a small company and a giant.",
     "analyst": "It shows how much of each sale ends up as profit after all costs. Analysts compare it over time and against competitors to see how efficient the company is.",
     "reading": "A higher margin than rivals can point to a stronger brand, better pricing or lower costs. A falling margin can mean rising costs it can't pass on, or price cuts to keep customers.",
-    "caveat": "One-off gains or charges can push the margin up or down for a single year. A low margin isn't always bad: some businesses deliberately keep prices low to win volume."
+    "caveat": "One-off gains or charges can push the margin up or down for a single year. A low margin isn't always bad: some businesses deliberately keep prices low to win volume.",
+    "sides": {
+      "high": {
+        "label": "A high profit margin",
+        "good": "The company keeps a lot of each sale as profit, which suggests pricing power and good cost control.",
+        "bad": "It can be boosted by one-off gains or a low tax rate that may not last, and high margins invite competitors."
+      },
+      "low": {
+        "label": "A low profit margin",
+        "good": "Thin margins are normal in some industries, and a company that is investing heavily for growth may have low margins on purpose.",
+        "bad": "Little is left after costs, so a small rise in costs or fall in prices can push the company into a loss."
+      }
+    },
+    "aliases": [
+      "net margin",
+      "net profit margin"
+    ]
   },
   "operating-income": {
     "term": "Operating income",
@@ -51,7 +107,11 @@
     "why": "It shows whether the core business makes money, separate from one-off gains or interest.",
     "analyst": "Operating profit shows what the main business earns before interest and tax. Analysts use it to compare companies that borrow different amounts or pay different tax rates.",
     "reading": "Growing operating profit suggests the core business is doing better, not just the financing or tax side.",
-    "caveat": "Companies sometimes leave costs out of 'adjusted' operating profit figures in their announcements. The SEC numbers used here follow the standard rules, which can differ from the headline figures in press releases."
+    "caveat": "Companies sometimes leave costs out of 'adjusted' operating profit figures in their announcements. The SEC numbers used here follow the standard rules, which can differ from the headline figures in press releases.",
+    "aliases": [
+      "ebit",
+      "operating profit"
+    ]
   },
   "cash-from-operations": {
     "term": "Cash from operations",
@@ -60,7 +120,12 @@
     "why": "Profit is an accounting figure; this is real cash. A company that earns profit but brings in little cash can run into trouble.",
     "analyst": "Profit is an accounting figure; this is the cash the business actually brought in. Analysts compare the two to check that profits turn into real money.",
     "reading": "Cash from operations close to or above profit suggests good-quality profits. Much lower cash than profit can mean customers are slow to pay or stock is piling up.",
-    "caveat": "It can be flattered for a while by paying suppliers later or collecting from customers faster, which can't continue for ever."
+    "caveat": "It can be flattered for a while by paying suppliers later or collecting from customers faster, which can't continue for ever.",
+    "aliases": [
+      "operating cash flow",
+      "ocf",
+      "cfo"
+    ]
   },
   "cash-and-equivalents": {
     "term": "Cash and cash equivalents",
@@ -69,7 +134,22 @@
     "why": "Cash is a safety cushion for bad times and a source of money for new plans.",
     "analyst": "Cash is the company's safety cushion. Analysts compare it with debts and with what the company spends each year.",
     "reading": "Plenty of cash suggests it can survive a bad year, pay bills and take opportunities. Very little cash can leave it dependent on borrowing.",
-    "caveat": "Large cash piles can also mean the company has no good use for its money. Some cash may be held abroad or needed for day-to-day running, so not all of it is truly spare."
+    "caveat": "Large cash piles can also mean the company has no good use for its money. Some cash may be held abroad or needed for day-to-day running, so not all of it is truly spare.",
+    "sides": {
+      "high": {
+        "label": "A large cash pile",
+        "good": "A safety cushion for hard times, and money ready for opportunities like buying another company.",
+        "bad": "Cash sitting idle earns little. Investors may prefer it to be invested or returned to them."
+      },
+      "low": {
+        "label": "Little cash",
+        "good": "A company with steady cash coming in may not need a big pile, and may already have put its cash to good use.",
+        "bad": "If cash runs low and business slows, the company may need to borrow or issue new shares on bad terms."
+      }
+    },
+    "aliases": [
+      "cash"
+    ]
   },
   "long-term-debt": {
     "term": "Long-term debt",
@@ -78,7 +158,25 @@
     "why": "Debt isn't bad on its own, but it has to be repaid with interest whatever happens to sales.",
     "analyst": "Debt has to be repaid with interest whatever happens to the business. Analysts check how big it is compared with profit, cash and what the owners have put in.",
     "reading": "Modest debt that the company can easily cover with its profit is normal and can boost returns. Debt growing faster than profit increases the risk in a downturn.",
-    "caveat": "Some steady businesses (utilities, drink makers) safely carry a lot of debt because their income is reliable. What matters is when it must be repaid and at what interest rate."
+    "caveat": "Some steady businesses (utilities, drink makers) safely carry a lot of debt because their income is reliable. What matters is when it must be repaid and at what interest rate.",
+    "sides": {
+      "high": {
+        "label": "A lot of long-term debt",
+        "good": "Borrowing can fund growth and boost returns to owners when the business earns more than the interest it pays.",
+        "bad": "Interest must be paid in good years and bad, and the loans must eventually be repaid or refinanced, possibly at higher rates."
+      },
+      "low": {
+        "label": "Little long-term debt",
+        "good": "The company is less exposed to rising interest rates and has room to borrow if it needs to.",
+        "bad": "It may be missing out on cheap funding that could have helped it grow faster."
+      }
+    },
+    "aliases": [
+      "debt",
+      "borrowing",
+      "loans",
+      "bonds"
+    ]
   },
   "quarter": {
     "term": "Quarter",
@@ -93,12 +191,18 @@
   "10-k": {
     "term": "10-K (annual report)",
     "definition": "The detailed yearly report US public companies must file with the SEC. It covers the business, its risks and audited financial statements.",
-    "short": "10-K"
+    "short": "10-K",
+    "aliases": [
+      "annual report"
+    ]
   },
   "10-q": {
     "term": "10-Q (quarterly report)",
     "definition": "The report US public companies file with the SEC for each of the first three quarters of their year. It is shorter than the annual report and not fully audited.",
-    "short": "10-Q"
+    "short": "10-Q",
+    "aliases": [
+      "quarterly report"
+    ]
   },
   "8-k": {
     "term": "8-K (announcement)",
@@ -126,7 +230,22 @@
     "why": "It shows how profitable the main business is on its own, before borrowing costs and taxes.",
     "analyst": "It shows how much of each sale is left after running the business, before interest and tax. Analysts treat it as a measure of how well the business itself is run.",
     "reading": "A steady or rising operating margin suggests costs are under control as the company grows. A falling one can mean costs are growing faster than sales.",
-    "caveat": "Heavy spending on research or marketing lowers the margin today but may build the business for later. A cut in such spending can lift the margin while weakening the future."
+    "caveat": "Heavy spending on research or marketing lowers the margin today but may build the business for later. A cut in such spending can lift the margin while weakening the future.",
+    "sides": {
+      "high": {
+        "label": "A high operating margin",
+        "good": "The core business earns well from each sale, before interest and tax, a sign of an efficient operation or pricing power.",
+        "bad": "It may be high because the company is cutting spending on research or upkeep that it will need later."
+      },
+      "low": {
+        "label": "A low operating margin",
+        "good": "It can be low because the company is spending now to grow, which may pay off in later years.",
+        "bad": "The everyday business barely covers its own costs, leaving little cushion if sales fall."
+      }
+    },
+    "aliases": [
+      "ebit margin"
+    ]
   },
   "eps": {
     "term": "Earnings per share (EPS)",
@@ -135,7 +254,23 @@
     "why": "It turns the company's profit into a per-share figure, so you can see what each share 'earns'. It's also half of the P/E ratio.",
     "analyst": "Earnings per share splits the profit across every share. Analysts track it because it's what share prices are most often compared with, in the P/E ratio.",
     "reading": "Steady growth in earnings per share suggests owners are getting more profit for each share they hold.",
-    "caveat": "It can rise just because the company bought back shares, even if total profit didn't grow. One-off items affect it in the same way they affect profit."
+    "caveat": "It can rise just because the company bought back shares, even if total profit didn't grow. One-off items affect it in the same way they affect profit.",
+    "sides": {
+      "high": {
+        "label": "Rising EPS",
+        "good": "The company is earning more for each share, which over time tends to support a higher share price.",
+        "bad": "It can rise because the company bought back shares, not because the business grew, or because of a one-off gain. Check whether total profit and sales also grew."
+      },
+      "low": {
+        "label": "Falling EPS",
+        "good": "It can be a planned dip: heavy spending now on new products, factories or marketing that may pay off later.",
+        "bad": "Profit per share is shrinking, from weaker sales, higher costs or new shares diluting existing owners. If it keeps falling, the share price usually follows."
+      }
+    },
+    "aliases": [
+      "earnings per share",
+      "eps"
+    ]
   },
   "free-cash-flow": {
     "term": "Free cash flow",
@@ -144,7 +279,22 @@
     "why": "It's the money a company can actually choose what to do with: pay shareholders, pay off debt or grow. Many investors watch it more closely than profit.",
     "analyst": "Spare cash is what's left after the company has paid to keep and grow its buildings and equipment. Analysts see it as the money truly available for owners, debt repayment or growth.",
     "reading": "Strong, steady spare cash suggests the company can fund dividends, buybacks or growth without borrowing. Negative spare cash means it needed other money to cover its spending.",
-    "caveat": "A company can boost spare cash by cutting investment, which may hurt it later. Young, fast-growing companies often have negative spare cash on purpose because they are investing heavily."
+    "caveat": "A company can boost spare cash by cutting investment, which may hurt it later. Young, fast-growing companies often have negative spare cash on purpose because they are investing heavily.",
+    "sides": {
+      "high": {
+        "label": "Strong free cash flow",
+        "good": "Real spare cash the company can use to pay dividends, buy back shares, pay off debt or grow, without borrowing.",
+        "bad": "It can be flattered by cutting needed investment, delaying payments to suppliers or one-off items. Check whether it holds up across several years."
+      },
+      "low": {
+        "label": "Weak or negative free cash flow",
+        "good": "A growing company may spend heavily on new factories or stores today that will produce cash later.",
+        "bad": "The business may not be producing enough cash to fund itself, which can lead to more borrowing or new shares that dilute owners."
+      }
+    },
+    "aliases": [
+      "fcf"
+    ]
   },
   "capital-expenditure": {
     "term": "Capital spending",
@@ -153,7 +303,23 @@
     "why": "It's how a company invests in its future. Heavy spending can mean growth plans, or a business that needs a lot of upkeep.",
     "analyst": "This is spending on long-lasting things like factories, stores, data centres and machines. Analysts look at it to see how much the business must reinvest just to keep going and grow.",
     "reading": "High spending can mean the company is expanding. Low spending relative to its size can mean it needs little investment to grow, which leaves more spare cash.",
-    "caveat": "High spending only pays off if the new capacity earns a good return; it can also be a sign of an expensive business that must keep spending to stand still."
+    "caveat": "High spending only pays off if the new capacity earns a good return; it can also be a sign of an expensive business that must keep spending to stand still.",
+    "sides": {
+      "high": {
+        "label": "High capital spending",
+        "good": "The company is investing in its future: new equipment, factories, stores or data centres that can drive growth.",
+        "bad": "It eats into spare cash today, and the investment may not pay off. Some industries must keep spending heavily just to stand still."
+      },
+      "low": {
+        "label": "Low capital spending",
+        "good": "A business that needs little equipment to grow (software, for example) can turn more of its profit into spare cash.",
+        "bad": "The company may be underinvesting, letting equipment age to make today's cash flow look better, which can hurt it later."
+      }
+    },
+    "aliases": [
+      "capex",
+      "capital spending"
+    ]
   },
   "current-ratio": {
     "term": "Current ratio",
@@ -162,7 +328,22 @@
     "why": "It shows whether the company can comfortably pay what's due soon. Below 1 isn't automatically a problem, but it leaves less room for surprises.",
     "analyst": "It compares what the company can turn into cash within a year with the bills due within a year. Analysts use it as a quick check on short-term safety.",
     "reading": "Above about 1 suggests it has enough to cover bills due soon. Well below 1 can mean it relies on new money coming in to pay its bills.",
-    "caveat": "Strong businesses like big retailers often run below 1 because customers pay them before they pay suppliers. A very high ratio can mean cash is sitting idle."
+    "caveat": "Strong businesses like big retailers often run below 1 because customers pay them before they pay suppliers. A very high ratio can mean cash is sitting idle.",
+    "sides": {
+      "high": {
+        "label": "A high current ratio",
+        "good": "Plenty of cash and short-term assets to pay bills due within a year, so a short-term cash squeeze is unlikely.",
+        "bad": "Too much money may be sitting idle in cash or unsold stock, instead of being invested or returned to owners. Piles of unsold stock can be a warning sign too."
+      },
+      "low": {
+        "label": "A low current ratio",
+        "good": "Strong companies that get paid quickly by customers and pay suppliers later (like big retailers) often run below 1 safely.",
+        "bad": "The company may struggle to pay bills due soon, especially if sales slow or lenders become less willing to lend."
+      }
+    },
+    "aliases": [
+      "liquidity"
+    ]
   },
   "debt-to-equity": {
     "term": "Debt-to-equity ratio",
@@ -171,7 +352,25 @@
     "why": "Borrowing can help a company grow, but debt must be repaid with interest. The higher this is, the more a bad year can hurt.",
     "analyst": "It compares borrowed money with the owners' money in the business. Analysts use it to judge how much the company relies on debt.",
     "reading": "A low figure suggests it is mainly funded by its owners. A high figure means more borrowing, which can increase both returns and risk.",
-    "caveat": "Share buybacks shrink the owners' share on paper, so a company that buys back a lot of shares can show a very high figure without being in trouble. Compare it with similar companies."
+    "caveat": "Share buybacks shrink the owners' share on paper, so a company that buys back a lot of shares can show a very high figure without being in trouble. Compare it with similar companies.",
+    "sides": {
+      "high": {
+        "label": "High debt-to-equity",
+        "good": "Borrowing can boost returns for owners when the business earns more on the money than the interest it pays. Steady businesses (utilities, for example) can safely carry more debt.",
+        "bad": "More debt means more interest to pay and less room for error. In a downturn or when interest rates rise, heavy borrowing can become dangerous."
+      },
+      "low": {
+        "label": "Low debt-to-equity",
+        "good": "Little borrowing makes the company sturdy in hard times and gives it room to borrow later if a good opportunity comes up.",
+        "bad": "It may be too cautious, missing chances to grow. Note too that buybacks can shrink equity and make this ratio look worse than the company's real health."
+      }
+    },
+    "aliases": [
+      "d/e",
+      "de ratio",
+      "gearing",
+      "leverage"
+    ]
   },
   "shareholders-equity": {
     "term": "Shareholders' equity",
@@ -180,7 +379,12 @@
     "why": "It's the owners' share on paper. Many other measures, like return on equity, are worked out from it.",
     "analyst": "It's the value that would belong to the owners if all debts were paid from what the company owns, according to its accounts. Analysts use it in ratios like return on equity.",
     "reading": "Equity growing over time usually means the company is keeping profits in the business.",
-    "caveat": "It's based on accounting values, not what the business is worth on the market. Buybacks and dividends reduce it, and some valuable things like brands may not be counted at all."
+    "caveat": "It's based on accounting values, not what the business is worth on the market. Buybacks and dividends reduce it, and some valuable things like brands may not be counted at all.",
+    "aliases": [
+      "equity",
+      "book value",
+      "net assets"
+    ]
   },
   "return-on-equity": {
     "term": "Return on equity (ROE)",
@@ -189,7 +393,22 @@
     "why": "It shows how well a company turns its owners' money into profit. Higher is generally better, though heavy borrowing can push it up too.",
     "analyst": "It shows how much profit the company makes for each dollar the owners have in the business. Analysts use it to judge how well management uses that money.",
     "reading": "A consistently high figure (often above 15%) can point to a strong business. A low one suggests the owners' money isn't earning much.",
-    "caveat": "Lots of debt or large buybacks can make it look high because they shrink the owners' share. Check it together with how much the company has borrowed."
+    "caveat": "Lots of debt or large buybacks can make it look high because they shrink the owners' share. Check it together with how much the company has borrowed.",
+    "sides": {
+      "high": {
+        "label": "A high ROE",
+        "good": "The company turns the owners' money into a lot of profit, often a sign of a high-quality business.",
+        "bad": "ROE can be pushed up by heavy borrowing or by buybacks that shrink equity, not by a better business. Check debt-to-equity alongside it."
+      },
+      "low": {
+        "label": "A low ROE",
+        "good": "It may be temporary, during a period of heavy investment, or normal for a capital-heavy industry like banks or utilities.",
+        "bad": "The business may not be earning enough on the money owners have put in, and that money might do better elsewhere."
+      }
+    },
+    "aliases": [
+      "roe"
+    ]
   },
   "assets": {
     "term": "Assets",
@@ -216,7 +435,24 @@
     "why": "Buybacks are another way to reward owners: with fewer shares left, each one owns more of the company.",
     "analyst": "Buying back shares is one way a company returns money to its owners. Analysts look at how much it spends and at what prices.",
     "reading": "Regular buybacks funded by spare cash suggest management thinks it has more cash than it needs. Each remaining share then owns a slightly bigger part of the company.",
-    "caveat": "Buybacks at high prices can waste money, and buybacks funded by borrowing add risk. They can also make earnings per share grow even when profit doesn't."
+    "caveat": "Buybacks at high prices can waste money, and buybacks funded by borrowing add risk. They can also make earnings per share grow even when profit doesn't.",
+    "sides": {
+      "high": {
+        "label": "Large buybacks",
+        "good": "Each remaining share owns a bigger slice of the company, and buybacks suggest management thinks the shares are good value.",
+        "bad": "Buying back shares when they are expensive wastes money, and buybacks funded by borrowing add risk. They can also mainly offset shares handed to staff."
+      },
+      "low": {
+        "label": "Few or no buybacks",
+        "good": "The company may have better uses for its cash, such as growth, paying down debt or keeping a safety cushion.",
+        "bad": "If shares keep being issued to staff without buybacks, existing owners' slices slowly shrink."
+      }
+    },
+    "aliases": [
+      "buyback",
+      "repurchase",
+      "share repurchase"
+    ]
   },
   "dividend": {
     "term": "Dividend",
@@ -225,7 +461,22 @@
     "why": "Dividends are one way owners get paid back. Some companies pay them regularly; others keep the cash to grow.",
     "analyst": "Dividends are cash paid directly to owners. Analysts check whether the company can afford them from its spare cash.",
     "reading": "A steady or rising dividend paid comfortably from spare cash suggests a mature, reliable business.",
-    "caveat": "A dividend bigger than spare cash may not last. Some excellent companies pay none because they reinvest everything to grow."
+    "caveat": "A dividend bigger than spare cash may not last. Some excellent companies pay none because they reinvest everything to grow.",
+    "sides": {
+      "high": {
+        "label": "Large dividends",
+        "good": "A steady stream of cash to owners, and a sign management is confident about future cash flow.",
+        "bad": "If the dividend is bigger than the company can afford, it may be cut later, and a cut usually hits the share price. Money paid out also can't be reinvested to grow."
+      },
+      "low": {
+        "label": "Small or no dividend",
+        "good": "The company may be reinvesting its cash in growth, which can be worth more to owners over time.",
+        "bad": "In a mature company it can mean cash is tight, or the dividend was recently cut because of trouble."
+      }
+    },
+    "aliases": [
+      "dividends"
+    ]
   },
   "auditor": {
     "term": "Auditor",
@@ -249,7 +500,28 @@
     "why": "It helps you judge whether a share looks expensive or cheap compared with the profit behind it. A high P/E usually means people expect profits to grow.",
     "analyst": "It shows how many dollars investors are paying for each dollar of yearly profit. Analysts use it to compare how highly the market values different companies.",
     "reading": "A high P/E suggests investors expect strong growth. A low P/E suggests lower expectations, or doubts about the company.",
-    "caveat": "A low P/E can be a 'value trap' if profits are about to fall, and a high P/E can be justified if profits really do grow fast. It's meaningless when profit is very small or negative, and it says nothing on its own about whether a share is a good buy."
+    "caveat": "A low P/E can be a 'value trap' if profits are about to fall, and a high P/E can be justified if profits really do grow fast. It's meaningless when profit is very small or negative, and it says nothing on its own about whether a share is a good buy.",
+    "sides": {
+      "high": {
+        "label": "A high P/E",
+        "good": "Investors expect profit to grow fast, often for good reason: a strong brand, a growing market or a business that is hard to copy. If that growth arrives, today's high price can turn out to be fair.",
+        "bad": "The share is priced for perfection. If growth slows even a little, the P/E can fall sharply and the share price with it. It can also be high simply because profit dipped this year."
+      },
+      "low": {
+        "label": "A low P/E",
+        "good": "The share may be cheap for what it earns, a possible bargain the market has overlooked, especially if profit is steady.",
+        "bad": "It may be cheap for a reason: profit could be about to fall, the industry could be shrinking, or the company could have problems (a 'value trap'). It can also look low because of a one-off boost to this year's profit."
+      }
+    },
+    "aliases": [
+      "pe",
+      "p/e",
+      "pe ratio",
+      "price to earnings",
+      "price-earnings",
+      "earnings multiple",
+      "multiple"
+    ]
   },
   "market-cap": {
     "term": "Market value (market cap)",
@@ -258,7 +530,25 @@
     "why": "It's how much the whole company is worth according to the stock market, so you can compare its size with other companies.",
     "analyst": "Market value is the price of the whole company at today's share price. Analysts use it to compare company sizes and in valuation ratios.",
     "reading": "A larger figure means a bigger company in the market's eyes. Big changes usually reflect the share price moving.",
-    "caveat": "It reflects what investors are willing to pay today, which can swing with mood and news, not just with how the business is doing. It ignores the company's debts."
+    "caveat": "It reflects what investors are willing to pay today, which can swing with mood and news, not just with how the business is doing. It ignores the company's debts.",
+    "sides": {
+      "high": {
+        "label": "A large market cap",
+        "good": "Big companies are often more established and stable, with more resources to survive hard times.",
+        "bad": "Growing a very large company quickly is hard, so big share price gains may be harder to come by."
+      },
+      "low": {
+        "label": "A small market cap",
+        "good": "Smaller companies have more room to grow, so their shares can rise faster when things go well.",
+        "bad": "They are often riskier: less established, more affected by a single setback, and their share prices can swing more."
+      }
+    },
+    "aliases": [
+      "market capitalisation",
+      "market capitalization",
+      "mkt cap",
+      "company value"
+    ]
   },
   "share-price": {
     "term": "Share price",
@@ -375,7 +665,10 @@
     "why": "When people feel less secure they spend less, and companies selling things people can put off feel it first.",
     "analyst": "Demand drives sales. Analysts watch jobs and spending figures to judge whether customers will buy more or less.",
     "reading": "Low unemployment and rising wages usually support spending; rising unemployment usually weakens it.",
-    "caveat": "Some companies sell things people buy in good times and bad (food, medicines), so the economy matters much less for them."
+    "caveat": "Some companies sell things people buy in good times and bad (food, medicines), so the economy matters much less for them.",
+    "aliases": [
+      "demand"
+    ]
   },
   "inflation": {
     "term": "Inflation",
@@ -448,5 +741,237 @@
     "analyst": "Analysts read the risks a company lists in its annual report to see which outside forces it is most exposed to.",
     "reading": "A company exposed to many serious outside risks deserves a closer look at how it protects itself.",
     "caveat": "Companies list nearly every possible risk for legal reasons, so the list alone doesn't show which ones are likely."
+  },
+  "dividend-yield": {
+    "term": "Dividend yield",
+    "short": "dividend yield",
+    "definition": "The yearly dividend per share divided by the share price. A 3% yield means you get about $3 a year in dividends for every $100 of shares.",
+    "why": "It shows how much cash income a share pays you compared with what it costs to buy.",
+    "analyst": "Analysts compare yields across companies and with interest on savings or bonds, to see how much of a share's return comes as cash.",
+    "reading": "A higher yield means more cash income for the price. A low yield is common for companies that reinvest to grow.",
+    "caveat": "Yield goes up when the share price falls, so a very high yield can be a warning that investors expect the dividend to be cut.",
+    "aliases": [
+      "yield",
+      "div yield"
+    ],
+    "sides": {
+      "high": {
+        "label": "A high dividend yield",
+        "good": "A healthy business paying out a generous, well-covered dividend gives you strong cash income.",
+        "bad": "The yield may be high only because the share price has fallen on bad news, and the dividend itself may be about to be cut."
+      },
+      "low": {
+        "label": "A low dividend yield",
+        "good": "The company may be reinvesting its cash in growth, which can reward owners through a rising share price instead.",
+        "bad": "If you want income, there is little of it, and in a mature company it may mean cash is tight."
+      }
+    }
+  },
+  "payout-ratio": {
+    "term": "Payout ratio",
+    "short": "payout ratio",
+    "definition": "The share of a company's profit that it pays out as dividends. A 40% payout ratio means $40 of every $100 of profit goes to owners as dividends.",
+    "why": "It shows whether a dividend is comfortably affordable or stretched.",
+    "analyst": "Analysts use it to judge how safe a dividend is and how much profit is kept to grow the business.",
+    "reading": "A moderate payout leaves room to keep paying in a bad year. A payout above 100% means the company is paying out more than it earns.",
+    "caveat": "Profit can be distorted by one-off items, so analysts also compare dividends with free cash flow.",
+    "aliases": [
+      "dividend payout",
+      "dividend cover"
+    ],
+    "sides": {
+      "high": {
+        "label": "A high payout ratio",
+        "good": "Mature, steady companies with few growth projects can afford to hand most of their profit to owners.",
+        "bad": "There is little cushion: if profit falls, the dividend may have to be cut. Above 100% is usually not sustainable."
+      },
+      "low": {
+        "label": "A low payout ratio",
+        "good": "The dividend is well covered and has room to grow, and profit kept back can fund growth.",
+        "bad": "Owners get little cash now, and the kept profit only helps if management invests it well."
+      }
+    }
+  },
+  "price-to-book": {
+    "term": "Price-to-book ratio (P/B)",
+    "short": "P/B ratio",
+    "definition": "The share price compared with shareholders' equity per share (the company's 'book value'). It shows how much investors pay for each dollar the accounts say owners own.",
+    "why": "It helps judge price against what the company owns, especially for banks and companies with lots of physical assets.",
+    "analyst": "Analysts use it most for banks, insurers and asset-heavy companies, where book value is a fair guide to what the business is worth.",
+    "reading": "Above 1 means investors pay more than book value, expecting good returns. Below 1 means the market values the company below its accounts.",
+    "caveat": "Book value leaves out brands, patents and know-how, so it misleads for software and consumer brands. Buybacks also shrink book value and push P/B up.",
+    "aliases": [
+      "pb",
+      "p/b",
+      "price to book",
+      "book value multiple"
+    ],
+    "sides": {
+      "high": {
+        "label": "A high P/B",
+        "good": "The company earns strong returns on what it owns, often thanks to brands or ideas the accounts don't count.",
+        "bad": "Investors may be paying far more than the assets are worth, leaving the share exposed if returns slip."
+      },
+      "low": {
+        "label": "A low P/B",
+        "good": "You may be buying assets for less than their stated value, a classic bargain sign.",
+        "bad": "The assets may be worth less than the accounts say (old stock, bad loans), or the business may earn poor returns on them."
+      }
+    }
+  },
+  "peg-ratio": {
+    "term": "PEG ratio",
+    "short": "PEG ratio",
+    "definition": "The P/E ratio divided by the expected yearly growth in profit. It adjusts the P/E for how fast profit is expected to grow.",
+    "why": "A high P/E can be fair for a fast grower. The PEG puts price and growth side by side.",
+    "analyst": "Analysts use it to compare companies growing at different speeds on a fairer footing.",
+    "reading": "Around 1 is often treated as fair, below 1 as cheap for the growth, and well above 1 as expensive.",
+    "caveat": "It depends on growth forecasts, which are often wrong, and it is meaningless when profit is falling or negative.",
+    "aliases": [
+      "peg",
+      "price earnings growth"
+    ],
+    "sides": {
+      "high": {
+        "label": "A high PEG",
+        "good": "Investors may be paying up for quality and reliability that the growth figure alone doesn't capture.",
+        "bad": "You are paying a lot for each bit of expected growth, and if growth disappoints, the share has far to fall."
+      },
+      "low": {
+        "label": "A low PEG",
+        "good": "You may be getting strong growth at a fair price.",
+        "bad": "The growth forecast may be too optimistic, so the share is only cheap if the forecast comes true."
+      }
+    }
+  },
+  "ev-to-ebitda": {
+    "term": "EV/EBITDA",
+    "short": "EV/EBITDA",
+    "definition": "The value of the whole company, including its debt minus its cash (enterprise value), divided by its profit before interest, tax, depreciation and amortisation (EBITDA).",
+    "why": "Unlike the P/E, it counts debt, so it lets you compare companies that borrow very different amounts.",
+    "analyst": "Analysts and buyers of whole companies use it to compare valuations across companies with different debt and tax situations.",
+    "reading": "A higher figure means the market pays more for each dollar of operating earnings; a lower one, less.",
+    "caveat": "EBITDA ignores the cost of replacing equipment and the interest the company must pay, so it can flatter companies that spend heavily on equipment or carry lots of debt.",
+    "aliases": [
+      "ev ebitda",
+      "enterprise value",
+      "ev",
+      "ebitda",
+      "ebitda multiple"
+    ],
+    "sides": {
+      "high": {
+        "label": "A high EV/EBITDA",
+        "good": "Investors expect strong growth or see the business as especially safe and high quality.",
+        "bad": "The whole company, debt included, is expensive, and there is little margin for disappointment."
+      },
+      "low": {
+        "label": "A low EV/EBITDA",
+        "good": "The company may be cheap even after counting its debt, a possible target for a takeover.",
+        "bad": "Earnings may be expected to fall, or heavy spending on equipment may eat most of that EBITDA before any cash reaches owners."
+      }
+    }
+  },
+  "interest-coverage": {
+    "term": "Interest coverage ratio",
+    "short": "interest coverage",
+    "definition": "Operating profit divided by the interest the company pays on its debt. A ratio of 5 means profit covers interest five times over.",
+    "why": "It shows how comfortably a company can pay the interest on what it has borrowed.",
+    "analyst": "Lenders and analysts use it to judge how risky a company's borrowing is.",
+    "reading": "A high ratio means interest is easy to pay. A ratio near or below 1 means profit barely covers, or doesn't cover, the interest.",
+    "caveat": "One good or bad year can swing it a lot, and it ignores when the loans themselves must be repaid.",
+    "aliases": [
+      "times interest earned",
+      "interest cover",
+      "tie"
+    ],
+    "sides": {
+      "high": {
+        "label": "High interest coverage",
+        "good": "Interest payments are easy to meet, so the company is unlikely to get into trouble with lenders.",
+        "bad": "It may be so cautious that it passes up cheap borrowing that could fund growth."
+      },
+      "low": {
+        "label": "Low interest coverage",
+        "good": "It can be temporary, after a big borrowing to buy a business that will soon add profit.",
+        "bad": "A small dip in profit or a rise in rates could leave the company struggling to pay its interest."
+      }
+    }
+  },
+  "return-on-assets": {
+    "term": "Return on assets (ROA)",
+    "short": "ROA",
+    "definition": "Profit divided by everything the company owns (its total assets). It shows how much profit each dollar of assets produces.",
+    "why": "It shows how well a company uses what it owns, whether that was paid for by owners or by lenders.",
+    "analyst": "Analysts use it alongside ROE: because it isn't boosted by borrowing, it is a cleaner view of how efficient the business is.",
+    "reading": "A higher ROA means the company squeezes more profit from its assets. Asset-heavy industries naturally have lower ROAs.",
+    "caveat": "Compare ROA only within the same industry: a bank and a software company will never look alike.",
+    "aliases": [
+      "roa"
+    ],
+    "sides": {
+      "high": {
+        "label": "A high ROA",
+        "good": "The company gets a lot out of what it owns, a sign of an efficient or asset-light business.",
+        "bad": "It may be high because assets are old and fully written down, not because the business is great, and may fall once they are replaced."
+      },
+      "low": {
+        "label": "A low ROA",
+        "good": "It is normal in asset-heavy industries like banks, utilities and railways.",
+        "bad": "The company may own a lot that isn't earning much, such as idle factories or unsold stock."
+      }
+    }
+  },
+  "quick-ratio": {
+    "term": "Quick ratio",
+    "short": "quick ratio",
+    "definition": "Like the current ratio, but counting only cash, investments and money owed by customers, leaving out stock waiting to be sold. It compares these with bills due within a year.",
+    "why": "It is a stricter test of whether a company could pay its near-term bills without relying on selling its stock.",
+    "analyst": "Analysts use it when stock might be hard to sell quickly, to check short-term safety.",
+    "reading": "Above 1 means quick assets cover bills due within a year. Below 1 means the company relies on selling stock or new cash coming in.",
+    "caveat": "Many healthy retailers run below 1 because they sell stock fast and pay suppliers later.",
+    "aliases": [
+      "acid test",
+      "acid-test ratio"
+    ],
+    "sides": {
+      "high": {
+        "label": "A high quick ratio",
+        "good": "The company could pay its near-term bills quickly, even if sales stalled.",
+        "bad": "Too much money may be sitting idle rather than being used to grow the business or rewarded to owners."
+      },
+      "low": {
+        "label": "A low quick ratio",
+        "good": "Businesses that turn stock into cash quickly can run safely with a low ratio.",
+        "bad": "If sales slow, the company may struggle to pay what it owes in the coming months."
+      }
+    }
+  },
+  "price-to-sales": {
+    "term": "Price-to-sales ratio (P/S)",
+    "short": "P/S ratio",
+    "definition": "The company's market value divided by its yearly sales. It shows how many dollars investors pay for each dollar of sales.",
+    "why": "It works even when a company makes no profit, so it is often used for young, fast-growing companies.",
+    "analyst": "Analysts use it to value companies with little or no profit and to compare companies in the same industry.",
+    "reading": "A higher P/S means investors pay more for each dollar of sales, usually expecting strong growth or high margins.",
+    "caveat": "Sales aren't profit: a company with a low P/S may still never make money, and margins differ hugely between industries.",
+    "aliases": [
+      "ps",
+      "p/s",
+      "price to sales",
+      "sales multiple"
+    ],
+    "sides": {
+      "high": {
+        "label": "A high P/S",
+        "good": "Investors expect sales to grow fast and to turn into high profit margins later.",
+        "bad": "If growth slows or profit never comes, the share price has a lot of expectation to lose."
+      },
+      "low": {
+        "label": "A low P/S",
+        "good": "The company may be cheap for the business it does, especially if margins could improve.",
+        "bad": "Low-margin businesses always trade on low P/S ratios, so it may not be cheap at all."
+      }
+    }
   }
 }

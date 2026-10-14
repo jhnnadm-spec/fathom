@@ -9,6 +9,7 @@
 import { useEffect, useRef, useState } from "react";
 import { EDGES, GROUPS, type MapNode } from "@/lib/report/concept-map";
 import { AnalystView } from "./Term";
+import { TermSearch } from "./TermSearch";
 
 const W = 1056;
 const H = 640;
@@ -36,6 +37,29 @@ export function ConceptMap({ nodes, company }: { nodes: MapNode[]; company: stri
   const [active, setActive] = useState<string | null>(null);
   const [pinned, setPinned] = useState(false); // clicked: stays open until another box is clicked or it's closed
   const section = useRef<HTMLElement>(null);
+  const popup = useRef<HTMLDivElement>(null);
+
+  // Once a box is clicked open, clicking anywhere else on the page (or pressing Escape) closes it.
+  // Clicking another box simply switches to that one.
+  useEffect(() => {
+    if (!pinned) return;
+    const close = (e: MouseEvent | KeyboardEvent) => {
+      if (e instanceof KeyboardEvent) {
+        if (e.key !== "Escape") return;
+      } else {
+        const t = e.target as Element | null;
+        if (popup.current?.contains(t) || t?.closest?.("[data-map-node]")) return;
+      }
+      setPinned(false);
+      setActive(null);
+    };
+    document.addEventListener("mousedown", close);
+    document.addEventListener("keydown", close);
+    return () => {
+      document.removeEventListener("mousedown", close);
+      document.removeEventListener("keydown", close);
+    };
+  }, [pinned]);
 
   // Other parts of the page (like "Key drivers") can point at an idea on the map.
   useEffect(() => {
@@ -59,6 +83,13 @@ export function ConceptMap({ nodes, company }: { nodes: MapNode[]; company: stri
     setActive(id);
     setPinned(true);
   };
+  // A term looked up in the search box opens on the map when it's one of the boxes.
+  const fromSearch = (key: string) => {
+    const n = nodes.find((x) => x.key === key);
+    if (!n) return false;
+    choose(n.id);
+    return true;
+  };
   const preview = (id: string) => {
     if (!pinned) setActive(id);
   };
@@ -80,9 +111,10 @@ export function ConceptMap({ nodes, company }: { nodes: MapNode[]; company: stri
         </h2>
         <p className="text-[16px] leading-relaxed text-muted">
           The key figures on this page and how one leads to the next, from what drives the business to its share price.
-          Point at a box to see what it means and {company}&apos;s own figure; click it to keep the explanation open.
+          Point at a box to see what it means and {company}&apos;s own figure; click it to keep the explanation open, and click anywhere else to close it.
         </p>
       </div>
+      <TermSearch onPick={fromSearch} placeholder="Search a term, like P/E ratio, ROE or free cash flow" />
 
       {/* The map, on screens wide enough to read it */}
       <div className="hidden rounded-2xl bg-panel p-4 lg:block">
@@ -111,6 +143,7 @@ export function ConceptMap({ nodes, company }: { nodes: MapNode[]; company: stri
               return (
                 <g
                   key={n.id}
+                  data-map-node={n.id}
                   transform={`translate(${n.x},${n.y})`}
                   tabIndex={0}
                   role="button"
@@ -153,6 +186,7 @@ export function ConceptMap({ nodes, company }: { nodes: MapNode[]; company: stri
 
           {node && (
             <div
+              ref={popup}
               key={node.id}
               style={pop}
               className={`fathom-pop absolute z-20 flex max-h-[min(580px,98%)] w-[380px] flex-col overflow-y-auto rounded-2xl border bg-white p-5 shadow-[0_16px_40px_rgba(11,79,108,0.18)] ${
@@ -285,10 +319,10 @@ function Details({
       {brief ? (
         <p className="text-[13px] text-muted">
           Click the box to keep this open and see why analysts check it, what the number can suggest, the devil&apos;s
-          advocate view, and what it connects to.
+          advocate view{node.sides ? " (when a high or low figure is good or bad)" : ""}, and what it connects to.
         </p>
       ) : (
-        <AnalystView analyst={node.analyst} reading={node.reading} caveat={node.caveat} />
+        <AnalystView analyst={node.analyst} reading={node.reading} caveat={node.caveat} sides={node.sides} />
       )}
       {!brief && (from.length > 0 || to.length > 0) && (
         <div className="flex flex-col gap-2.5 border-t border-line pt-3">

@@ -9,7 +9,13 @@ export type GlossaryEntry = {
   analyst?: string; // why analysts look at this number
   reading?: string; // what a high or low figure can suggest
   caveat?: string; // the devil's advocate: why that reading can mislead
+  sides?: TwoSides; // for key ratios: how a high and a low figure can each be good or bad
+  aliases?: string[]; // other names people search for, like "pe" or "capex"
 };
+
+/** A side of a ratio ("A high P/E") and the case for and against it. */
+export type Side = { label: string; good: string; bad: string };
+export type TwoSides = { high: Side; low: Side };
 
 const entries = glossary as Record<string, GlossaryEntry>;
 

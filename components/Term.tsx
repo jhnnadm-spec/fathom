@@ -22,7 +22,7 @@ export function Term({
   definition: string;
   why?: string;
   bracket?: string; // the real term, shown after the plain words when they differ
-  more?: Pick<GlossaryEntry, "analyst" | "reading" | "caveat">; // the analyst's view, for key terms
+  more?: Pick<GlossaryEntry, "analyst" | "reading" | "caveat" | "sides">; // the analyst's view, for key terms
 }) {
   const [open, setOpen] = useState(false);
   const [pinned, setPinned] = useState(false); // opened by a tap or click, stays until closed
@@ -142,8 +142,8 @@ export function Term({
 }
 
 /** How an analyst reads a number, including the case against the obvious reading. */
-export function AnalystView({ analyst, reading, caveat }: Pick<GlossaryEntry, "analyst" | "reading" | "caveat">) {
-  if (!analyst && !reading && !caveat) return null;
+export function AnalystView({ analyst, reading, caveat, sides }: Pick<GlossaryEntry, "analyst" | "reading" | "caveat" | "sides">) {
+  if (!analyst && !reading && !caveat && !sides) return null;
   const row = (label: string, text: string | undefined, tone: string) =>
     text && (
       <span className="block">
@@ -156,6 +156,49 @@ export function AnalystView({ analyst, reading, caveat }: Pick<GlossaryEntry, "a
       {row("Why analysts check it", analyst, "text-ocean")}
       {row("What the number can suggest", reading, "text-mid")}
       {row("Devil's advocate", caveat, "text-[#b4532a]")}
+      {sides && <BothSides sides={sides} />}
+    </span>
+  );
+}
+
+/** The devil's advocate both ways: a high figure can be good or bad, and so can a low one. */
+export function BothSides({ sides }: { sides: NonNullable<GlossaryEntry["sides"]> }) {
+  const mark = (good: boolean) => (
+    <span
+      aria-hidden="true"
+      className={`mt-[3px] flex h-4 w-4 flex-none items-center justify-center rounded-full text-[11px] font-bold leading-none text-white ${
+        good ? "bg-[#14805a]" : "bg-[#b4532a]"
+      }`}
+    >
+      {good ? "+" : "−"}
+    </span>
+  );
+  const side = (s: NonNullable<GlossaryEntry["sides"]>["high"]) => (
+    <span className="block rounded-lg bg-surface/35 px-3 py-2.5">
+      <strong className="block font-display text-[14px] font-bold text-ink">{s.label}</strong>
+      <span className="mt-1.5 flex gap-2 text-[13.5px] leading-relaxed">
+        {mark(true)}
+        <span>
+          <strong className="font-semibold text-[#14805a]">Can be good: </strong>
+          {s.good}
+        </span>
+      </span>
+      <span className="mt-1.5 flex gap-2 text-[13.5px] leading-relaxed">
+        {mark(false)}
+        <span>
+          <strong className="font-semibold text-[#b4532a]">Can be bad: </strong>
+          {s.bad}
+        </span>
+      </span>
+    </span>
+  );
+  return (
+    <span className="block">
+      <strong className="block text-[12px] font-semibold uppercase tracking-wide text-[#b4532a]">Both sides of the number</strong>
+      <span className="mt-1.5 flex flex-col gap-2">
+        {side(sides.high)}
+        {side(sides.low)}
+      </span>
     </span>
   );
 }

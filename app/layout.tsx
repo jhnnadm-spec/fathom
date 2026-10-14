@@ -9,6 +9,7 @@ import "@fontsource/figtree/600.css";
 import "./globals.css";
 import { Logo } from "@/components/Logo";
 import { SearchForm } from "@/components/SearchForm";
+import { SeaBackground } from "@/components/SeaBackground";
 
 export const metadata: Metadata = {
   title: {
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full antialiased">
       <body className="flex min-h-full flex-col">
+        <SeaBackground />
         <header className="border-b border-line">
           <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-4 px-5 py-4 lg:px-8">
             <Link href="/" className="no-underline" aria-label="Fathom home">
@@ -36,6 +38,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 </Link>
                 <Link href="/watchlist" className="px-2.5 py-3 no-underline">
                   Watchlist
+                </Link>
+                <Link href="/terms" className="hidden px-2.5 py-3 no-underline sm:inline">
+                  Terms
                 </Link>
                 <Link href="/about" className="hidden px-2.5 py-3 no-underline sm:inline">
                   About

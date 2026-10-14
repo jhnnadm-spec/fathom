@@ -6,7 +6,7 @@
  */
 import { formatDate, formatMoney, formatPercent, formatPerShare, formatShare } from "../financials/format";
 import type { CompanyNumbers } from "../financials/metrics";
-import { lookupTerm } from "../glossary";
+import { lookupTerm, type TwoSides } from "../glossary";
 
 export type MapGroup = "forces" | "sales" | "cash" | "balance" | "market";
 
@@ -15,11 +15,13 @@ export type MapNode = {
   label: string; // the real finance term, as shown on the box
   plain: string; // everyday words
   term: string; // the real name
+  key: string; // its glossary entry
   definition: string;
   why?: string;
   analyst?: string;
   reading?: string;
   caveat?: string;
+  sides?: TwoSides;
   group: MapGroup;
   x: number;
   y: number;
@@ -140,11 +142,13 @@ export function conceptMap(n?: CompanyNumbers, readings: Record<string, string |
       label: l.label,
       plain: l.plain,
       term: g?.short ?? l.key,
+      key: l.key,
       definition: g?.definition ?? "",
       why: g?.why,
       analyst: g?.analyst,
       reading: g?.reading,
       caveat: g?.caveat,
+      sides: g?.sides,
       group: l.group,
       x: l.x,
       y: l.y,

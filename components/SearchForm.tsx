@@ -11,7 +11,7 @@ export function SearchForm({ size = "large", autoFocus = false }: { size?: "larg
       }`}
     >
       <label htmlFor={`q-${size}`} className="sr-only">
-        Company name or ticker
+        Company name, ticker or finance term
       </label>
       <div className={`flex items-center gap-2.5 px-3 ${large ? "flex-[1_1_220px]" : "min-w-0 flex-1"}`}>
         <svg width={large ? 22 : 18} height={large ? 22 : 18} viewBox="0 0 24 24" fill="none" stroke="#4A6573" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
@@ -25,7 +25,7 @@ export function SearchForm({ size = "large", autoFocus = false }: { size?: "larg
           required
           autoFocus={autoFocus}
           autoComplete="off"
-          placeholder={large ? "Try Apple, Nike or MSFT" : "Search a company"}
+          placeholder={large ? "Try Apple, Nike or MSFT" : "Search a company or term"}
           className={`w-full bg-transparent text-ink outline-none placeholder:text-[#6B8592] ${large ? "py-3.5 text-lg" : "py-2 text-[15px]"}`}
         />
       </div>
