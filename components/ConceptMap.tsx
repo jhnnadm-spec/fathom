@@ -110,14 +110,14 @@ export function ConceptMap({ nodes, company }: { nodes: MapNode[]; company: stri
           How the numbers connect
         </h2>
         <p className="text-[16px] leading-relaxed text-muted">
-          The key figures on this page and how one leads to the next, from what drives the business to its share price.
-          Point at a box to see what it means and {company}&apos;s own figure; click it to keep the explanation open, and click anywhere else to close it.
+          How one figure leads to the next. Point at a box to see what it means and {company}&apos;s own figure; click to
+          keep it open.
         </p>
       </div>
       <TermSearch onPick={fromSearch} placeholder="Search a term, like P/E ratio, ROE or free cash flow" />
 
       {/* The map, on screens wide enough to read it */}
-      <div className="hidden rounded-2xl bg-panel p-4 lg:block">
+      <div className="fathom-card hidden p-5 lg:block">
         <div className="relative" onMouseLeave={() => !pinned && setActive(null)}>
           <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="group" aria-label="Map of how the figures connect">
             {EDGES.map((e, i) => {

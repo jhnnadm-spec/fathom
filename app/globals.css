@@ -49,28 +49,35 @@ body {
   }
 }
 
-/* Loading animation: the dot drops down the line while the water gently moves. */
-@keyframes fathom-drop {
-  0% { transform: translateY(-62px); opacity: 0; }
-  15% { opacity: 1; }
-  70% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(0); opacity: 0; }
+/*
+  Loading animation (components/Loader.tsx): a lens sweeps across grey jargon lines
+  and leaves plain, rounded blue lines behind it. The captions under it take turns
+  (the timing assumes three captions).
+*/
+@keyframes fathom-translate-reveal {
+  0%, 8% { clip-path: inset(0 100% 0 0); opacity: 1; }
+  58%, 86% { clip-path: inset(0 0 0 0); opacity: 1; }
+  100% { clip-path: inset(0 0 0 0); opacity: 0; }
 }
-@keyframes fathom-wave {
-  from { transform: translateX(0); }
-  to { transform: translateX(50px); }
+@keyframes fathom-translate-lens {
+  0%, 8% { left: 0%; opacity: 0; }
+  14% { opacity: 1; }
+  58% { left: calc(100% - 3px); opacity: 1; }
+  66%, 100% { left: calc(100% - 3px); opacity: 0; }
 }
-.fathom-loader-dot {
-  animation: fathom-drop 1.6s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+@keyframes fathom-loader-line {
+  0% { opacity: 0; transform: translateY(6px); }
+  3%, 31% { opacity: 1; transform: translateY(0); }
+  33.3%, 100% { opacity: 0; transform: translateY(-6px); }
 }
-.fathom-loader-wave {
-  animation: fathom-wave 3.2s linear infinite;
-}
-.fathom-loader-wave-2 { animation-duration: 4.4s; }
-.fathom-loader-wave-3 { animation-duration: 5.6s; }
+.fathom-translate-plain { animation: fathom-translate-reveal 2.8s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+.fathom-translate-lens { animation: fathom-translate-lens 2.8s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+.fathom-loader-line { opacity: 0; animation-name: fathom-loader-line; animation-iteration-count: infinite; animation-timing-function: ease-out; }
 @media (prefers-reduced-motion: reduce) {
-  .fathom-loader-dot,
-  .fathom-loader-wave { animation: none; }
+  .fathom-translate-plain { animation: none; clip-path: none; }
+  .fathom-translate-lens { display: none; }
+  .fathom-loader-line { animation: none; opacity: 0; }
+  .fathom-loader-line:first-child { opacity: 1; }
 }
 
 /* Frosted glass tiles: see-through white with a soft blur, a bright edge and a gentle shadow. */
@@ -208,4 +215,37 @@ body {
   .fathom-sea-light,
   .fathom-sea-rays,
   .fathom-sea-wave { animation: none; }
+}
+
+/*
+  The company page's building blocks.
+  - .fathom-card: a clean white card (the Surface answers, panels).
+  - .fathom-fade: a step's content changing depth fades and rises into place.
+  - .fathom-grow-up / -right: small bars draw in once.
+*/
+@layer components {
+  .fathom-card {
+    border-radius: 28px;
+    background: rgb(255 255 255 / 0.86);
+    border: 1px solid var(--color-line);
+    box-shadow: 0 1px 2px rgb(10 42 58 / 0.04), 0 12px 32px rgb(10 42 58 / 0.06);
+  }
+  @keyframes fathom-fade {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fathom-fade { animation: fathom-fade 380ms cubic-bezier(0.22, 1, 0.36, 1); }
+  @keyframes fathom-grow-up {
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
+  }
+  @keyframes fathom-grow-right {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  .fathom-grow-up { transform-origin: bottom; animation: fathom-grow-up 700ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .fathom-grow-right { transform-origin: left; animation: fathom-grow-right 800ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  @media (prefers-reduced-motion: reduce) {
+    .fathom-fade, .fathom-grow-up, .fathom-grow-right { animation: none; }
+  }
 }

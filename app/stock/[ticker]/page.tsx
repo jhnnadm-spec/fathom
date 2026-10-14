@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense, type ReactNode } from "react";
+import { Fragment, Suspense, type ReactNode } from "react";
 import { ResearchProgress } from "@/components/ResearchProgress";
-import { ResearchStep } from "@/components/ResearchStep";
+import { ResearchStep, StepDivider } from "@/components/ResearchStep";
 import { WatchButton } from "@/components/WatchButton";
 import { Loader } from "@/components/Loader";
 import { ExplainButton } from "@/components/ExplainButton";
 import { CompanyNews, MarketData, PriceChart } from "@/components/MarketWidgets";
-import { BillsGauge, Columns, Headline, Lines, PairBars, StackedBar } from "@/components/viz/Charts";
+import { BillsGauge, Columns, Lines, PairBars, StackedBar } from "@/components/viz/Charts";
 import { RichText } from "@/components/RichText";
 import { SourceLink } from "@/components/SourceLink";
 import { describeAnnouncement, EVENT_WHY, stepsForEvent } from "@/lib/sec/events";
@@ -24,12 +24,18 @@ import { getCompanyProfile, type CompanyProfile } from "@/lib/profile/wiki";
 import { TermName } from "@/components/TermName";
 import { ConceptMap } from "@/components/ConceptMap";
 import { conceptMap } from "@/lib/report/concept-map";
-import { Forces } from "@/components/Forces";
+import { Forces, ForcesSummary } from "@/components/Forces";
 import { PageNav } from "@/components/PageNav";
 import { getMacro } from "@/lib/macro/data";
 import { buildForces } from "@/lib/report/forces";
 import { billsGauge, cashVsDebt, compareFor, marginLines, moneyUses, pairFor, salesHistory, salesSplit, SERIES, shareFor } from "@/lib/report/visuals";
 import { DotGrid, Meter, StatusBadge, TopicIcon } from "@/components/viz/Static";
+import { AtDepth, DepthProvider, DepthSwitch } from "@/components/Depth";
+import { CompanyLogo } from "@/components/CompanyLogo";
+import { PhotoMosaic } from "@/components/PhotoMosaic";
+import { StepArt } from "@/components/StepArt";
+import { PathStrip } from "@/components/PathStrip";
+import { BigAnswer, KeepBar, LiteCard, MiniBars, MiniGauge, MiniPair, SaidAnswer, SourceChips, UsesBar } from "@/components/Lite";
 
 export async function generateMetadata(props: PageProps<"/stock/[ticker]">): Promise<Metadata> {
   const { ticker } = await props.params;
@@ -39,7 +45,9 @@ export async function generateMetadata(props: PageProps<"/stock/[ticker]">): Pro
 export default function StockPage(props: PageProps<"/stock/[ticker]">) {
   return (
     <div>
-      <Suspense fallback={<Loader label="Reading the latest reports from the SEC…" />}>
+      <Suspense
+        fallback={<Loader steps={["Reading the latest reports from the SEC…", "Pulling out the key numbers…", "Putting it into plain English…"]} />}
+      >
         <Report params={props.params} />
       </Suspense>
     </div>
@@ -55,9 +63,10 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
     : { status: "unavailable" };
   const e = state.explanation;
   if (!report.support.supported) {
+    const profile = await getCompanyProfile(report.company.cik);
     return (
-      <div className="mx-auto flex w-full max-w-[720px] flex-col gap-10 px-5 py-10 sm:py-14">
-        <Header report={report} />
+      <div className="mx-auto flex w-full max-w-[860px] flex-col gap-10 px-5 py-10 sm:py-14">
+        <Hero report={report} profile={profile} company={shortCompany(report.company.name)} />
         <Unsupported reason={report.support.reason} name={report.company.name} />
       </div>
     );
@@ -66,7 +75,7 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
   const company = shortCompany(report.company.name);
   const forces = buildForces(company, report.numbers, e, macro);
   const now = (id: string) => forces.find((f) => f.id === id)?.now?.text;
-  const mentioned = (id: string) => (forces.some((f) => f.id === id) ? `${company} mentions this in its own reports: see "Key drivers"` : undefined);
+  const mentioned = (id: string) => (forces.some((f) => f.id === id) ? `${company} mentions this in its own reports: see "What moves the results"` : undefined);
   const nodes = conceptMap(report.numbers, {
     rates: now("rates"),
     inflation: now("inflation"),
@@ -75,33 +84,67 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
     competition: mentioned("competition"),
     rules: mentioned("rules"),
   });
+  const lead = e?.topics.whatItDoes?.[0];
+  const ctx: Ctx = { report, e, level: "surface" };
 
   return (
-    <div className="mx-auto w-full max-w-[1600px] px-5 py-10 sm:py-14 lg:grid lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10 lg:px-8 xl:gap-14">
-      <aside className="hidden lg:block">
-        <PageNav
-          ticker={report.company.ticker}
-          company={company}
-          steps={STEPS.map((s) => ({ id: s.id, title: s.title, term: lookupTerm(s.term)?.term ?? s.title }))}
-          extra={[
-            { id: "numbers", title: "All the key numbers" },
-            { id: "news", title: "Announcements and news" },
-          ]}
-        />
-      </aside>
-      <div className="fathom-bold flex min-w-0 flex-col gap-12">
-        <Header report={report} />
-        <ExplainStatus ticker={report.company.ticker} state={state} />
-        <StartHere company={company} />
-        <ConceptMap nodes={nodes} company={company} />
-        <Forces forces={forces} nodes={nodes} company={company} />
-        <Path report={report} e={e} level="surface" profile={profile} />
-        <AllNumbers report={report} />
-        <MoreInfo report={report} />
-        {e && <AiNote e={e} />}
-        <Disclaimer />
+    <DepthProvider>
+      <div className="mx-auto w-full max-w-[1480px] px-5 pb-16 pt-8 sm:pt-12 lg:grid lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-12 lg:px-8 xl:gap-16">
+        <aside className="hidden lg:block">
+          <PageNav
+            ticker={report.company.ticker}
+            company={company}
+            steps={STEPS.map((s) => ({ id: s.id, title: s.title, term: lookupTerm(s.term)?.term ?? s.title }))}
+            extra={[
+              { id: "numbers", title: "All the key numbers" },
+              { id: "news", title: "Announcements and news" },
+            ]}
+          />
+        </aside>
+        <div className="fathom-bold mx-auto flex w-full min-w-0 max-w-[1120px] flex-col gap-12">
+          <Hero report={report} profile={profile} company={company} lead={lead} />
+          <ExplainStatus ticker={report.company.ticker} state={state} />
+          <ResearchProgress ticker={report.company.ticker} steps={STEPS.map((s) => ({ id: s.id, title: s.title }))} />
+          <PathIntro ticker={report.company.ticker} company={company} />
+          <div className="flex flex-col gap-12">
+            {STEPS.map((step, i) => (
+              <Fragment key={step.id}>
+                <StepDivider number={i + 1} />
+                <ResearchStep
+                  ticker={report.company.ticker}
+                  id={step.id}
+                  number={i + 1}
+                  total={STEPS.length}
+                  label={step.title}
+                  question={step.question}
+                  brief={step.brief}
+                  term={<TermName k={step.term} />}
+                  art={<StepArt id={step.id} size={104} />}
+                  surface={surfaceBody(step, ctx, Boolean(lead))}
+                  below={deeperBody(step, ctx, "below", profile)}
+                  deep={deeperBody(step, ctx, "deep", profile)}
+                />
+              </Fragment>
+            ))}
+          </div>
+          <WholePicture>
+            <ConceptMap nodes={nodes} company={company} />
+            <AtDepth only="surface">
+              <ForcesSummary forces={forces} company={company} />
+            </AtDepth>
+            <AtDepth min="below">
+              <Forces forces={forces} nodes={nodes} company={company} />
+            </AtDepth>
+          </WholePicture>
+          <AllNumbers report={report} />
+          <MoreInfo report={report} />
+          <div className="flex flex-col gap-4">
+            {e && <AiNote e={e} />}
+            <Disclaimer />
+          </div>
+        </div>
       </div>
-    </div>
+    </DepthProvider>
   );
 }
 
@@ -110,44 +153,144 @@ function shortCompany(name: string): string {
   return name.replace(/,?\s+(Inc\.?|Corp(oration)?\.?|Co\.?|Company|Ltd\.?|plc|Holdings?|Group)$/i, "").replace(/^The\s+/i, "");
 }
 
-// ---------------------------------------------------------------- header
+// ---------------------------------------------------------------- the top of the page
 
-function Header({ report }: { report: CompanyReport }) {
-  const { company, annualReport, quarterlyReport } = report;
+/** Who the company is, in one look: logo, name, one plain sentence, a few facts and photos. */
+function Hero({ report, profile, company, lead }: { report: CompanyReport; profile?: CompanyProfile; company: string; lead?: CheckedClaim }) {
+  const { company: c, annualReport, quarterlyReport } = report;
+  const photos = profile?.photos ?? [];
+  const facts: { icon: ReactNode; text: string }[] = [];
+  if (profile?.founded) facts.push({ icon: <path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18.4 5.6l-2.1 2.1M21 12h-3M7 20h10M9 16a4 4 0 1 1 6 0" />, text: `Founded ${profile.founded}` });
+  if (profile?.headquarters) facts.push({ icon: <><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" /></>, text: profile.headquarters });
+  if (profile?.employees) facts.push({ icon: <><circle cx="9" cy="8" r="3.2" /><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5M16 4.5a3 3 0 0 1 0 6M21 20c0-2.6-1.6-4.6-4-5.2" /></>, text: `${compactCount(profile.employees.count)} people` });
+  if (profile?.ceo) facts.push({ icon: <><circle cx="12" cy="7.5" r="3.5" /><path d="M5 21c0-4 3.1-7 7-7s7 3 7 7" /></>, text: `Led by ${profile.ceo}` });
   return (
-    <div className="flex flex-col gap-3">
-      <p className="text-[15px] font-semibold text-ocean">
-        {company.ticker}
-        {company.exchanges[0] ? ` on ${company.exchanges[0]}` : ""}
-        {company.industry ? <span className="font-normal text-muted">, {company.industry.toLowerCase()}</span> : null}
-      </p>
-      <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">{company.name}</h1>
-      {(annualReport || quarterlyReport) && (
-        <p className="text-[15px] text-muted">
-          Based on {annualReport && <>the annual report (10-K) filed {formatDate(annualReport.filingDate)}</>}
-          {annualReport && quarterlyReport && " and "}
-          {quarterlyReport && <>the quarterly report (10-Q) filed {formatDate(quarterlyReport.filingDate)}</>}.
-        </p>
-      )}
-      {report.support.supported && (
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <WatchButton ticker={company.ticker} name={company.name} />
-          {/* A plain link: the browser downloads the file the server makes. */}
-          <a
-            href={`/stock/${encodeURIComponent(company.ticker)}/pdf`}
-            download
-            className="inline-flex min-h-11 items-center gap-2 text-[15px] font-semibold text-ocean no-underline hover:underline"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M12 3v12" />
-              <path d="m7 10 5 5 5-5" />
-              <path d="M5 21h14" />
-            </svg>
-            Download PDF
-          </a>
+    <header id="top" className={`grid scroll-mt-8 items-center gap-10 ${photos.length > 0 ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,500px)]" : ""}`}>
+      <div className="flex min-w-0 flex-col gap-6">
+        <div className="flex items-center gap-4">
+          <CompanyLogo name={c.name} logo={profile?.logo} website={profile?.website} size={76} />
+          <div className="flex min-w-0 flex-col gap-1">
+            <p className="flex flex-wrap items-center gap-2 text-[14px]">
+              <span className="rounded-full bg-ocean px-2.5 py-0.5 font-bold tracking-wide text-white">{c.ticker}</span>
+              {c.exchanges[0] && <span className="font-semibold text-ocean">{c.exchanges[0]}</span>}
+              {c.industry && <span className="text-muted">· {sentenceCase(c.industry)}</span>}
+            </p>
+            <h1 className="font-display text-[40px] font-bold leading-[1.02] tracking-tight sm:text-[54px]">{c.name}</h1>
+          </div>
         </div>
-      )}
-    </div>
+        {lead && (
+          <div className="flex flex-col gap-2">
+            <p className="max-w-2xl text-[21px] leading-[1.5] text-ink">{lead.text}</p>
+            <SourceChips sources={[lead.source]} />
+          </div>
+        )}
+        {facts.length > 0 && (
+          <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
+            {facts.map((f) => (
+              <li key={f.text} className="inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-3.5 py-1.5 text-[14px] font-medium">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-mid)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  {f.icon}
+                </svg>
+                {f.text}
+              </li>
+            ))}
+          </ul>
+        )}
+        {report.support.supported && (
+          <div className="flex flex-wrap items-center gap-3">
+            <WatchButton ticker={c.ticker} name={c.name} />
+            {/* A plain link: the browser downloads the file the server makes. */}
+            <a
+              href={`/stock/${encodeURIComponent(c.ticker)}/pdf`}
+              download
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-line bg-white px-4 text-[15px] font-semibold text-ocean no-underline transition hover:border-mid"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M12 3v12" />
+                <path d="m7 10 5 5 5-5" />
+                <path d="M5 21h14" />
+              </svg>
+              Download PDF
+            </a>
+          </div>
+        )}
+        {(annualReport || quarterlyReport) && (
+          <p className="text-[13px] text-muted">
+            From {annualReport && <>the annual report (10-K) filed {formatDate(annualReport.filingDate)}</>}
+            {annualReport && quarterlyReport && " and "}
+            {quarterlyReport && <>the quarterly report (10-Q) filed {formatDate(quarterlyReport.filingDate)}</>}.
+            {profile && (
+              <>
+                {" "}Background facts from{" "}
+                <a href={profile.wikidataUrl} target="_blank" rel="noopener noreferrer" className="text-muted underline decoration-line underline-offset-2">
+                  Wikidata
+                </a>
+                .
+              </>
+            )}
+          </p>
+        )}
+      </div>
+      {photos.length > 0 && <PhotoMosaic photos={photos} company={company} />}
+    </header>
+  );
+}
+
+/** 164000 → "164,000"; 2100000 → "2.1 million". */
+function compactCount(n: number): string {
+  return n >= 1_000_000 ? `${(n / 1_000_000).toFixed(1).replace(/\.0$/, "")} million` : n.toLocaleString("en-US");
+}
+
+/** "BEVERAGES" or "Services-Prepackaged Software" → "Beverages", "Services: prepackaged software". */
+function sentenceCase(s: string): string {
+  const t = s.toLowerCase().replace(/-/g, ": ");
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
+
+/** Before the steps: what's ahead, and how much detail to show. */
+function PathIntro({ ticker, company }: { ticker: string; company: string }) {
+  return (
+    <section id="start" className="fathom-card flex scroll-mt-8 flex-col gap-7 p-6 sm:p-8" aria-labelledby="path-title">
+      <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        <div className="flex max-w-xl flex-col gap-1.5">
+          <h2 id="path-title" className="font-display text-[28px] font-bold leading-tight tracking-tight">
+            Understand {company} in seven questions
+          </h2>
+          <p className="text-[16px] leading-relaxed text-muted">Start with the short answers. Go deeper whenever you want more.</p>
+        </div>
+        <div className="hidden w-full sm:block lg:w-[440px]">
+          <DepthSwitch />
+        </div>
+      </div>
+      <PathStrip
+        ticker={ticker}
+        steps={STEPS.map((s) => ({ id: s.id, title: s.title, art: <StepArt id={s.id} size={52} /> }))}
+      />
+    </section>
+  );
+}
+
+/** After the steps: everything joined up, and what moves the results. */
+function WholePicture({ children }: { children: ReactNode }) {
+  return (
+    <section id="whole-picture" className="flex scroll-mt-8 flex-col gap-10" aria-labelledby="whole-title">
+      <StepDivider />
+      <header className="flex items-start justify-between gap-6">
+        <div className="flex flex-col gap-3">
+          <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-mid">Putting it together</p>
+          <h2 id="whole-title" className="font-display text-[30px] font-bold leading-[1.1] tracking-tight sm:text-[38px]">
+            How does it all fit together?
+          </h2>
+          <p className="max-w-2xl text-[17px] leading-relaxed text-muted">
+            One map of the numbers you&apos;ve just seen, and the outside forces that push them up or down.
+          </p>
+        </div>
+        <div className="hidden sm:block">
+          <StepArt id="map" size={104} />
+        </div>
+      </header>
+      {children}
+    </section>
   );
 }
 
@@ -155,7 +298,7 @@ function Header({ report }: { report: CompanyReport }) {
 
 function Card({ title, children, note, className = "" }: { title: string; children: React.ReactNode; note?: string; className?: string }) {
   return (
-    <section className={`flex min-w-0 flex-col gap-4 border-t border-line pt-8 ${className}`}>
+    <section className={`fathom-card flex min-w-0 flex-col gap-5 p-6 sm:p-7 ${className}`}>
       <div className="flex flex-col gap-1.5">
         <h2 className="font-display text-2xl font-bold">{title}</h2>
         {note && <p className="text-[15px] leading-relaxed text-muted">{note}</p>}
@@ -172,7 +315,7 @@ function Said({ statement, visual }: { statement?: Statement; visual?: ReactNode
       <p className="text-[17px] leading-[1.65]">
         <RichText text={statement.text} />
       </p>
-      {visual && <div className="my-2 rounded-xl bg-panel p-4">{visual}</div>}
+      {visual && <div className="my-2 rounded-xl bg-[#f3f8fa] p-4">{visual}</div>}
       <div className="flex flex-wrap gap-x-4 gap-y-1">
         {statement.sources.map((s) => (
           <SourceLink key={s.url} href={s.url} label={s.label} />
@@ -241,19 +384,6 @@ function NotWritten() {
   );
 }
 
-/** Does this item have anything to show? (Used to hide empty rows and show "left out" notes.) */
-function hasContent(item: Item, { report, e }: Ctx): boolean {
-  switch (item.kind) {
-    case "topic":
-      return claimsFor(e, item).length > 0 || Boolean(e && item.empty);
-    case "statements":
-    case "firstOf":
-      return statementsFor(report.statements, item).length > 0 || Boolean(item.kind === "statements" && item.none);
-    case "block":
-      return blockHasContent(item.block, report);
-  }
-}
-
 function renderItem(item: Item, ctx: Ctx, key: string): ReactNode {
   const { report, e, level } = ctx;
   switch (item.kind) {
@@ -291,20 +421,6 @@ function renderItem(item: Item, ctx: Ctx, key: string): ReactNode {
   }
 }
 
-/** A tile's heading: the real finance term big, the plain question under it. */
-function RowHeading({ row }: { row: SurfaceRow }) {
-  const t = row.term ? lookupTerm(row.term) : undefined;
-  if (!t) return <span className="text-[17px] font-bold">{row.label}</span>;
-  return (
-    <span className="flex flex-col gap-0.5">
-      <span className="font-display text-[19px] font-bold leading-snug">
-        <TermName k={row.term!} full />
-      </span>
-      <span className="text-[14px] text-muted">{row.label}</span>
-    </span>
-  );
-}
-
 /** Official announcements from the last four months that bear on one research step. */
 function StepNews({ step, report }: { step: string; report: CompanyReport }) {
   const relevant = report.announcements
@@ -312,7 +428,7 @@ function StepNews({ step, report }: { step: string; report: CompanyReport }) {
     .filter((a) => a.codes.length > 0)
     .slice(0, 3);
   return (
-    <details className="group rounded-2xl border border-line bg-white/60 px-5 py-3">
+    <details className="group rounded-2xl border border-dashed border-line bg-white/50 px-5 py-3">
       <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between gap-3">
         <span className="flex flex-col">
           <span className="text-[15px] font-semibold">
@@ -351,173 +467,201 @@ function StepNews({ step, report }: { step: string; report: CompanyReport }) {
   );
 }
 
-/** At the top of a company page: what the reader is about to look at, and why each part matters. */
-function StartHere({ company }: { company: string }) {
-  const parts: { href: string; term: ReactNode; plain: string; why: string }[] = [
-    {
-      href: "#map",
-      term: "How the numbers connect",
-      plain: "A map of the key figures",
-      why: "See how sales turn into profit, cash and value for owners before looking at any one number.",
-    },
-    {
-      href: "#step-forces",
-      term: "Key drivers",
-      plain: "What pushes results up or down",
-      why: `The forces inside and outside ${company} (its own fundamentals, the economy, investor sentiment and outside risks) and how each one feeds through to its results.`,
-    },
-    ...STEPS.map((s, i) => ({
-      href: `#step-${s.id}`,
-      term: `${i + 1}. ${lookupTerm(s.term)?.term ?? s.title}`,
-      plain: s.question,
-      why: s.brief,
-    })),
-  ];
-  return (
-    <section id="start" className="flex scroll-mt-6 flex-col gap-4 rounded-3xl bg-panel p-6" aria-labelledby="start-title">
-      <div className="flex max-w-3xl flex-col gap-1.5">
-        <h2 id="start-title" className="font-display text-3xl font-bold">
-          Start here: what you&apos;ll look at, and why
-        </h2>
-        <p className="text-[16px] leading-relaxed text-muted">
-          This page studies {company} the way an equity analyst would: first how its numbers fit together and what drives
-          them, then seven questions in order, from what the business does to what the market pays for it. Each part
-          uses the real finance term, explained in everyday words. It explains; it never says whether to buy or sell.
-        </p>
-      </div>
-      <ol className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-        {parts.map((p) => (
-          <li key={p.href}>
-            <a href={p.href} className="flex h-full flex-col gap-1 rounded-2xl bg-white/70 p-4 text-ink no-underline transition hover:-translate-y-0.5 hover:bg-white">
-              <span className="font-display text-[18px] font-bold text-ocean">{p.term}</span>
-              <span className="text-[14px] font-semibold">{p.plain}</span>
-              <span className="text-[14px] leading-snug text-muted">{p.why}</span>
-            </a>
-          </li>
-        ))}
-      </ol>
-    </section>
+// ---------------------------------------------------------------- Surface: the short answers
+
+type Step = (typeof STEPS)[number];
+
+/** The sources behind one of the short sentences written from the numbers. */
+function sourcesOf(report: CompanyReport, id: string): { url: string; label: string }[] {
+  return report.statements.find((s) => s.id === id)?.sources ?? [];
+}
+
+/** One Surface card for one question: a short answer, a simple picture, and its source. */
+function liteFor(row: SurfaceRow, ctx: Ctx, key: string): ReactNode {
+  const { report, e } = ctx;
+  const n = report.numbers;
+  const term = row.term ? <TermName k={row.term} /> : undefined;
+  const card = (body: ReactNode, sources: { url: string; label: string }[] = [], wide = false) => (
+    <LiteCard key={key} question={row.label} term={term} sources={sources} wide={wide}>
+      {body}
+    </LiteCard>
   );
-}
+  // If a picture can't be drawn, fall back to the plain sentence written from the numbers.
+  const sentence = (id: string) => {
+    const s = report.statements.find((x) => x.id === id);
+    return s ? card(<SaidAnswer text={plainText(s.text)} />, s.sources) : null;
+  };
 
-/** The words for one Surface question, or a "not written yet" note for AI questions with no explanation. */
-function rowWords(row: SurfaceRow, ctx: Ctx): ReactNode {
-  const shown = row.items.filter((i) => hasContent(i, ctx));
-  const needsAi = row.items.some((i) => i.kind === "topic");
-  if (shown.length === 0) return needsAi && !ctx.e ? <NotWritten /> : null;
-  return shown.map((i, k) => renderItem(i, ctx, `${row.label}-${k}`));
-}
-
-function textPanel(row: SurfaceRow, ctx: Ctx): ReactNode {
-  const w = rowWords(row, ctx);
-  if (!w) return null;
-  return (
-    <section key={row.label} className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
-      <h3 className="flex items-start gap-2.5">
-        <TopicIcon name={row.items[0].kind === "topic" ? row.items[0].topic : "accounts"} />
-        <RowHeading row={row} />
-      </h3>
-      {w}
-    </section>
-  );
-}
-
-function rowVisual(row: SurfaceRow, ctx: Ctx): ReactNode {
-  const n = ctx.report.numbers;
   switch (row.visual) {
     case "salesSplit": {
       const d = salesSplit(n);
-      if (!d) return null;
-      const profit = d.segments.at(-1)!;
-      return (
+      if (!d) return sentence("s-profit");
+      const kept = d.segments.at(-1)!.value;
+      return card(
         <>
-          <Headline value={`${profit.display} of every $100`} caption="of sales was left as profit (net profit margin)" />
-          <StackedBar segments={d.segments} caption={`Where each $100 of sales went. ${d.period}.`} />
-        </>
+          <BigAnswer value={`$${Math.round(kept)} of every $100`} caption="of sales was kept as profit" tone="good" />
+          <KeepBar kept={kept} />
+        </>,
+        sourcesOf(report, "s-profit"),
       );
     }
     case "salesGrowth": {
       const d = salesHistory(n);
-      if (!d) return null;
-      return (
+      if (!d || d.change === undefined) return sentence("s-growth");
+      const up = d.change >= 0;
+      return card(
         <>
-          {d.change !== undefined && <Headline value={`${d.change >= 0 ? "+" : "−"}${formatPercent(d.change)}`} caption="sales compared with the year before (revenue growth)" />}
-          <Columns bars={d.bars} color={SERIES.blue} highlight="#0B4F6C" />
-        </>
+          <BigAnswer value={`${up ? "+" : "−"}${formatPercent(Math.abs(d.change))}`} caption={up ? "more in sales than the year before" : "less in sales than the year before"} tone={up ? "ocean" : "warn"} />
+          <MiniBars bars={d.bars.slice(-6)} />
+        </>,
+        sourcesOf(report, "s-growth"),
       );
     }
     case "billsGauge": {
       const d = billsGauge(n);
-      if (!d) return null;
-      return (
+      if (!d) return sentence("s-bills");
+      return card(
         <>
-          <Headline value={`$${d.value.toFixed(2)}`} caption="for every $1 of bills due within a year (current ratio)" />
-          <BillsGauge value={d.value} />
-        </>
+          <BigAnswer value={`$${d.value.toFixed(2)}`} caption="ready for every $1 of bills due within a year" tone={d.value >= 1 ? "ocean" : "warn"} />
+          <MiniGauge value={d.value} />
+        </>,
+        sourcesOf(report, "s-bills"),
       );
     }
     case "cashVsDebt": {
       const d = cashVsDebt(n);
-      if (!d) return null;
-      return (
-        <PairBars
-          items={[
-            { label: "Cash (cash and cash equivalents)", value: d.cash, display: formatMoney(d.cash), color: SERIES.green },
-            { label: "Borrowing due after a year (long-term debt)", value: d.debt, display: formatMoney(d.debt), color: SERIES.orange },
-          ]}
-        />
+      if (!d) return sentence("s-debt");
+      return card(
+        <>
+          <BigAnswer value={formatMoney(d.debt)} caption="borrowed for longer than a year" />
+          <MiniPair
+            items={[
+              { label: "Cash in the bank", value: d.cash, display: formatMoney(d.cash), color: SERIES.green },
+              { label: "Long-term debt", value: d.debt, display: formatMoney(d.debt), color: SERIES.orange },
+            ]}
+          />
+        </>,
+        sourcesOf(report, "s-debt"),
       );
     }
     case "spareCash": {
       const f = n?.ratios.freeCashFlow;
-      if (!f) return null;
       const flow = pairFor("s-cash", n);
-      return (
+      if (!f) return sentence("s-cash");
+      return card(
         <>
-          <Headline value={formatMoney(f.value)} caption={f.value >= 0 ? "spare cash, after investing in itself (free cash flow)" : "more spent than the business brought in (negative free cash flow)"} />
-          {flow && <PairBars items={flow} />}
-        </>
+          <BigAnswer value={formatMoney(f.value)} caption={f.value >= 0 ? "spare cash after investing in itself" : "more spent than its business brought in"} tone={f.value >= 0 ? "good" : "warn"} />
+          {flow && <MiniPair items={flow} />}
+        </>,
+        sourcesOf(report, "s-cash"),
       );
     }
     case "moneyUses": {
       const d = moneyUses(n);
-      if (!d) return null;
-      return <StackedBar segments={d.segments} caption={`What it spent its money on. ${d.period}.`} selectHint="Tap a part of the bar" />;
+      if (!d) return sentence("s-spending");
+      const top = d.segments[0];
+      return card(
+        <>
+          <BigAnswer value={top.display} caption={`on ${top.label.replace(/\s*\(.*\)$/, "").replace(/^./, (x) => x.toLowerCase())}, its biggest use`} />
+          <UsesBar segments={d.segments} />
+        </>,
+        sourcesOf(report, "s-spending"),
+        true,
+      );
     }
-    default:
-      return null;
   }
+
+  const item = row.items[0];
+  if (item.kind === "block" && item.block === "accountsSummary") {
+    const g = report.governance;
+    if (!g) return null;
+    const ok = g.events.length === 0;
+    return card(
+      <>
+        <StatusBadge ok={ok}>{ok ? "No warning signs filed" : `${g.events.length} notice${g.events.length > 1 ? "s" : ""} filed`}</StatusBadge>
+        <SaidAnswer text={ok ? `No change of auditor and no corrected accounts since ${formatDate(g.since)}.` : "It filed an auditor change or a correction to past accounts. Go deeper to see which."} />
+      </>,
+      g.events.map((x) => ({ url: x.url, label: `8-K filed ${formatDate(x.filingDate)}` })),
+    );
+  }
+  if (item.kind === "topic") {
+    const claim = claimsFor(e, item)[0];
+    if (!claim) return e ? null : card(<p className="text-[16px] leading-relaxed text-muted">Not written yet. Use the button near the top to ask Fathom to write it.</p>);
+    return card(<SaidAnswer text={claim.text} />, [claim.source]);
+  }
+  return null;
 }
 
-function tile(row: SurfaceRow, ctx: Ctx): ReactNode {
-  const w = rowWords(row, ctx);
-  const v = rowVisual(row, ctx);
-  if (!w && !v) return null;
+/** "[[net-income|kept as profit]]" → "kept as profit": Surface cards show the sentence without term links. */
+function plainText(text: string): string {
+  return text.replace(/\[\[[^|\]]+\|([^\]]+)\]\]/g, "$1");
+}
+
+/** A step at Surface: its short-answer cards, two to a row. */
+function surfaceBody(step: Step, ctx: Ctx, leadShown: boolean): ReactNode {
+  const rows = SURFACE.filter((r) => step.areas.includes(r.area)).filter((r) => !(leadShown && r.items[0].kind === "topic" && r.items[0].topic === "whatItDoes"));
+  const cards = rows.map((r, i) => liteFor(r, ctx, `${step.id}-${i}`)).filter(Boolean);
   return (
-    <section key={row.label} className={`flex flex-col gap-4 rounded-2xl bg-panel p-5 ${row.wide ? "sm:col-span-2" : ""}`}>
-      <h3>
-        <RowHeading row={row} />
-      </h3>
-      {v}
-      {w && <div className="flex flex-col gap-3 border-t border-line pt-3 [&_p]:text-[15px]">{w}</div>}
-    </section>
+    <div className="grid gap-4 md:grid-cols-2">
+      {cards}
+      {step.id === "value" && (
+        <LiteCard question="What does the stock market pay for it?" term={<TermName k="share-price" />} wide>
+          <p className="text-[16px] text-muted">The share price over the past year. It moves every trading day; Fathom never says whether it&apos;s right.</p>
+          <PriceChart symbol={ctx.report.tradingViewSymbol} />
+        </LiteCard>
+      )}
+    </div>
   );
 }
 
-/** Tiles sit two to a row; a tile left on its own takes the full width, so there's no empty gap beside it. */
-function balanced(rows: SurfaceRow[]): SurfaceRow[] {
-  let col = 0;
-  return rows.map((r, i) => {
-    if (r.wide) {
-      col = 0;
-      return r;
-    }
-    const next = rows[i + 1];
-    const alone = col === 0 && (!next || next.wide);
-    col = alone ? 0 : (col + 1) % 2;
-    return alone ? { ...r, wide: true } : r;
+/** A step at Below or Deep: the full explanation, in one readable column. */
+function deeperBody(step: Step, ctx: Ctx, level: "below" | "deep", profile?: CompanyProfile): ReactNode {
+  const { report } = ctx;
+  const sameLayers = step.areas.every((id) => {
+    const a = AREAS.find((x) => x.id === id)!;
+    return JSON.stringify(a.below) === JSON.stringify(a.deep);
   });
+  return (
+    <div className="flex flex-col gap-6">
+      {level === "deep" && <AnalystBox step={step} />}
+      <div className="fathom-card flex flex-col gap-8 p-6 sm:p-8">
+        {step.id === "business" && profile && <ProfileFacts profile={profile} />}
+        {step.id === "business" && profile?.wikipedia && level === "below" && <WikipediaIntro w={profile.wikipedia} />}
+        {step.areas.map((a) => areaLayer(a, level === "deep" && sameLayers ? "below" : level, ctx, step.areas.length > 1))}
+        {step.id === "value" && (
+          <ChartPanel title="Share price over the past year" note="The price moves every trading day. Fathom shows it for context; it doesn't say whether the price is right.">
+            <PriceChart symbol={report.tradingViewSymbol} />
+          </ChartPanel>
+        )}
+      </div>
+      <StepNews step={step.id} report={report} />
+    </div>
+  );
 }
+
+/** At Deep: why analysts look at this step, and what they look for. */
+function AnalystBox({ step }: { step: Step }) {
+  return (
+    <div className="grid gap-5 rounded-[28px] bg-gradient-to-br from-[#e6f3f8] to-[#f3f9fb] p-6 sm:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] sm:p-7">
+      <div className="flex flex-col gap-1.5">
+        <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-mid">The analyst&apos;s view</p>
+        <p className="text-[16px] leading-relaxed">{step.why}</p>
+      </div>
+      <div className="flex flex-col gap-1.5">
+        <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-mid">What they look for</p>
+        <ul className="m-0 flex list-none flex-col gap-1.5 p-0 text-[15px] leading-snug">
+          {step.lookFor.map((l) => (
+            <li key={l} className="flex gap-2.5">
+              <span aria-hidden="true" className="mt-[7px] h-1.5 w-1.5 flex-none rounded-full bg-mid" />
+              {l}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 
 /** One area at Below or Deep: its items, or a "not written yet" note when it needs the AI explanation. */
 function areaLayer(areaId: string, level: "below" | "deep", ctx: Ctx, titled: boolean): ReactNode {
@@ -528,79 +672,13 @@ function areaLayer(areaId: string, level: "below" | "deep", ctx: Ctx, titled: bo
   const needsAi = items.some((i) => i.kind === "topic");
   return (
     <div key={`${areaId}-${level}`} className="flex flex-col gap-5">
-      {titled && <h3 className="font-display text-xl font-bold">{area.title}</h3>}
-      <p className="text-[15px] leading-relaxed text-muted">{area.why}</p>
+      {titled && (
+        <div className="flex flex-col gap-1 border-b border-line pb-3">
+          <h3 className="font-display text-[22px] font-bold">{area.title}</h3>
+          <p className="text-[15px] leading-relaxed text-muted">{area.why}</p>
+        </div>
+      )}
       {needsAi && !ctx.e ? <NotWritten /> : items.map((i, k) => renderItem(i, c, `${areaId}-${level}-${k}`))}
-    </div>
-  );
-}
-
-/** The research path: seven steps, each starting short and opening deeper in place. */
-function Path(ctx: Ctx & { profile?: CompanyProfile }) {
-  const { report, e, profile } = ctx;
-  const sameLayers = (id: string) => {
-    const a = AREAS.find((x) => x.id === id)!;
-    return JSON.stringify(a.below) === JSON.stringify(a.deep);
-  };
-  return (
-    <div className="flex flex-col gap-10">
-      <ResearchProgress ticker={report.company.ticker} steps={STEPS.map((s) => ({ id: s.id, title: lookupTerm(s.term)?.term ?? s.title }))} />
-      <p className="max-w-3xl text-[16px] leading-relaxed text-muted">
-        Now work through the company the way an analyst would, one question at a time. Each step says why it matters
-        and starts with the short answer. Tap <strong className="font-semibold text-ink">Go deeper</strong> when you want
-        more. Point at any underlined term to see what it means.
-      </p>
-      {STEPS.map((step, i) => {
-        const rows = SURFACE.filter((r) => step.areas.includes(r.area));
-        const numberRows = rows.filter((r) => r.group === "numbers");
-        const textRows = rows.filter((r) => r.group !== "numbers");
-        const surface = (
-          <>
-            {step.id === "business" && profile && <ProfileFacts profile={profile} />}
-            {step.id === "business" && profile?.wikipedia && !e && <WikipediaIntro w={profile.wikipedia} />}
-            <div className={`grid gap-4 ${textRows.length > 0 && numberRows.length > 0 ? "xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] xl:items-start" : ""}`}>
-              {textRows.length > 0 && (
-                <div className={`grid gap-3 ${numberRows.length === 0 ? "lg:grid-cols-2" : ""}`}>{textRows.map((r) => textPanel(r, ctx))}</div>
-              )}
-              {numberRows.length > 0 && <div className="grid gap-3 sm:grid-cols-2">{balanced(numberRows).map((r) => tile(r, ctx))}</div>}
-            </div>
-            {step.id === "value" && (
-              <div className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
-                <h3 className="text-[14px] font-semibold text-ocean">Share price over the past year</h3>
-                <p className="text-[15px] text-muted">
-                  The price moves every trading day. Fathom shows it for context; it doesn&apos;t say whether the price is right.
-                </p>
-                <PriceChart symbol={report.tradingViewSymbol} />
-              </div>
-            )}
-          </>
-        );
-        const below = (
-          <>
-            {step.id === "business" && profile?.wikipedia && e && <WikipediaIntro w={profile.wikipedia} />}
-            {step.areas.map((a) => areaLayer(a, "below", ctx, step.areas.length > 1))}
-          </>
-        );
-        const hasDeep = step.areas.some((a) => !sameLayers(a));
-        const deep = hasDeep ? <>{step.areas.map((a) => areaLayer(a, "deep", ctx, step.areas.length > 1))}</> : undefined;
-        return (
-          <ResearchStep
-            key={step.id}
-            ticker={report.company.ticker}
-            id={step.id}
-            number={i + 1}
-            title={step.title}
-            question={step.question}
-            surface={surface}
-            below={below}
-            deep={deep}
-            why={step.why}
-            heading={<TermName k={step.term} full />}
-            news={<StepNews step={step.id} report={report} />}
-            lookFor={step.lookFor}
-          />
-        );
-      })}
     </div>
   );
 }
@@ -622,7 +700,7 @@ function ProfileFacts({ profile: p }: { profile: CompanyProfile }) {
     ]);
   if (facts.length === 0) return null;
   return (
-    <section className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
+    <section className="flex flex-col gap-3 rounded-2xl bg-[#f3f8fa] p-5">
       <h3 className="text-[14px] font-semibold text-ocean">At a glance</h3>
       <dl className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3">
         {facts.map(([k, v]) => (
@@ -640,7 +718,7 @@ function ProfileFacts({ profile: p }: { profile: CompanyProfile }) {
 /** The opening of the company's Wikipedia article, credited as its licence requires. */
 function WikipediaIntro({ w }: { w: NonNullable<CompanyProfile["wikipedia"]> }) {
   return (
-    <section className="flex flex-col gap-2.5 rounded-2xl bg-panel p-5">
+    <section className="flex flex-col gap-2.5 rounded-2xl bg-[#f3f8fa] p-5">
       <h3 className="text-[14px] font-semibold text-ocean">Background</h3>
       <p className="text-[16px] leading-[1.65]">{w.extract}</p>
       <p className="text-[13px] text-muted">
@@ -663,7 +741,7 @@ function AllNumbers({ report }: { report: CompanyReport }) {
   const area = AREAS.find((a) => a.id === "numbers")!;
   const ctx: Ctx = { report, level: "deep" };
   return (
-    <details id="numbers" className="group flex scroll-mt-6 flex-col rounded-2xl bg-panel p-5">
+    <details id="numbers" className="fathom-card group flex scroll-mt-8 flex-col p-6 sm:p-7">
       <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4">
         <span className="flex flex-col">
           <span className="font-display text-xl font-bold">All the key numbers</span>
@@ -858,7 +936,7 @@ function MarketKey() {
 /** A raised panel that holds one chart. */
 function ChartPanel({ title, note, children }: { title: string; note?: string; children: ReactNode }) {
   return (
-    <div className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
+    <div className="flex flex-col gap-3 rounded-2xl bg-[#f3f8fa] p-5">
       <div className="flex flex-col gap-0.5">
         <h3 className="text-[15px] font-semibold">{title}</h3>
         {note && <p className="text-[13px] text-muted">{note}</p>}
@@ -1100,7 +1178,7 @@ function OriginalReports({ report }: { report: CompanyReport }) {
 /** Announcements, news and where everything comes from, in the same single column. */
 function MoreInfo({ report }: { report: CompanyReport }) {
   return (
-    <div id="news" className="grid scroll-mt-6 gap-10 lg:grid-cols-2">
+    <div id="news" className="grid scroll-mt-8 gap-5 lg:grid-cols-2">
       <Card title="Official announcements" note="Major events the company reported to the SEC in the last four months.">
         {report.announcements.length === 0 ? (
           <p className="text-[16px] text-muted">None filed in the last four months.</p>

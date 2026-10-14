@@ -1,8 +1,12 @@
 "use client";
 
-/** The research path at a glance: seven steps, ticked as you open each one up. */
+/**
+ * On phones and tablets: a slim bar that stays at the top while reading, with
+ * how far through the seven questions you are and the depth switch.
+ */
 import { useEffect, useState } from "react";
 import { getProgress, STORE_EVENT, type StepState } from "@/lib/client/store";
+import { DepthSwitch } from "./Depth";
 
 export function ResearchProgress({ ticker, steps }: { ticker: string; steps: { id: string; title: string }[] }) {
   const [p, setP] = useState<Record<string, StepState>>({});
@@ -15,41 +19,20 @@ export function ResearchProgress({ ticker, steps }: { ticker: string; steps: { i
   const done = steps.filter((s) => p[s.id]).length;
 
   return (
-    <nav aria-label="Research path" className="sticky top-0 z-10 -mx-5 flex flex-col gap-2 bg-white/85 px-5 py-3 backdrop-blur lg:hidden">
-      <div className="flex items-baseline justify-between gap-3 text-[13px]">
-        <span className="font-semibold text-ocean">Your research path</span>
-        <span className="text-muted">
-          {done} of {steps.length} explored
-        </span>
+    <nav aria-label="Reading progress and detail" className="sticky top-0 z-20 -mx-5 flex flex-col gap-2 border-b border-line bg-white/90 px-5 py-2.5 backdrop-blur lg:hidden">
+      <div className="flex items-center gap-3">
+        <div className="flex min-w-0 flex-1 flex-col gap-1">
+          <span className="text-[12px] font-semibold text-muted">
+            {done} of {steps.length} questions explored
+          </span>
+          <span className="h-1.5 rounded-full bg-panel-2">
+            <span className="block h-1.5 rounded-full bg-mid transition-[width] duration-500" style={{ width: `${(done / steps.length) * 100}%` }} />
+          </span>
+        </div>
+        <div className="w-[210px] flex-none">
+          <DepthSwitch variant="compact" />
+        </div>
       </div>
-      <div className="h-1.5 rounded-full bg-panel-2">
-        <div className="h-1.5 rounded-full bg-mid transition-[width] duration-500" style={{ width: `${(done / steps.length) * 100}%` }} />
-      </div>
-      <ol className="-mx-1 flex gap-1.5 overflow-x-auto px-1 pb-1">
-        {steps.map((s, i) => {
-          const st = p[s.id];
-          return (
-            <li key={s.id} className="flex-none">
-              <a
-                href={`#step-${s.id}`}
-                className={`flex min-h-9 items-center gap-1.5 rounded-full px-3 text-[13px] font-semibold no-underline ${
-                  st ? "bg-ocean text-abyss" : "bg-panel-2 text-muted hover:text-ink"
-                }`}
-              >
-                {st ? (
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>
-                ) : (
-                  <span aria-hidden="true">{i + 1}</span>
-                )}
-                {s.title}
-                <span className="sr-only">{st ? "(explored)" : ""}</span>
-              </a>
-            </li>
-          );
-        })}
-      </ol>
     </nav>
   );
 }

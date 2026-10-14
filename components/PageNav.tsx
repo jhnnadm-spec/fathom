@@ -1,12 +1,13 @@
 "use client";
 
 /**
- * On wide screens, a menu that stays on the left of a company page: the map,
- * the key drivers, the seven research steps (ticked once explored) and
- * the reference sections. The part you're reading is highlighted.
+ * On wide screens, a menu that stays on the left of a company page: how much
+ * detail to show, the seven questions (ticked once explored), how it all fits
+ * together, and the reference sections. The part you're reading is highlighted.
  */
 import { useEffect, useState } from "react";
 import { getProgress, STORE_EVENT, type StepState } from "@/lib/client/store";
+import { DepthSwitch } from "./Depth";
 
 type Entry = { id: string; title: string; sub?: string; step?: number };
 
@@ -32,17 +33,20 @@ export function PageNav({
   }, [ticker]);
 
   const top: Entry[] = [
-    { id: "start", title: "Start here", sub: "What you'll look at, and why" },
-    { id: "map", title: "How the numbers connect" },
-    { id: "step-forces", title: "Key drivers", sub: `What affects ${company}'s results` },
+    { id: "top", title: company, sub: "Who it is" },
+    { id: "start", title: "Seven questions", sub: "Start here" },
+  ];
+  const together: Entry[] = [
+    { id: "whole-picture", title: "How it fits together", sub: "The map of the numbers" },
+    { id: "step-forces", title: "What moves the results", sub: "Key drivers" },
   ];
   const path: Entry[] = steps.map((s, i) => ({
     id: `step-${s.id}`,
-    title: s.term,
-    sub: s.title,
+    title: s.title,
+    sub: s.term,
     step: i + 1,
   }));
-  const all = [...top, ...path, ...extra];
+  const all = [...top, ...path, ...together, ...extra];
   const key = all.map((e) => e.id).join(",");
 
   // Highlight the section nearest the top of the screen.
@@ -115,14 +119,15 @@ export function PageNav({
       aria-label="On this page"
       className="sticky top-4 flex max-h-[calc(100vh-2rem)] flex-col gap-4 overflow-y-auto pb-4"
     >
-      <p className="px-2.5 text-[12px] font-semibold uppercase tracking-wide text-muted">
-        Overview
-      </p>
-      <ul className="-mt-2 flex flex-col gap-0.5">{top.map(link)}</ul>
+      <div className="flex flex-col gap-2 px-1">
+        <p className="px-1.5 text-[12px] font-semibold uppercase tracking-wide text-muted">How much detail</p>
+        <DepthSwitch variant="compact" />
+      </div>
+      <ul className="flex flex-col gap-0.5">{top.map(link)}</ul>
       <div className="flex flex-col gap-1.5 px-2.5">
         <div className="flex items-baseline justify-between text-[12px]">
           <span className="font-semibold uppercase tracking-wide text-muted">
-            Research path
+            Seven questions
           </span>
           <span className="text-muted">
             {done}/{steps.length}
@@ -136,6 +141,10 @@ export function PageNav({
         </div>
       </div>
       <ul className="-mt-1 flex flex-col gap-0.5">{path.map(link)}</ul>
+      <p className="px-2.5 text-[12px] font-semibold uppercase tracking-wide text-muted">
+        Putting it together
+      </p>
+      <ul className="-mt-2 flex flex-col gap-0.5">{together.map(link)}</ul>
       <p className="px-2.5 text-[12px] font-semibold uppercase tracking-wide text-muted">
         Reference
       </p>

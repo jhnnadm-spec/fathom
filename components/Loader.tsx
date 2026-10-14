@@ -1,26 +1,44 @@
 /**
- * Fathom's loading animation: the logo, with the measuring dot dropping
- * down the line, as if sounding the depth. Shown in the middle of the screen.
+ * Fathom's loading animation: a block of dense, grey "jargon" lines. A soft blue
+ * lens sweeps across it, and everything behind the lens turns into fewer, shorter,
+ * rounded lines: the report being turned into plain words. Below it, the steps
+ * Fathom is working through take turns. Pure CSS, and still for anyone who has
+ * asked their device for less motion.
  */
-export function Loader({ label = "Loading…" }: { label?: string }) {
+const JARGON = [92, 100, 84, 97, 70];
+const PLAIN = [58, 76, 40];
+
+export function Loader({ label = "Loading…", steps }: { label?: string; steps?: string[] }) {
+  const lines = steps && steps.length > 0 ? steps : [label];
   return (
-    <div role="status" aria-live="polite" className="flex min-h-[60vh] w-full flex-col items-center justify-center gap-5 px-5">
-      <svg width="76" height="76" viewBox="0 0 100 100" aria-hidden="true" className="fathom-loader">
-        <defs>
-          <clipPath id="fathom-loader-clip">
-            <rect x="6" y="6" width="88" height="88" rx="22" />
-          </clipPath>
-        </defs>
-        <g clipPath="url(#fathom-loader-clip)">
-          <rect width="100" height="100" fill="#CDE7F0" />
-          <path className="fathom-loader-wave" d="M-50 30 Q-25 24 0 30 T50 30 T100 30 T150 30 V100 H-50 Z" fill="#7FC4D8" />
-          <path className="fathom-loader-wave fathom-loader-wave-2" d="M-50 52 Q-25 46 0 52 T50 52 T100 52 T150 52 V100 H-50 Z" fill="#2F8FB3" />
-          <path className="fathom-loader-wave fathom-loader-wave-3" d="M-50 74 Q-25 68 0 74 T50 74 T100 74 T150 74 V100 H-50 Z" fill="#0B4F6C" />
-        </g>
-        <line x1="66" y1="14" x2="66" y2="76" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeDasharray="1 7" />
-        <circle className="fathom-loader-dot" cx="66" cy="82" r="6" fill="#FFFFFF" />
-      </svg>
-      <p className="text-[15px] text-muted">{label}</p>
+    <div role="status" aria-live="polite" className="flex min-h-[60vh] w-full flex-col items-center justify-center gap-8 px-5">
+      <div aria-hidden="true" className="fathom-translate relative h-[132px] w-[220px] overflow-hidden rounded-3xl border border-line bg-white/90 p-6 shadow-[0_20px_50px_rgba(10,42,58,0.10)]">
+        {/* The jargon: many tight grey lines */}
+        <div className="flex flex-col gap-[7px]">
+          {JARGON.map((w, i) => (
+            <span key={i} className="h-[7px] rounded-[2px] bg-[#c9d5db]" style={{ width: `${w}%` }} />
+          ))}
+        </div>
+        {/* The plain words: fewer, rounder, blue, revealed behind the lens */}
+        <div className="fathom-translate-plain absolute inset-0 flex flex-col justify-center gap-[13px] bg-white p-6">
+          {PLAIN.map((w, i) => (
+            <span key={i} className="h-[11px] rounded-full bg-gradient-to-r from-mid to-shallow" style={{ width: `${w}%` }} />
+          ))}
+        </div>
+        {/* The lens */}
+        <span className="fathom-translate-lens absolute inset-y-3 w-[3px] rounded-full bg-mid shadow-[0_0_18px_6px_rgba(127,196,216,0.55)]" />
+      </div>
+      <p className="relative h-6 w-full max-w-md text-center text-[16px] font-medium text-muted">
+        {lines.map((l, i) => (
+          <span
+            key={l}
+            className={lines.length > 1 ? "fathom-loader-line absolute inset-0" : ""}
+            style={lines.length > 1 ? { animationDelay: `${i * 2.4}s`, animationDuration: `${lines.length * 2.4}s` } : undefined}
+          >
+            {l}
+          </span>
+        ))}
+      </p>
     </div>
   );
 }

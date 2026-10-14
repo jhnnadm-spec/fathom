@@ -5,9 +5,7 @@
  *  - every request must say who is asking (the User-Agent header)
  *  - no more than 10 requests per second. We stay at 5 to be safe.
  */
-import { createHash } from "node:crypto";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
-import path from "node:path";
+import { fromCache, toCache } from "../offline-cache";
 
 const MIN_GAP_MS = 200; // 5 requests per second
 const MAX_ATTEMPTS = 4;
@@ -48,31 +46,6 @@ function waitYourTurn(): Promise<void> {
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-/**
- * Optional local cache for scripts and tests, so re-running doesn't ask SEC again.
- * Turned on by setting FATHOM_CACHE_DIR. The live website doesn't use it.
- */
-async function fromCache(url: string): Promise<string | undefined> {
-  const dir = process.env.FATHOM_CACHE_DIR;
-  if (!dir) return undefined;
-  try {
-    return await readFile(cachePath(dir, url), "utf8");
-  } catch {
-    return undefined;
-  }
-}
-
-async function toCache(url: string, body: string): Promise<void> {
-  const dir = process.env.FATHOM_CACHE_DIR;
-  if (!dir) return;
-  await mkdir(dir, { recursive: true });
-  await writeFile(cachePath(dir, url), body, "utf8");
-}
-
-function cachePath(dir: string, url: string) {
-  return path.join(dir, createHash("sha256").update(url).digest("hex").slice(0, 32));
 }
 
 /** Download a page or file from SEC as text. */
