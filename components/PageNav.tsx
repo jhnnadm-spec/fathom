@@ -2,13 +2,13 @@
 
 /**
  * On wide screens, a menu that stays on the left of a company page: the map,
- * what moves the company, the seven research steps (ticked once explored) and
+ * the key drivers, the seven research steps (ticked once explored) and
  * the reference sections. The part you're reading is highlighted.
  */
 import { useEffect, useState } from "react";
 import { getProgress, STORE_EVENT, type StepState } from "@/lib/client/store";
 
-type Entry = { id: string; title: string; step?: number };
+type Entry = { id: string; title: string; sub?: string; step?: number };
 
 export function PageNav({
   ticker,
@@ -18,7 +18,7 @@ export function PageNav({
 }: {
   ticker: string;
   company: string;
-  steps: { id: string; title: string }[];
+  steps: { id: string; title: string; term: string }[];
   extra: Entry[];
 }) {
   const [p, setP] = useState<Record<string, StepState>>({});
@@ -32,12 +32,14 @@ export function PageNav({
   }, [ticker]);
 
   const top: Entry[] = [
-    { id: "map", title: "How it all connects" },
-    { id: "step-forces", title: `What moves ${company}` },
+    { id: "start", title: "Start here", sub: "What you'll look at, and why" },
+    { id: "map", title: "How the numbers connect" },
+    { id: "step-forces", title: "Key drivers", sub: `What affects ${company}'s results` },
   ];
   const path: Entry[] = steps.map((s, i) => ({
     id: `step-${s.id}`,
-    title: s.title,
+    title: s.term,
+    sub: s.title,
     step: i + 1,
   }));
   const all = [...top, ...path, ...extra];
@@ -98,7 +100,10 @@ export function PageNav({
               )}
             </span>
           )}
-          <span className="leading-tight">{e.title}</span>
+          <span className="flex flex-col py-1 leading-tight">
+            <span>{e.title}</span>
+            {e.sub && <span className="text-[12px] font-normal text-muted">{e.sub}</span>}
+          </span>
           {explored && <span className="sr-only">(explored)</span>}
         </a>
       </li>

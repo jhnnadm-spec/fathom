@@ -15,7 +15,7 @@ const report: CompanyReport = {
     indexUrl: "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/",
   },
   statements: [],
-  announcements: [{ filingDate: "2026-07-30", events: ["Shared financial results"], url: "https://www.sec.gov/x.htm" }],
+  announcements: [{ filingDate: "2026-07-30", events: ["Shared financial results"], codes: ["2.02"], url: "https://www.sec.gov/x.htm" }],
   tradingViewSymbol: "NASDAQ:AAPL",
   explanationKey: "",
   generatedAt: "2026-10-13T00:00:00Z",

@@ -6,6 +6,9 @@ export type GlossaryEntry = {
   short: string; // the name shown in brackets after plain words, e.g. "net income"
   definition: string; // what it is, in plain English
   why?: string; // why someone looking at a company should care
+  analyst?: string; // why analysts look at this number
+  reading?: string; // what a high or low figure can suggest
+  caveat?: string; // the devil's advocate: why that reading can mislead
 };
 
 const entries = glossary as Record<string, GlossaryEntry>;

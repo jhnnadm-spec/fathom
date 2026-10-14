@@ -12,10 +12,14 @@ export type MapGroup = "forces" | "sales" | "cash" | "balance" | "market";
 
 export type MapNode = {
   id: string;
+  label: string; // the real finance term, as shown on the box
   plain: string; // everyday words
   term: string; // the real name
   definition: string;
   why?: string;
+  analyst?: string;
+  reading?: string;
+  caveat?: string;
   group: MapGroup;
   x: number;
   y: number;
@@ -26,39 +30,39 @@ export type MapNode = {
 export type MapEdge = { from: string; to: string; label: string };
 
 export const GROUPS: Record<MapGroup, { name: string; color: string }> = {
-  forces: { name: "Forces acting on it (dashed links)", color: "#6b7f8e" },
+  forces: { name: "Key drivers from outside (dashed links)", color: "#6b7f8e" },
   sales: { name: "Sales and profit", color: "#2a78d6" },
   cash: { name: "Cash", color: "#199e70" },
   balance: { name: "What it owns and owes", color: "#6250d6" },
   market: { name: "The share price", color: "#eb6834" },
 };
 
-const LAYOUT: { id: string; plain: string; key: string; group: MapGroup; x: number; y: number; step: string }[] = [
-  { id: "f-demand", plain: "Jobs and spending", key: "consumer-demand", group: "forces", x: 10, y: 30, step: "forces" },
-  { id: "f-inflation", plain: "Prices rising", key: "inflation", group: "forces", x: 220, y: 30, step: "forces" },
-  { id: "f-competition", plain: "Competitors", key: "competition", group: "forces", x: 430, y: 30, step: "forces" },
-  { id: "f-rates", plain: "Interest rates", key: "interest-rates", group: "forces", x: 640, y: 30, step: "forces" },
-  { id: "f-rules", plain: "Laws and taxes", key: "regulation", group: "forces", x: 850, y: 30, step: "forces" },
-  { id: "f-sentiment", plain: "Investor mood", key: "market-sentiment", group: "forces", x: 10, y: 560, step: "forces" },
-  { id: "revenue", plain: "Sales", key: "revenue", group: "sales", x: 10, y: 180, step: "performance" },
-  { id: "costs", plain: "Costs", key: "costs-and-expenses", group: "sales", x: 10, y: 300, step: "performance" },
-  { id: "profit", plain: "Profit", key: "net-income", group: "sales", x: 220, y: 180, step: "performance" },
-  { id: "margin", plain: "Profit per $100 of sales", key: "profit-margin", group: "sales", x: 220, y: 300, step: "performance" },
-  { id: "opcash", plain: "Cash from the business", key: "cash-from-operations", group: "cash", x: 430, y: 180, step: "cash" },
-  { id: "capex", plain: "Spending on equipment", key: "capital-expenditure", group: "cash", x: 430, y: 300, step: "cash" },
-  { id: "fcf", plain: "Spare cash", key: "free-cash-flow", group: "cash", x: 640, y: 180, step: "cash" },
-  { id: "dividends", plain: "Cash paid to owners", key: "dividend", group: "cash", x: 640, y: 300, step: "management" },
-  { id: "buybacks", plain: "Buying back shares", key: "share-buyback", group: "cash", x: 850, y: 300, step: "management" },
-  { id: "cash", plain: "Cash in the bank", key: "cash-and-equivalents", group: "balance", x: 10, y: 440, step: "health" },
-  { id: "current", plain: "Can it pay bills due soon", key: "current-ratio", group: "balance", x: 220, y: 440, step: "health" },
-  { id: "debt", plain: "Borrowing", key: "long-term-debt", group: "balance", x: 430, y: 440, step: "health" },
-  { id: "dte", plain: "Borrowing vs owners' money", key: "debt-to-equity", group: "balance", x: 640, y: 440, step: "health" },
-  { id: "equity", plain: "Owners' share", key: "shareholders-equity", group: "balance", x: 850, y: 440, step: "health" },
-  { id: "roe", plain: "Profit on owners' money", key: "return-on-equity", group: "balance", x: 850, y: 180, step: "management" },
-  { id: "eps", plain: "Profit per share", key: "eps", group: "market", x: 220, y: 560, step: "performance" },
-  { id: "price", plain: "Share price", key: "share-price", group: "market", x: 640, y: 560, step: "value" },
-  { id: "pe", plain: "Price vs profit", key: "pe-ratio", group: "market", x: 430, y: 560, step: "value" },
-  { id: "mcap", plain: "Whole company's price", key: "market-cap", group: "market", x: 850, y: 560, step: "value" },
+const LAYOUT: { id: string; label: string; plain: string; key: string; group: MapGroup; x: number; y: number; step: string }[] = [
+  { id: "f-demand", label: "Consumer demand", plain: "Jobs and spending", key: "consumer-demand", group: "forces", x: 10, y: 30, step: "forces" },
+  { id: "f-inflation", label: "Inflation", plain: "Prices rising", key: "inflation", group: "forces", x: 220, y: 30, step: "forces" },
+  { id: "f-competition", label: "Competition", plain: "Competitors", key: "competition", group: "forces", x: 430, y: 30, step: "forces" },
+  { id: "f-rates", label: "Interest rates", plain: "Interest rates", key: "interest-rates", group: "forces", x: 640, y: 30, step: "forces" },
+  { id: "f-rules", label: "Regulation", plain: "Laws and taxes", key: "regulation", group: "forces", x: 850, y: 30, step: "forces" },
+  { id: "f-sentiment", label: "Market sentiment", plain: "How investors feel", key: "market-sentiment", group: "forces", x: 10, y: 560, step: "forces" },
+  { id: "revenue", label: "Revenue", plain: "Sales", key: "revenue", group: "sales", x: 10, y: 180, step: "performance" },
+  { id: "costs", label: "Costs and expenses", plain: "Costs", key: "costs-and-expenses", group: "sales", x: 10, y: 300, step: "performance" },
+  { id: "profit", label: "Net income", plain: "Profit", key: "net-income", group: "sales", x: 220, y: 180, step: "performance" },
+  { id: "margin", label: "Net profit margin", plain: "Profit per $100 of sales", key: "profit-margin", group: "sales", x: 220, y: 300, step: "performance" },
+  { id: "opcash", label: "Operating cash flow", plain: "Cash from the business", key: "cash-from-operations", group: "cash", x: 430, y: 180, step: "cash" },
+  { id: "capex", label: "Capital expenditure", plain: "Spending on equipment", key: "capital-expenditure", group: "cash", x: 430, y: 300, step: "cash" },
+  { id: "fcf", label: "Free cash flow", plain: "Spare cash", key: "free-cash-flow", group: "cash", x: 640, y: 180, step: "cash" },
+  { id: "dividends", label: "Dividends", plain: "Cash paid to owners", key: "dividend", group: "cash", x: 640, y: 300, step: "management" },
+  { id: "buybacks", label: "Share buybacks", plain: "Buying back shares", key: "share-buyback", group: "cash", x: 850, y: 300, step: "management" },
+  { id: "cash", label: "Cash", plain: "Cash in the bank", key: "cash-and-equivalents", group: "balance", x: 10, y: 440, step: "health" },
+  { id: "current", label: "Current ratio", plain: "Can it pay bills due soon", key: "current-ratio", group: "balance", x: 220, y: 440, step: "health" },
+  { id: "debt", label: "Long-term debt", plain: "Borrowing", key: "long-term-debt", group: "balance", x: 430, y: 440, step: "health" },
+  { id: "dte", label: "Debt-to-equity", plain: "Borrowing vs owners' money", key: "debt-to-equity", group: "balance", x: 640, y: 440, step: "health" },
+  { id: "equity", label: "Shareholders' equity", plain: "Owners' share", key: "shareholders-equity", group: "balance", x: 850, y: 440, step: "health" },
+  { id: "roe", label: "Return on equity", plain: "Profit on owners' money", key: "return-on-equity", group: "balance", x: 850, y: 180, step: "management" },
+  { id: "eps", label: "Earnings per share", plain: "Profit per share", key: "eps", group: "market", x: 220, y: 560, step: "performance" },
+  { id: "price", label: "Share price", plain: "Share price", key: "share-price", group: "market", x: 640, y: 560, step: "value" },
+  { id: "pe", label: "P/E ratio", plain: "Price vs profit", key: "pe-ratio", group: "market", x: 430, y: 560, step: "value" },
+  { id: "mcap", label: "Market cap", plain: "Whole company's price", key: "market-cap", group: "market", x: 850, y: 560, step: "value" },
 ];
 
 export const EDGES: MapEdge[] = [
@@ -124,19 +128,23 @@ export function conceptMap(n?: CompanyNumbers, readings: Record<string, string |
     mcap: "See the live figure in step 7",
     "f-demand": readings.demand,
     "f-inflation": readings.inflation,
-    "f-competition": readings.competition ?? "What the company says about its competitors is in \"What moves this company\"",
+    "f-competition": readings.competition ?? "What the company says about its competitors is in \"Key drivers\"",
     "f-rates": readings.rates,
-    "f-rules": readings.rules ?? "What the company says about laws and taxes is in \"What moves this company\"",
+    "f-rules": readings.rules ?? "What the company says about laws and taxes is in \"Key drivers\"",
     "f-sentiment": readings.sentiment,
   };
   return LAYOUT.map((l) => {
     const g = lookupTerm(l.key);
     return {
       id: l.id,
+      label: l.label,
       plain: l.plain,
       term: g?.short ?? l.key,
       definition: g?.definition ?? "",
       why: g?.why,
+      analyst: g?.analyst,
+      reading: g?.reading,
+      caveat: g?.caveat,
       group: l.group,
       x: l.x,
       y: l.y,

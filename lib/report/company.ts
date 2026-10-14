@@ -6,7 +6,7 @@ import { cacheLife, cacheTag } from "next/cache";
 import { currentReports, filingsKey } from "../explain/sources";
 import { computeNumbers, type CompanyNumbers } from "../financials/metrics";
 import { buildStatements, type Statement } from "../financials/templates";
-import { describeAnnouncement } from "../sec/events";
+import { describeAnnouncement, eventCodes } from "../sec/events";
 import { loadCompanyFacts } from "../sec/facts";
 import {
   checkSupport,
@@ -27,7 +27,7 @@ export type ReportFiling = {
   indexUrl: string;
 };
 
-export type Announcement = { filingDate: string; events: string[]; url: string };
+export type Announcement = { filingDate: string; events: string[]; codes: string[]; url: string };
 
 /** Official notices that matter for trust in the accounts: auditor changes and restatements. */
 export type GovernanceCheck = {
@@ -145,9 +145,9 @@ export async function getCompanyReport(ticker: string): Promise<CompanyReport | 
     numbers,
     statements: buildStatements(numbers),
     announcements: recentAnnouncements(filings, 120)
-      .map((f) => ({ filingDate: f.filingDate, events: describeAnnouncement(f.items), url: f.url }))
+      .map((f) => ({ filingDate: f.filingDate, events: describeAnnouncement(f.items), codes: eventCodes(f.items), url: f.url }))
       .filter((a) => a.events.length > 0)
-      .slice(0, 6),
+      .slice(0, 12),
     governance: governanceCheck(filings),
   };
 }

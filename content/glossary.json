@@ -3,55 +3,82 @@
     "term": "Revenue",
     "definition": "All the money a company takes in from selling its products and services, before paying any costs. Also called sales.",
     "short": "revenue",
-    "why": "It's the starting point for everything else: a company can't make a profit without selling something first. Growing sales usually means more customers or higher prices."
+    "why": "It's the starting point for everything else: a company can't make a profit without selling something first. Growing sales usually means more customers or higher prices.",
+    "analyst": "Sales are the top line that every other figure depends on. Analysts look at how fast they grow, how steady they are from year to year, and where they come from.",
+    "reading": "Steady growth suggests customers want more of what it sells, or that it can raise prices. Falling sales can mean lost customers, weaker demand or tougher competition.",
+    "caveat": "Sales can grow while profit shrinks, if the company is buying growth with discounts or heavy spending. Growth from buying other companies is not the same as customers buying more."
   },
   "net-income": {
     "term": "Net income",
     "definition": "The profit left after paying every cost, including wages, interest and taxes. Often called the bottom line.",
     "short": "net income",
-    "why": "It's the money that's actually left for the owners after every bill is paid. A company can sell a lot and still make little or none."
+    "why": "It's the money that's actually left for the owners after every bill is paid. A company can sell a lot and still make little or none.",
+    "analyst": "Profit is what is left for the owners after every cost, so it's the basis for the earnings per share and P/E ratio that investors quote.",
+    "reading": "Rising profit suggests the business is growing, getting more efficient, or both. A loss means costs were bigger than sales over the period.",
+    "caveat": "Profit includes one-off items (a sale of a building, a write-down, a tax change), so one year can look much better or worse than the business really is. Compare it with the cash the business actually brought in."
   },
   "net-loss": {
     "term": "Net loss",
     "definition": "When a company's costs, including interest and taxes, add up to more than it earned during the period.",
     "short": "net loss",
-    "why": "A loss isn't always bad (young companies often lose money while growing), but a company can't lose money forever."
+    "why": "A loss isn't always bad (young companies often lose money while growing), but a company can't lose money forever.",
+    "analyst": "A loss shows the company spent more than it earned. Analysts ask whether that is temporary, planned (a young company investing to grow) or a sign of trouble.",
+    "reading": "A shrinking loss can mean the company is moving towards profit. A growing loss for a mature company is usually a warning sign.",
+    "caveat": "Some strong companies lose money for years on purpose while they grow. Others report a loss only because of a one-off accounting charge, while their cash flow is healthy."
   },
   "gross-margin": {
     "term": "Gross margin",
     "definition": "The share of each dollar of sales left after paying the direct cost of making or buying what was sold. Higher means more is left for everything else.",
     "short": "gross margin",
-    "why": "It shows how much room a company has to pay for everything else. A high gross margin often means a strong brand or something hard to copy."
+    "why": "It shows how much room a company has to pay for everything else. A high gross margin often means a strong brand or something hard to copy.",
+    "analyst": "It shows how much is left from each sale after the direct cost of making or buying the product. Analysts use it to judge pricing power and how costly the product is to make.",
+    "reading": "A high gross margin (software often has 70% or more) suggests the company can charge well above its costs. A low one (shops, airlines) means it must sell a lot to cover its other costs.",
+    "caveat": "Different industries have very different normal levels, so compare with similar companies, not across industries. A rising margin can also come from a change in what it sells rather than better pricing."
   },
   "profit-margin": {
     "term": "Profit margin",
     "definition": "The share of each dollar of sales left as profit after all costs and taxes.",
     "short": "net profit margin",
-    "why": "It lets you compare companies of any size: $27 of profit per $100 of sales means the same thing for a small company and a giant."
+    "why": "It lets you compare companies of any size: $27 of profit per $100 of sales means the same thing for a small company and a giant.",
+    "analyst": "It shows how much of each sale ends up as profit after all costs. Analysts compare it over time and against competitors to see how efficient the company is.",
+    "reading": "A higher margin than rivals can point to a stronger brand, better pricing or lower costs. A falling margin can mean rising costs it can't pass on, or price cuts to keep customers.",
+    "caveat": "One-off gains or charges can push the margin up or down for a single year. A low margin isn't always bad: some businesses deliberately keep prices low to win volume."
   },
   "operating-income": {
     "term": "Operating income",
     "definition": "Profit from the company's main business, before interest and taxes.",
     "short": "operating income",
-    "why": "It shows whether the core business makes money, separate from one-off gains or interest."
+    "why": "It shows whether the core business makes money, separate from one-off gains or interest.",
+    "analyst": "Operating profit shows what the main business earns before interest and tax. Analysts use it to compare companies that borrow different amounts or pay different tax rates.",
+    "reading": "Growing operating profit suggests the core business is doing better, not just the financing or tax side.",
+    "caveat": "Companies sometimes leave costs out of 'adjusted' operating profit figures in their announcements. The SEC numbers used here follow the standard rules, which can differ from the headline figures in press releases."
   },
   "cash-from-operations": {
     "term": "Cash from operations",
     "definition": "The cash the company's everyday business actually brought in during the period. It can differ from profit because of timing, such as customers paying later.",
     "short": "operating cash flow",
-    "why": "Profit is an accounting figure; this is real cash. A company that earns profit but brings in little cash can run into trouble."
+    "why": "Profit is an accounting figure; this is real cash. A company that earns profit but brings in little cash can run into trouble.",
+    "analyst": "Profit is an accounting figure; this is the cash the business actually brought in. Analysts compare the two to check that profits turn into real money.",
+    "reading": "Cash from operations close to or above profit suggests good-quality profits. Much lower cash than profit can mean customers are slow to pay or stock is piling up.",
+    "caveat": "It can be flattered for a while by paying suppliers later or collecting from customers faster, which can't continue for ever."
   },
   "cash-and-equivalents": {
     "term": "Cash and cash equivalents",
     "definition": "Money in the bank plus very safe investments that can be turned into cash almost immediately.",
     "short": "cash and cash equivalents",
-    "why": "Cash is a safety cushion for bad times and a source of money for new plans."
+    "why": "Cash is a safety cushion for bad times and a source of money for new plans.",
+    "analyst": "Cash is the company's safety cushion. Analysts compare it with debts and with what the company spends each year.",
+    "reading": "Plenty of cash suggests it can survive a bad year, pay bills and take opportunities. Very little cash can leave it dependent on borrowing.",
+    "caveat": "Large cash piles can also mean the company has no good use for its money. Some cash may be held abroad or needed for day-to-day running, so not all of it is truly spare."
   },
   "long-term-debt": {
     "term": "Long-term debt",
     "definition": "Money the company has borrowed and must pay back over more than a year, such as bonds and bank loans.",
     "short": "long-term debt",
-    "why": "Debt isn't bad on its own, but it has to be repaid with interest whatever happens to sales."
+    "why": "Debt isn't bad on its own, but it has to be repaid with interest whatever happens to sales.",
+    "analyst": "Debt has to be repaid with interest whatever happens to the business. Analysts check how big it is compared with profit, cash and what the owners have put in.",
+    "reading": "Modest debt that the company can easily cover with its profit is normal and can boost returns. Debt growing faster than profit increases the risk in a downturn.",
+    "caveat": "Some steady businesses (utilities, drink makers) safely carry a lot of debt because their income is reliable. What matters is when it must be repaid and at what interest rate."
   },
   "quarter": {
     "term": "Quarter",
@@ -87,79 +114,118 @@
     "term": "Risk factors",
     "definition": "The section of a report where the company lists the things that could hurt its business or its share price.",
     "short": "risk factors",
-    "why": "Companies must list what could go wrong. Reading them helps you understand what could hurt the business."
+    "why": "Companies must list what could go wrong. Reading them helps you understand what could hurt the business.",
+    "analyst": "Every business faces risks from its market, competitors and the wider world. Analysts read the risk section of the annual report to see what management itself says could go wrong.",
+    "reading": "New or growing risks deserve closer attention.",
+    "caveat": "Companies list almost every possible risk for legal reasons, so a long list doesn't mean trouble. Look for what's new or specific to this company."
   },
   "operating-margin": {
     "term": "Operating margin",
     "definition": "The share of each dollar of sales left as profit from the main business, before interest and taxes.",
     "short": "operating margin",
-    "why": "It shows how profitable the main business is on its own, before borrowing costs and taxes."
+    "why": "It shows how profitable the main business is on its own, before borrowing costs and taxes.",
+    "analyst": "It shows how much of each sale is left after running the business, before interest and tax. Analysts treat it as a measure of how well the business itself is run.",
+    "reading": "A steady or rising operating margin suggests costs are under control as the company grows. A falling one can mean costs are growing faster than sales.",
+    "caveat": "Heavy spending on research or marketing lowers the margin today but may build the business for later. A cut in such spending can lift the margin while weakening the future."
   },
   "eps": {
     "term": "Earnings per share (EPS)",
     "definition": "The company's profit divided by the number of its shares. \"Diluted\" counts shares that could be created later, for example from employee stock awards.",
     "short": "EPS",
-    "why": "It turns the company's profit into a per-share figure, so you can see what each share 'earns'. It's also half of the P/E ratio."
+    "why": "It turns the company's profit into a per-share figure, so you can see what each share 'earns'. It's also half of the P/E ratio.",
+    "analyst": "Earnings per share splits the profit across every share. Analysts track it because it's what share prices are most often compared with, in the P/E ratio.",
+    "reading": "Steady growth in earnings per share suggests owners are getting more profit for each share they hold.",
+    "caveat": "It can rise just because the company bought back shares, even if total profit didn't grow. One-off items affect it in the same way they affect profit."
   },
   "free-cash-flow": {
     "term": "Free cash flow",
     "definition": "The cash the business brought in, minus what it spent on buildings, equipment and other long-term investments. It shows how much spare cash the company produced.",
     "short": "free cash flow",
-    "why": "It's the money a company can actually choose what to do with: pay shareholders, pay off debt or grow. Many investors watch it more closely than profit."
+    "why": "It's the money a company can actually choose what to do with: pay shareholders, pay off debt or grow. Many investors watch it more closely than profit.",
+    "analyst": "Spare cash is what's left after the company has paid to keep and grow its buildings and equipment. Analysts see it as the money truly available for owners, debt repayment or growth.",
+    "reading": "Strong, steady spare cash suggests the company can fund dividends, buybacks or growth without borrowing. Negative spare cash means it needed other money to cover its spending.",
+    "caveat": "A company can boost spare cash by cutting investment, which may hurt it later. Young, fast-growing companies often have negative spare cash on purpose because they are investing heavily."
   },
   "capital-expenditure": {
     "term": "Capital spending",
     "definition": "Money spent on long-lasting things like factories, stores, data centres and equipment. Also called capital expenditure or capex.",
     "short": "capital expenditure",
-    "why": "It's how a company invests in its future. Heavy spending can mean growth plans, or a business that needs a lot of upkeep."
+    "why": "It's how a company invests in its future. Heavy spending can mean growth plans, or a business that needs a lot of upkeep.",
+    "analyst": "This is spending on long-lasting things like factories, stores, data centres and machines. Analysts look at it to see how much the business must reinvest just to keep going and grow.",
+    "reading": "High spending can mean the company is expanding. Low spending relative to its size can mean it needs little investment to grow, which leaves more spare cash.",
+    "caveat": "High spending only pays off if the new capacity earns a good return; it can also be a sign of an expensive business that must keep spending to stand still."
   },
   "current-ratio": {
     "term": "Current ratio",
     "definition": "Short-term assets (cash and things expected to turn into cash within a year) divided by bills due within a year. Above 1 means it has more than enough to cover them.",
     "short": "current ratio",
-    "why": "It shows whether the company can comfortably pay what's due soon. Below 1 isn't automatically a problem, but it leaves less room for surprises."
+    "why": "It shows whether the company can comfortably pay what's due soon. Below 1 isn't automatically a problem, but it leaves less room for surprises.",
+    "analyst": "It compares what the company can turn into cash within a year with the bills due within a year. Analysts use it as a quick check on short-term safety.",
+    "reading": "Above about 1 suggests it has enough to cover bills due soon. Well below 1 can mean it relies on new money coming in to pay its bills.",
+    "caveat": "Strong businesses like big retailers often run below 1 because customers pay them before they pay suppliers. A very high ratio can mean cash is sitting idle."
   },
   "debt-to-equity": {
     "term": "Debt-to-equity ratio",
     "definition": "How much the company has borrowed compared with the money that belongs to its shareholders. Higher means it relies more on borrowing.",
     "short": "debt-to-equity ratio",
-    "why": "Borrowing can help a company grow, but debt must be repaid with interest. The higher this is, the more a bad year can hurt."
+    "why": "Borrowing can help a company grow, but debt must be repaid with interest. The higher this is, the more a bad year can hurt.",
+    "analyst": "It compares borrowed money with the owners' money in the business. Analysts use it to judge how much the company relies on debt.",
+    "reading": "A low figure suggests it is mainly funded by its owners. A high figure means more borrowing, which can increase both returns and risk.",
+    "caveat": "Share buybacks shrink the owners' share on paper, so a company that buys back a lot of shares can show a very high figure without being in trouble. Compare it with similar companies."
   },
   "shareholders-equity": {
     "term": "Shareholders' equity",
     "definition": "What would be left for shareholders if the company sold everything it owns and paid off everything it owes, based on its accounts.",
     "short": "shareholders' equity",
-    "why": "It's the owners' share on paper. Many other measures, like return on equity, are worked out from it."
+    "why": "It's the owners' share on paper. Many other measures, like return on equity, are worked out from it.",
+    "analyst": "It's the value that would belong to the owners if all debts were paid from what the company owns, according to its accounts. Analysts use it in ratios like return on equity.",
+    "reading": "Equity growing over time usually means the company is keeping profits in the business.",
+    "caveat": "It's based on accounting values, not what the business is worth on the market. Buybacks and dividends reduce it, and some valuable things like brands may not be counted at all."
   },
   "return-on-equity": {
     "term": "Return on equity (ROE)",
     "definition": "A year's profit divided by shareholders' equity. It shows how much profit the company made with the money that belongs to its shareholders.",
     "short": "ROE",
-    "why": "It shows how well a company turns its owners' money into profit. Higher is generally better, though heavy borrowing can push it up too."
+    "why": "It shows how well a company turns its owners' money into profit. Higher is generally better, though heavy borrowing can push it up too.",
+    "analyst": "It shows how much profit the company makes for each dollar the owners have in the business. Analysts use it to judge how well management uses that money.",
+    "reading": "A consistently high figure (often above 15%) can point to a strong business. A low one suggests the owners' money isn't earning much.",
+    "caveat": "Lots of debt or large buybacks can make it look high because they shrink the owners' share. Check it together with how much the company has borrowed."
   },
   "assets": {
     "term": "Assets",
     "definition": "Everything the company owns that has value: cash, buildings, equipment, money owed to it, and more.",
     "short": "assets",
-    "why": "Comparing what a company owns with what it owes shows how solid its finances are."
+    "why": "Comparing what a company owns with what it owes shows how solid its finances are.",
+    "analyst": "Assets are everything the company owns or is owed. Analysts compare them with what it owes to judge its financial strength.",
+    "reading": "Assets well above liabilities suggest a solid cushion.",
+    "caveat": "Assets are recorded at accounting values; some (like goodwill from past purchases) may be worth much less in a crisis, while brands built in-house may not be counted at all."
   },
   "total-liabilities": {
     "term": "Total liabilities",
     "definition": "Everything the company owes: loans, bonds, bills to suppliers, taxes due, and other obligations.",
     "short": "liabilities",
-    "why": "Comparing what a company owes with what it owns shows how stretched it is."
+    "why": "Comparing what a company owes with what it owns shows how stretched it is.",
+    "analyst": "Liabilities are everything the company owes: debts, bills, and promises like pensions. Analysts compare them with assets and cash.",
+    "reading": "Liabilities growing faster than assets can mean the company is becoming more stretched.",
+    "caveat": "Not all liabilities are equally risky: money customers paid in advance is a liability, but often a sign of a healthy business."
   },
   "share-buyback": {
     "term": "Share buyback",
     "definition": "When a company buys its own shares from the market. It leaves fewer shares, so each remaining share owns a bigger slice of the company.",
     "short": "share buyback",
-    "why": "Buybacks are another way to reward owners: with fewer shares left, each one owns more of the company."
+    "why": "Buybacks are another way to reward owners: with fewer shares left, each one owns more of the company.",
+    "analyst": "Buying back shares is one way a company returns money to its owners. Analysts look at how much it spends and at what prices.",
+    "reading": "Regular buybacks funded by spare cash suggest management thinks it has more cash than it needs. Each remaining share then owns a slightly bigger part of the company.",
+    "caveat": "Buybacks at high prices can waste money, and buybacks funded by borrowing add risk. They can also make earnings per share grow even when profit doesn't."
   },
   "dividend": {
     "term": "Dividend",
     "definition": "Cash a company pays out to its shareholders, usually every quarter, from its profits.",
     "short": "dividend",
-    "why": "Dividends are one way owners get paid back. Some companies pay them regularly; others keep the cash to grow."
+    "why": "Dividends are one way owners get paid back. Some companies pay them regularly; others keep the cash to grow.",
+    "analyst": "Dividends are cash paid directly to owners. Analysts check whether the company can afford them from its spare cash.",
+    "reading": "A steady or rising dividend paid comfortably from spare cash suggests a mature, reliable business.",
+    "caveat": "A dividend bigger than spare cash may not last. Some excellent companies pay none because they reinvest everything to grow."
   },
   "auditor": {
     "term": "Auditor",
@@ -171,126 +237,216 @@
     "term": "Restatement notice",
     "definition": "A filing where a company says financial statements it published earlier contained errors and should no longer be relied on.",
     "short": "restatement",
-    "why": "It means earlier numbers were wrong. It's one of the more serious warning signs a company can report."
+    "why": "It means earlier numbers were wrong. It's one of the more serious warning signs a company can report.",
+    "analyst": "Analysts check for restatements and auditor changes because the whole analysis rests on the accounts being reliable.",
+    "reading": "No restatements and a steady auditor suggest the published figures can be relied on. A restatement means earlier figures were wrong.",
+    "caveat": "Some restatements are small technical corrections; others reveal serious problems. Read what was corrected before drawing conclusions."
   },
   "pe-ratio": {
     "term": "P/E ratio (price-to-earnings)",
     "definition": "The share price divided by earnings per share. It shows how many dollars investors are paying for each dollar of yearly profit. It describes the price; it doesn't say whether the price is right.",
     "short": "P/E ratio",
-    "why": "It helps you judge whether a share looks expensive or cheap compared with the profit behind it. A high P/E usually means people expect profits to grow."
+    "why": "It helps you judge whether a share looks expensive or cheap compared with the profit behind it. A high P/E usually means people expect profits to grow.",
+    "analyst": "It shows how many dollars investors are paying for each dollar of yearly profit. Analysts use it to compare how highly the market values different companies.",
+    "reading": "A high P/E suggests investors expect strong growth. A low P/E suggests lower expectations, or doubts about the company.",
+    "caveat": "A low P/E can be a 'value trap' if profits are about to fall, and a high P/E can be justified if profits really do grow fast. It's meaningless when profit is very small or negative, and it says nothing on its own about whether a share is a good buy."
   },
   "market-cap": {
     "term": "Market value (market cap)",
     "definition": "The share price multiplied by the number of shares: what the whole company is worth on the stock market at that moment.",
     "short": "market capitalisation",
-    "why": "It's how much the whole company is worth according to the stock market, so you can compare its size with other companies."
+    "why": "It's how much the whole company is worth according to the stock market, so you can compare its size with other companies.",
+    "analyst": "Market value is the price of the whole company at today's share price. Analysts use it to compare company sizes and in valuation ratios.",
+    "reading": "A larger figure means a bigger company in the market's eyes. Big changes usually reflect the share price moving.",
+    "caveat": "It reflects what investors are willing to pay today, which can swing with mood and news, not just with how the business is doing. It ignores the company's debts."
   },
   "share-price": {
     "term": "Share price",
     "definition": "What one share of the company costs on the stock market. It moves every trading day as people buy and sell.",
     "short": "share price",
-    "why": "On its own the price says little: $10 isn't 'cheaper' than $500. It only means something next to the company's profit or size, which is why ratios like P/E exist."
+    "why": "On its own the price says little: $10 isn't 'cheaper' than $500. It only means something next to the company's profit or size, which is why ratios like P/E exist.",
+    "analyst": "The price is what the market will pay for one share today. Analysts compare it with profit, sales and cash to judge whether expectations look high or low.",
+    "reading": "A rising price shows investors becoming more optimistic; a falling one, less so.",
+    "caveat": "Prices can move a lot for reasons that have little to do with the business, such as interest rates or general mood. A price on its own doesn't say whether a share is cheap or expensive."
   },
   "cost-of-sales": {
     "term": "Cost of sales",
     "short": "cost of sales",
     "definition": "The direct cost of making or buying the products and services a company sold: materials, factory work and delivery.",
-    "why": "The less a company spends to make what it sells, the more is left over for everything else."
+    "why": "The less a company spends to make what it sells, the more is left over for everything else.",
+    "analyst": "It's the direct cost of what the company sold. Analysts watch it against sales to see if it can keep its costs under control as prices change.",
+    "reading": "Cost of sales growing slower than sales means each sale keeps more money (a rising gross margin).",
+    "caveat": "Changes in what the company sells (more of a cheap or an expensive product) can move it, without any change in efficiency."
   },
   "operating-expenses": {
     "term": "Operating expenses",
     "short": "operating expenses",
     "definition": "The cost of running the business beyond making the products: staff, research, marketing, offices.",
-    "why": "Keeping these under control lets more of each sale turn into profit."
+    "why": "Keeping these under control lets more of each sale turn into profit.",
+    "analyst": "These are the costs of running the business: staff, research, marketing and offices. Analysts check whether they grow slower or faster than sales.",
+    "reading": "Expenses growing slower than sales suggest the business gets more efficient as it grows.",
+    "caveat": "Cutting research or marketing lowers expenses now but may hurt future sales."
   },
   "acquisitions": {
     "term": "Acquisitions",
     "short": "acquisitions",
     "definition": "Buying other companies or businesses.",
-    "why": "Buying other companies can be a fast way to grow, but it's expensive and doesn't always work out."
+    "why": "Buying other companies can be a fast way to grow, but it's expensive and doesn't always work out.",
+    "analyst": "Buying other companies is a big use of cash. Analysts look at what was paid and whether the purchases add to growth and profit.",
+    "reading": "Sensible purchases can add new products or customers quickly.",
+    "caveat": "Many acquisitions destroy value because the buyer overpays. Growth from purchases can hide slowing growth in the original business."
   },
   "income-statement": {
     "term": "Income statement",
     "short": "income statement",
     "definition": "The part of a company's report that shows what it sold and what it kept as profit over a period.",
-    "why": "It answers the most basic question about a business: is it making money?"
+    "why": "It answers the most basic question about a business: is it making money?",
+    "analyst": "It's the first of the three main financial statements and shows sales, costs and profit over a period. Analysts start here to see whether the business makes money and is growing.",
+    "reading": "Growing sales and stable or rising margins suggest a healthy, growing business.",
+    "caveat": "Profit on the income statement includes estimates and one-off items; it should always be checked against the cash flow statement."
   },
   "balance-sheet": {
     "term": "Balance sheet",
     "short": "balance sheet",
     "definition": "The part of a company's report that lists what it owns and what it owes on one date.",
-    "why": "It shows whether the company is on solid ground or stretched thin."
+    "why": "It shows whether the company is on solid ground or stretched thin.",
+    "analyst": "It's a snapshot of what the company owns and owes on one date. Analysts use it to judge financial strength and risk.",
+    "reading": "Plenty of cash and manageable debt suggest the company can survive a downturn.",
+    "caveat": "It's a snapshot on one day, and it records many things at past prices, so it can miss what they're worth today."
   },
   "cash-flow-statement": {
     "term": "Cash flow statement",
     "short": "cash flow statement",
     "definition": "The part of a company's report that shows the actual cash coming in and going out.",
-    "why": "Profit can be shaped by accounting rules; cash is harder to disguise."
+    "why": "Profit can be shaped by accounting rules; cash is harder to disguise.",
+    "analyst": "It shows the actual cash moving in and out. Analysts use it to check that profits are real and to see where the money goes.",
+    "reading": "Cash from the business that matches or beats profit suggests good-quality earnings.",
+    "caveat": "Cash flow can be lumpy from year to year, for example when a company pays for a big project or collects a large one-off payment."
   },
   "capital-allocation": {
     "term": "Capital allocation",
     "short": "capital allocation",
     "definition": "How a company's leaders decide to use its money: investing, buying other companies, paying shareholders or paying off debt.",
-    "why": "It shows what management thinks matters most, and whether they treat shareholders' money carefully."
+    "why": "It shows what management thinks matters most, and whether they treat shareholders' money carefully.",
+    "analyst": "It's how management decides to use the company's money: reinvesting, buying other companies, paying dividends, buying back shares or repaying debt. Analysts see it as a test of management's judgment.",
+    "reading": "Consistent, well-funded choices that match the company's growth opportunities suggest disciplined management.",
+    "caveat": "Big payouts can look owner-friendly but leave too little for future growth; heavy reinvestment only helps if it earns a good return."
   },
   "valuation": {
     "term": "Valuation",
     "short": "valuation",
     "definition": "Working out what a company is worth and comparing it with its share price.",
-    "why": "A great company can still be a poor investment if its shares already cost too much. Fathom shows the measures but never says what to do."
+    "why": "A great company can still be a poor investment if its shares already cost too much. Fathom shows the measures but never says what to do.",
+    "analyst": "Valuation compares the price of the shares with what the business earns or owns. Analysts use it to judge what the market already expects.",
+    "reading": "A high valuation means the market expects a lot; a low one means it expects little.",
+    "caveat": "Valuation measures say what the market expects, not what will happen. Fathom doesn't say whether a price is right."
   },
   "industry-risks": {
     "term": "Risks and outlook",
     "short": "risk factors and outlook",
     "definition": "What the company says could go wrong, and what it says lies ahead.",
-    "why": "Every company faces risks; knowing the main ones helps you understand what could change the picture."
+    "why": "Every company faces risks; knowing the main ones helps you understand what could change the picture.",
+    "analyst": "Every business faces risks from its market, competitors and the wider world. Analysts read the risk section of the annual report to see what management itself says could go wrong.",
+    "reading": "New or growing risks deserve closer attention.",
+    "caveat": "Companies list almost every possible risk for legal reasons, so a long list doesn't mean trouble. Look for what's new or specific to this company."
   },
   "business-model": {
     "term": "Business model",
     "short": "business model",
     "definition": "What a company sells, who it sells to, and how that turns into money.",
-    "why": "Everything else on this page only makes sense once you know how the company earns its money."
+    "why": "Everything else on this page only makes sense once you know how the company earns its money.",
+    "analyst": "The business model is how a company makes its money. Analysts start here because every number makes more sense once you know what is being sold, to whom and how.",
+    "reading": "A model with repeat customers, pricing power or high switching costs tends to produce steadier results.",
+    "caveat": "A great model on paper still depends on how well it's run and on competitors not copying it."
   },
   "costs-and-expenses": {
     "term": "Costs and expenses",
     "short": "costs and expenses",
     "definition": "Everything a company spends to make and sell its products and run the business, plus interest and tax.",
-    "why": "Sales minus all of these is the profit. Two companies with the same sales can keep very different amounts."
+    "why": "Sales minus all of these is the profit. Two companies with the same sales can keep very different amounts.",
+    "analyst": "Total costs set how much of each sale is left as profit. Analysts split them into product costs and running costs to see where the money goes.",
+    "reading": "Costs rising faster than sales squeeze profit; costs rising slower widen it.",
+    "caveat": "Some costs are one-offs (restructuring, legal settlements) that won't repeat, so a single year can look worse than normal."
   },
   "consumer-demand": {
     "term": "Consumer demand",
     "short": "consumer demand",
     "definition": "How much people and businesses are willing and able to buy. It depends a lot on jobs, wages and confidence.",
-    "why": "When people feel less secure they spend less, and companies selling things people can put off feel it first."
+    "why": "When people feel less secure they spend less, and companies selling things people can put off feel it first.",
+    "analyst": "Demand drives sales. Analysts watch jobs and spending figures to judge whether customers will buy more or less.",
+    "reading": "Low unemployment and rising wages usually support spending; rising unemployment usually weakens it.",
+    "caveat": "Some companies sell things people buy in good times and bad (food, medicines), so the economy matters much less for them."
   },
   "inflation": {
     "term": "Inflation",
     "short": "inflation",
     "definition": "Prices rising across the economy, usually measured as how much more a typical basket of goods costs than a year earlier.",
-    "why": "It pushes up a company's costs. Companies that can raise their own prices without losing customers cope best."
+    "why": "It pushes up a company's costs. Companies that can raise their own prices without losing customers cope best.",
+    "analyst": "Rising prices affect both a company's costs and what it can charge. Analysts look at whether it can pass higher costs on to customers.",
+    "reading": "Companies with strong brands or essential products often keep their margins when prices rise; others see them squeezed.",
+    "caveat": "Inflation can make sales grow on paper while the amount actually sold stays flat."
   },
   "competition": {
     "term": "Competition",
     "short": "competition",
     "definition": "Other companies trying to win the same customers.",
-    "why": "Strong competition can force a company to cut prices or spend more, squeezing its profit."
+    "why": "Strong competition can force a company to cut prices or spend more, squeezing its profit.",
+    "analyst": "Competitors limit how much a company can charge and how many customers it keeps. Analysts look for what protects the company from rivals.",
+    "reading": "A company that keeps its margins while rivals compete suggests a lasting advantage.",
+    "caveat": "Advantages can disappear quickly with new technology or new entrants; past strength is no guarantee."
   },
   "interest-rates": {
     "term": "Interest rates",
     "short": "interest rates",
     "definition": "The cost of borrowing money. In the US they are steered by the Federal Reserve and set day to day in markets.",
-    "why": "Higher rates make borrowing more expensive for companies and their customers, and tend to pull share prices down."
+    "why": "Higher rates make borrowing more expensive for companies and their customers, and tend to pull share prices down.",
+    "analyst": "Rates set the cost of borrowing for the company and its customers, and affect how investors value future profits. Analysts watch them closely.",
+    "reading": "Higher rates usually hurt companies with lots of debt and those whose profits are far in the future.",
+    "caveat": "Banks and insurers can earn more when rates rise, and companies with lots of cash earn more interest on it."
   },
   "regulation": {
     "term": "Regulation",
     "short": "regulation",
     "definition": "Laws and rules set by governments, including taxes, tariffs and safety or competition rules.",
-    "why": "New rules can add costs or limit what a company may sell."
+    "why": "New rules can add costs or limit what a company may sell.",
+    "analyst": "Laws, taxes and court cases can change what a company is allowed to do and what it costs. Analysts look at what is pending and how much it could cost.",
+    "reading": "Heavy or growing regulation can raise costs or limit growth.",
+    "caveat": "Rules can also protect established companies by making it harder for newcomers to compete."
   },
   "market-sentiment": {
     "term": "Market sentiment",
     "short": "market sentiment",
     "definition": "The overall mood of investors: how optimistic or worried they feel about a company or the market.",
-    "why": "Mood can move a share price a lot in the short run, even when the business itself hasn't changed."
+    "why": "Mood can move a share price a lot in the short run, even when the business itself hasn't changed.",
+    "analyst": "Sentiment is how investors feel about a company or the market. Analysts watch it because it can move share prices far from what the business is doing.",
+    "reading": "Very optimistic sentiment can push prices and P/E ratios up; very negative sentiment can push them down.",
+    "caveat": "Sentiment can change quickly and often reverses; a share falling on bad mood doesn't mean the business got worse."
+  },
+  "fundamentals": {
+    "term": "Fundamentals",
+    "short": "fundamentals",
+    "definition": "The company's own business and finances: its sales, profit, cash, debt and how well it is run.",
+    "why": "Over long periods, a company's share price tends to follow how its business performs, so fundamentals are where analysts start.",
+    "analyst": "Analysts study fundamentals to judge what a business is worth on its own merits, separate from the day-to-day mood of the market.",
+    "reading": "Growing sales, healthy margins, strong cash flow and manageable debt suggest a solid business.",
+    "caveat": "Strong fundamentals don't stop a share price falling if investors already expected them, or if the whole market drops."
+  },
+  "macroeconomic-factors": {
+    "term": "Macroeconomic factors",
+    "short": "macroeconomic factors",
+    "definition": "Conditions in the whole economy that affect almost every company: interest rates, inflation, jobs and economic growth.",
+    "why": "A good company can still struggle in a recession or when borrowing becomes expensive.",
+    "analyst": "Analysts check how sensitive a company is to the economy, for example whether people keep buying its products in a downturn.",
+    "reading": "Companies selling essentials are usually less affected; companies selling things people can put off, or with lots of debt, are usually more affected.",
+    "caveat": "Economic forecasts are often wrong, and markets tend to move before the economic data does."
+  },
+  "external-factors": {
+    "term": "External factors",
+    "short": "external factors",
+    "definition": "Forces outside a company's control: competitors, laws and governments, new technology, suppliers, world events and nature.",
+    "why": "These can change a company's prospects suddenly, whatever its management does.",
+    "analyst": "Analysts read the risks a company lists in its annual report to see which outside forces it is most exposed to.",
+    "reading": "A company exposed to many serious outside risks deserves a closer look at how it protects itself.",
+    "caveat": "Companies list nearly every possible risk for legal reasons, so the list alone doesn't show which ones are likely."
   }
 }

@@ -10,6 +10,7 @@ import { CompanyNews, MarketData, PriceChart } from "@/components/MarketWidgets"
 import { BillsGauge, Columns, Headline, Lines, PairBars, StackedBar } from "@/components/viz/Charts";
 import { RichText } from "@/components/RichText";
 import { SourceLink } from "@/components/SourceLink";
+import { describeAnnouncement, EVENT_WHY, stepsForEvent } from "@/lib/sec/events";
 import { explanationState, type ExplanationState } from "@/lib/explain/ondemand";
 import type { CheckedClaim, SavedExplanation } from "@/lib/explain/types";
 import { formatDate, formatMoney, formatPercent, formatShare } from "@/lib/financials/format";
@@ -65,7 +66,7 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
   const company = shortCompany(report.company.name);
   const forces = buildForces(company, report.numbers, e, macro);
   const now = (id: string) => forces.find((f) => f.id === id)?.now?.text;
-  const mentioned = (id: string) => (forces.some((f) => f.id === id) ? `${company} mentions this in its own reports: see "What moves ${company}"` : undefined);
+  const mentioned = (id: string) => (forces.some((f) => f.id === id) ? `${company} mentions this in its own reports: see "Key drivers"` : undefined);
   const nodes = conceptMap(report.numbers, {
     rates: now("rates"),
     inflation: now("inflation"),
@@ -81,16 +82,17 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
         <PageNav
           ticker={report.company.ticker}
           company={company}
-          steps={STEPS.map((s) => ({ id: s.id, title: s.title }))}
+          steps={STEPS.map((s) => ({ id: s.id, title: s.title, term: lookupTerm(s.term)?.term ?? s.title }))}
           extra={[
             { id: "numbers", title: "All the key numbers" },
             { id: "news", title: "Announcements and news" },
           ]}
         />
       </aside>
-      <div className="flex min-w-0 flex-col gap-12">
+      <div className="fathom-bold flex min-w-0 flex-col gap-12">
         <Header report={report} />
         <ExplainStatus ticker={report.company.ticker} state={state} />
+        <StartHere company={company} />
         <ConceptMap nodes={nodes} company={company} />
         <Forces forces={forces} nodes={nodes} company={company} />
         <Path report={report} e={e} level="surface" profile={profile} />
@@ -289,6 +291,115 @@ function renderItem(item: Item, ctx: Ctx, key: string): ReactNode {
   }
 }
 
+/** A tile's heading: the real finance term big, the plain question under it. */
+function RowHeading({ row }: { row: SurfaceRow }) {
+  const t = row.term ? lookupTerm(row.term) : undefined;
+  if (!t) return <span className="text-[17px] font-bold">{row.label}</span>;
+  return (
+    <span className="flex flex-col gap-0.5">
+      <span className="font-display text-[19px] font-bold leading-snug">
+        <TermName k={row.term!} full />
+      </span>
+      <span className="text-[14px] text-muted">{row.label}</span>
+    </span>
+  );
+}
+
+/** Official announcements from the last four months that bear on one research step. */
+function StepNews({ step, report }: { step: string; report: CompanyReport }) {
+  const relevant = report.announcements
+    .map((a) => ({ ...a, codes: a.codes.filter((c) => stepsForEvent(c).includes(step)) }))
+    .filter((a) => a.codes.length > 0)
+    .slice(0, 3);
+  return (
+    <details className="group rounded-2xl border border-line bg-white/60 px-5 py-3">
+      <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between gap-3">
+        <span className="flex flex-col">
+          <span className="text-[15px] font-semibold">
+            Recent official announcements that affect this <span className="font-normal text-muted">(8-K filings)</span>
+          </span>
+          <span className="text-[13px] text-muted">
+            {relevant.length === 0 ? "None in the last four months." : `${relevant.length} in the last four months`}
+          </span>
+        </span>
+        {relevant.length > 0 && (
+          <span aria-hidden="true" className="text-xl text-ocean transition-transform group-open:rotate-45">
+            +
+          </span>
+        )}
+      </summary>
+      {relevant.length > 0 && (
+        <ol className="mt-3 flex flex-col gap-4 border-t border-line pt-3">
+          {relevant.map((a) => (
+            <li key={a.url} className="flex flex-col gap-1">
+              <span className="text-[13px] font-semibold text-ocean">{formatDate(a.filingDate)}</span>
+              {a.codes.map((c) => (
+                <span key={c} className="flex flex-col">
+                  <span className="text-[16px] font-semibold">{describeAnnouncement([c])[0]}</span>
+                  <span className="text-[14px] leading-relaxed text-muted">{EVENT_WHY[c]}</span>
+                </span>
+              ))}
+              <SourceLink href={a.url} label="8-K filing" />
+            </li>
+          ))}
+        </ol>
+      )}
+      <p className="mt-2 text-[13px] text-muted">
+        Headlines from news outlets are under <a href="#news">Announcements and news</a>; they can&apos;t be sorted by topic.
+      </p>
+    </details>
+  );
+}
+
+/** At the top of a company page: what the reader is about to look at, and why each part matters. */
+function StartHere({ company }: { company: string }) {
+  const parts: { href: string; term: ReactNode; plain: string; why: string }[] = [
+    {
+      href: "#map",
+      term: "How the numbers connect",
+      plain: "A map of the key figures",
+      why: "See how sales turn into profit, cash and value for owners before looking at any one number.",
+    },
+    {
+      href: "#step-forces",
+      term: "Key drivers",
+      plain: "What pushes results up or down",
+      why: `The forces inside and outside ${company} (its own fundamentals, the economy, investor sentiment and outside risks) and how each one feeds through to its results.`,
+    },
+    ...STEPS.map((s, i) => ({
+      href: `#step-${s.id}`,
+      term: `${i + 1}. ${lookupTerm(s.term)?.term ?? s.title}`,
+      plain: s.question,
+      why: s.brief,
+    })),
+  ];
+  return (
+    <section id="start" className="flex scroll-mt-6 flex-col gap-4 rounded-3xl bg-panel p-6" aria-labelledby="start-title">
+      <div className="flex max-w-3xl flex-col gap-1.5">
+        <h2 id="start-title" className="font-display text-3xl font-bold">
+          Start here: what you&apos;ll look at, and why
+        </h2>
+        <p className="text-[16px] leading-relaxed text-muted">
+          This page studies {company} the way an equity analyst would: first how its numbers fit together and what drives
+          them, then seven questions in order, from what the business does to what the market pays for it. Each part
+          uses the real finance term, explained in everyday words. It explains; it never says whether to buy or sell.
+        </p>
+      </div>
+      <ol className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+        {parts.map((p) => (
+          <li key={p.href}>
+            <a href={p.href} className="flex h-full flex-col gap-1 rounded-2xl bg-white/70 p-4 text-ink no-underline transition hover:-translate-y-0.5 hover:bg-white">
+              <span className="font-display text-[18px] font-bold text-ocean">{p.term}</span>
+              <span className="text-[14px] font-semibold">{p.plain}</span>
+              <span className="text-[14px] leading-snug text-muted">{p.why}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
 /** The words for one Surface question, or a "not written yet" note for AI questions with no explanation. */
 function rowWords(row: SurfaceRow, ctx: Ctx): ReactNode {
   const shown = row.items.filter((i) => hasContent(i, ctx));
@@ -302,17 +413,9 @@ function textPanel(row: SurfaceRow, ctx: Ctx): ReactNode {
   if (!w) return null;
   return (
     <section key={row.label} className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
-      <h3 className="flex items-center gap-2.5 text-[14px] font-semibold text-ocean">
+      <h3 className="flex items-start gap-2.5">
         <TopicIcon name={row.items[0].kind === "topic" ? row.items[0].topic : "accounts"} />
-        <span>
-          {row.label}
-          {row.term && (
-            <span className="font-normal text-muted">
-              {" "}
-              (<TermName k={row.term} />)
-            </span>
-          )}
-        </span>
+        <RowHeading row={row} />
       </h3>
       {w}
     </section>
@@ -392,14 +495,8 @@ function tile(row: SurfaceRow, ctx: Ctx): ReactNode {
   if (!w && !v) return null;
   return (
     <section key={row.label} className={`flex flex-col gap-4 rounded-2xl bg-panel p-5 ${row.wide ? "sm:col-span-2" : ""}`}>
-      <h3 className="text-[14px] font-semibold text-ocean">
-        {row.label}
-        {row.term && (
-          <span className="font-normal text-muted">
-            {" "}
-            (<TermName k={row.term} />)
-          </span>
-        )}
+      <h3>
+        <RowHeading row={row} />
       </h3>
       {v}
       {w && <div className="flex flex-col gap-3 border-t border-line pt-3 [&_p]:text-[15px]">{w}</div>}
@@ -447,7 +544,7 @@ function Path(ctx: Ctx & { profile?: CompanyProfile }) {
   };
   return (
     <div className="flex flex-col gap-10">
-      <ResearchProgress ticker={report.company.ticker} steps={STEPS.map((s) => ({ id: s.id, title: s.title }))} />
+      <ResearchProgress ticker={report.company.ticker} steps={STEPS.map((s) => ({ id: s.id, title: lookupTerm(s.term)?.term ?? s.title }))} />
       <p className="max-w-3xl text-[16px] leading-relaxed text-muted">
         Now work through the company the way an analyst would, one question at a time. Each step says why it matters
         and starts with the short answer. Tap <strong className="font-semibold text-ink">Go deeper</strong> when you want
@@ -498,7 +595,9 @@ function Path(ctx: Ctx & { profile?: CompanyProfile }) {
             below={below}
             deep={deep}
             why={step.why}
-            term={<TermName k={step.term} />}
+            heading={<TermName k={step.term} full />}
+            news={<StepNews step={step.id} report={report} />}
+            lookFor={step.lookFor}
           />
         );
       })}

@@ -1,12 +1,20 @@
 /**
- * "What moves this company": fundamentals, the economy, market mood and outside
- * forces, each with a short chain from cause to consequence. The chain is how
+ * "Key drivers": fundamentals, macroeconomic factors, market sentiment and external
+ * factors, each with a short chain from cause to consequence. The chain is how
  * such a force usually works; the company's own figures and words sit beside it.
  */
 import { FORCE_GROUPS, type Force, type ForceGroup } from "@/lib/report/forces";
 import type { MapNode } from "@/lib/report/concept-map";
 import { MapLink } from "./MapLink";
 import { SourceLink } from "./SourceLink";
+import { TermName } from "./TermName";
+
+const GROUP_TERMS: Record<ForceGroup, string> = {
+  company: "fundamentals",
+  economy: "macroeconomic-factors",
+  sentiment: "market-sentiment",
+  outside: "external-factors",
+};
 
 export function Forces({ forces, nodes, company }: { forces: Force[]; nodes: MapNode[]; company: string }) {
   const groups = (Object.keys(FORCE_GROUPS) as ForceGroup[]).map((g) => ({ id: g, ...FORCE_GROUPS[g], forces: forces.filter((f) => f.group === g) }));
@@ -15,20 +23,25 @@ export function Forces({ forces, nodes, company }: { forces: Force[]; nodes: Map
     <section id="step-forces" className="flex scroll-mt-6 flex-col gap-5" aria-labelledby="forces-title">
       <div className="flex max-w-3xl flex-col gap-1.5">
         <h2 id="forces-title" className="font-display text-3xl font-bold">
-          What moves {company}
+          Key drivers <span className="font-sans text-[18px] font-normal text-muted">of {company}&apos;s results and share price</span>
         </h2>
         <p className="text-[16px] leading-relaxed text-muted">
-          A company&apos;s results and share price are pushed around by four kinds of force. Each card shows the chain from
-          cause to consequence; tap a result to see where it sits on the map. The chains describe how these forces usually
-          work; anything about {company} itself comes from its own figures or reports.
+          Analysts sort what affects a company into four groups: its own <TermName k="fundamentals" />, the wider economy
+          (<TermName k="macroeconomic-factors" />), how investors feel (<TermName k="market-sentiment" />) and forces
+          outside its control (<TermName k="external-factors" />). Each card follows one driver from cause to consequence; tap a result
+          to see where it sits on the map. The chains describe how these drivers usually work; anything about {company} itself
+          comes from its own figures or reports.
         </p>
       </div>
       <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
         {groups.map((g) => (
           <div key={g.id} className="flex flex-col gap-3">
             <div className="flex flex-col gap-0.5 px-1">
-              <h3 className="font-display text-xl font-bold">
-                {g.title} <span className="font-sans text-[14px] font-normal text-muted">({g.term})</span>
+              <h3 className="flex flex-col">
+                <span className="font-display text-2xl font-bold">
+                  <TermName k={GROUP_TERMS[g.id]} label={g.term} />
+                </span>
+                <span className="text-[14px] font-semibold text-mid">{g.title}</span>
               </h3>
               <p className="text-[14px] leading-snug text-muted">{g.intro}</p>
             </div>
@@ -51,8 +64,9 @@ export function Forces({ forces, nodes, company }: { forces: Force[]; nodes: Map
 function ForceCard({ f, nodeName, company }: { f: Force; nodeName: (id: string) => MapNode | undefined; company: string }) {
   return (
     <article className="flex flex-col gap-3 rounded-2xl bg-panel p-4">
-      <h4 className="text-[16px] font-semibold leading-snug">
-        {f.plain} <span className="font-normal text-muted">({f.term})</span>
+      <h4 className="flex flex-col">
+        <span className="font-display text-[19px] font-bold leading-snug">{f.glossary ? <TermName k={f.glossary} label={f.term} /> : f.term}</span>
+        <span className="text-[14px] text-muted">{f.plain}</span>
       </h4>
       {f.now && (
         <div className="flex flex-col gap-1">

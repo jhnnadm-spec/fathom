@@ -3,6 +3,7 @@ import { MarketNews } from "@/components/MarketWidgets";
 import { SearchForm } from "@/components/SearchForm";
 import { TopNews } from "@/components/TopNews";
 import { WatchlistHome } from "@/components/WatchlistHome";
+import { lookupTerm } from "@/lib/glossary";
 import { STEPS } from "@/lib/report/outline";
 import { largestCompanies, sectorSummaries } from "@/lib/sectors-data";
 
@@ -43,7 +44,7 @@ export default function Home() {
         </section>
         <section aria-label="What each company page covers" className="hidden flex-col gap-3 rounded-3xl bg-panel p-6 lg:flex">
           <h2 className="font-display text-xl font-bold">On every company page</h2>
-          <p className="text-[14px] text-muted">A map of how it all connects, what moves the company, then seven steps from the surface down:</p>
+          <p className="text-[14px] text-muted">A map of how the numbers connect, the key drivers of its results, then the seven areas an analyst works through:</p>
           <StepList compact />
         </section>
       </div>
@@ -92,10 +93,12 @@ export default function Home() {
       <section className="flex flex-col gap-5 border-t border-line pt-10">
         <h2 className="font-display text-2xl font-bold">How Fathom works</h2>
         <p className="max-w-3xl text-[16px] leading-relaxed text-muted">
-          Every company page starts with a map of how the main ideas connect and the forces that move the company (its
-          own fundamentals, the economy, investor mood and outside forces), then a research path of seven steps. Each
-          step says why it matters, gives the short answer, and opens up when you want more. Finance words are written in
-          plain English with the real term in brackets; point at one to see what it means.
+          Every company page starts by telling you what you&apos;ll look at and why, then shows how its numbers connect and its
+          key drivers (fundamentals, macroeconomic factors, market sentiment and external factors), then a research path of
+          seven steps. Each
+          step says why it matters, gives the short answer, and opens up when you want more. Every finance term is shown
+          by its real name with an everyday explanation; point at one to see what it means, why analysts check it and the
+          case against the obvious reading.
         </p>
         <div className="lg:hidden">
           <StepList />
@@ -119,8 +122,10 @@ function StepList({ compact = false }: { compact?: boolean }) {
             {i + 1}
           </span>
           <span className="flex flex-col">
-            <span className="font-semibold">{s.title}</span>
-            <span className="text-[14px] text-muted">{s.question}</span>
+            <span className="font-display text-[17px] font-bold">{lookupTerm(s.term)?.term ?? s.title}</span>
+            <span className="text-[14px] text-muted">
+              {s.title}: {s.question.charAt(0).toLowerCase() + s.question.slice(1)}
+            </span>
           </span>
         </li>
       ))}

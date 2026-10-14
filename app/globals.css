@@ -106,3 +106,19 @@ body {
     .fathom-grow { transition: none; }
   }
 }
+
+/* Bold words on a company page grow a little when pointed at, like the finance terms. */
+@layer components {
+  .fathom-bold strong {
+    transition: font-size 180ms ease-out, color 180ms ease-out;
+  }
+  .fathom-bold strong:hover {
+    font-size: 1.08em;
+    color: var(--color-ocean-dark);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fathom-bold strong {
+      transition: none;
+    }
+  }
+}

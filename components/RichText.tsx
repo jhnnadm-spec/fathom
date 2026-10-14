@@ -19,7 +19,7 @@ export function RichText({ text }: { text: string }) {
         const entry = lookupTerm(m[1]);
         if (!entry) return <Fragment key={i}>{m[2]}</Fragment>;
         return (
-          <Term key={i} term={entry.term} definition={entry.definition} why={entry.why} bracket={bracketFor(m[2], entry.short)}>
+          <Term key={i} term={entry.term} definition={entry.definition} why={entry.why} more={entry} bracket={bracketFor(m[2], entry.short)}>
             {m[2]}
           </Term>
         );

@@ -258,9 +258,11 @@ export function statementsFor(all: Statement[], item: Extract<Item, { kind: "sta
  * The seven steps an equity researcher works through, in order. Each step
  * gathers the Surface questions and the Below/Deep areas that answer it.
  */
-export const STEPS: { id: string; title: string; question: string; areas: string[]; term: string; why: string }[] = [
+export const STEPS: { id: string; title: string; question: string; areas: string[]; term: string; why: string; lookFor: string[]; brief: string }[] = [
   {
     id: "business",
+    brief: "Every number makes more sense once you know what it sells and who pays for it.",
+    lookFor: ["Who the customers are and why they buy", "Whether sales come from many sources or depend on a few", "What stops competitors taking its customers"],
     title: "The business",
     question: "What does it do, and how does it make money?",
     areas: ["business"],
@@ -269,6 +271,8 @@ export const STEPS: { id: string; title: string; question: string; areas: string
   },
   {
     id: "performance",
+    brief: "Whether it sells more each year, and how much of each sale it keeps as profit.",
+    lookFor: ["Sales growing steadily, year after year", "Margins holding up or rising", "Profit growing at least as fast as sales"],
     title: "Growth and profit",
     question: "Is it selling more, and how much does it keep?",
     areas: ["performance"],
@@ -277,6 +281,8 @@ export const STEPS: { id: string; title: string; question: string; areas: string
   },
   {
     id: "health",
+    brief: "Whether it can pay its bills and how much it owes: its cushion for bad times.",
+    lookFor: ["Enough short-term assets to cover bills due within a year", "Debt that is small compared with profit and cash", "Whether borrowing is growing faster than the business"],
     title: "Financial health",
     question: "Can it pay its bills and handle its debt?",
     areas: ["health"],
@@ -285,6 +291,8 @@ export const STEPS: { id: string; title: string; question: string; areas: string
   },
   {
     id: "cash",
+    brief: "Whether profit turns into real cash, and how much is left after investing.",
+    lookFor: ["Cash from the business close to, or above, profit", "Free cash flow that stays positive after investment", "Whether investment spending is rising or falling"],
     title: "Cash",
     question: "Does the business actually bring in cash?",
     areas: ["cash"],
@@ -293,6 +301,8 @@ export const STEPS: { id: string; title: string; question: string; areas: string
   },
   {
     id: "management",
+    brief: "How its leaders use the money: reinvesting, paying owners or buying other firms.",
+    lookFor: ["Payouts funded from spare cash rather than borrowing", "How much goes back into the business versus to owners", "Changes in leaders or auditors"],
     title: "How it's run",
     question: "What do its leaders do with the money?",
     areas: ["management"],
@@ -301,6 +311,8 @@ export const STEPS: { id: string; title: string; question: string; areas: string
   },
   {
     id: "outlook",
+    brief: "The industry trends and risks, in the company's own words, that could change the picture.",
+    lookFor: ["Risks that are new, or specific to this company", "Industry trends that could grow or shrink demand", "What management expects for the year ahead"],
     title: "Industry and risks",
     question: "What's happening around it, and what could go wrong?",
     areas: ["industry", "risks"],
@@ -309,6 +321,8 @@ export const STEPS: { id: string; title: string; question: string; areas: string
   },
   {
     id: "value",
+    brief: "How the share price compares with profit, showing how much the market already expects.",
+    lookFor: ["How the P/E ratio compares with its own history and with rivals", "How much growth the price already assumes", "Whether expectations look stretched or modest"],
     title: "The share price",
     question: "What does the stock market think it's worth?",
     areas: ["value"],

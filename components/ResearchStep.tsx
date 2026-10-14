@@ -17,7 +17,9 @@ export function ResearchStep({
   below,
   deep,
   why,
-  term,
+  heading,
+  news,
+  lookFor = [],
 }: {
   ticker: string;
   id: string;
@@ -28,7 +30,9 @@ export function ResearchStep({
   below?: ReactNode;
   deep?: ReactNode;
   why: string; // why a first-timer is being shown this step
-  term?: ReactNode; // the real name for what this step covers, e.g. "income statement"
+  heading: ReactNode; // the real finance term this step covers, e.g. "Income statement", shown big
+  news?: ReactNode; // recent official announcements that bear on this step
+  lookFor?: string[]; // what an analyst checks in this step
 }) {
   const [depth, setDepth] = useState(0);
   const top = useRef<HTMLElement>(null);
@@ -40,26 +44,45 @@ export function ResearchStep({
   }
 
   return (
-    <section ref={top} id={`step-${id}`} className="flex scroll-mt-24 flex-col gap-5" aria-labelledby={`step-${id}-title`}>
+    <section ref={top} id={`step-${id}`} className="flex scroll-mt-32 flex-col gap-5 lg:scroll-mt-6" aria-labelledby={`step-${id}-title`}>
       <header className="flex items-start gap-4">
         <span aria-hidden="true" className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-ocean font-display text-lg font-bold text-abyss">
           {number}
         </span>
         <div className="flex flex-col gap-0.5">
-          <h2 id={`step-${id}-title`} className="font-display text-2xl font-bold">
-            {title}
+          <p className="text-[13px] font-semibold uppercase tracking-wide text-mid">
+            Step {number} · {title}
+          </p>
+          <h2 id={`step-${id}-title`} className="font-display text-3xl font-bold leading-tight">
+            {heading}
           </h2>
           <p className="text-[16px] text-muted">{question}</p>
-          {term && <p className="mt-1 text-[13px] text-muted">The finance term for this: {term}</p>}
         </div>
       </header>
 
-      <p className="rounded-xl bg-surface/40 px-4 py-3 text-[15px] leading-relaxed">
-        <strong className="font-semibold">Why this matters: </strong>
-        {why}
-      </p>
+      <div className="grid gap-4 rounded-xl bg-surface/40 px-4 py-3 text-[15px] leading-relaxed lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+        <p>
+          <strong className="font-semibold">Why analysts look at this: </strong>
+          {why}
+        </p>
+        {lookFor.length > 0 && (
+          <div>
+            <strong className="font-semibold">What they look for:</strong>
+            <ul className="mt-1 flex flex-col gap-1">
+              {lookFor.map((l) => (
+                <li key={l} className="flex gap-2">
+                  <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-mid" />
+                  {l}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
 
       <div className="flex flex-col gap-4">{surface}</div>
+
+      {news}
 
       {depth >= 1 && (
         <div className="flex flex-col gap-6 rounded-2xl border-l-4 border-shallow bg-white/50 py-2 pl-5 pr-1">
