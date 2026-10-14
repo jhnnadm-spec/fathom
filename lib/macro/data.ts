@@ -17,9 +17,21 @@ export type Indicator = {
 const UA = "Fathom/1.0 (plain-English company explainer; https://github.com/jhnnadm-spec/fathom)";
 
 async function get(url: string, init: RequestInit = {}): Promise<Response> {
-  const res = await fetch(url, { ...init, headers: { "User-Agent": UA, ...(init.headers ?? {}) }, signal: AbortSignal.timeout(8000) });
-  if (!res.ok) throw new Error(`${res.status} from ${new URL(url).host}`);
-  return res;
+  let last: unknown;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const res = await fetch(url, {
+        ...init,
+        headers: { "User-Agent": UA, Accept: "text/csv, application/json, */*", ...(init.headers ?? {}) },
+        signal: AbortSignal.timeout(20000),
+      });
+      if (!res.ok) throw new Error(`${res.status} from ${new URL(url).host}`);
+      return res;
+    } catch (err) {
+      last = err;
+    }
+  }
+  throw last;
 }
 
 /** Treasury's daily yield curve CSV for one year: rows of date and yields. Exported for tests. */
@@ -102,6 +114,7 @@ async function bls(): Promise<Indicator[]> {
 /** Everything that could be fetched, without the website's cache (used by scripts). */
 export async function fetchMacro(): Promise<Indicator[]> {
   const parts = await Promise.allSettled([rates(), bls()]);
+  for (const p of parts) if (p.status === "rejected") console.warn("Economy data unavailable:", (p.reason as Error)?.message ?? p.reason);
   return parts.flatMap((p) => (p.status === "fulfilled" ? p.value : []));
 }
 
