@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
+import { CompanyLogo } from "@/components/CompanyLogo";
 import { SearchForm } from "@/components/SearchForm";
 import { displayName, searchCompanies } from "@/lib/report/company";
 import { searchTerms } from "@/lib/term-search";
@@ -11,7 +12,7 @@ export const metadata: Metadata = { title: "Search" };
 
 export default function SearchPage(props: PageProps<"/search">) {
   return (
-    <section className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 py-12">
+    <section className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-5 py-12 sm:py-16">
       <SearchForm />
       <Suspense fallback={<Loader label="Searching…" />}>
         <Results searchParams={props.searchParams} />
@@ -44,7 +45,7 @@ async function Results({ searchParams }: { searchParams: Promise<Record<string, 
           <li key={t.key}>
             <Link
               href={`/terms?q=${encodeURIComponent(t.entry.short)}#${t.key}`}
-              className="flex flex-col gap-1 rounded-2xl border border-line bg-panel px-5 py-4 no-underline hover:border-mid"
+              className="fathom-card flex flex-col gap-1 px-5 py-4 no-underline transition hover:-translate-y-0.5 hover:border-shallow"
             >
               <span className="flex items-center justify-between gap-3">
                 <span className="fathom-grow text-[17px] font-semibold text-ink">{t.entry.term}</span>
@@ -81,9 +82,10 @@ async function Results({ searchParams }: { searchParams: Promise<Record<string, 
             <li key={m.cik}>
               <Link
                 href={`/stock/${m.ticker}`}
-                className="flex items-center justify-between gap-4 rounded-2xl border border-line bg-panel px-5 py-4 no-underline hover:border-mid"
+                className="fathom-card flex items-center gap-4 px-4 py-3.5 no-underline transition hover:-translate-y-0.5 hover:border-shallow"
               >
-                <span className="fathom-grow text-[17px] font-semibold text-ink">{displayName(m.name)}</span>
+                <CompanyLogo name={displayName(m.name)} size={42} />
+                <span className="fathom-grow flex-1 text-[17px] font-semibold text-ink">{displayName(m.name)}</span>
                 <span className="rounded-lg bg-panel-2 px-2.5 py-1 text-sm font-semibold text-ocean">{m.ticker}</span>
               </Link>
             </li>

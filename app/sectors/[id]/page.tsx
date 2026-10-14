@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { CompanyLogo } from "@/components/CompanyLogo";
 import { Loader } from "@/components/Loader";
+import { SectorIcon } from "@/components/SectorIcon";
 import { SECTORS } from "@/lib/sectors";
 import { displayName } from "@/lib/report/company";
 import { companiesIn, genresIn, isSectorId, plainIndustry } from "@/lib/sectors-data";
@@ -16,7 +18,7 @@ export async function generateMetadata(props: PageProps<"/sectors/[id]">): Promi
 
 export default function SectorPage(props: PageProps<"/sectors/[id]">) {
   return (
-    <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-6 px-5 py-10 sm:py-14 lg:px-8">
+    <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-8 px-5 py-12 sm:py-16 lg:px-8">
       <Suspense fallback={<Loader label="Loading companies…" />}>
         <Sector params={props.params} searchParams={props.searchParams} />
       </Suspense>
@@ -50,12 +52,15 @@ async function Sector({
 
   return (
     <>
-      <Link href="/sectors" className="text-[15px] font-semibold">
-        All sectors
+      <Link href="/sectors" className="self-start text-[15px] font-semibold">
+        ← All sectors
       </Link>
-      <div className="flex flex-col gap-2">
-        <h1 className="font-display text-4xl font-bold tracking-tight">{SECTORS[id].name}</h1>
-        <p className="max-w-3xl text-[16px] leading-relaxed text-muted">{SECTORS[id].blurb}</p>
+      <div className="flex items-center gap-5">
+        <SectorIcon id={id} size={76} />
+        <div className="flex flex-col gap-1.5">
+          <h1 className="font-display text-[38px] font-bold leading-[1.05] tracking-tight sm:text-[48px]">{SECTORS[id].name}</h1>
+          <p className="max-w-3xl text-[17px] leading-relaxed text-muted">{SECTORS[id].blurb}</p>
+        </div>
       </div>
 
       {genres.length > 1 && (
@@ -75,20 +80,21 @@ async function Sector({
       )}
 
       {all.length === 0 ? (
-        <p className="rounded-2xl bg-panel p-5 text-[16px]">The sector list is being built from SEC data. Check back shortly.</p>
+        <p className="fathom-card p-5 text-[16px]">The sector list is being built from SEC data. Check back shortly.</p>
       ) : (
         <>
           <p className="text-[14px] text-muted">
             {all.length.toLocaleString("en-US")} companies{genre ? ` in ${plainIndustry(genre).toLowerCase()}` : ""}, biggest yearly sales first.
           </p>
-          <ol className="grid gap-2 md:grid-cols-2 xl:grid-cols-3" start={(page - 1) * PAGE + 1}>
+          <ol className="m-0 grid list-none gap-3 p-0 md:grid-cols-2 xl:grid-cols-3" start={(page - 1) * PAGE + 1}>
             {shown.map((c) => (
               <li key={c.t}>
                 <Link
                   href={`/stock/${c.t}`}
-                  className="flex items-center justify-between gap-4 rounded-2xl bg-panel px-5 py-3.5 text-ink no-underline transition hover:bg-white"
+                  className="fathom-card flex items-center gap-3.5 px-4 py-3.5 text-ink no-underline transition hover:-translate-y-0.5 hover:border-shallow"
                 >
-                  <span className="flex min-w-0 flex-col">
+                  <CompanyLogo name={displayName(c.n)} size={42} />
+                  <span className="flex min-w-0 flex-1 flex-col">
                     <span className="fathom-grow max-w-full truncate text-[16px] font-semibold">{displayName(c.n)}</span>
                     <span className="truncate text-[13px] text-muted">{plainIndustry(c.d)}</span>
                   </span>
@@ -113,5 +119,5 @@ async function Sector({
 }
 
 function chip(on: boolean) {
-  return `inline-flex min-h-9 items-center rounded-full px-3 text-[13px] font-semibold no-underline ${on ? "bg-ocean text-abyss" : "bg-panel-2 text-muted hover:text-ink"}`;
+  return `inline-flex min-h-9 items-center rounded-full px-3.5 text-[13px] font-semibold no-underline transition ${on ? "bg-ocean text-abyss shadow-[0_6px_16px_rgba(11,79,108,0.2)]" : "border border-line bg-white/80 text-muted hover:border-shallow hover:text-ink"}`;
 }

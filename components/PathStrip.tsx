@@ -2,14 +2,16 @@
 
 /**
  * The seven questions as a row of pictures joined by a line, like stops on a
- * route. Each one jumps to its step, and is ticked once explored.
+ * route. On a company page each one jumps to its step and is ticked once
+ * explored; without a company (the front page) it's just the picture.
  */
 import { useEffect, useState, type ReactNode } from "react";
 import { getProgress, STORE_EVENT, type StepState } from "@/lib/client/store";
 
-export function PathStrip({ ticker, steps }: { ticker: string; steps: { id: string; title: string; art: ReactNode }[] }) {
+export function PathStrip({ ticker, steps, size = 52 }: { ticker?: string; steps: { id: string; title: string; art: ReactNode }[]; size?: number }) {
   const [p, setP] = useState<Record<string, StepState>>({});
   useEffect(() => {
+    if (!ticker) return;
     const sync = () => setP(getProgress(ticker));
     sync();
     window.addEventListener(STORE_EVENT, sync);
@@ -20,12 +22,13 @@ export function PathStrip({ ticker, steps }: { ticker: string; steps: { id: stri
     <nav aria-label="The seven questions" className="-mx-2 overflow-x-auto px-2 pb-1">
       <ol className="relative m-0 grid min-w-[720px] list-none grid-cols-7 gap-2 p-0">
         {/* the route line behind the stops */}
-        <span aria-hidden="true" className="absolute left-[7%] right-[7%] top-[26px] h-[2px] bg-gradient-to-r from-surface via-shallow to-mid" />
+        <span aria-hidden="true" className="absolute left-[7%] right-[7%] h-[2px] bg-gradient-to-r from-surface via-shallow to-mid" style={{ top: size / 2 + 4 }} />
         {steps.map((s, i) => {
           const done = Boolean(p[s.id]);
+          const Tag = ticker ? "a" : "div";
           return (
             <li key={s.id} className="relative">
-              <a href={`#step-${s.id}`} className="group flex flex-col items-center gap-2 rounded-2xl px-1 py-1 text-center text-ink no-underline">
+              <Tag {...(ticker ? { href: `#step-${s.id}` } : {})} className="group flex flex-col items-center gap-2 rounded-2xl px-1 py-1 text-center text-ink no-underline">
                 <span className="relative transition-transform duration-300 group-hover:-translate-y-1">
                   {s.art}
                   {done && (
@@ -39,9 +42,9 @@ export function PathStrip({ ticker, steps }: { ticker: string; steps: { id: stri
                 </span>
                 <span className="flex flex-col leading-tight">
                   <span className="text-[12px] font-semibold text-mid">{i + 1}</span>
-                  <span className="text-[14px] font-semibold group-hover:text-ocean">{s.title}</span>
+                  <span className={`text-[14px] font-semibold ${ticker ? "group-hover:text-ocean" : ""}`}>{s.title}</span>
                 </span>
-              </a>
+              </Tag>
             </li>
           );
         })}

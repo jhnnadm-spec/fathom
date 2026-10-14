@@ -8,6 +8,7 @@ import "@fontsource/figtree/500.css";
 import "@fontsource/figtree/600.css";
 import "./globals.css";
 import { Logo } from "@/components/Logo";
+import { NavLinks } from "@/components/NavLinks";
 import { SearchForm } from "@/components/SearchForm";
 import { SeaBackground } from "@/components/SeaBackground";
 
@@ -25,27 +26,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className="h-full antialiased">
       <body className="flex min-h-full flex-col">
         <SeaBackground />
-        <header className="border-b border-line">
-          <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-4 px-5 py-4 lg:px-8">
+        <header className="border-b border-line/70">
+          <div className="mx-auto flex max-w-[1480px] flex-wrap items-center justify-between gap-4 px-5 py-4 lg:px-8">
             <Link href="/" className="no-underline" aria-label="Fathom home">
               <Logo />
             </Link>
             <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:flex-none">
               <SearchForm size="small" />
-              <nav aria-label="Main" className="flex flex-none gap-1 text-[15px] font-medium">
-                <Link href="/sectors" className="hidden px-2.5 py-3 no-underline sm:inline">
-                  Sectors
-                </Link>
-                <Link href="/watchlist" className="px-2.5 py-3 no-underline">
-                  Watchlist
-                </Link>
-                <Link href="/terms" className="hidden px-2.5 py-3 no-underline sm:inline">
-                  Terms
-                </Link>
-                <Link href="/about" className="hidden px-2.5 py-3 no-underline sm:inline">
-                  About
-                </Link>
-              </nav>
+              <NavLinks />
             </div>
           </div>
         </header>
@@ -53,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex flex-1 flex-col">{children}</main>
 
         <footer className="border-t border-line">
-          <p className="mx-auto max-w-[1600px] px-5 py-8 text-sm lg:px-8 leading-relaxed text-muted">
+          <p className="mx-auto max-w-[1480px] px-5 py-8 text-sm leading-relaxed text-muted lg:px-8">
             Fathom explains information from public sources for education only.
             It is not financial advice and does not recommend buying, selling or
             holding any investment.

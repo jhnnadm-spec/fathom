@@ -39,11 +39,14 @@ export function WatchlistHome() {
     .slice(0, 6);
 
   return (
-    <section className="flex flex-col gap-5">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 className="font-display text-2xl font-bold">Your watchlist</h2>
+    <section className="fathom-card flex flex-col gap-5 p-6 sm:p-8">
+      <div className="flex flex-wrap items-end justify-between gap-2">
+        <div className="flex flex-col gap-1">
+          <h2 className="font-display text-[28px] font-bold tracking-tight">Your watchlist</h2>
+          <p className="text-[15px] text-muted">The latest on the companies you follow.</p>
+        </div>
         <Link href="/watchlist" className="text-[15px] font-semibold">
-          See all {list.length} saved
+          See all {list.length} saved →
         </Link>
       </div>
       {snaps.length === 0 ? (
@@ -52,7 +55,7 @@ export function WatchlistHome() {
         <>
           <NewsTabs companies={snaps.map((s) => ({ ticker: s.ticker, name: s.name, symbol: s.symbol }))} />
           {announcements.length > 0 && (
-            <div className="flex flex-col gap-3 rounded-2xl bg-panel p-5">
+            <div className="flex flex-col gap-3 rounded-2xl bg-[#f3f8fa] p-5">
               <h3 className="text-[15px] font-semibold">Latest official announcements</h3>
               <p className="-mt-2 text-[13px] text-muted">What the companies themselves reported to the SEC (form 8-K).</p>
               <ol className="relative flex flex-col gap-4 border-l-2 border-surface pl-5">

@@ -21,7 +21,7 @@ export function TermsBrowser({ initialQuery = "" }: { initialQuery?: string }) {
 
   return (
     <div className="flex flex-col gap-5">
-      <form role="search" onSubmit={(e) => e.preventDefault()} className="flex max-w-2xl items-center gap-2.5 rounded-2xl border border-line bg-panel p-2 px-4">
+      <form role="search" onSubmit={(e) => e.preventDefault()} className="fathom-card flex max-w-2xl items-center gap-2.5 p-2 px-5">
         <label htmlFor="term-q" className="sr-only">
           Search finance terms
         </label>
@@ -52,7 +52,7 @@ export function TermsBrowser({ initialQuery = "" }: { initialQuery?: string }) {
       <ul className="grid grid-cols-1 items-start gap-3 md:grid-cols-2">
         {list.map(({ key, entry }, i) => (
           <li key={key} id={key} className="scroll-mt-6">
-            <details open={openFirst && i === 0} className="group rounded-2xl bg-panel p-5 [&_summary::-webkit-details-marker]:hidden">
+            <details open={openFirst && i === 0} className="fathom-card group p-6 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer list-none flex-col gap-1.5">
                 <span className="flex items-start justify-between gap-3">
                   <span className="font-display text-xl font-bold leading-tight">{entry.term}</span>

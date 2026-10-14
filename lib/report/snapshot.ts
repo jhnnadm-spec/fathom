@@ -6,6 +6,7 @@ import { cacheLife, cacheTag } from "next/cache";
 import { formatMoney, formatPercent } from "../financials/format";
 import { loadFilings } from "../sec/filings";
 import { sectorOf, SECTORS } from "../sectors";
+import { getCompanyProfile } from "../profile/wiki";
 import { displayName, getCompanyReport, getTickerList, tradingViewSymbol } from "./company";
 
 export type Snapshot = {
@@ -13,6 +14,8 @@ export type Snapshot = {
   name: string;
   sector?: string;
   symbol: string; // for TradingView news
+  logo?: string; // from Wikimedia Commons, when there is one
+  website?: string; // for the site's icon when there's no logo
   facts: { label: string; value: string }[];
   announcements: { date: string; events: string[]; url: string }[];
 };
@@ -30,7 +33,10 @@ export async function getSnapshot(ticker: string): Promise<Snapshot | null> {
   if (cash && debt && cash.end === debt.end) facts.push({ label: "Cash vs long-term debt", value: cash.value >= debt.value ? "More cash than debt" : "More debt than cash" });
   else if (cash) facts.push({ label: "Cash", value: formatMoney(cash.value) });
   const s = sectorOf(r.company.sic);
+  const profile = await getCompanyProfile(r.company.cik).catch(() => undefined);
   return {
+    logo: profile?.logo,
+    website: profile?.website,
     ticker: r.company.ticker,
     name: r.company.name,
     sector: s ? SECTORS[s].name : undefined,
