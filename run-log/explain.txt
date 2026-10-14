@@ -1,0 +1,16 @@
+
+=== NIKE, Inc. (NKE) ===
+Sections: 10-K Item 1 (25,357 chars), 10-K Item 1A (35,076 chars), 10-K Item 7 (25,933 chars), 10-Q Part I Item 2 (13,947 chars), 10-Q Part II Item 1A (213 chars)
+Prompt size: about 26,135 tokens
+  whatItDoes       1 kept
+  howItMakesMoney  2 kept
+  competitiveEdge  2 kept
+  marketPosition   1 kept
+  industryTrends   0 kept
+  demandDrivers    0 kept
+  biggestRisks     3 kept
+  newRisks         0 kept
+  outlook          1 kept
+  upcoming         1 kept
+  Dropped 4: industryTrends (quote not found in report); demandDrivers (quote not found in report); outlook (quote not found in report); upcoming (quote not found in report)
+  Saved to Supabase
