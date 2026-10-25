@@ -25,12 +25,12 @@ export function ForcesSummary({ forces, company }: { forces: Force[]; company: s
   return (
     <section id="step-forces" className="flex scroll-mt-8 flex-col gap-5" aria-labelledby="forces-title">
       <div className="flex max-w-3xl flex-col gap-1.5">
-        <h2 id="forces-title" className="font-display text-3xl font-bold">
-          What moves the results <span className="font-sans text-[18px] font-normal text-muted">(key drivers)</span>
+        <h2 id="forces-title" className="font-display text-[26px] font-bold leading-tight tracking-tight sm:text-[32px]">
+          What could push its results up or down? <span className="font-sans text-[16px] font-normal text-muted">(key drivers)</span>
         </h2>
-        <p className="text-[16px] leading-relaxed text-muted">Four kinds of force push {company}&apos;s results up or down. Go deeper to see how each one works.</p>
+        <p className="text-[16px] leading-relaxed text-muted">Four kinds of things affect how {company} does. Choose <strong className="font-semibold text-ink">Everything</strong> at the top to see how each one works.</p>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-3 sm:grid-cols-2">
         {groups.map((g) => (
           <div key={g.id} className="fathom-card flex flex-col gap-3 p-5">
             <h3 className="flex flex-col items-start text-left">
@@ -44,7 +44,7 @@ export function ForcesSummary({ forces, company }: { forces: Force[]; company: s
             ) : (
               <ul className="m-0 flex list-none flex-col gap-2 p-0">
                 {g.forces.map((f) => (
-                  <li key={f.id} className="flex flex-col rounded-xl bg-[#f3f8fa] px-3 py-2">
+                  <li key={f.id} className="flex flex-col rounded-xl bg-mist px-3 py-2">
                     <span className="text-[15px] font-semibold">{f.plain}</span>
                     {f.now && <span className="line-clamp-2 text-[13px] leading-snug text-muted">{f.now.text}</span>}
                   </li>
@@ -64,8 +64,8 @@ export function Forces({ forces, nodes, company }: { forces: Force[]; nodes: Map
   return (
     <section id="step-forces" className="flex scroll-mt-6 flex-col gap-5" aria-labelledby="forces-title">
       <div className="flex max-w-3xl flex-col gap-1.5">
-        <h2 id="forces-title" className="font-display text-3xl font-bold">
-          What moves the results <span className="font-sans text-[18px] font-normal text-muted">(key drivers)</span>
+        <h2 id="forces-title" className="font-display text-[26px] font-bold leading-tight tracking-tight sm:text-[32px]">
+          What could push its results up or down? <span className="font-sans text-[16px] font-normal text-muted">(key drivers)</span>
         </h2>
         <p className="text-[16px] leading-relaxed text-muted">
           Analysts sort what affects a company into four groups: its own <TermName k="fundamentals" />, the wider economy
@@ -75,7 +75,7 @@ export function Forces({ forces, nodes, company }: { forces: Force[]; nodes: Map
           comes from its own figures or reports.
         </p>
       </div>
-      <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-2">
         {groups.map((g) => (
           <div key={g.id} className="flex flex-col gap-3">
             <div className="flex flex-col gap-0.5 px-1">

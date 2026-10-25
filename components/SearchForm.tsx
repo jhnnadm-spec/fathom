@@ -6,8 +6,8 @@ export function SearchForm({ size = "large", autoFocus = false }: { size?: "larg
       action="/search"
       method="get"
       role="search"
-      className={`flex w-full flex-wrap gap-2.5 rounded-2xl border border-line bg-panel ${
-        large ? "max-w-2xl p-2 shadow-[0_12px_32px_rgba(11,79,108,0.12)]" : "min-w-0 flex-1 p-1 sm:w-72 sm:flex-none"
+      className={`flex w-full flex-wrap gap-2 rounded-2xl border focus-within:border-mid ${
+        large ? "max-w-2xl border-[#c9d6dd] bg-white p-2" : "min-w-0 border-line bg-panel-2 p-0.5"
       }`}
     >
       <label htmlFor={`q-${size}`} className="sr-only">
@@ -25,13 +25,13 @@ export function SearchForm({ size = "large", autoFocus = false }: { size?: "larg
           required
           autoFocus={autoFocus}
           autoComplete="off"
-          placeholder={large ? "Try Apple, Nike or MSFT" : "Search a company or term"}
+          placeholder={large ? "Try Apple or Nike" : "Search a company"}
           className={`w-full bg-transparent text-ink outline-none placeholder:text-[#6B8592] ${large ? "py-3.5 text-lg" : "py-2 text-[15px]"}`}
         />
       </div>
       {large && (
         <button type="submit" className="flex-none cursor-pointer rounded-xl bg-ocean px-6 py-3.5 text-[17px] font-semibold text-abyss hover:bg-ocean-dark">
-          Explain it
+          Search
         </button>
       )}
     </form>

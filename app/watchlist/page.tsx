@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { PageTitle } from "@/components/PageTitle";
 import { WatchlistView } from "@/components/WatchlistView";
 
-export const metadata: Metadata = { title: "Your watchlist" };
+export const metadata: Metadata = { title: "Saved companies" };
 
 export default function WatchlistPage() {
   return (
-    <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-10 px-5 py-12 sm:py-16 lg:px-8">
-      <PageTitle eyebrow="Saved in this browser" title="Your watchlist" note="The companies you're following, and how far you've got with each." />
+    <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-10 px-5 py-12 sm:py-16 lg:px-8">
+      <PageTitle title="Saved companies" note="The companies you're following. They're kept in this browser only, no sign-up needed." />
       <WatchlistView />
     </div>
   );

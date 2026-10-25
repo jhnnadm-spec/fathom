@@ -3,14 +3,13 @@ import { Suspense } from "react";
 import { PageTitle } from "@/components/PageTitle";
 import { TermsBrowser } from "@/components/TermsBrowser";
 
-export const metadata: Metadata = { title: "Finance terms, explained" };
+export const metadata: Metadata = { title: "Dictionary" };
 
 export default function TermsPage(props: PageProps<"/terms">) {
   return (
-    <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-10 px-5 py-12 sm:py-16 lg:px-8">
+    <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-10 px-5 py-12 sm:py-16 lg:px-8">
       <PageTitle
-        eyebrow="Glossary"
-        title="Finance terms, in plain words"
+        title="Money words, in plain English"
         note="What each term means, why analysts check it, and when a high or low number is good or bad."
       />
       {/* The full list shows at once; a search from elsewhere (?q=pe ratio) narrows it as soon as it's read. */}

@@ -45,7 +45,7 @@ async function Results({ searchParams }: { searchParams: Promise<Record<string, 
           <li key={t.key}>
             <Link
               href={`/terms?q=${encodeURIComponent(t.entry.short)}#${t.key}`}
-              className="fathom-card flex flex-col gap-1 px-5 py-4 no-underline transition hover:-translate-y-0.5 hover:border-shallow"
+              className="fathom-card flex flex-col gap-1 px-5 py-4 no-underline transition-colors hover:border-mid"
             >
               <span className="flex items-center justify-between gap-3">
                 <span className="fathom-grow text-[17px] font-semibold text-ink">{t.entry.term}</span>
@@ -82,7 +82,7 @@ async function Results({ searchParams }: { searchParams: Promise<Record<string, 
             <li key={m.cik}>
               <Link
                 href={`/stock/${m.ticker}`}
-                className="fathom-card flex items-center gap-4 px-4 py-3.5 no-underline transition hover:-translate-y-0.5 hover:border-shallow"
+                className="fathom-card flex items-center gap-4 px-4 py-3.5 no-underline transition-colors hover:border-mid"
               >
                 <CompanyLogo name={displayName(m.name)} size={42} />
                 <span className="fathom-grow flex-1 text-[17px] font-semibold text-ink">{displayName(m.name)}</span>

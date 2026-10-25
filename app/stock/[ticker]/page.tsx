@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Fragment, Suspense, type ReactNode } from "react";
-import { ResearchProgress } from "@/components/ResearchProgress";
-import { ResearchStep, StepDivider } from "@/components/ResearchStep";
+import { Suspense, type ReactNode } from "react";
+import { ResearchStep } from "@/components/ResearchStep";
 import { WatchButton } from "@/components/WatchButton";
 import { Loader } from "@/components/Loader";
 import { ExplainButton } from "@/components/ExplainButton";
@@ -25,16 +24,12 @@ import { TermName } from "@/components/TermName";
 import { ConceptMap } from "@/components/ConceptMap";
 import { conceptMap } from "@/lib/report/concept-map";
 import { Forces, ForcesSummary } from "@/components/Forces";
-import { PageNav } from "@/components/PageNav";
 import { getMacro } from "@/lib/macro/data";
 import { buildForces } from "@/lib/report/forces";
 import { billsGauge, cashVsDebt, compareFor, marginLines, moneyUses, pairFor, salesHistory, salesSplit, SERIES, shareFor } from "@/lib/report/visuals";
 import { DotGrid, Meter, StatusBadge, TopicIcon } from "@/components/viz/Static";
-import { AtDepth, DepthProvider, DepthSwitch } from "@/components/Depth";
+import { AtDepth, DepthProvider, DetailBar } from "@/components/Depth";
 import { CompanyLogo } from "@/components/CompanyLogo";
-import { PhotoMosaic } from "@/components/PhotoMosaic";
-import { StepArt } from "@/components/StepArt";
-import { PathStrip } from "@/components/PathStrip";
 import { BigAnswer, KeepBar, LiteCard, MiniBars, MiniGauge, MiniPair, SaidAnswer, SourceChips, UsesBar } from "@/components/Lite";
 
 export async function generateMetadata(props: PageProps<"/stock/[ticker]">): Promise<Metadata> {
@@ -65,7 +60,7 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
   if (!report.support.supported) {
     const profile = await getCompanyProfile(report.company.cik);
     return (
-      <div className="mx-auto flex w-full max-w-[860px] flex-col gap-10 px-5 py-10 sm:py-14">
+      <div className="mx-auto flex w-full max-w-[800px] flex-col gap-10 px-5 py-10 sm:py-14">
         <Hero report={report} profile={profile} company={shortCompany(report.company.name)} />
         <Unsupported reason={report.support.reason} name={report.company.name} />
       </div>
@@ -89,56 +84,42 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
 
   return (
     <DepthProvider>
-      <div className="mx-auto w-full max-w-[1480px] px-5 pb-16 pt-8 sm:pt-12 lg:grid lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-12 lg:px-8 xl:gap-16">
-        <aside className="hidden lg:block">
-          <PageNav
-            ticker={report.company.ticker}
-            company={company}
-            steps={STEPS.map((s) => ({ id: s.id, title: s.title, term: lookupTerm(s.term)?.term ?? s.title }))}
-            extra={[
-              { id: "numbers", title: "All the key numbers" },
-              { id: "news", title: "Announcements and news" },
-            ]}
-          />
-        </aside>
-        <div className="fathom-bold mx-auto flex w-full min-w-0 max-w-[1120px] flex-col gap-12">
-          <Hero report={report} profile={profile} company={company} lead={lead} />
-          <ExplainStatus ticker={report.company.ticker} state={state} />
-          <ResearchProgress ticker={report.company.ticker} steps={STEPS.map((s) => ({ id: s.id, title: s.title }))} />
-          <PathIntro ticker={report.company.ticker} company={company} />
-          <div className="flex flex-col gap-12">
-            {STEPS.map((step, i) => (
-              <Fragment key={step.id}>
-                <StepDivider number={i + 1} />
-                <ResearchStep
-                  ticker={report.company.ticker}
-                  id={step.id}
-                  number={i + 1}
-                  total={STEPS.length}
-                  label={step.title}
-                  question={step.question}
-                  brief={step.brief}
-                  term={<TermName k={step.term} />}
-                  art={<StepArt id={step.id} size={104} />}
-                  surface={surfaceBody(step, ctx, Boolean(lead))}
-                  below={deeperBody(step, ctx, "below", profile)}
-                  deep={deeperBody(step, ctx, "deep", profile)}
-                />
-              </Fragment>
-            ))}
-          </div>
-          <WholePicture>
-            <ConceptMap nodes={nodes} company={company} />
-            <AtDepth only="surface">
+      <div className="mx-auto flex w-full max-w-[800px] flex-col gap-10 px-5 pb-16 pt-8 sm:pt-12">
+        <Hero report={report} profile={profile} company={company} lead={lead} />
+        <ExplainStatus ticker={report.company.ticker} state={state} />
+        <Contents company={company} />
+        <DetailBar />
+        <div className="-mt-4 flex flex-col gap-14">
+          {STEPS.map((step, i) => (
+            <ResearchStep
+              key={step.id}
+              ticker={report.company.ticker}
+              id={step.id}
+              number={i + 1}
+              total={STEPS.length}
+              question={step.question}
+              brief={step.brief}
+              term={<TermName k={step.term} />}
+              surface={surfaceBody(step, ctx, Boolean(lead))}
+              below={deeperBody(step, ctx, "below", profile)}
+              deep={deeperBody(step, ctx, "deep", profile)}
+            />
+          ))}
+          <section id="whole-picture" className="flex scroll-mt-20 flex-col gap-8 border-t border-line pt-10">
+            <AtDepth max="below">
               <ForcesSummary forces={forces} company={company} />
             </AtDepth>
-            <AtDepth min="below">
+            <AtDepth only="deep">
               <Forces forces={forces} nodes={nodes} company={company} />
+              <ConceptMap nodes={nodes} company={company} />
             </AtDepth>
-          </WholePicture>
-          <AllNumbers report={report} />
-          <MoreInfo report={report} />
-          <div className="flex flex-col gap-4">
+          </section>
+          <section id="numbers" className="flex scroll-mt-20 flex-col gap-3 border-t border-line pt-10">
+            <h2 className="font-display text-[26px] font-bold tracking-tight">Want to dig further?</h2>
+            <AllNumbers report={report} />
+            <MoreInfo report={report} />
+          </section>
+          <div className="flex flex-col gap-3">
             {e && <AiNote e={e} />}
             <Disclaimer />
           </div>
@@ -155,83 +136,58 @@ function shortCompany(name: string): string {
 
 // ---------------------------------------------------------------- the top of the page
 
-/** Who the company is, in one look: logo, name, one plain sentence, a few facts and photos. */
+/** Who the company is, in one look: logo, name, one plain sentence and a few facts. */
 function Hero({ report, profile, company, lead }: { report: CompanyReport; profile?: CompanyProfile; company: string; lead?: CheckedClaim }) {
   const { company: c, annualReport, quarterlyReport } = report;
-  const photos = profile?.photos ?? [];
-  const facts: { icon: ReactNode; text: string }[] = [];
-  if (profile?.founded) facts.push({ icon: <path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18.4 5.6l-2.1 2.1M21 12h-3M7 20h10M9 16a4 4 0 1 1 6 0" />, text: `Founded ${profile.founded}` });
-  if (profile?.headquarters) facts.push({ icon: <><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" /></>, text: profile.headquarters });
-  if (profile?.employees) facts.push({ icon: <><circle cx="9" cy="8" r="3.2" /><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5M16 4.5a3 3 0 0 1 0 6M21 20c0-2.6-1.6-4.6-4-5.2" /></>, text: `${compactCount(profile.employees.count)} people` });
-  if (profile?.ceo) facts.push({ icon: <><circle cx="12" cy="7.5" r="3.5" /><path d="M5 21c0-4 3.1-7 7-7s7 3 7 7" /></>, text: `Led by ${profile.ceo}` });
+  const facts: string[] = [];
+  if (profile?.founded) facts.push(`Started in ${profile.founded}`);
+  if (profile?.headquarters) facts.push(`Based in ${profile.headquarters}`);
+  if (profile?.employees) facts.push(`${compactCount(profile.employees.count)} people work there`);
   return (
-    <header id="top" className={`grid scroll-mt-8 items-center gap-10 ${photos.length > 0 ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,500px)]" : ""}`}>
-      <div className="flex min-w-0 flex-col gap-6">
-        <div className="flex items-center gap-4">
-          <CompanyLogo name={c.name} logo={profile?.logo} website={profile?.website} size={76} />
-          <div className="flex min-w-0 flex-col gap-1">
-            <p className="flex flex-wrap items-center gap-2 text-[14px]">
-              <span className="rounded-full bg-ocean px-2.5 py-0.5 font-bold tracking-wide text-white">{c.ticker}</span>
-              {c.exchanges[0] && <span className="font-semibold text-ocean">{c.exchanges[0]}</span>}
-              {c.industry && <span className="text-muted">· {sentenceCase(c.industry)}</span>}
-            </p>
-            <h1 className="font-display text-[40px] font-bold leading-[1.02] tracking-tight sm:text-[54px]">{c.name}</h1>
-          </div>
-        </div>
-        {lead && (
-          <div className="flex flex-col gap-2">
-            <p className="max-w-2xl text-[21px] leading-[1.5] text-ink">{lead.text}</p>
-            <SourceChips sources={[lead.source]} />
-          </div>
-        )}
-        {facts.length > 0 && (
-          <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
-            {facts.map((f) => (
-              <li key={f.text} className="inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-3.5 py-1.5 text-[14px] font-medium">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-mid)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  {f.icon}
-                </svg>
-                {f.text}
-              </li>
-            ))}
-          </ul>
-        )}
-        {report.support.supported && (
-          <div className="flex flex-wrap items-center gap-3">
-            <WatchButton ticker={c.ticker} name={c.name} />
-            {/* A plain link: the browser downloads the file the server makes. */}
-            <a
-              href={`/stock/${encodeURIComponent(c.ticker)}/pdf`}
-              download
-              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-line bg-white px-4 text-[15px] font-semibold text-ocean no-underline transition hover:border-mid"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M12 3v12" />
-                <path d="m7 10 5 5 5-5" />
-                <path d="M5 21h14" />
-              </svg>
-              Download PDF
-            </a>
-          </div>
-        )}
-        {(annualReport || quarterlyReport) && (
-          <p className="text-[13px] text-muted">
-            From {annualReport && <>the annual report (10-K) filed {formatDate(annualReport.filingDate)}</>}
-            {annualReport && quarterlyReport && " and "}
-            {quarterlyReport && <>the quarterly report (10-Q) filed {formatDate(quarterlyReport.filingDate)}</>}.
-            {profile && (
-              <>
-                {" "}Background facts from{" "}
-                <a href={profile.wikidataUrl} target="_blank" rel="noopener noreferrer" className="text-muted underline decoration-line underline-offset-2">
-                  Wikidata
-                </a>
-                .
-              </>
-            )}
+    <header id="top" className="flex scroll-mt-8 flex-col gap-5">
+      <div className="flex items-center gap-4">
+        <CompanyLogo name={c.name} logo={profile?.logo} website={profile?.website} size={60} />
+        <div className="flex min-w-0 flex-col gap-1">
+          <h1 className="font-display text-[34px] font-bold leading-[1.05] tracking-tight sm:text-[44px]">{company}</h1>
+          <p className="flex flex-wrap items-center gap-2 text-[14px] text-muted">
+            <span className="rounded-md bg-panel-2 px-2 py-0.5 font-bold tracking-wide text-ocean" title="Its short code on the stock market (ticker)">
+              {c.ticker}
+            </span>
+            {c.industry && <span>{sentenceCase(c.industry)}</span>}
           </p>
-        )}
+        </div>
       </div>
-      {photos.length > 0 && <PhotoMosaic photos={photos} company={company} />}
+      {lead && (
+        <div className="flex flex-col gap-2">
+          <p className="text-[20px] leading-[1.5] text-ink">{lead.text}</p>
+          <SourceChips sources={[lead.source]} />
+        </div>
+      )}
+      {facts.length > 0 && <p className="text-[15px] text-muted">{facts.join(" · ")}</p>}
+      {report.support.supported && (
+        <div className="flex flex-wrap items-center gap-2">
+          <WatchButton ticker={c.ticker} name={c.name} />
+          {/* A plain link: the browser downloads the file the server makes. */}
+          <a
+            href={`/stock/${encodeURIComponent(c.ticker)}/pdf`}
+            download
+            className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-line bg-white px-4 text-[15px] font-semibold text-ocean no-underline transition-colors hover:border-mid"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M12 3v12" />
+              <path d="m7 10 5 5 5-5" />
+              <path d="M5 21h14" />
+            </svg>
+            Download PDF
+          </a>
+        </div>
+      )}
+      {(annualReport || quarterlyReport) && (
+        <p className="text-[13px] text-muted">
+          Explained from its latest {annualReport && quarterlyReport ? "yearly and quarterly reports" : annualReport ? "yearly report" : "quarterly report"} to
+          the SEC, filed {formatDate((quarterlyReport ?? annualReport)!.filingDate)}.
+        </p>
+      )}
     </header>
   );
 }
@@ -247,66 +203,28 @@ function sentenceCase(s: string): string {
   return t.charAt(0).toUpperCase() + t.slice(1);
 }
 
-/** Before the steps: what's ahead, and how much detail to show. */
-function PathIntro({ ticker, company }: { ticker: string; company: string }) {
+/** Before the questions: a plain list of what's ahead, each one a link. */
+function Contents({ company }: { company: string }) {
   return (
-    <section id="start" className="fathom-card flex scroll-mt-8 flex-col gap-7 p-6 sm:p-8" aria-labelledby="path-title">
-      <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-        <div className="flex max-w-xl flex-col gap-1.5">
-          <h2 id="path-title" className="font-display text-[28px] font-bold leading-tight tracking-tight">
-            Understand {company} in seven questions
-          </h2>
-          <p className="text-[16px] leading-relaxed text-muted">Start with the short answers. Go deeper whenever you want more.</p>
-        </div>
-        <div className="hidden w-full sm:block lg:w-[440px]">
-          <DepthSwitch />
-        </div>
-      </div>
-      <PathStrip
-        ticker={ticker}
-        steps={STEPS.map((s) => ({ id: s.id, title: s.title, art: <StepArt id={s.id} size={52} /> }))}
-      />
-    </section>
-  );
-}
-
-/** After the steps: everything joined up, and what moves the results. */
-function WholePicture({ children }: { children: ReactNode }) {
-  return (
-    <section id="whole-picture" className="flex scroll-mt-8 flex-col gap-10" aria-labelledby="whole-title">
-      <StepDivider />
-      <header className="flex items-start justify-between gap-6">
-        <div className="flex flex-col gap-3">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-mid">Putting it together</p>
-          <h2 id="whole-title" className="font-display text-[30px] font-bold leading-[1.1] tracking-tight sm:text-[38px]">
-            How does it all fit together?
-          </h2>
-          <p className="max-w-2xl text-[17px] leading-relaxed text-muted">
-            One map of the numbers you&apos;ve just seen, and the outside forces that push them up or down.
-          </p>
-        </div>
-        <div className="hidden sm:block">
-          <StepArt id="map" size={104} />
-        </div>
-      </header>
-      {children}
-    </section>
+    <nav aria-labelledby="contents-title" className="flex flex-col gap-3 rounded-2xl bg-mist p-5 sm:p-6">
+      <h2 id="contents-title" className="text-[17px] font-semibold">
+        7 questions about {company}
+      </h2>
+      <ol className="m-0 grid list-none gap-x-6 gap-y-1 p-0 sm:grid-cols-2">
+        {STEPS.map((s, i) => (
+          <li key={s.id}>
+            <a href={`#step-${s.id}`} className="flex min-h-9 items-baseline gap-2.5 py-1 text-[15px] text-ink no-underline hover:text-ocean">
+              <span className="w-4 flex-none text-right font-semibold text-mid">{i + 1}</span>
+              <span>{s.title}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
   );
 }
 
 // ---------------------------------------------------------------- shared pieces
-
-function Card({ title, children, note, className = "" }: { title: string; children: React.ReactNode; note?: string; className?: string }) {
-  return (
-    <section className={`fathom-card flex min-w-0 flex-col gap-5 p-6 sm:p-7 ${className}`}>
-      <div className="flex flex-col gap-1.5">
-        <h2 className="font-display text-2xl font-bold">{title}</h2>
-        {note && <p className="text-[15px] leading-relaxed text-muted">{note}</p>}
-      </div>
-      {children}
-    </section>
-  );
-}
 
 function Said({ statement, visual }: { statement?: Statement; visual?: ReactNode }) {
   if (!statement) return null;
@@ -333,7 +251,7 @@ function ExplainStatus({ ticker, state }: { ticker: string; state: ExplanationSt
   }
   if (state.explanation && state.status === "queued") {
     return (
-      <p className="rounded-2xl bg-panel px-5 py-4 text-[15px] leading-relaxed text-muted">
+      <p className="rounded-2xl bg-mist px-5 py-4 text-[15px] leading-relaxed text-muted">
         A newer report has been filed. An updated explanation is in the queue; until then, the one below was written
         from the earlier report.
       </p>
@@ -371,7 +289,7 @@ function AiNote({ e }: { e: SavedExplanation }) {
     <p className="text-[13px] leading-relaxed text-muted">
       Points about the business, its industry and its risks were written by AI from the company&apos;s own reports on{" "}
       {formatDate(e.generatedAt.slice(0, 10))}. Every point was checked word-for-word against the report it links to;
-      points that failed the check were removed. All numbers come straight from the reports, not from AI.
+      points that failed the check were removed. All numbers come straight from the reports (SEC EDGAR), not from AI. The share price and news come from TradingView.
     </p>
   );
 }
@@ -428,7 +346,7 @@ function StepNews({ step, report }: { step: string; report: CompanyReport }) {
     .filter((a) => a.codes.length > 0)
     .slice(0, 3);
   return (
-    <details className="group rounded-2xl border border-dashed border-line bg-white/50 px-5 py-3">
+    <details className="group rounded-2xl border border-line px-5 py-3">
       <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between gap-3">
         <span className="flex flex-col">
           <span className="text-[15px] font-semibold">
@@ -461,7 +379,7 @@ function StepNews({ step, report }: { step: string; report: CompanyReport }) {
         </ol>
       )}
       <p className="mt-2 text-[13px] text-muted">
-        Headlines from news outlets are under <a href="#news">Announcements and news</a>; they can&apos;t be sorted by topic.
+        News headlines are at the bottom of the page, under <a href="#news">News and announcements</a>.
       </p>
     </details>
   );
@@ -624,7 +542,7 @@ function deeperBody(step: Step, ctx: Ctx, level: "below" | "deep", profile?: Com
   return (
     <div className="flex flex-col gap-6">
       {level === "deep" && <AnalystBox step={step} />}
-      <div className="fathom-card flex flex-col gap-8 p-6 sm:p-8">
+      <div className="flex flex-col gap-8">
         {step.id === "business" && profile && <ProfileFacts profile={profile} />}
         {step.id === "business" && profile?.wikipedia && level === "below" && <WikipediaIntro w={profile.wikipedia} />}
         {step.areas.map((a) => areaLayer(a, level === "deep" && sameLayers ? "below" : level, ctx, step.areas.length > 1))}
@@ -634,7 +552,7 @@ function deeperBody(step: Step, ctx: Ctx, level: "below" | "deep", profile?: Com
           </ChartPanel>
         )}
       </div>
-      <StepNews step={step.id} report={report} />
+      {level === "deep" && <StepNews step={step.id} report={report} />}
     </div>
   );
 }
@@ -642,13 +560,13 @@ function deeperBody(step: Step, ctx: Ctx, level: "below" | "deep", profile?: Com
 /** At Deep: why analysts look at this step, and what they look for. */
 function AnalystBox({ step }: { step: Step }) {
   return (
-    <div className="grid gap-5 rounded-[28px] bg-gradient-to-br from-[#e6f3f8] to-[#f3f9fb] p-6 sm:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] sm:p-7">
+    <div className="grid gap-5 rounded-2xl bg-mist p-5 sm:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] sm:p-6">
       <div className="flex flex-col gap-1.5">
-        <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-mid">The analyst&apos;s view</p>
+        <p className="text-[14px] font-semibold text-mid">Why experts check this</p>
         <p className="text-[16px] leading-relaxed">{step.why}</p>
       </div>
       <div className="flex flex-col gap-1.5">
-        <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-mid">What they look for</p>
+        <p className="text-[14px] font-semibold text-mid">What they look for</p>
         <ul className="m-0 flex list-none flex-col gap-1.5 p-0 text-[15px] leading-snug">
           {step.lookFor.map((l) => (
             <li key={l} className="flex gap-2.5">
@@ -741,10 +659,10 @@ function AllNumbers({ report }: { report: CompanyReport }) {
   const area = AREAS.find((a) => a.id === "numbers")!;
   const ctx: Ctx = { report, level: "deep" };
   return (
-    <details id="numbers" className="fathom-card group flex scroll-mt-8 flex-col p-6 sm:p-7">
+    <details className="fathom-card group flex flex-col px-5 py-4 sm:px-6">
       <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4">
         <span className="flex flex-col">
-          <span className="font-display text-xl font-bold">All the key numbers</span>
+          <span className="text-[18px] font-semibold">All the key numbers</span>
           <span className="text-[14px] text-muted">{area.why}</span>
         </span>
         <span aria-hidden="true" className="text-2xl text-ocean transition-transform group-open:rotate-45">
@@ -1175,37 +1093,42 @@ function OriginalReports({ report }: { report: CompanyReport }) {
 
 // ---------------------------------------------------------------- below the levels
 
-/** Announcements, news and where everything comes from, in the same single column. */
+/** Official announcements and news headlines, folded away until wanted. */
 function MoreInfo({ report }: { report: CompanyReport }) {
   return (
-    <div id="news" className="grid scroll-mt-8 gap-5 lg:grid-cols-2">
-      <Card title="Official announcements" note="Major events the company reported to the SEC in the last four months.">
-        {report.announcements.length === 0 ? (
-          <p className="text-[16px] text-muted">None filed in the last four months.</p>
-        ) : (
-          <ol className="relative flex flex-col gap-5 border-l-2 border-surface pl-6">
-            {report.announcements.map((a) => (
-              <li key={a.url} className="relative flex flex-col gap-1">
-                <span aria-hidden="true" className="absolute -left-[31px] top-1 h-3.5 w-3.5 rounded-full border-[3px] border-white bg-mid shadow-[0_0_0_1px_var(--color-line)]" />
-                <span className="text-[13px] font-semibold text-ocean">{formatDate(a.filingDate)}</span>
-                <span className="text-[17px] leading-snug">{a.events.join(", ")}</span>
-                <SourceLink href={a.url} label="8-K filing" />
-              </li>
-            ))}
-          </ol>
-        )}
-      </Card>
-      <Card title="In the news" note="Headlines from news outlets, via TradingView. These are reporters' views, not official company filings.">
-        <CompanyNews symbol={report.tradingViewSymbol} />
-      </Card>
-      <Card title="Where this comes from" className="lg:col-span-2">
-        <p className="text-[16px] leading-relaxed">
-          Every number and every point about the business comes from the company&apos;s own reports to the US Securities and
-          Exchange Commission (SEC EDGAR). The share price, market value and news are shown as TradingView provides them.
-          Fathom doesn&apos;t create financial data; it explains these sources in plain English.
-        </p>
-      </Card>
-    </div>
+    <details id="news" className="fathom-card group flex scroll-mt-20 flex-col px-5 py-4 sm:px-6">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4">
+        <span className="flex flex-col">
+          <span className="text-[18px] font-semibold">News and announcements</span>
+          <span className="text-[14px] text-muted">What the company told the SEC lately, and what reporters are saying.</span>
+        </span>
+        <span aria-hidden="true" className="text-2xl text-ocean transition-transform group-open:rotate-45">
+          +
+        </span>
+      </summary>
+      <div className="mt-5 flex flex-col gap-8">
+        <div className="flex flex-col gap-3">
+          <h3 className="text-[16px] font-semibold">From the company <span className="font-normal text-muted">(8-K filings, last four months)</span></h3>
+          {report.announcements.length === 0 ? (
+            <p className="text-[16px] text-muted">None filed in the last four months.</p>
+          ) : (
+            <ol className="m-0 flex list-none flex-col gap-4 p-0">
+              {report.announcements.map((a) => (
+                <li key={a.url} className="flex flex-col gap-0.5">
+                  <span className="text-[13px] font-semibold text-mid">{formatDate(a.filingDate)}</span>
+                  <span className="text-[16px] leading-snug">{a.events.join(", ")}</span>
+                  <SourceLink href={a.url} label="8-K filing" />
+                </li>
+              ))}
+            </ol>
+          )}
+        </div>
+        <div className="flex flex-col gap-3">
+          <h3 className="text-[16px] font-semibold">In the news <span className="font-normal text-muted">(reporters&apos; views, via TradingView)</span></h3>
+          <CompanyNews symbol={report.tradingViewSymbol} height={460} />
+        </div>
+      </div>
+    </details>
   );
 }
 
@@ -1213,7 +1136,7 @@ function MoreInfo({ report }: { report: CompanyReport }) {
 
 function Disclaimer() {
   return (
-    <p className="border-t border-line pt-8 text-sm leading-relaxed text-muted">
+    <p className="text-sm leading-relaxed text-muted">
       <strong className="font-semibold text-ink">Not financial advice.</strong> Fathom explains public information for
       education only. It does not recommend buying, selling or holding any investment, and does not give price targets.
     </p>

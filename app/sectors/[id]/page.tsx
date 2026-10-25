@@ -18,7 +18,7 @@ export async function generateMetadata(props: PageProps<"/sectors/[id]">): Promi
 
 export default function SectorPage(props: PageProps<"/sectors/[id]">) {
   return (
-    <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-8 px-5 py-12 sm:py-16 lg:px-8">
+    <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-8 px-5 py-12 sm:py-16 lg:px-8">
       <Suspense fallback={<Loader label="Loading companies…" />}>
         <Sector params={props.params} searchParams={props.searchParams} />
       </Suspense>
@@ -53,24 +53,24 @@ async function Sector({
   return (
     <>
       <Link href="/sectors" className="self-start text-[15px] font-semibold">
-        ← All sectors
+        ← All types of business
       </Link>
       <div className="flex items-center gap-5">
-        <SectorIcon id={id} size={76} />
+        <SectorIcon id={id} size={60} />
         <div className="flex flex-col gap-1.5">
-          <h1 className="font-display text-[38px] font-bold leading-[1.05] tracking-tight sm:text-[48px]">{SECTORS[id].name}</h1>
+          <h1 className="font-display text-[34px] font-bold leading-[1.1] tracking-tight sm:text-[42px]">{SECTORS[id].name}</h1>
           <p className="max-w-3xl text-[17px] leading-relaxed text-muted">{SECTORS[id].blurb}</p>
         </div>
       </div>
 
       {genres.length > 1 && (
         <nav aria-label="Narrow down by industry" className="flex flex-col gap-2">
-          <p className="text-[13px] font-semibold text-muted">Narrow it down</p>
+          <p className="text-[14px] font-semibold text-muted">Narrow it down</p>
           <div className="flex flex-wrap gap-1.5">
             <Link href={link()} className={chip(!genre)}>
               All ({companiesIn(id).length})
             </Link>
-            {genres.slice(0, 14).map((g) => (
+            {genres.slice(0, 8).map((g) => (
               <Link key={g.name} href={link(g.name)} className={chip(genre === g.name)}>
                 {g.label} ({g.count})
               </Link>
@@ -91,7 +91,7 @@ async function Sector({
               <li key={c.t}>
                 <Link
                   href={`/stock/${c.t}`}
-                  className="fathom-card flex items-center gap-3.5 px-4 py-3.5 text-ink no-underline transition hover:-translate-y-0.5 hover:border-shallow"
+                  className="fathom-card flex items-center gap-3.5 px-4 py-3.5 text-ink no-underline transition-colors hover:border-mid"
                 >
                   <CompanyLogo name={displayName(c.n)} size={42} />
                   <span className="flex min-w-0 flex-1 flex-col">
@@ -119,5 +119,5 @@ async function Sector({
 }
 
 function chip(on: boolean) {
-  return `inline-flex min-h-9 items-center rounded-full px-3.5 text-[13px] font-semibold no-underline transition ${on ? "bg-ocean text-abyss shadow-[0_6px_16px_rgba(11,79,108,0.2)]" : "border border-line bg-white/80 text-muted hover:border-shallow hover:text-ink"}`;
+  return `inline-flex min-h-9 items-center rounded-full px-3.5 text-[13px] font-semibold no-underline transition ${on ? "bg-ocean text-abyss" : "border border-line bg-white text-muted hover:border-mid hover:text-ink"}`;
 }

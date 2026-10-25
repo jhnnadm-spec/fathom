@@ -47,7 +47,7 @@ export function WatchlistView() {
   if (list.length === 0) {
     return (
       <div className="fathom-card flex flex-col items-center gap-5 px-6 py-12 text-center">
-        <span aria-hidden="true" className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[#e6f3f8] to-surface text-ocean">
+        <span aria-hidden="true" className="flex h-16 w-16 items-center justify-center rounded-full bg-panel-2 text-ocean">
           <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round">
             <path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3L2.8 9.5l6.4-.8z" />
           </svg>
@@ -55,7 +55,7 @@ export function WatchlistView() {
         <div className="flex max-w-md flex-col gap-1.5">
           <p className="font-display text-[24px] font-bold">Nothing saved yet</p>
           <p className="text-[16px] leading-relaxed text-muted">
-            Open a company and tap <strong className="text-ink">Add to watchlist</strong>. No sign-up: it stays in this browser.
+            Open a company and tap <strong className="text-ink">Save</strong>. It stays in this browser, no sign-up needed.
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-2">
@@ -63,14 +63,14 @@ export function WatchlistView() {
             <Link
               key={c.ticker}
               href={`/stock/${c.ticker}`}
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-white py-1 pl-1 pr-3.5 text-[15px] font-semibold text-ink no-underline transition hover:-translate-y-0.5 hover:border-mid"
+              className="inline-flex items-center gap-2 rounded-full border border-line bg-white py-1 pl-1 pr-3.5 text-[15px] font-semibold text-ink no-underline transition hover:border-mid"
             >
               <CompanyLogo name={c.name} website={c.site} size={28} />
               {c.name}
             </Link>
           ))}
           <Link href="/sectors" className="inline-flex min-h-[38px] items-center rounded-full px-3.5 text-[15px] font-semibold">
-            Browse by sector →
+            Browse by type of business →
           </Link>
         </div>
       </div>
@@ -109,7 +109,7 @@ export function WatchlistView() {
             {s ? (
               <dl className="m-0 grid grid-cols-1 gap-2">
                 {s.facts.map((f) => (
-                  <div key={f.label} className="flex items-baseline justify-between gap-3 rounded-xl bg-[#f3f8fa] px-3 py-2 text-[14px]">
+                  <div key={f.label} className="flex items-baseline justify-between gap-3 border-b border-line py-1.5 text-[14px] last:border-0">
                     <dt className="text-muted">{f.label}</dt>
                     <dd className="m-0 font-semibold">{f.value}</dd>
                   </div>
@@ -128,7 +128,7 @@ export function WatchlistView() {
             )}
             <div className="flex flex-col gap-1">
               <div className="flex justify-between text-[13px]">
-                <span className="text-muted">Your research</span>
+                <span className="text-muted">Questions you&apos;ve opened</span>
                 <span className="font-semibold">
                   {understood} of {STEP_COUNT} questions
                 </span>
@@ -139,9 +139,9 @@ export function WatchlistView() {
             </div>
             <Link
               href={`/stock/${w.ticker}`}
-              className="mt-auto inline-flex min-h-11 items-center justify-center rounded-full bg-ocean px-5 text-[15px] font-semibold text-white no-underline transition hover:bg-ocean-dark"
+              className="mt-auto inline-flex min-h-11 items-center justify-center rounded-xl bg-ocean px-5 text-[15px] font-semibold text-white no-underline transition hover:bg-ocean-dark"
             >
-              {understood === 0 ? "Start researching" : understood < STEP_COUNT ? "Carry on" : "Revisit"}
+              {understood === 0 ? "Start reading" : understood < STEP_COUNT ? "Carry on" : "Read again"}
             </Link>
           </li>
         );

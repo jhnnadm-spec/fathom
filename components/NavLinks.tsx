@@ -6,10 +6,9 @@ import { usePathname } from "next/navigation";
 import { Suspense } from "react";
 
 const LINKS = [
-  { href: "/sectors", label: "Sectors", phone: false },
-  { href: "/watchlist", label: "Watchlist", phone: true },
-  { href: "/terms", label: "Terms", phone: false },
-  { href: "/about", label: "About", phone: false },
+  { href: "/sectors", label: "Browse" },
+  { href: "/watchlist", label: "Saved" },
+  { href: "/terms", label: "Dictionary" },
 ];
 
 /** The menu, marking the current page once the address is known (plain links until then). */
@@ -27,7 +26,7 @@ function Current() {
 
 function Links({ path }: { path: string }) {
   return (
-    <nav aria-label="Main" className="flex flex-none gap-1 text-[15px] font-medium">
+    <nav aria-label="Main" className="flex flex-none items-center gap-1 text-[15px] font-semibold">
       {LINKS.map((l) => {
         const on = path === l.href || path.startsWith(`${l.href}/`);
         return (
@@ -35,8 +34,8 @@ function Links({ path }: { path: string }) {
             key={l.href}
             href={l.href}
             aria-current={on ? "page" : undefined}
-            className={`${l.phone ? "inline-flex" : "hidden sm:inline-flex"} min-h-10 items-center rounded-full px-3.5 no-underline transition-colors ${
-              on ? "bg-white font-semibold text-ocean shadow-[0_2px_10px_rgba(10,42,58,0.08)]" : "text-ink hover:bg-white/60"
+            className={`inline-flex min-h-10 items-center rounded-lg px-3 no-underline transition-colors ${
+              on ? "bg-panel-2 text-ocean" : "text-ink hover:bg-panel-2"
             }`}
           >
             {l.label}
@@ -45,4 +44,17 @@ function Links({ path }: { path: string }) {
       })}
     </nav>
   );
+}
+
+/** The header's small search box, hidden on the front page, which already has a big one. */
+export function HeaderSearch({ children }: { children: React.ReactNode }) {
+  return (
+    <Suspense fallback={null}>
+      <HideOnHome>{children}</HideOnHome>
+    </Suspense>
+  );
+}
+
+function HideOnHome({ children }: { children: React.ReactNode }) {
+  return usePathname() === "/" ? null : <>{children}</>;
 }

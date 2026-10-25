@@ -8,9 +8,8 @@ import "@fontsource/figtree/500.css";
 import "@fontsource/figtree/600.css";
 import "./globals.css";
 import { Logo } from "@/components/Logo";
-import { NavLinks } from "@/components/NavLinks";
+import { HeaderSearch, NavLinks } from "@/components/NavLinks";
 import { SearchForm } from "@/components/SearchForm";
-import { SeaBackground } from "@/components/SeaBackground";
 
 export const metadata: Metadata = {
   title: {
@@ -25,27 +24,29 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full antialiased">
       <body className="flex min-h-full flex-col">
-        <SeaBackground />
-        <header className="border-b border-line/70">
-          <div className="mx-auto flex max-w-[1480px] flex-wrap items-center justify-between gap-4 px-5 py-4 lg:px-8">
+        <header className="border-b border-line">
+          <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-between gap-x-4 gap-y-3 px-5 py-3.5 lg:px-8">
             <Link href="/" className="no-underline" aria-label="Fathom home">
-              <Logo />
+              <Logo size={32} />
             </Link>
-            <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:flex-none">
-              <SearchForm size="small" />
-              <NavLinks />
-            </div>
+            <NavLinks />
+            <HeaderSearch>
+              <div className="order-last w-full sm:order-none sm:w-auto sm:flex-1 sm:max-w-sm lg:ml-auto">
+                <SearchForm size="small" />
+              </div>
+            </HeaderSearch>
           </div>
         </header>
 
         <main className="flex flex-1 flex-col">{children}</main>
 
         <footer className="border-t border-line">
-          <p className="mx-auto max-w-[1480px] px-5 py-8 text-sm leading-relaxed text-muted lg:px-8">
-            Fathom explains information from public sources for education only.
-            It is not financial advice and does not recommend buying, selling or
-            holding any investment.
-          </p>
+          <div className="mx-auto flex max-w-[1180px] flex-col gap-2 px-5 py-8 text-sm leading-relaxed text-muted sm:flex-row sm:items-center sm:justify-between lg:px-8">
+            <p>For learning only. Fathom never tells you to buy or sell anything.</p>
+            <Link href="/about" className="font-semibold">
+              About Fathom
+            </Link>
+          </div>
         </footer>
       </body>
     </html>

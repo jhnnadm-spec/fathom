@@ -7,14 +7,14 @@
 @theme {
   /* Glass: Fathom's colours, from the logo's four layers of water. */
   --color-abyss: #ffffff; /* text on dark buttons, and the sticky bar behind the level tabs */
-  --color-panel: rgb(255 255 255 / 0.72); /* frosted tiles */
-  --color-panel-2: #e3f0f5; /* inside tiles: chart tracks, inactive tabs, inputs */
+  --color-panel: #ffffff; /* tiles */
+  --color-panel-2: #f1f5f7; /* inside tiles: chart tracks, inactive tabs, inputs */
   --color-ink: #0a2a3a; /* main text */
   --color-muted: #3d5a69; /* secondary text */
-  --color-line: #d3e6ee; /* dividers */
+  --color-line: #e3e9ed; /* dividers */
   --color-ocean: #0b4f6c; /* deepest layer: links, key numbers, active tab, buttons */
   --color-ocean-dark: #073447; /* buttons on hover */
-  --color-mist: rgb(255 255 255 / 0.72); /* same as panel (older name) */
+  --color-mist: #f6f8f9; /* quiet grey boxes */
 
   /* The logo's water layers. */
   --color-surface: #cde7f0;
@@ -30,11 +30,9 @@ html {
   color-scheme: light;
 }
 
-/* A soft blue glow at the top of every page that fades to white, like light through water. */
+/* Plain white pages: nothing behind the words competes with them. */
 body {
-  background:
-    linear-gradient(180deg, #cde7f0 0px, #eaf5f9 420px, #ffffff 1000px) no-repeat,
-    #ffffff;
+  background: #ffffff;
   color: var(--color-ink);
   font-family: var(--font-sans);
 }
@@ -80,12 +78,9 @@ body {
   .fathom-loader-line:first-child { opacity: 1; }
 }
 
-/* Frosted glass tiles: see-through white with a soft blur, a bright edge and a gentle shadow. */
+/* Plain tiles: white with a thin edge. */
 .bg-panel {
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgb(255 255 255 / 0.9);
-  box-shadow: 0 8px 24px rgb(11 79 108 / 0.08);
+  border: 1px solid var(--color-line);
 }
 
 @layer components {
@@ -98,123 +93,18 @@ body {
     animation: fathom-pop 160ms ease-out;
   }
 
-  /* Company names grow a little when pointed at, so it's clear they lead somewhere. */
+  /* Company names underline when pointed at, so it's clear they lead somewhere. */
   .fathom-grow {
     display: inline-block;
-    transition: transform 180ms ease-out;
-    transform-origin: left center;
   }
   .fathom-grow:hover,
   .fathom-grow:focus-visible {
-    transform: scale(1.06);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
   @media (prefers-reduced-motion: reduce) {
     .fathom-pop { animation: none; }
-    .fathom-grow { transition: none; }
   }
-}
-
-/* Bold words on a company page grow a little when pointed at, like the finance terms. */
-@layer components {
-  .fathom-bold strong {
-    transition: font-size 180ms ease-out, color 180ms ease-out;
-  }
-  .fathom-bold strong:hover {
-    font-size: 1.08em;
-    color: var(--color-ocean-dark);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .fathom-bold strong {
-      transition: none;
-    }
-  }
-}
-
-/*
-  The moving sea behind every page (components/SeaBackground.tsx).
-  Only transforms and opacity move, so the browser can animate it cheaply.
-*/
-.fathom-sea-light {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(60px);
-  will-change: transform;
-}
-.fathom-sea-light-1 {
-  top: -18vh;
-  left: -10vw;
-  width: 60vw;
-  height: 55vh;
-  background: radial-gradient(closest-side, rgb(127 196 216 / 0.38), transparent);
-  animation: fathom-sea-drift-1 46s ease-in-out infinite alternate;
-}
-.fathom-sea-light-2 {
-  top: -12vh;
-  right: -12vw;
-  width: 55vw;
-  height: 50vh;
-  background: radial-gradient(closest-side, rgb(205 231 240 / 0.7), transparent);
-  animation: fathom-sea-drift-2 58s ease-in-out infinite alternate;
-}
-/* Faint beams of light slanting down through the water */
-.fathom-sea-rays {
-  position: absolute;
-  inset: -10% -20% 30% -20%;
-  background: repeating-linear-gradient(
-    105deg,
-    transparent 0 90px,
-    rgb(255 255 255 / 0.35) 90px 130px,
-    transparent 130px 260px
-  );
-  mask-image: linear-gradient(180deg, black 0%, transparent 70%);
-  opacity: 0.55;
-  transform-origin: 50% 0;
-  animation: fathom-sea-sway 24s ease-in-out infinite alternate;
-  will-change: transform, opacity;
-}
-/* The waves fade towards the bottom edge, so text over them stays easy to read. */
-.fathom-sea-waves {
-  mask-image: linear-gradient(180deg, black 35%, rgb(0 0 0 / 0.35) 100%);
-}
-.fathom-sea-wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 200%;
-  height: 100%;
-  will-change: transform;
-}
-.fathom-sea-wave-1 { animation: fathom-sea-roll 38s linear infinite; }
-.fathom-sea-wave-2 { animation: fathom-sea-roll 54s linear infinite reverse; }
-.fathom-sea-wave-3 { animation: fathom-sea-roll 72s linear infinite; }
-
-@keyframes fathom-sea-roll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-@keyframes fathom-sea-drift-1 {
-  from { transform: translate(0, 0) scale(1); }
-  to { transform: translate(14vw, 6vh) scale(1.12); }
-}
-@keyframes fathom-sea-drift-2 {
-  from { transform: translate(0, 0) scale(1.05); }
-  to { transform: translate(-12vw, 8vh) scale(0.95); }
-}
-@keyframes fathom-sea-sway {
-  0% { transform: skewX(-3deg) translateX(-2%); opacity: 0.35; }
-  50% { opacity: 0.6; }
-  100% { transform: skewX(3deg) translateX(2%); opacity: 0.4; }
-}
-
-/* On phones, keep only the waves moving: frosted tiles over moving light cost battery. */
-@media (max-width: 767px) {
-  .fathom-sea-light,
-  .fathom-sea-rays { animation: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .fathom-sea-light,
-  .fathom-sea-rays,
-  .fathom-sea-wave { animation: none; }
 }
 
 /*
@@ -225,10 +115,9 @@ body {
 */
 @layer components {
   .fathom-card {
-    border-radius: 28px;
-    background: rgb(255 255 255 / 0.86);
+    border-radius: 18px;
+    background: #ffffff;
     border: 1px solid var(--color-line);
-    box-shadow: 0 1px 2px rgb(10 42 58 / 0.04), 0 12px 32px rgb(10 42 58 / 0.06);
   }
   @keyframes fathom-fade {
     from { opacity: 0; transform: translateY(8px); }

@@ -5,26 +5,26 @@ import { SectorIcon } from "@/components/SectorIcon";
 import { displayName } from "@/lib/report/company";
 import { sectorSummaries } from "@/lib/sectors-data";
 
-export const metadata: Metadata = { title: "Browse by sector" };
+export const metadata: Metadata = { title: "Browse" };
 
 export default function SectorsPage() {
   const sectors = sectorSummaries();
   const ready = sectors.some((s) => s.count > 0);
   return (
-    <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-10 px-5 py-12 sm:py-16 lg:px-8">
-      <PageTitle eyebrow="Browse" title="Every US-listed company, by what it does" note="Biggest yearly sales first in each sector." />
+    <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-10 px-5 py-12 sm:py-16 lg:px-8">
+      <PageTitle title="Browse by type of business" note="Pick one to see its companies, biggest first." />
       {!ready && <p className="fathom-card p-5 text-[16px]">The sector list is being built from SEC data. Check back shortly.</p>}
       <ul className="m-0 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
         {sectors.map((s) => (
           <li key={s.id}>
             <Link
               href={`/sectors/${s.id}`}
-              className="fathom-card group flex h-full flex-col gap-4 p-6 text-ink no-underline transition hover:-translate-y-1 hover:border-shallow"
+              className="fathom-card group flex h-full flex-col gap-3 p-5 text-ink no-underline transition-colors hover:border-mid"
             >
               <span className="flex items-center gap-3.5">
-                <SectorIcon id={s.id} size={52} />
+                <SectorIcon id={s.id} size={44} />
                 <span className="flex flex-col leading-tight">
-                  <span className="font-display text-[21px] font-bold group-hover:text-ocean">{s.name}</span>
+                  <span className="font-display text-[19px] font-bold group-hover:text-ocean">{s.name}</span>
                   {s.count > 0 && <span className="text-[13px] text-muted">{s.count.toLocaleString("en-US")} companies</span>}
                 </span>
               </span>
