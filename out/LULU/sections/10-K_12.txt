@@ -1,0 +1,26 @@
+Security Ownership
+Source: https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm
+
+ITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS
+The information required by this item is incorporated by reference to our 2026 Proxy Statement under the caption "Principal Shareholders and Stock Ownership by Management."
+Equity Compensation Plan Information (as of February 1, 2026)
+
+Plan Category Number of Securities to be Issued Upon Exercise of Outstanding Options, Warrants and Rights(1)
+(A)
+Weighted-Average Exercise Price of Outstanding Options, Warrants and Rights(2)
+(B)
+Number of Securities Remaining Available for Future Issuance Under Equity Compensation Plans (Excluding Securities Reflected in Column (A))(3)
+(C)
+
+Equity compensation plans approved by stockholders 2,050,820 $ 287.41 6,099,748
+Equity compensation plans not approved by stockholders — — —
+Total 2,050,820 $ 287.41 6,099,748
+
+__________
+(1)This amount represents the following: (a) 1,269,396 shares subject to outstanding options, (b) 220,231 shares subject to outstanding PSUs, and (c) 561,193 shares subject to outstanding RSUs. The options, PSUs, and RSUs are all under our 2023 Equity Incentive Plan. Restricted shares outstanding under our 2023 Equity Incentive Plan have already been reflected in our total outstanding common stock balance.
+77
+
+Table of Contents
+
+(2)The weighted-average exercise price is calculated solely on the exercise prices of the outstanding options and does not reflect the shares that will be issued upon the vesting of outstanding awards of PSUs and RSUs, which have no exercise price.
+(3)This includes (a) 2,017,607 shares of our common stock available for future issuance under our 2023 Equity Incentive Plan and (b) 4,082,141 shares of our common stock available for future issuance under our Employee Share Purchase Plan. The number of shares remaining available for future issuance under our 2023 Equity Incentive Plan is reduced by 1.7 shares for each award other than stock options granted and by one share for each stock option award granted. Outstanding awards that expire or are canceled without having been exercised or settled in full are available for issuance again under our 2023 Equity Incentive Plan but shares that are withheld in satisfaction of tax withholding obligations for full value awards are not again available for issuance. No further awards may be issued under the predecessor plan, our 2014 Equity Incentive Plan.

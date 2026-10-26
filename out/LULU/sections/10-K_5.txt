@@ -1,0 +1,55 @@
+Market for the Company's Stock
+Source: https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm
+
+ITEM 5. MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES
+Market Information and Dividends
+Our common stock is quoted on the Nasdaq Global Select Market under the symbol "LULU."
+As of March 11, 2026, there were approximately 1,200 holders of record of our common stock. This does not include persons whose stock is in nominee or "street name" accounts through brokers.
+We do not anticipate paying any cash dividends on our common stock in the foreseeable future. Any future determination as to the payment of cash dividends will be at the discretion of our board of directors and will depend on our financial condition, operating results, current and anticipated cash needs, plans for expansion, and other factors that our board of directors considers to be relevant. In addition, financial and other covenants in any instruments or agreements that we enter into in the future may restrict our ability to pay cash dividends on our common stock.
+Stock Performance Graph
+The graph set forth below compares the cumulative total stockholder return on our common stock between January 31, 2021 (the date of our fiscal year end five years ago) and February 1, 2026, with the cumulative total return of (i) the S&P 500 Index and (ii) S&P 500 Apparel, Accessories & Luxury Goods Index, over the same period. This graph assumes the investment of $100 on January 31, 2021 at the closing sale price of our common stock, the S&P 500 Index and the S&P Apparel, Accessories & Luxury Goods Index and assumes the reinvestment of dividends, if any.
+The comparisons shown in the graph below are based on historical data. We caution that the stock price performance shown in the graph below is not necessarily indicative of, nor is it intended to forecast, the potential future performance of our common stock. Information used in the graph was obtained from Bloomberg, a source believed to be reliable, but we are not responsible for any errors or omissions in such information.
+
+31-Jan-21 30-Jan-22 29-Jan-23 28-Jan-24 02-Feb-25 01-Feb-26
+lululemon athletica inc. $ 100.00 $ 96.11 $ 94.58 $ 145.44 $ 126.02 $ 53.09
+S&P 500 Index $ 100.00 $ 119.32 $ 109.59 $ 131.68 $ 162.63 $ 186.82
+S&P 500 Apparel, Accessories & Luxury Goods Index $ 100.00 $ 96.85 $ 68.26 $ 55.22 $ 58.60 $ 49.47
+
+25
+
+Table of Contents
+
+Issuer Purchase of Equity Securities
+The following table provides information regarding our purchases of shares of our common stock during the fourth quarter of 2025 related to our stock repurchase programs:
+
+Period(1)
+Total Number of Shares Purchased(2)
+Average Price Paid per Share
+Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs(2)
+Maximum Dollar Value of Shares that May Yet Be Purchased Under the Plans or Programs(2)
+
+November 3, 2025 - November 30, 2025 491,701 $ 168.46 491,701 $ 587,077,363
+December 1, 2025 - January 4, 2026 465,038 197.83 465,038 1,495,079,645
+January 5, 2026 - February 1, 2026 473,928 198.90 473,928 1,400,817,402
+Total 1,430,667 1,430,667
+
+__________
+(1)Monthly information is presented by reference to our fiscal periods during our fourth quarter of 2025.
+(2)Our board of directors approved a new repurchase program authorizing up to $4.0 billion in aggregate, including $1.0 billion initially authorized on November 29, 2023, and additional $1.0 billion increases on May 29, 2024, December 3, 2024, and December 3, 2025. This program does not have an expiration date or require a minimum number of shares to be repurchased. Repurchases may be made on the open market at prevailing prices or through privately negotiated transactions, including under plans pursuant to Rule 10b5-1 and Rule 10b-18 of the Securities Exchange Act of 1934. The timing and amount of repurchases will depend on market conditions, trading eligibility, and other factors.
+The following table summarizes purchases of shares of our common stock during the fourth quarter of 2025 related to our Employee Share Purchase Plan (ESPP):
+
+Period(1)
+Total Number of Shares Purchased(2)
+Average Price Paid per Share
+Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs(2)
+Maximum Number of Shares that May Yet Be Purchased Under the Plans or Programs(2)
+
+November 3, 2025 - November 30, 2025 20,253 $ 169.07 20,253 4,113,833
+December 1, 2025 - January 4, 2026 23,810 204.15 23,810 4,090,023
+January 5, 2026 - February 1, 2026 7,882 201.91 7,882 4,082,141
+Total 51,945 51,945
+
+___________
+(1)Monthly information is presented by reference to our fiscal periods during our fourth quarter of 2025.
+(2)All shares purchased under the ESPP are purchased on the Nasdaq Global Select Market (or such other stock exchange as we may designate). Unless our board terminates the ESPP earlier, it will continue until all shares authorized for purchase have been purchased. The maximum number of shares authorized to be purchased under the ESPP is 6,000,000.
+Excluded from this disclosure are shares withheld to settle statutory employee tax withholding related to the vesting of stock-based compensation awards.

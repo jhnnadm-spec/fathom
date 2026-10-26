@@ -1,0 +1,151 @@
+Exhibits and Financial Statement Schedules
+Source: https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm
+
+ITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULE
+(a) Documents filed as part of this report:
+1. Financial Statements. The financial statements as set forth under Item 8 of this Annual Report on Form 10-K are incorporated herein.
+2. Financial Statement Schedule. Separate financial statement schedules have been omitted either because they are not applicable or because the required information is included in the consolidated financial statements or notes described in Item 15(a)(1) above.
+79
+
+Table of Contents
+
+3. Exhibits
+Exhibit Index
+
+Incorporated by Reference
+
+Exhibit
+No.
+Exhibit Title
+Filed
+Herewith
+Form
+Exhibit No.
+File No.
+Filing Date
+
+3.1 Restated Certificate of Incorporation of lululemon athletica inc.
+10-K 3.1 001-33608 3/21/2024
+
+3.2 Bylaws of lululemon athletica inc.
+10-K 3.5 001-33608 3/28/2023
+
+4.1 Form of Specimen Stock Certificate of lululemon athletica inc.
+S-3 4.1 333-185899 1/7/2013
+
+4.2 Description of Securities Registered Under Section 12 of the Securities Exchange Act of 1934
+10-K 4.2 001-33608 3/26/2020
+
+10.1* lululemon athletica inc. 2023 Equity Incentive Plan
+10-K 10.1 001-33608 3/21/2024
+
+10.2* Form of Non-Qualified Stock Option Agreement
+X
+
+10.3* Form of Notice of Grant of Performance Shares and Performance Shares Agreement
+X
+
+10.4* Form of Notice of Grant of Restricted Stock Units and Restricted Stock Units Agreement
+X
+
+10.5* Form of Restricted Stock Award Agreement
+8-K 10.5 001-33608 6/13/2023
+
+10.6* Amended and Restated LIPO Investments (USA), Inc. Option Plan and form of Award Agreement
+S-1 10.3 333-142477 5/1/2007
+
+10.7 Exchange Trust Agreement dated July 26, 2007 between lululemon athletica inc., Lulu Canadian Holding, Inc. and Computershare Trust Company of Canada
+10-Q 10.5 001-33608 9/10/2007
+
+10.8 Exchangeable Share Support Agreement dated July 26, 2007 between lululemon athletica inc., Lululemon Callco ULC and Lulu Canadian Holding, Inc.
+10-Q 10.6 001-33608 9/10/2007
+
+10.9 Amended and Restated Declaration of Trust for Forfeitable Exchangeable Shares dated July 26, 2007, by and among the parties named therein
+10-Q 10.7 001-33608 9/10/2007
+
+10.10 Amended and Restated Arrangement Agreement dated as of June 18, 2007, by and among the parties named therein (including Plan of Arrangement and Exchangeable Share Provisions)
+S-1/A 10.14 333-142477 7/9/2007
+
+10.11 Form of Indemnification Agreement between lululemon athletica inc. and its directors and certain officers
+S-1/A 10.16 333-142477 7/9/2007
+
+10.12* Outside Director Compensation Plan
+X
+
+10.13* Executive Bonus Plan
+8-K 10.1 001-33608 3/29/2022
+
+10.14* lululemon athletica inc. Employee Share Purchase Plan
+10-Q 10.1 001-33608 6/5/2024
+
+10.15* Executive Employment Agreement, effective as of November 23, 2020, between lululemon athletica inc. and Meghan Frank
+10-Q 10.2 001-33608 12/10/2020
+
+10.16* Executive Employment Agreement, effective September 20, 2021, between lululemon athletica inc. and Nicole Neuburger
+10-Q 10.1 001-33608 12/09/2021
+
+10.17* Executive Employment Agreement, effective as of November 21, 2025, between lululemon athletica inc. and Andre Maestrini
+8-K 10.1 001-33608 11/21/2025
+
+10.18* Executive Employment Agreement, dated November 10, 2025, between lululemon athletica inc. and Ranju Das
+X
+
+80
+
+Table of Contents
+
+Incorporated by Reference
+
+Exhibit
+No.
+Exhibit Title
+Filed
+Herewith
+Form
+Exhibit No.
+File No.
+Filing Date
+
+10.19* Executive Employment Agreement, effective as of August 20, 2018, between lululemon athletica canada inc. and Calvin McDonald
+8-K
+
+10.1
+
+001-33608
+
+7/24/2018
+
+10.20* Separation Agreement and Release, dated December 11, 2025, between lululemon athletica inc. and Calvin McDonald
+
+8-K 10.1 001-33608 12/11/2025
+
+10.21 Second Amended and Restated Credit Agreement, dated October 15, 2025, among lululemon athletica inc. and certain of its subsidiaries, as borrowers; Bank of America, N.A., as administrative agent; and each other lender party thereto.
+8-K 10.1 001-33608 10/21/2025
+
+19.1 Insider Trading Policy
+10-K 19.1 001-33608 3/27/2025
+
+21.1 Significant subsidiaries of lululemon athletica inc.
+X
+
+23.1 Consent of PricewaterhouseCoopers LLP
+X
+
+31.1 Certification of principal executive officer pursuant to Exchange Act Rules 13a-14(a) and 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002
+X
+
+31.2 Certification of principal financial and accounting officer pursuant to Exchange Act Rules 13a-14(a) and 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002
+X
+
+32.1** Certification of principal executive officer and principal financial and accounting officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002
+X
+
+97 Policy for Recovery of Erroneously Awarded Incentive-Based Compensation
+8-K 10.1 001-33608 6/13/2023
+
+101 The following financial statements from the Company's 10-K for the fiscal year ended February 1, 2026, formatted in iXBRL: (i) Consolidated Balance Sheets, (ii) Consolidated Statements of Operations and Comprehensive Income, (iii) Consolidated Statements of Stockholders' Equity, (iv) Consolidated Statements of Cash Flows (v) Notes to the Consolidated Financial Statements X
+
+104 Cover Page Interactive Data File (formatted in iXBRL and contained in Exhibit 101) X
+
+* Denotes a compensatory plan, contract or arrangement, in which our directors or executive officers may participate.
+** Furnished herewith.

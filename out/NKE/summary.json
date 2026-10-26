@@ -1,0 +1,2383 @@
+{
+  "company": {
+    "cik": "0000320187",
+    "ticker": "NKE",
+    "name": "NIKE, Inc.",
+    "industry": "Rubber & Plastics Footwear",
+    "fiscalYearEnd": "0531",
+    "exchanges": [
+      "NYSE"
+    ]
+  },
+  "reports": [
+    {
+      "form": "10-K",
+      "filingDate": "2026-07-15",
+      "periodEnd": "2026-05-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+      "previous": {
+        "filingDate": "2025-07-17",
+        "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018725000047/nke-20250531.htm"
+      },
+      "sections": [
+        {
+          "id": "9C",
+          "title": "Foreign Jurisdictions that Prevent Inspections",
+          "characters": 808
+        },
+        {
+          "id": "1",
+          "title": "Business",
+          "characters": 37105
+        },
+        {
+          "id": "1A",
+          "title": "Risk Factors",
+          "characters": 97388
+        },
+        {
+          "id": "1B",
+          "title": "Unresolved Staff Comments",
+          "characters": 40
+        },
+        {
+          "id": "1C",
+          "title": "Cybersecurity",
+          "characters": 4899
+        },
+        {
+          "id": "2",
+          "title": "Properties",
+          "characters": 2428
+        },
+        {
+          "id": "3",
+          "title": "Legal Proceedings",
+          "characters": 376
+        },
+        {
+          "id": "4",
+          "title": "Mine Safety Disclosures",
+          "characters": 94
+        },
+        {
+          "id": "5",
+          "title": "Market for the Company's Stock",
+          "characters": 3365
+        },
+        {
+          "id": "6",
+          "title": "[Reserved]",
+          "characters": 55
+        },
+        {
+          "id": "7",
+          "title": "Management's Discussion and Analysis",
+          "characters": 70376
+        },
+        {
+          "id": "7A",
+          "title": "Market Risk",
+          "characters": 7258
+        },
+        {
+          "id": "8",
+          "title": "Financial Statements",
+          "characters": 121765
+        },
+        {
+          "id": "9",
+          "title": "Changes in and Disagreements with Accountants",
+          "characters": 298
+        },
+        {
+          "id": "9A",
+          "title": "Controls and Procedures",
+          "characters": 1842
+        },
+        {
+          "id": "9B",
+          "title": "Other Information",
+          "characters": 482
+        },
+        {
+          "id": "10",
+          "title": "Directors, Executive Officers and Corporate Governance",
+          "characters": 1404
+        },
+        {
+          "id": "11",
+          "title": "Executive Compensation",
+          "characters": 561
+        },
+        {
+          "id": "12",
+          "title": "Security Ownership",
+          "characters": 666
+        },
+        {
+          "id": "13",
+          "title": "Relationships and Director Independence",
+          "characters": 429
+        },
+        {
+          "id": "14",
+          "title": "Accountant Fees and Services",
+          "characters": 380
+        },
+        {
+          "id": "15",
+          "title": "Exhibits and Financial Statement Schedules",
+          "characters": 10821
+        },
+        {
+          "id": "16",
+          "title": "Form 10-K Summary",
+          "characters": 2352
+        }
+      ]
+    },
+    {
+      "form": "10-Q",
+      "filingDate": "2026-10-02",
+      "periodEnd": "2026-08-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+      "previous": {
+        "filingDate": "2026-04-01",
+        "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000037/nke-20260228.htm"
+      },
+      "sections": [
+        {
+          "id": "I-1",
+          "title": "Financial Statements",
+          "characters": 38088
+        },
+        {
+          "id": "I-2",
+          "title": "Management's Discussion and Analysis",
+          "characters": 42102
+        },
+        {
+          "id": "I-3",
+          "title": "Market Risk",
+          "characters": 244
+        },
+        {
+          "id": "I-4",
+          "title": "Controls and Procedures",
+          "characters": 8230
+        },
+        {
+          "id": "II-1",
+          "title": "Legal Proceedings",
+          "characters": 209
+        },
+        {
+          "id": "II-1A",
+          "title": "Risk Factors",
+          "characters": 213
+        },
+        {
+          "id": "II-2",
+          "title": "Share Sales and Buybacks",
+          "characters": 851
+        },
+        {
+          "id": "II-5",
+          "title": "Other Information",
+          "characters": 365
+        },
+        {
+          "id": "II-6",
+          "title": "Exhibits",
+          "characters": 1936
+        }
+      ]
+    }
+  ],
+  "announcements": [
+    {
+      "filingDate": "2026-10-01",
+      "events": [
+        "Shared financial results",
+        "Announced cost cutting or restructuring"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000184/nke-20261001.htm"
+    },
+    {
+      "filingDate": "2026-09-16",
+      "events": [
+        "Change in its leaders or board",
+        "Shared information with investors"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000170/nke-20260915.htm"
+    },
+    {
+      "filingDate": "2026-09-10",
+      "events": [
+        "Change in its leaders or board",
+        "Shared shareholder vote results"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000143/nke-20260908.htm"
+    },
+    {
+      "filingDate": "2026-08-10",
+      "events": [
+        "Change in its leaders or board"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000112/nke-20260804.htm"
+    },
+    {
+      "filingDate": "2026-06-30",
+      "events": [
+        "Shared financial results"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000076/nke-20260630.htm"
+    }
+  ],
+  "numbers": {
+    "asOf": "2026-08-31",
+    "annual": {
+      "revenue": {
+        "id": "revenue",
+        "latest": {
+          "value": 46398000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "previous": {
+          "value": 46309000000,
+          "start": "2024-06-01",
+          "end": "2025-05-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "change": 0.0019218726381480921
+      },
+      "grossProfit": {
+        "id": "grossProfit",
+        "latest": {
+          "value": 19911000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "GrossProfit",
+          "label": "gross profit",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "previous": {
+          "value": 19790000000,
+          "start": "2024-06-01",
+          "end": "2025-05-31",
+          "tag": "GrossProfit",
+          "label": "gross profit",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "change": 0.006114199090449722
+      },
+      "netIncome": {
+        "id": "netIncome",
+        "latest": {
+          "value": 3108000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "previous": {
+          "value": 3219000000,
+          "start": "2024-06-01",
+          "end": "2025-05-31",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "change": -0.034482758620689655
+      },
+      "eps": {
+        "id": "eps",
+        "latest": {
+          "value": 2.1,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "EarningsPerShareDiluted",
+          "label": "diluted earnings per share",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "previous": {
+          "value": 2.16,
+          "start": "2024-06-01",
+          "end": "2025-05-31",
+          "tag": "EarningsPerShareDiluted",
+          "label": "diluted earnings per share",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "change": -0.0277777777777778
+      },
+      "operatingCashFlow": {
+        "id": "operatingCashFlow",
+        "latest": {
+          "value": 2868000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "label": "cash from operations",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "previous": {
+          "value": 3698000000,
+          "start": "2024-06-01",
+          "end": "2025-05-31",
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "label": "cash from operations",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "change": -0.22444564629529476
+      },
+      "capex": {
+        "id": "capex",
+        "latest": {
+          "value": 684000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "label": "spending on buildings and equipment",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "previous": {
+          "value": 430000000,
+          "start": "2024-06-01",
+          "end": "2025-05-31",
+          "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "label": "spending on buildings and equipment",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "change": 0.5906976744186047
+      },
+      "dividends": {
+        "id": "dividends",
+        "latest": {
+          "value": 2407000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "PaymentsOfDividendsCommonStock",
+          "label": "dividends paid",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "previous": {
+          "value": 2300000000,
+          "start": "2024-06-01",
+          "end": "2025-05-31",
+          "tag": "PaymentsOfDividendsCommonStock",
+          "label": "dividends paid",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "change": 0.04652173913043478
+      },
+      "buybacks": {
+        "id": "buybacks",
+        "latest": {
+          "value": 146000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "PaymentsForRepurchaseOfCommonStock",
+          "label": "share buybacks",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "previous": {
+          "value": 2985000000,
+          "start": "2024-06-01",
+          "end": "2025-05-31",
+          "tag": "PaymentsForRepurchaseOfCommonStock",
+          "label": "share buybacks",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        "change": -0.9510887772194305
+      }
+    },
+    "quarter": {
+      "revenue": {
+        "id": "revenue",
+        "latest": {
+          "value": 11213000000,
+          "start": "2026-06-01",
+          "end": "2026-08-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        "previous": {
+          "value": 11720000000,
+          "start": "2025-06-01",
+          "end": "2025-08-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        "change": -0.04325938566552901
+      },
+      "netIncome": {
+        "id": "netIncome",
+        "latest": {
+          "value": 712000000,
+          "start": "2026-06-01",
+          "end": "2026-08-31",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        "previous": {
+          "value": 727000000,
+          "start": "2025-06-01",
+          "end": "2025-08-31",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        "change": -0.02063273727647868
+      }
+    },
+    "balance": {
+      "cash": {
+        "id": "cash",
+        "latest": {
+          "value": 6903000000,
+          "end": "2026-08-31",
+          "tag": "CashAndCashEquivalentsAtCarryingValue",
+          "label": "cash and cash equivalents",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        "previous": {
+          "value": 7024000000,
+          "end": "2025-08-31",
+          "tag": "CashAndCashEquivalentsAtCarryingValue",
+          "label": "cash and cash equivalents",
+          "source": {
+            "label": "10-Q filed October 1, 2025",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018725000097/nke-20250831.htm",
+            "form": "10-Q",
+            "filed": "2025-10-01"
+          }
+        },
+        "change": -0.017226651480637813
+      },
+      "longTermDebt": {
+        "id": "longTermDebt",
+        "latest": {
+          "value": 5893000000,
+          "end": "2026-08-31",
+          "tag": "LongTermDebtNoncurrent",
+          "label": "long-term debt due after the next 12 months",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        "previous": {
+          "value": 7996000000,
+          "end": "2025-08-31",
+          "tag": "LongTermDebtNoncurrent",
+          "label": "long-term debt due after the next 12 months",
+          "source": {
+            "label": "10-Q filed October 1, 2025",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018725000097/nke-20250831.htm",
+            "form": "10-Q",
+            "filed": "2025-10-01"
+          }
+        },
+        "change": -0.26300650325162583
+      },
+      "equity": {
+        "id": "equity",
+        "latest": {
+          "value": 15220000000,
+          "end": "2026-08-31",
+          "tag": "StockholdersEquity",
+          "label": "shareholders' equity",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        "previous": {
+          "value": 13468000000,
+          "end": "2025-08-31",
+          "tag": "StockholdersEquity",
+          "label": "shareholders' equity",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        "change": 0.1300861300861301
+      },
+      "assets": {
+        "id": "assets",
+        "latest": {
+          "value": 37794000000,
+          "end": "2026-08-31",
+          "tag": "Assets",
+          "label": "total assets",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        "previous": {
+          "value": 37334000000,
+          "end": "2025-08-31",
+          "tag": "Assets",
+          "label": "total assets",
+          "source": {
+            "label": "10-Q filed October 1, 2025",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018725000097/nke-20250831.htm",
+            "form": "10-Q",
+            "filed": "2025-10-01"
+          }
+        },
+        "change": 0.012321208549847324
+      },
+      "currentAssets": {
+        "id": "currentAssets",
+        "latest": {
+          "value": 23673000000,
+          "end": "2026-08-31",
+          "tag": "AssetsCurrent",
+          "label": "current assets",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        "previous": {
+          "value": 23898000000,
+          "end": "2025-08-31",
+          "tag": "AssetsCurrent",
+          "label": "current assets",
+          "source": {
+            "label": "10-Q filed October 1, 2025",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018725000097/nke-20250831.htm",
+            "form": "10-Q",
+            "filed": "2025-10-01"
+          }
+        },
+        "change": -0.00941501380868692
+      },
+      "currentLiabilities": {
+        "id": "currentLiabilities",
+        "latest": {
+          "value": 11409000000,
+          "end": "2026-08-31",
+          "tag": "LiabilitiesCurrent",
+          "label": "current liabilities",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        "previous": {
+          "value": 10911000000,
+          "end": "2025-08-31",
+          "tag": "LiabilitiesCurrent",
+          "label": "current liabilities",
+          "source": {
+            "label": "10-Q filed October 1, 2025",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018725000097/nke-20250831.htm",
+            "form": "10-Q",
+            "filed": "2025-10-01"
+          }
+        },
+        "change": 0.04564201264778664
+      },
+      "liabilities": {
+        "id": "liabilities",
+        "latest": {
+          "value": 22574000000,
+          "end": "2026-08-31",
+          "tag": "LiabilitiesAndStockholdersEquity minus StockholdersEquity",
+          "label": "total liabilities (worked out as liabilities and equity, minus equity, from the balance sheet)",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        "previous": {
+          "value": 23866000000,
+          "end": "2025-08-31",
+          "tag": "LiabilitiesAndStockholdersEquity minus StockholdersEquity",
+          "label": "total liabilities (worked out as liabilities and equity, minus equity, from the balance sheet)",
+          "source": {
+            "label": "10-Q filed October 1, 2025",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018725000097/nke-20250831.htm",
+            "form": "10-Q",
+            "filed": "2025-10-01"
+          }
+        },
+        "change": -0.05413559037961954
+      }
+    },
+    "margins": {
+      "periodEnd": "2026-05-31",
+      "gross": 0.42913487650329757,
+      "net": 0.06698564593301436
+    },
+    "marginHistory": [
+      {
+        "end": "2022-05-31",
+        "gross": 0.4598372939413402,
+        "net": 0.12943695140226932
+      },
+      {
+        "end": "2023-05-31",
+        "gross": 0.43524610969014194,
+        "net": 0.09899056953745826
+      },
+      {
+        "end": "2024-05-31",
+        "gross": 0.445601806783225,
+        "net": 0.11097698687745804
+      },
+      {
+        "end": "2025-05-31",
+        "gross": 0.42734673605562634,
+        "net": 0.06951132609212032
+      },
+      {
+        "end": "2026-05-31",
+        "gross": 0.42913487650329757,
+        "net": 0.06698564593301436
+      }
+    ],
+    "revenueHistory": [
+      {
+        "value": 46710000000,
+        "start": "2021-06-01",
+        "end": "2022-05-31",
+        "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "revenue",
+        "source": {
+          "label": "10-K filed July 25, 2024",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018724000044/nke-20240531.htm",
+          "form": "10-K",
+          "filed": "2024-07-25"
+        }
+      },
+      {
+        "value": 51217000000,
+        "start": "2022-06-01",
+        "end": "2023-05-31",
+        "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "revenue",
+        "source": {
+          "label": "10-K filed July 17, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018725000047/nke-20250531.htm",
+          "form": "10-K",
+          "filed": "2025-07-17"
+        }
+      },
+      {
+        "value": 51362000000,
+        "start": "2023-06-01",
+        "end": "2024-05-31",
+        "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "revenue",
+        "source": {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      },
+      {
+        "value": 46309000000,
+        "start": "2024-06-01",
+        "end": "2025-05-31",
+        "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "revenue",
+        "source": {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      },
+      {
+        "value": 46398000000,
+        "start": "2025-06-01",
+        "end": "2026-05-31",
+        "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "revenue",
+        "source": {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      }
+    ],
+    "ratios": {
+      "freeCashFlow": {
+        "value": 2184000000,
+        "end": "2026-05-31",
+        "figures": [
+          {
+            "value": 2868000000,
+            "start": "2025-06-01",
+            "end": "2026-05-31",
+            "tag": "NetCashProvidedByUsedInOperatingActivities",
+            "label": "cash from operations",
+            "source": {
+              "label": "10-K filed July 15, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+              "form": "10-K",
+              "filed": "2026-07-15"
+            }
+          },
+          {
+            "value": 684000000,
+            "start": "2025-06-01",
+            "end": "2026-05-31",
+            "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+            "label": "spending on buildings and equipment",
+            "source": {
+              "label": "10-K filed July 15, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+              "form": "10-K",
+              "filed": "2026-07-15"
+            }
+          }
+        ]
+      },
+      "currentRatio": {
+        "value": 2.0749408361819617,
+        "end": "2026-08-31",
+        "figures": [
+          {
+            "value": 23673000000,
+            "end": "2026-08-31",
+            "tag": "AssetsCurrent",
+            "label": "current assets",
+            "source": {
+              "label": "10-Q filed October 2, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+              "form": "10-Q",
+              "filed": "2026-10-02"
+            }
+          },
+          {
+            "value": 11409000000,
+            "end": "2026-08-31",
+            "tag": "LiabilitiesCurrent",
+            "label": "current liabilities",
+            "source": {
+              "label": "10-Q filed October 2, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+              "form": "10-Q",
+              "filed": "2026-10-02"
+            }
+          }
+        ]
+      },
+      "assetsToLiabilities": {
+        "value": 1.6742269867989723,
+        "end": "2026-08-31",
+        "figures": [
+          {
+            "value": 37794000000,
+            "end": "2026-08-31",
+            "tag": "Assets",
+            "label": "total assets",
+            "source": {
+              "label": "10-Q filed October 2, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+              "form": "10-Q",
+              "filed": "2026-10-02"
+            }
+          },
+          {
+            "value": 22574000000,
+            "end": "2026-08-31",
+            "tag": "LiabilitiesAndStockholdersEquity minus StockholdersEquity",
+            "label": "total liabilities (worked out as liabilities and equity, minus equity, from the balance sheet)",
+            "source": {
+              "label": "10-Q filed October 2, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+              "form": "10-Q",
+              "filed": "2026-10-02"
+            }
+          }
+        ]
+      },
+      "debtToEquity": {
+        "value": 0.38718791064388963,
+        "end": "2026-08-31",
+        "figures": [
+          {
+            "value": 5893000000,
+            "end": "2026-08-31",
+            "tag": "LongTermDebtNoncurrent",
+            "label": "long-term debt due after the next 12 months",
+            "source": {
+              "label": "10-Q filed October 2, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+              "form": "10-Q",
+              "filed": "2026-10-02"
+            }
+          },
+          {
+            "value": 15220000000,
+            "end": "2026-08-31",
+            "tag": "StockholdersEquity",
+            "label": "shareholders' equity",
+            "source": {
+              "label": "10-Q filed October 2, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+              "form": "10-Q",
+              "filed": "2026-10-02"
+            }
+          }
+        ]
+      },
+      "returnOnEquity": {
+        "value": 0.2213832894080775,
+        "end": "2026-05-31",
+        "figures": [
+          {
+            "value": 3108000000,
+            "start": "2025-06-01",
+            "end": "2026-05-31",
+            "tag": "NetIncomeLoss",
+            "label": "net income",
+            "source": {
+              "label": "10-K filed July 15, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+              "form": "10-K",
+              "filed": "2026-07-15"
+            }
+          },
+          {
+            "value": 14865000000,
+            "end": "2026-05-31",
+            "tag": "StockholdersEquity",
+            "label": "shareholders' equity",
+            "source": {
+              "label": "10-Q filed October 2, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+              "form": "10-Q",
+              "filed": "2026-10-02"
+            }
+          },
+          {
+            "value": 13213000000,
+            "end": "2025-05-31",
+            "tag": "StockholdersEquity",
+            "label": "shareholders' equity",
+            "source": {
+              "label": "10-Q filed October 2, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+              "form": "10-Q",
+              "filed": "2026-10-02"
+            }
+          }
+        ]
+      }
+    },
+    "omitted": [
+      {
+        "id": "operatingIncome",
+        "period": "annual",
+        "reason": "not-reported"
+      },
+      {
+        "id": "acquisitions",
+        "period": "annual",
+        "reason": "stale"
+      }
+    ]
+  },
+  "statements": [
+    {
+      "id": "revenue-year",
+      "section": "growth",
+      "text": "[[revenue|Revenue]] was about the same as the year before, at $46.4 billion in the year ended May 31, 2026.",
+      "figures": [
+        {
+          "value": 46398000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 46309000000,
+          "start": "2024-06-01",
+          "end": "2025-05-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "id": "revenue-quarter",
+      "section": "quarter",
+      "text": "In the [[quarter|quarter]] ended August 31, 2026, revenue was $11.2 billion, down 4.3% from the same quarter a year earlier.",
+      "figures": [
+        {
+          "value": 11213000000,
+          "start": "2026-06-01",
+          "end": "2026-08-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        {
+          "value": 11720000000,
+          "start": "2025-06-01",
+          "end": "2025-08-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed October 2, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+          "form": "10-Q",
+          "filed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "net-income-year",
+      "section": "profit",
+      "text": "[[net-income|Net income]], the profit left after all costs and taxes, fell 3.4% to $3.1 billion in the year ended May 31, 2026.",
+      "figures": [
+        {
+          "value": 3108000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 3219000000,
+          "start": "2024-06-01",
+          "end": "2025-05-31",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "id": "gross-margin",
+      "section": "profit",
+      "text": "After paying for the products it sold, the company kept about $43 of every $100 of sales. This is called its [[gross-margin|gross margin]].",
+      "figures": [
+        {
+          "value": 19911000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "GrossProfit",
+          "label": "gross profit",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 46398000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "id": "net-margin",
+      "section": "profit",
+      "text": "Out of every $100 of sales, about $7 was left as profit after all costs and taxes. This is called its [[profit-margin|profit margin]].",
+      "figures": [
+        {
+          "value": 3108000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 46398000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "id": "operating-cash-flow",
+      "section": "profit",
+      "text": "Its day-to-day business brought in $2.9 billion of cash in the year ended May 31, 2026. This is called [[cash-from-operations|cash from operations]].",
+      "figures": [
+        {
+          "value": 2868000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "label": "cash from operations",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "id": "cash",
+      "section": "cashAndDebt",
+      "text": "On August 31, 2026, the company had $6.9 billion in [[cash-and-equivalents|cash and cash equivalents]], money it can use quickly.",
+      "figures": [
+        {
+          "value": 6903000000,
+          "end": "2026-08-31",
+          "tag": "CashAndCashEquivalentsAtCarryingValue",
+          "label": "cash and cash equivalents",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed October 2, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+          "form": "10-Q",
+          "filed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "long-term-debt",
+      "section": "cashAndDebt",
+      "text": "On August 31, 2026, it owed $5.9 billion in [[long-term-debt|long-term debt due after the next 12 months]].",
+      "figures": [
+        {
+          "value": 5893000000,
+          "end": "2026-08-31",
+          "tag": "LongTermDebtNoncurrent",
+          "label": "long-term debt due after the next 12 months",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed October 2, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+          "form": "10-Q",
+          "filed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "cash-vs-debt",
+      "section": "cashAndDebt",
+      "text": "On that date it held more in cash than it owed in long-term debt.",
+      "figures": [
+        {
+          "value": 6903000000,
+          "end": "2026-08-31",
+          "tag": "CashAndCashEquivalentsAtCarryingValue",
+          "label": "cash and cash equivalents",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        {
+          "value": 5893000000,
+          "end": "2026-08-31",
+          "tag": "LongTermDebtNoncurrent",
+          "label": "long-term debt due after the next 12 months",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed October 2, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+          "form": "10-Q",
+          "filed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "current-ratio",
+      "section": "health",
+      "text": "On August 31, 2026, the company had $23.7 billion in cash and other assets it expects to use within a year, against $11.4 billion of bills due within a year. That is about $2.07 for every $1 it owes soon, more than enough to cover them. This is its [[current-ratio|current ratio]].",
+      "figures": [
+        {
+          "value": 23673000000,
+          "end": "2026-08-31",
+          "tag": "AssetsCurrent",
+          "label": "current assets",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        {
+          "value": 11409000000,
+          "end": "2026-08-31",
+          "tag": "LiabilitiesCurrent",
+          "label": "current liabilities",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed October 2, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+          "form": "10-Q",
+          "filed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "assets-vs-liabilities",
+      "section": "health",
+      "text": "It owned $37.8 billion in [[assets|assets]] and owed $22.6 billion in [[total-liabilities|total liabilities]], so it owned about $1.67 for every $1 it owed.",
+      "figures": [
+        {
+          "value": 37794000000,
+          "end": "2026-08-31",
+          "tag": "Assets",
+          "label": "total assets",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        {
+          "value": 22574000000,
+          "end": "2026-08-31",
+          "tag": "LiabilitiesAndStockholdersEquity minus StockholdersEquity",
+          "label": "total liabilities (worked out as liabilities and equity, minus equity, from the balance sheet)",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed October 2, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+          "form": "10-Q",
+          "filed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "debt-to-equity",
+      "section": "health",
+      "text": "For every $1 of [[shareholders-equity|shareholders' equity]] ($15.2 billion), it owed about $0.39 in long-term debt ($5.9 billion). This is its [[debt-to-equity|debt-to-equity ratio]].",
+      "figures": [
+        {
+          "value": 5893000000,
+          "end": "2026-08-31",
+          "tag": "LongTermDebtNoncurrent",
+          "label": "long-term debt due after the next 12 months",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        {
+          "value": 15220000000,
+          "end": "2026-08-31",
+          "tag": "StockholdersEquity",
+          "label": "shareholders' equity",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed October 2, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+          "form": "10-Q",
+          "filed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "free-cash-flow",
+      "section": "cashFlow",
+      "text": "Its business brought in $2.9 billion of cash in the year ended May 31, 2026 and spent $684 million on [[capital-expenditure|buildings and equipment]], leaving $2.2 billion of [[free-cash-flow|free cash flow]]: money it could use for dividends, buybacks, paying down debt or growing.",
+      "figures": [
+        {
+          "value": 2868000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "label": "cash from operations",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 684000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "label": "spending on buildings and equipment",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "id": "fcf-vs-profit",
+      "section": "cashFlow",
+      "text": "Free cash flow was smaller than its [[net-income|net income]] ($3.1 billion) that year, meaning less of its accounting profit turned into spare cash.",
+      "figures": [
+        {
+          "value": 2868000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "label": "cash from operations",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 684000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "label": "spending on buildings and equipment",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 3108000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "id": "capital-allocation",
+      "section": "capital",
+      "text": "In the year ended May 31, 2026, the company spent $146 million buying back its own shares ([[share-buyback|buybacks]]), paid $2.4 billion in [[dividend|dividends]] to shareholders and invested $684 million in buildings and equipment.",
+      "figures": [
+        {
+          "value": 146000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "PaymentsForRepurchaseOfCommonStock",
+          "label": "share buybacks",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 2407000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "PaymentsOfDividendsCommonStock",
+          "label": "dividends paid",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 684000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "label": "spending on buildings and equipment",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "id": "return-on-equity",
+      "section": "returns",
+      "text": "It earned about $22 of profit for every $100 of [[shareholders-equity|shareholders' equity]] in the year ended May 31, 2026. This is its [[return-on-equity|return on equity]] (22.1%).",
+      "figures": [
+        {
+          "value": 3108000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 14865000000,
+          "end": "2026-05-31",
+          "tag": "StockholdersEquity",
+          "label": "shareholders' equity",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        {
+          "value": 13213000000,
+          "end": "2025-05-31",
+          "tag": "StockholdersEquity",
+          "label": "shareholders' equity",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        },
+        {
+          "label": "10-Q filed October 2, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+          "form": "10-Q",
+          "filed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "eps",
+      "section": "returns",
+      "text": "[[eps|Earnings per share]] (diluted) fell 2.8% to $2.10 in the year ended May 31, 2026.",
+      "figures": [
+        {
+          "value": 2.1,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "EarningsPerShareDiluted",
+          "label": "diluted earnings per share",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 2.16,
+          "start": "2024-06-01",
+          "end": "2025-05-31",
+          "tag": "EarningsPerShareDiluted",
+          "label": "diluted earnings per share",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "id": "margin-trend",
+      "section": "returns",
+      "text": "Over the 5 years to May 31, 2026, its [[gross-margin|gross margin]] fell to 42.9%, from 46%.",
+      "figures": [
+        {
+          "value": 46710000000,
+          "start": "2021-06-01",
+          "end": "2022-05-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed July 25, 2024",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018724000044/nke-20240531.htm",
+            "form": "10-K",
+            "filed": "2024-07-25"
+          }
+        },
+        {
+          "value": 46398000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 25, 2024",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018724000044/nke-20240531.htm",
+          "form": "10-K",
+          "filed": "2024-07-25"
+        },
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "id": "s-growth",
+      "section": "summary",
+      "text": "In the year to May 2026, it made $46.4 billion in [[revenue|sales]], about the same as the year before. Sales in its latest three months (to August 2026) were down 4.3% on a year earlier.",
+      "figures": [
+        {
+          "value": 46398000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 46309000000,
+          "start": "2024-06-01",
+          "end": "2025-05-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 11213000000,
+          "start": "2026-06-01",
+          "end": "2026-08-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        {
+          "value": 11720000000,
+          "start": "2025-06-01",
+          "end": "2025-08-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        },
+        {
+          "label": "10-Q filed October 2, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+          "form": "10-Q",
+          "filed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "s-profit",
+      "section": "summary",
+      "text": "In the year to May 2026, it kept $3.1 billion as [[net-income|profit]] after paying all its costs and taxes: about $7 of every $100 it made in sales, its [[profit-margin|profit margin]].",
+      "figures": [
+        {
+          "value": 3108000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 46398000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "id": "s-bills",
+      "section": "summary",
+      "text": "On August 31, 2026, for every $1 of bills due within a year, it had about $2.07 in cash and other things it expected to turn into cash in that time: more than enough to cover them. This is its [[current-ratio|current ratio]].",
+      "figures": [
+        {
+          "value": 23673000000,
+          "end": "2026-08-31",
+          "tag": "AssetsCurrent",
+          "label": "current assets",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        {
+          "value": 11409000000,
+          "end": "2026-08-31",
+          "tag": "LiabilitiesCurrent",
+          "label": "current liabilities",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed October 2, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+          "form": "10-Q",
+          "filed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "s-debt",
+      "section": "summary",
+      "text": "On August 31, 2026, it owed $5.9 billion in [[long-term-debt|loans and bonds]] not due for repayment within a year and held $6.9 billion in [[cash-and-equivalents|cash]].",
+      "figures": [
+        {
+          "value": 5893000000,
+          "end": "2026-08-31",
+          "tag": "LongTermDebtNoncurrent",
+          "label": "long-term debt due after the next 12 months",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        },
+        {
+          "value": 6903000000,
+          "end": "2026-08-31",
+          "tag": "CashAndCashEquivalentsAtCarryingValue",
+          "label": "cash and cash equivalents",
+          "source": {
+            "label": "10-Q filed October 2, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+            "form": "10-Q",
+            "filed": "2026-10-02"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed October 2, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+          "form": "10-Q",
+          "filed": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "s-cash",
+      "section": "summary",
+      "text": "In the year to May 2026, its everyday business brought in $2.9 billion in [[cash-from-operations|cash]]. After paying for [[capital-expenditure|new buildings and equipment]], $2.2 billion was [[free-cash-flow|left over]].",
+      "figures": [
+        {
+          "value": 2868000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "label": "cash from operations",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 684000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "label": "spending on buildings and equipment",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "id": "s-spending",
+      "section": "summary",
+      "text": "In the year to May 2026, its biggest uses of money were: paying [[dividend|dividends]] to shareholders: $2.4 billion; [[capital-expenditure|new buildings and equipment]]: $684 million; and [[share-buyback|buying back its own shares]]: $146 million.",
+      "figures": [
+        {
+          "value": 2407000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "PaymentsOfDividendsCommonStock",
+          "label": "dividends paid",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 684000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "label": "spending on buildings and equipment",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        },
+        {
+          "value": 146000000,
+          "start": "2025-06-01",
+          "end": "2026-05-31",
+          "tag": "PaymentsForRepurchaseOfCommonStock",
+          "label": "share buybacks",
+          "source": {
+            "label": "10-K filed July 15, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+            "form": "10-K",
+            "filed": "2026-07-15"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed July 15, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+          "form": "10-K",
+          "filed": "2026-07-15"
+        }
+      ]
+    }
+  ],
+  "crossCheck": [
+    {
+      "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "end": "2026-05-31",
+      "value": 46398000000,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "end": "2025-05-31",
+      "value": 46309000000,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "GrossProfit",
+      "end": "2026-05-31",
+      "value": 19911000000,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "GrossProfit",
+      "end": "2025-05-31",
+      "value": 19790000000,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "NetIncomeLoss",
+      "end": "2026-05-31",
+      "value": 3108000000,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "NetIncomeLoss",
+      "end": "2025-05-31",
+      "value": 3219000000,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "EarningsPerShareDiluted",
+      "end": "2026-05-31",
+      "value": 2.1,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "EarningsPerShareDiluted",
+      "end": "2025-05-31",
+      "value": 2.16,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "NetCashProvidedByUsedInOperatingActivities",
+      "end": "2026-05-31",
+      "value": 2868000000,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "NetCashProvidedByUsedInOperatingActivities",
+      "end": "2025-05-31",
+      "value": 3698000000,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "end": "2026-05-31",
+      "value": 684000000,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "end": "2025-05-31",
+      "value": 430000000,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "PaymentsOfDividendsCommonStock",
+      "end": "2026-05-31",
+      "value": 2407000000,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "PaymentsOfDividendsCommonStock",
+      "end": "2025-05-31",
+      "value": 2300000000,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "PaymentsForRepurchaseOfCommonStock",
+      "end": "2026-05-31",
+      "value": 146000000,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "PaymentsForRepurchaseOfCommonStock",
+      "end": "2025-05-31",
+      "value": 2985000000,
+      "filing": "10-K filed July 15, 2026",
+      "found": true
+    },
+    {
+      "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "end": "2026-08-31",
+      "value": 11213000000,
+      "filing": "10-Q filed October 2, 2026",
+      "found": true
+    },
+    {
+      "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "end": "2025-08-31",
+      "value": 11720000000,
+      "filing": "10-Q filed October 2, 2026",
+      "found": true
+    },
+    {
+      "tag": "NetIncomeLoss",
+      "end": "2026-08-31",
+      "value": 712000000,
+      "filing": "10-Q filed October 2, 2026",
+      "found": true
+    },
+    {
+      "tag": "NetIncomeLoss",
+      "end": "2025-08-31",
+      "value": 727000000,
+      "filing": "10-Q filed October 2, 2026",
+      "found": true
+    },
+    {
+      "tag": "CashAndCashEquivalentsAtCarryingValue",
+      "end": "2026-08-31",
+      "value": 6903000000,
+      "filing": "10-Q filed October 2, 2026",
+      "found": true
+    },
+    {
+      "tag": "LongTermDebtNoncurrent",
+      "end": "2026-08-31",
+      "value": 5893000000,
+      "filing": "10-Q filed October 2, 2026",
+      "found": true
+    },
+    {
+      "tag": "StockholdersEquity",
+      "end": "2026-08-31",
+      "value": 15220000000,
+      "filing": "10-Q filed October 2, 2026",
+      "found": true
+    },
+    {
+      "tag": "StockholdersEquity",
+      "end": "2025-08-31",
+      "value": 13468000000,
+      "filing": "10-Q filed October 2, 2026",
+      "found": true
+    },
+    {
+      "tag": "Assets",
+      "end": "2026-08-31",
+      "value": 37794000000,
+      "filing": "10-Q filed October 2, 2026",
+      "found": true
+    },
+    {
+      "tag": "AssetsCurrent",
+      "end": "2026-08-31",
+      "value": 23673000000,
+      "filing": "10-Q filed October 2, 2026",
+      "found": true
+    },
+    {
+      "tag": "LiabilitiesCurrent",
+      "end": "2026-08-31",
+      "value": 11409000000,
+      "filing": "10-Q filed October 2, 2026",
+      "found": true
+    },
+    {
+      "tag": "LiabilitiesAndStockholdersEquity minus StockholdersEquity",
+      "end": "2026-08-31",
+      "value": 22574000000,
+      "filing": "10-Q filed October 2, 2026",
+      "found": false
+    }
+  ],
+  "debtTags": [
+    {
+      "tag": "AvailableForSaleSecuritiesDebtMaturitiesAfterOneThroughFiveYearsFairValue",
+      "end": "2026-08-31",
+      "value": 866000000
+    },
+    {
+      "tag": "AvailableForSaleSecuritiesDebtMaturitiesWithinOneYearFairValue",
+      "end": "2026-08-31",
+      "value": 599000000
+    },
+    {
+      "tag": "LongTermDebtCurrent",
+      "end": "2026-08-31",
+      "value": 2000000000
+    },
+    {
+      "tag": "LongTermDebtFairValue",
+      "end": "2026-08-31",
+      "value": 6700000000
+    },
+    {
+      "tag": "LongTermDebtNoncurrent",
+      "end": "2026-08-31",
+      "value": 5893000000
+    },
+    {
+      "tag": "DebtSecuritiesAvailableForSaleExcludingAccruedInterestCurrent",
+      "end": "2026-08-31",
+      "value": 1465000000
+    },
+    {
+      "tag": "LongTermDebt",
+      "end": "2026-05-31",
+      "value": 7942000000
+    },
+    {
+      "tag": "LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths",
+      "end": "2026-05-31",
+      "value": 2000000000
+    },
+    {
+      "tag": "LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFive",
+      "end": "2026-05-31",
+      "value": 0
+    },
+    {
+      "tag": "LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFour",
+      "end": "2026-05-31",
+      "value": 1500000000
+    },
+    {
+      "tag": "LongTermDebtMaturitiesRepaymentsOfPrincipalInYearThree",
+      "end": "2026-05-31",
+      "value": 0
+    },
+    {
+      "tag": "LongTermDebtMaturitiesRepaymentsOfPrincipalInYearTwo",
+      "end": "2026-05-31",
+      "value": 0
+    },
+    {
+      "tag": "ShortTermBorrowings",
+      "end": "2026-02-28",
+      "value": 0
+    },
+    {
+      "tag": "AvailableForSaleSecuritiesDebtSecuritiesCurrent",
+      "end": "2022-02-28",
+      "value": 4763000000
+    },
+    {
+      "tag": "CommercialPaper",
+      "end": "2015-05-31",
+      "value": 0
+    }
+  ],
+  "profile": {
+    "wikidataUrl": "https://www.wikidata.org/entity/Q483915",
+    "ceo": "Elliott Hill",
+    "founded": "1964",
+    "founders": [
+      "Phil Knight",
+      "Bill Bowerman"
+    ],
+    "headquarters": "Beaverton",
+    "employees": {
+      "count": 76700,
+      "asOf": "2019"
+    },
+    "website": "https://www.nike.com/",
+    "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Nike%20logo%201978.svg?width=256",
+    "wikipedia": {
+      "title": "Nike, Inc.",
+      "url": "https://en.wikipedia.org/wiki/Nike%2C_Inc.",
+      "extract": "Nike, Inc. is an American athletic footwear and apparel corporation headquartered near Beaverton, Oregon. It is the world's largest supplier of athletic shoes and apparel and a major manufacturer of sports equipment, with revenue in excess of US$46 billion in its fiscal year 2022."
+    },
+    "photos": [
+      {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Nike_Campus%2C_Beaverton_-_DPLA_-_ffa63f1bbaf5cd21aeada3d3978db2b0.jpg/960px-Nike_Campus%2C_Beaverton_-_DPLA_-_ffa63f1bbaf5cd21aeada3d3978db2b0.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 960,
+        "height": 641,
+        "caption": "The Nike Campus in Beaverton",
+        "credit": "Gary Halvorson, Oregon State Archives",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Nike_Campus,_Beaverton_-_DPLA_-_ffa63f1bbaf5cd21aeada3d3978db2b0.jpg"
+      },
+      {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Knight_and_Bowerman.jpg/960px-Knight_and_Bowerman.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 960,
+        "height": 931,
+        "caption": "Coach BILL BOWERMAN gives last minute advice to PHIL KNIGHT, MARK ROBBINS, and STEVE SCHELL",
+        "credit": "University of Oregon",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:Knight_and_Bowerman.jpg"
+      },
+      {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Nike_Flagship_-_NYC_%2848155560636%29.jpg/960px-Nike_Flagship_-_NYC_%2848155560636%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 960,
+        "height": 1280,
+        "caption": "Midtown Manhattan, NYC",
+        "credit": "Ajay Suresh from New York, NY, USA",
+        "license": "CC BY 2.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Nike_Flagship_-_NYC_(48155560636).jpg"
+      },
+      {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Nikeworldheadquarters.jpg/960px-Nikeworldheadquarters.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 960,
+        "height": 629,
+        "caption": "Nike World Headquarters in Beaverton, Oregon, home to Nike, Inc",
+        "credit": "Coolcaesar",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Nikeworldheadquarters.jpg"
+      }
+    ]
+  },
+  "fetchedAt": "2026-10-26T11:51:32.953Z"
+}

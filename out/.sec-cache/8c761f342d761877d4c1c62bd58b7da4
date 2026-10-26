@@ -1,0 +1,8 @@
+{
+  "head" : {
+    "vars" : [ "item", "ceoLabel", "inception", "hqLabel", "founderLabel", "employees", "empDate", "website", "logo", "article" ]
+  },
+  "results" : {
+    "bindings" : [ ]
+  }
+}

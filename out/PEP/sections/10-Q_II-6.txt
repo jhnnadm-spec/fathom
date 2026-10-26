@@ -1,0 +1,58 @@
+Exhibits
+Source: https://www.sec.gov/Archives/edgar/data/77476/000007747626000048/pep-20260905.htm
+
+ITEM 6. Exhibits.
+
+See “Index to Exhibits” on page 54.
+
+53
+
+Table of Contents
+
+INDEX TO EXHIBITS
+ITEM 6
+
+EXHIBIT
+Exhibit 3.1
+Amended and Restated Articles of Incorporation of PepsiCo, Inc., effective as of May 1, 2019, which are incorporated herein by reference to Exhibit 3.1 to PepsiCo, Inc.’s Current Report on Form 8-K filed with the Securities and Exchange Commission on May 3, 2019.
+
+Exhibit 3.2
+By-Laws of PepsiCo, Inc., as amended and restated, effective as of September 20, 2024, which are incorporated herein by reference to Exhibit 3.2 to PepsiCo, Inc.’s Current Report on Form 8-K filed with the Securities and Exchange Commission on September 20, 2024.
+
+Exhibit 15
+Letter re: Unaudited Interim Financial Information.
+
+Exhibit 22
+Subsidiary Issuer of Guaranteed Securities.
+
+Exhibit 31
+Certifications of Chief Executive Officer and Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.
+
+Exhibit 32
+Certifications of Chief Executive Officer and Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.
+
+Exhibit 101 The following materials from PepsiCo, Inc.’s Quarterly Report on Form 10-Q for the quarter ended September 5, 2026 formatted in iXBRL (Inline eXtensible Business Reporting Language): (i) the Condensed Consolidated Statement of Income, (ii) the Condensed Consolidated Statement of Comprehensive Income, (iii) the Condensed Consolidated Statement of Cash Flows, (iv) the Condensed Consolidated Balance Sheet, (v) the Condensed Consolidated Statement of Equity, and (vi) Notes to the Condensed Consolidated Financial Statements.
+Exhibit 104 The cover page from the Company’s Quarterly Report on Form 10-Q for the quarter ended September 5, 2026, formatted in iXBRL and contained in Exhibit 101.
+
+54
+
+Table of Contents
+
+SIGNATURES
+Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.
+
+PepsiCo, Inc.
+
+(Registrant)
+
+Date: October 7, 2026 /s/ Christine E. Tammara
+Christine E. Tammara
+Senior Vice President and Controller
+(Principal Accounting Officer)
+
+Date: October 7, 2026 /s/ David Flavell
+David Flavell
+Executive Vice President, General Counsel and Corporate Secretary
+(Duly Authorized Officer)
+
+55

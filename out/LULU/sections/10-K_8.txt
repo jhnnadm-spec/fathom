@@ -1,0 +1,1254 @@
+Financial Statements
+Source: https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm
+
+ITEM 8. FINANCIAL STATEMENTS
+lululemon athletica inc.
+INDEX TO CONSOLIDATED FINANCIAL STATEMENTS
+
+Report of Independent Registered Public Accounting Firm (PCAOB ID 271)
+42
+
+Consolidated Balance Sheets
+44
+
+Consolidated Statements of Operations and Comprehensive Income
+45
+
+Consolidated Statements of Stockholders' Equity
+46
+
+Consolidated Statements of Cash Flows
+47
+
+Index for Notes to the Consolidated Financial Statements
+48
+
+41
+
+Table of Contents
+
+REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM
+To the Board of Directors and Stockholders of lululemon athletica inc.
+Opinions on the Financial Statements and Internal Control over Financial Reporting
+We have audited the accompanying consolidated balance sheets of lululemon athletica inc. and its subsidiaries (the Company) as of February 1, 2026 and February 2, 2025, and the related consolidated statements of operations and comprehensive income, of stockholders’ equity and of cash flows for the 52-week year ended February 1, 2026, the 53-week year ended February 2, 2025, and the 52-week year ended January 28, 2024, including the related notes (collectively referred to as the consolidated financial statements). We also have audited the Company’s internal control over financial reporting as of February 1, 2026, based on criteria established in Internal Control ‒ Integrated Framework (2013) issued by the Committee of Sponsoring Organizations of the Treadway Commission (COSO).
+In our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of the Company as of February 1, 2026 and February 2, 2025, and the results of its operations and its cash flows for the 52-week year ended February 1, 2026, the 53-week year ended February 2, 2025, and the 52-week year ended January 28, 2024 in conformity with accounting principles generally accepted in the United States of America. Also in our opinion, the Company maintained, in all material respects, effective internal control over financial reporting as of February 1, 2026, based on criteria established in Internal Control ‒ Integrated Framework (2013) issued by the COSO.
+Basis for Opinions
+The Company’s management is responsible for these consolidated financial statements, for maintaining effective internal control over financial reporting, and for its assessment of the effectiveness of internal control over financial reporting, included in Management’s Annual Report on Internal Control over Financial Reporting appearing under Item 9A of the Company’s 2025 Annual Report on Form 10-K. Our responsibility is to express opinions on the Company’s consolidated financial statements and on the Company’s internal control over financial reporting based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.
+We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement, whether due to error or fraud, and whether effective internal control over financial reporting was maintained in all material respects.
+Our audits of the consolidated financial statements included performing procedures to assess the risks of material misstatement of the consolidated financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the consolidated financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the consolidated financial statements. Our audit of internal control over financial reporting included obtaining an understanding of internal control over financial reporting, assessing the risk that a material weakness exists, and testing and evaluating the design and operating effectiveness of internal control based on the assessed risk. Our audits also included performing such other procedures as we considered necessary in the circumstances. We believe that our audits provide a reasonable basis for our opinions.
+Definition and Limitations of Internal Control over Financial Reporting
+A company’s internal control over financial reporting is a process designed to provide reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements for external purposes in accordance with generally accepted accounting principles. A company’s internal control over financial reporting includes those policies and procedures that (i) pertain to the maintenance of records that, in reasonable detail, accurately and fairly reflect the transactions and dispositions of the assets of the company; (ii) provide reasonable assurance that transactions are recorded as necessary to permit preparation of financial statements in accordance with generally accepted accounting principles, and that receipts and expenditures of the company are being made only in accordance with authorizations of management and directors of the company; and (iii) provide reasonable assurance regarding prevention or timely detection of unauthorized acquisition, use, or disposition of the company’s assets that could have a material effect on the financial statements.
+
+42
+
+Table of Contents
+
+Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Also, projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies or procedures may deteriorate.
+Critical Audit Matters
+The critical audit matter communicated below is a matter arising from the current period audit of the consolidated financial statements that was communicated or required to be communicated to the audit committee and that (i) relates to accounts or disclosures that are material to the consolidated financial statements and (ii) involved our especially challenging, subjective, or complex judgments. The communication of critical audit matters does not alter in any way our opinion on the consolidated financial statements, taken as a whole, and we are not, by communicating the critical audit matter below, providing a separate opinion on the critical audit matter or on the accounts or disclosures to which it relates.
+Inventory provision
+As described in Notes 2 and 4 to the consolidated financial statements, inventories are valued at the lower of cost and net realizable value, and management records a provision as necessary to appropriately value inventories that are obsolete, have quality issues, or are damaged. Provision expense is recorded in cost of goods sold. As of February 1, 2026, the Company’s consolidated net inventories balance was $1,701 million inclusive of the inventory provision of $88.8 million. The amount of the inventory provision is equal to the difference between the cost of the inventory and its estimated net realizable value based on assumptions about product quality, damages, future demand, selling prices, and market conditions.
+The principal considerations for our determination that performing procedures relating to the inventory provision is a critical audit matter are the significant judgment by management in determining the estimated net realizable value of inventories that are obsolete, have quality issues, or are damaged, which in turn led to a high degree of auditor judgment, subjectivity, and effort in performing procedures and evaluating audit evidence relating to the inventory provision.
+Addressing the matter involved performing procedures and evaluating audit evidence in connection with forming our overall opinion on the consolidated financial statements. These procedures included testing the effectiveness of controls relating to the review of the inventory provision including the assumptions used. These procedures also included, among others, (i) observing the physical condition of inventories during inventory counts; (ii) evaluating the appropriateness of management’s process for developing the estimates of net realizable value; (iii) testing the reliability of reports used by management by agreeing to the underlying records; (iv) testing the reasonableness of the assumptions about quality, damages, future demand, selling prices and market conditions by considering historical trends and consistency with evidence obtained in other areas of the audit; and (v) corroborating the assumptions with individuals within the product team.
+
+/s/ PricewaterhouseCoopers LLP
+Chartered Professional Accountants
+Vancouver, Canada
+March 17, 2026
+
+We have served as the Company's auditor since 2006.
+43
+
+Table of Contents
+
+lululemon athletica inc.
+CONSOLIDATED BALANCE SHEETS
+(Amounts in thousands, except per share amounts)
+
+February 1,
+2026 February 2, 2025
+ASSETS
+Current assets
+Cash and cash equivalents $ 1,807,202 $ 1,984,336
+Accounts receivable, net 190,657 120,173
+Inventories 1,700,753 1,442,081
+Prepaid and receivable income taxes 352,469 182,253
+Prepaid expenses and other current assets 211,620 251,459
+4,262,701 3,980,302
+Property and equipment, net 2,033,720 1,780,617
+Right-of-use lease assets 1,630,181 1,416,256
+Goodwill 184,911 159,518
+Intangible assets, net 6,283 11,673
+Deferred income tax assets 24,037 17,085
+Other non-current assets 314,910 237,841
+$ 8,456,743 $ 7,603,292
+LIABILITIES AND STOCKHOLDERS' EQUITY
+Current liabilities
+Accounts payable $ 331,421 $ 271,406
+Accrued liabilities and other 662,982 559,463
+Accrued compensation and related expenses 187,887 204,543
+Current lease liabilities 298,724 275,154
+Current income taxes payable 43,948 183,126
+Unredeemed gift card liability 316,632 308,352
+Other current liabilities 45,954 37,586
+1,887,548 1,839,630
+Non-current lease liabilities 1,499,717 1,300,637
+
+Deferred income tax liabilities 52,278 98,188
+Other non-current liabilities 55,360 40,790
+3,494,903 3,279,245
+Commitments and contingencies
+Stockholders' equity
+Undesignated preferred stock, $0.01 par value: 5,000 shares authorized; none issued and outstanding
+— —
+Exchangeable stock, no par value: 60,000 shares authorized; 5,116 and 5,116 issued and outstanding
+— —
+Special voting stock, $0.000005 par value: 60,000 shares authorized; 5,116 and 5,116 issued and outstanding
+— —
+Common stock, $0.005 par value: 400,000 shares authorized; 111,380 and 116,166 issued and outstanding
+557 581
+Additional paid-in capital 669,392 638,190
+Retained earnings 4,522,581 4,109,717
+Accumulated other comprehensive loss (230,690) (424,441)
+4,961,840 4,324,047
+$ 8,456,743 $ 7,603,292
+
+See accompanying notes to the consolidated financial statements
+44
+
+Table of Contents
+
+lululemon athletica inc.
+CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME
+(Amounts in thousands, except per share amounts)
+
+Fiscal Year Ended
+February 1,
+2026 February 2,
+2025 January 28,
+2024
+Net revenue $ 11,102,600 $ 10,588,126 $ 9,619,278
+Cost of goods sold 4,818,468 4,317,315 4,009,873
+Gross profit
+6,284,132 6,270,811 5,609,405
+Selling, general and administrative expenses 4,066,556 3,762,379 3,397,218
+Impairment of assets and restructuring costs — — 74,501
+Amortization of intangible assets 6,961 2,735 5,010
+
+Income from operations 2,210,615 2,505,697 2,132,676
+Other income (expense), net 28,352 70,380 43,059
+Income before income tax expense
+2,238,967 2,576,077 2,175,735
+Income tax expense 659,784 761,461 625,545
+Net income
+$ 1,579,183 $ 1,814,616 $ 1,550,190
+
+Other comprehensive income (loss), net of tax:
+Foreign currency translation adjustment $ 253,160 $ (253,209) $ (23,077)
+Net investment hedge gains (losses) (59,409) 93,024 11,405
+Other comprehensive income (loss), net of tax 193,751 (160,185) (11,672)
+Comprehensive income $ 1,772,934 $ 1,654,431 $ 1,538,518
+
+Basic earnings per share $ 13.27 $ 14.67 $ 12.23
+Diluted earnings per share $ 13.26 $ 14.64 $ 12.20
+Basic weighted-average number of shares outstanding 118,981 123,735 126,726
+Diluted weighted-average number of shares outstanding 119,068 123,935 127,060
+
+See accompanying notes to the consolidated financial statements
+45
+
+Table of Contents
+
+lululemon athletica inc.
+CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY
+(Amounts in thousands)
+
+Exchangeable Stock Special Voting
+Stock Common
+Stock Additional Paid-in Capital Retained Earnings Accumulated Other Comprehensive Loss Total Stockholders' Equity
+
+Shares Shares Par Value Shares Par Value
+Balance as of January 29, 2023 5,116 5,116 $ — 122,205 $ 611 $ 474,645 $ 2,926,127 $ (252,584) $ 3,148,799
+Net income 1,550,190 1,550,190
+Other comprehensive income (loss), net of tax (11,672) (11,672)
+
+Stock-based compensation expense 93,560 93,560
+Common stock issued upon settlement of stock-based compensation 479 2 42,428 42,430
+Shares withheld related to net share settlement of stock-based compensation (96) — (32,574) (32,574)
+Repurchase of common stock, including excise tax (1,482) (7) (2,690) (555,955) (558,652)
+Balance as of January 28, 2024 5,116 5,116 $ — 121,106 $ 606 $ 575,369 $ 3,920,362 $ (264,256) $ 4,232,081
+Net income
+1,814,616 1,814,616
+Other comprehensive income (loss), net of tax (160,185) (160,185)
+
+Stock-based compensation expense 90,011 90,011
+Common stock issued upon settlement of stock-based compensation 300 1 19,812 19,813
+Shares withheld related to net share settlement of stock-based compensation (93) — (35,410) (35,410)
+Repurchase of common stock, including excise tax (5,147) (26) (11,592) (1,625,261) (1,636,879)
+Balance as of February 2, 2025 5,116 5,116 $ — 116,166 $ 581 $ 638,190 $ 4,109,717 $ (424,441) $ 4,324,047
+Net income 1,579,183 1,579,183
+Other comprehensive income (loss), net of tax 193,751 193,751
+
+Stock-based compensation expense 62,203 62,203
+Common stock issued upon settlement of stock-based compensation 276 1 8,376 8,377
+Shares withheld related to net share settlement of stock-based compensation (98) — (27,372) (27,372)
+Repurchase of common stock, including excise tax (4,964) (25) (12,005) (1,166,319) (1,178,349)
+Balance as of February 1, 2026 5,116 5,116 $ — 111,380 $ 557 $ 669,392 $ 4,522,581 $ (230,690) $ 4,961,840
+
+See accompanying notes to the consolidated financial statements
+46
+
+Table of Contents
+
+lululemon athletica inc.
+CONSOLIDATED STATEMENTS OF CASH FLOWS
+(Amounts in thousands)
+Fiscal Year Ended
+February 1,
+2026 February 2,
+2025 January 28,
+2024
+Cash flows from operating activities
+Net income $ 1,579,183 $ 1,814,616 $ 1,550,190
+Adjustments to reconcile net income to net cash provided by operating activities:
+Depreciation and amortization 496,228 446,524 379,384
+lululemon Studio obsolescence provision — — 23,709
+Impairment of assets and restructuring costs — — 74,501
+
+Stock-based compensation expense 62,203 90,011 93,560
+Derecognition of unredeemed gift card liability (37,766) (36,231) (28,547)
+Settlement of derivatives not designated in a hedging relationship (34,552) (47,763) 32,527
+Deferred income taxes (53,379) 57,451 (28,383)
+Changes in operating assets and liabilities:
+Accounts receivable (65,755) 1,626 6,580
+Inventories (188,710) (156,085) 66,584
+Prepaid and receivable income taxes (170,216) (2,031) 1,908
+Prepaid expenses and other current assets 47,779 (71,789) 40,587
+Other non-current assets (70,351) (73,205) (53,280)
+Accounts payable 45,856 (57,044) 177,367
+Accrued liabilities and other 98,421 193,139 (71,734)
+Accrued compensation and related expenses (24,737) (112,110) 70,327
+Current and non-current income taxes payable (150,496) 157,205 (173,196)
+Unredeemed gift card liability 41,253 42,410 84,315
+Right-of-use lease assets and current and non-current lease liabilities 6,884 23,501 37,535
+Other current and non-current liabilities 20,632 2,488 12,230
+Net cash provided by operating activities 1,602,477 2,272,713 2,296,164
+Cash flows from investing activities
+Purchase of property and equipment (680,802) (689,232) (651,865)
+Settlement of net investment hedges 27,205 50,213 (1,609)
+Acquisition, net of cash acquired — (154,146) —
+Other investing activities (8,521) (5,009) (658)
+Net cash used in investing activities (662,118) (798,174) (654,132)
+Cash flows from financing activities
+Proceeds from settlement of stock-based compensation 8,377 19,813 42,430
+Taxes paid related to net share settlement of stock-based compensation (27,372) (35,410) (32,574)
+Repurchase of common stock (1,178,349) (1,636,879) (558,652)
+Other financing activities (11,312) (32) (32)
+Net cash used in financing activities (1,208,656) (1,652,508) (548,828)
+Effect of foreign currency exchange rate changes on cash and cash equivalents 91,163 (81,666) (4,100)
+Increase (decrease) in cash and cash equivalents (177,134) (259,635) 1,089,104
+Cash and cash equivalents, beginning of period $ 1,984,336 $ 2,243,971 $ 1,154,867
+Cash and cash equivalents, end of period $ 1,807,202 $ 1,984,336 $ 2,243,971
+
+See accompanying notes to the consolidated financial statements
+47
+
+Table of Contents
+
+lululemon athletica inc.
+INDEX FOR NOTES TO THE CONSOLIDATED FINANCIAL STATEMENTS
+
+Note 1 Nature of Operations and Basis of Presentation
+49
+
+Note 2 Summary of Significant Accounting Policies
+49
+
+Note 3 Net Revenue
+57
+
+Note 4 Inventories
+58
+
+Note 5 Prepaid Expenses and Other Current Assets
+58
+
+Note 6 Property and Equipment
+58
+
+Note 7 Acquisition
+58
+
+Note 8 Goodwill
+59
+
+Note 9 Intangible Assets
+60
+
+Note 10 Impairment of Assets and Restructuring Costs
+60
+
+Note 11 Other Non-Current Assets
+62
+
+Note 12 Accrued Liabilities and Other
+62
+
+Note 13 Revolving Credit Facilities
+62
+
+Note 14 Supply Chain Financing Program
+63
+
+Note 15 Stockholders' Equity
+63
+
+Note 16 Stock-Based Compensation and Benefit Plans
+63
+
+Note 17 Fair Value Measurement
+66
+
+Note 18 Derivative Financial Instruments
+66
+
+Note 19 Leases
+67
+
+Note 20 Income Taxes
+69
+
+Note 21 Earnings Per Share
+72
+
+Note 22 Commitments and Contingencies
+72
+
+Note 23 Supplemental Financial Information
+73
+
+Note 24 Segmented Information
+73
+
+48
+
+Table of Contents
+
+lululemon athletica inc.
+NOTES TO THE CONSOLIDATED FINANCIAL STATEMENTS
+
+Note 1. Nature of Operations and Basis of Presentation
+Nature of operations
+lululemon athletica inc., a Delaware corporation, ("lululemon" and, together with its subsidiaries unless the context otherwise requires, the "Company") is engaged in the design, distribution, and retail of technical athletic apparel, footwear, and accessories. The Company organizes its operations into four regional markets: Americas, China Mainland, Asia Pacific ("APAC"), and Europe and the Middle East ("EMEA"). It conducts its business through a number of different channels in each market, including company-operated stores, e-commerce, outlets, temporary locations, wholesale, license and supply arrangements, and a re-commerce program. There were 811, 767, and 711 company-operated stores in operation as of February 1, 2026, February 2, 2025, and January 28, 2024, respectively.
+Basis of presentation
+The consolidated financial statements have been presented in U.S. dollars and are prepared in accordance with United States generally accepted accounting principles ("GAAP").
+The Company's fiscal year ends on the Sunday closest to January 31 of the following year, typically resulting in a 52-week year, but occasionally giving rise to an additional week, resulting in a 53-week year. Fiscal 2025 and fiscal 2023 were each 52-week years. Fiscal 2024 was a 53-week year. Fiscal 2025, 2024, and 2023 ended on February 1, 2026, February 2, 2025, and January 28, 2024, respectively, and are referred to as "2025," "2024," and "2023," respectively.
+The Company's business is affected by the pattern of seasonality common to most retail apparel businesses. Historically, the Company has recognized a significant portion of its operating profit in the fourth fiscal quarter of each year as a result of increased net revenue during the holiday season. Events predominantly impacting the Company's international net revenue, such as those related to Lunar New Year and Singles Day, can fall in different fiscal quarters from year to year.
+
+Note 2. Summary of Significant Accounting Policies
+Principles of consolidation
+The consolidated financial statements include the accounts of lululemon athletica inc. and its wholly-owned subsidiaries. All intercompany balances and transactions have been eliminated.
+Cash and cash equivalents
+Cash and cash equivalents consist of cash on hand, bank balances, money market funds, and short-term deposits with original maturities of three months or less. The Company has not experienced significant losses related to these balances and does not currently believe credit risk exposure is significant.
+Accounts receivable
+Accounts receivable primarily arise out of third-party online marketplaces, sales to wholesale accounts, third-party gift card sales, duty receivables, and license and supply arrangements. The allowance for doubtful accounts represents management's best estimate of probable credit losses in accounts receivable. Receivables are written off against the allowance when management believes that the amount receivable will not be recovered. As of February 1, 2026 and February 2, 2025, the Company had an insignificant allowance for doubtful accounts.
+Inventories
+Inventories, consisting of finished goods, inventories in transit, and raw materials, are stated at the lower of cost and net realizable value. Cost is determined using weighted-average costs, and includes all costs incurred to deliver inventory to the Company's distribution centers including freight, non-refundable taxes, duty, and other landing costs.
+The Company periodically reviews its inventories and makes a provision as necessary to appropriately value goods that are obsolete, have quality issues, or are damaged. The amount of the provision is equal to the difference between the cost of the inventory and its net realizable value based upon assumptions about product quality, damages, future demand, selling prices, and market conditions. If changes in market conditions result in reductions in the estimated net realizable value of its inventory below its previous estimate, the Company would increase its provision in the period in which it made such a determination.
+49
+
+Table of Contents
+
+In addition, the Company provides for inventory shrinkage based on historical trends from actual physical inventory counts. Inventory shrinkage estimates are made to reduce the inventory value for lost or stolen items. The Company performs physical inventory counts and cycle counts throughout the year and adjusts the shrink provision accordingly.
+Business combinations
+The purchase price of an acquisition is measured as the aggregate of the fair value of the consideration transferred including the acquisition-date fair value of the Company's previously held equity interests. The purchase price is allocated to the fair values of the tangible and intangible assets acquired and liabilities assumed, with any excess recorded as goodwill. These fair value determinations require judgment and may involve the use of significant estimates and assumptions. The purchase price allocation may be provisional during a measurement period of up to one year to provide reasonable time to obtain the information necessary to identify and measure the assets acquired and liabilities assumed. Any such measurement period adjustments are recognized in the period in which the adjustment amount is determined. Transaction costs associated with the acquisition are expensed as incurred.
+Goodwill
+Goodwill represents the excess of the aggregate of the consideration transferred, the fair value of any non-controlling interest in the acquiree, and the acquisition-date fair value of the Company's previously held equity interest over the net assets acquired and liabilities assumed. Goodwill is allocated to the reporting unit which is expected to receive the benefit from the synergies of the combination.
+Goodwill is tested annually for impairment or more frequently when an event or circumstance indicates that goodwill might be impaired. Generally, the Company first performs a qualitative assessment to determine whether it is more likely than not that the fair value of a reporting unit is less than its carrying value. If factors indicate that this is the case, the Company then estimates the fair value of the related reporting unit. If the fair value is less than the carrying value, the goodwill of the reporting unit is determined to be impaired and the Company will record an impairment equal to the excess of the carrying value over its fair value.
+Intangible assets
+Acquired finite-lived intangible assets are amortized on a straight-line basis over their estimated useful lives, and are reviewed for impairment when events or circumstances indicate that the asset group to which the intangible assets belong might be impaired. The Company revises the estimated remaining useful life of these assets when events or changes in circumstances warrant a revision. If the Company revises the useful life, the unamortized balance is amortized over the remaining useful life on a prospective basis.
+Property and equipment
+Property and equipment are recorded at cost less accumulated depreciation. Direct internal and external costs related to software used for internal purposes which are incurred during the application development stage or for upgrades that add functionality are capitalized. All other costs related to internal use software are expensed as incurred. Property and equipment carrying values are reviewed for impairment when events or circumstances indicate that the asset group to which the property and equipment belong might be impaired.
+Depreciation commences when an asset is ready for its intended use. Buildings are depreciated on a straight-line basis over the expected useful life of the asset, which is individually assessed, and estimated to be up to 40 years. Leasehold improvements are depreciated on a straight-line basis over the lesser of the expected lease term and the estimated useful life of the improvement, to a maximum of 10 years for stores and 15 years for corporate offices and distribution centers. All other property and equipment are depreciated using the declining balance method as follows:
+
+Furniture and fixtures 20%
+
+Computer hardware and software 20% - 50%
+
+Equipment and vehicles 20% - 30%
+
+50
+
+Table of Contents
+
+Cloud Computing Arrangements
+The Company incurs costs to implement cloud computing arrangements hosted by third-party vendors. These costs are capitalized when incurred during the application development phase, and recognized as other non-current assets. Implementation costs are subsequently amortized over the expected term of the related cloud service. The carrying value of cloud computing implementation costs are tested for impairment when an event or circumstance indicates that the asset might be impaired. Changes in cloud computing arrangement implementation costs are classified within operating activities in the consolidated statements of cash flows.
+Impairment of long-lived assets
+Long-lived assets, held for use are evaluated for impairment when the occurrence of events or a change in circumstances indicates that the carrying value of the assets may not be recoverable as measured by comparing their carrying value to the estimated undiscounted future cash flows generated by their use and eventual disposition. Impaired assets are recorded at fair value, determined principally by discounting the future cash flows expected from their use and eventual disposition. Reductions in asset values resulting from impairment valuations are recognized in income in the period that the impairment is determined.
+Leased property and equipment
+At lease commencement, which is generally when the Company takes possession of the asset, the Company records a lease liability and corresponding right-of-use asset. Lease liabilities represent the present value of minimum lease payments over the expected lease term, which includes options to extend or terminate the lease when it is reasonably certain those options will be exercised. The present value of the lease liability is determined using the Company's incremental collateralized borrowing rate at the lease commencement.
+Minimum lease payments include base rent, fixed escalation of rental payments, and rental payments that are adjusted periodically depending on a rate or index. In determining minimum lease payments, the Company does not separate non-lease components for real estate leases. Non-lease components are generally services that the lessor performs for the Company associated with the leased asset, such as common area maintenance.
+Right-of-use assets represent the right to control the use of the leased asset during the lease and are initially recognized in an amount equal to the lease liability. In addition, prepaid rent, initial direct costs, and adjustments for lease incentives are components of the right-of-use asset. Over the lease term the lease expense is amortized on a straight-line basis beginning on the lease commencement date. Right-of-use assets are assessed for impairment as part of the impairment of long-lived assets, which is performed whenever events or changes in circumstances indicate that the carrying amount of an asset or asset group may not be recoverable.
+Variable lease payments, including contingent rental payments based on sales volume, are recognized when the achievement of the specific target is probable. A right-of-use asset and lease liability are not recognized for leases with an initial term of 12 months or less, and the lease expense is recognized on a straight-line basis over the lease term.
+The Company recognizes a liability for the fair value of asset retirement obligations ("AROs") when such obligations are incurred. The Company's AROs are primarily associated with leasehold improvements which, at the end of a lease, the Company is contractually obligated to remove in order to comply with the lease agreement. At the inception of a lease with such conditions, the Company records an ARO liability and a corresponding capital asset in an amount equal to the estimated fair value of the obligation. The liability is estimated based on a number of assumptions requiring management's judgment, including store closing costs, cost inflation rates and discount rates, and is accreted to its projected future value over time. The capitalized asset is depreciated using the convention for depreciation of leasehold improvement assets. Upon satisfaction of the ARO conditions, any difference between the recorded ARO liability and the actual retirement costs incurred is recognized as an operating gain or loss in the consolidated statements of operations.
+The Company recognizes a liability for a cost associated with a lease exit or disposal activity when such obligation is incurred. A lease exit or disposal liability is measured initially at its fair value in the period in which the liability is incurred. The Company estimates fair value at the cease-use date of its operating leases as the remaining lease rentals, reduced by estimated sublease rentals that could be reasonably obtained for the property, even where the Company does not intend to enter into a sublease. Estimating the cost of certain lease exit costs involves subjective assumptions, including the time it would take to sublease the leased location and the related potential sublease income. The estimated accruals for these costs could be significantly affected if future experience differs from the assumptions used in the initial estimate.
+51
+
+Table of Contents
+
+The Company has entered into certain subleases, which have been classified as operating leases. Sublease income is recognized on a straight-line basis beginning on the commencement date of the sublease. Sublease income offsets the head lease expense within net lease expense.
+Revenue recognition
+Net revenue is comprised of:
+•company-operated store net revenue;
+•e-commerce net revenue through websites, mobile apps, including mobile apps on in-store devices that allow demand to be fulfilled via the Company's distribution centers, and third-party online marketplaces; and
+•other net revenue, which includes revenue from outlets, sales to wholesale accounts, license and supply arrangement net revenue, which consists of royalties as well as sales of the Company's products to licensees, re-commerce revenue, revenue from temporary locations, and lululemon Studio revenue from digital content subscriptions.
+All revenue is reported net of:
+•markdowns and discounts,
+•sales taxes collected from customers on behalf of taxing authorities; and
+•returns.
+Revenue is recognized when performance obligations are satisfied through the transfer of control of promised goods or services to the Company's customers. Control transfers once a customer has the ability to direct the use of, and obtain substantially all of the benefits from, the product. This includes the transfer of legal title, physical possession, the risks and rewards of ownership, and customer acceptance. Revenue from company-operated stores and other retail locations is recognized at the point of sale. E-commerce revenue, sales to wholesale accounts and in-home fitness hardware sales are recognized upon receipt by the customer. In certain arrangements the Company receives payment before the customer receives the promised good. These payments are initially recorded as deferred revenue, and recognized as revenue in the period when control is transferred to the customer.
+Revenue is presented net of an allowance for estimated returns. The Company's liability for sales return refunds is recognized within accrued liabilities and other, and an asset for the value of inventory which is expected to be returned is recognized within other prepaid expenses and other current assets on the consolidated balance sheets.
+Shipping fees billed to customers are recorded as revenue, and shipping costs are recognized within selling, general and administrative expenses in the same period the related revenue is recognized.
+Proceeds from the sale of gift cards are initially deferred and recognized within unredeemed gift card liability on the consolidated balance sheets, and are recognized as revenue when tendered for payment. While the Company will continue to honor all gift cards presented for payment, to the extent management determines there is no requirement to remit unused card balances to government agencies under unclaimed property laws, the portion of card balances not expected to be redeemed are recognized in net revenue in proportion to the gift cards which have been redeemed, under the redemption recognition method.
+The Company is responsible for funding a share of credits offered to customers through credit card affiliate programs, which are recognized as a discount within net revenue and the corresponding liability is recognized within accrued liabilities and other. For certain programs, the share of credits funded by the Company varies based on annually assessed thresholds, which are estimated at each reporting date.
+Cost of goods sold
+Cost of goods sold includes:
+Product costs
+•the cost of purchased merchandise, which includes acquisition and production costs including raw material and labor, as applicable;
+•the cost incurred to deliver inventory to the Company's distribution centers including freight, non-refundable taxes, duty, and other landing costs;
+•shrink and inventory provision expense;
+52
+
+Table of Contents
+
+•the cost of digital content subscription services;
+•hemming costs and other product alteration costs; and
+•product-related royalties paid to third parties.
+Other cost of sales
+•occupancy costs such as minimum rent, contingent rent where applicable, property taxes, utilities, and depreciation expense for the Company's company-operated store locations;
+•the cost of the Company's distribution centers, such as labor, rent, utilities, and depreciation, as well as the cost of third-party distribution centers; and
+•the cost of the Company's product design, raw materials development, product innovation, sourcing, supply chain, and merchandising departments including salaries, stock-based compensation and benefits, and other expenses.
+Selling, general and administrative expenses
+Selling, general and administrative expenses consist of all operating costs not otherwise included in cost of goods sold, intangible asset amortization, or acquisition-related expenses. The Company's selling, general and administrative expenses include the costs of corporate and retail employee wages and benefits, costs to transport the Company's products from the distribution facilities to the Company's retail locations and e-commerce guests, professional fees, marketing, technology, human resources, accounting, legal, corporate facility and occupancy costs, e-commerce platform costs, and depreciation and amortization expense other than in cost of goods sold.
+Advertising and Marketing Costs
+Advertising costs, including the costs to produce advertising, are expensed as incurred. Advertising expenses are included within selling, general and administrative expenses.
+Store pre-opening costs
+Operating costs incurred prior to the opening of new stores are expensed as incurred as selling, general and administrative expenses.
+Income taxes
+The Company follows the liability method with respect to accounting for income taxes. Deferred income tax assets and liabilities are determined based on the temporary differences between the carrying amounts and the tax basis of assets and liabilities, and for tax losses, tax credit carryforwards, and other tax attributes. Deferred income tax assets and liabilities are measured using enacted tax rates, for the appropriate tax jurisdiction, that are expected to be in effect when these differences are anticipated to reverse.
+The Company has not recognized U.S. state income taxes and foreign withholding taxes on undistributed earnings of foreign subsidiaries which the Company has determined to be indefinitely reinvested.
+Deferred income tax assets are reduced by a valuation allowance, if based on the weight of available evidence, it is more likely than not that some portion or all of the deferred tax assets will not be realized. The evaluation as to the likelihood of realizing the benefit of a deferred income tax asset is based on the timing of scheduled reversals of deferred tax liabilities, taxable income forecasts, and tax-planning strategies. The recognition of a deferred income tax asset is based upon several assumptions and forecasts, including current and anticipated taxable income, the utilization of previously unrealized non-operating loss carryforwards, and regulatory reviews of tax filings.
+The Company evaluates its tax filing positions and recognizes the largest amount of tax benefit that is considered more likely than not to be sustained upon examination by the relevant taxing authorities based on the technical merits of the position. This determination requires the use of significant judgment. Income tax expense is adjusted in the period in which an uncertain tax position is effectively settled, the statute of limitations expires, facts or circumstances change, tax laws change, or new information becomes available. The Company's policy is to recognize interest expense and penalties related to income tax matters as part of income tax expense. Accrued interest and penalties are included within the related tax liability on the Company's consolidated balance sheets.
+The Company treats the global intangible low-taxed income ("GILTI") tax as a current period expense.
+53
+
+Table of Contents
+
+Fair value of financial instruments
+Fair value is defined as the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date. Fair value measurements are made using a three-tier fair value hierarchy, which prioritizes the inputs used in measuring fair value:
+•Level 1 - defined as observable inputs such as quoted prices in active markets;
+•Level 2 - defined as inputs other than quoted prices in active markets that are either directly or indirectly observable; and
+•Level 3 - defined as unobservable inputs in which little or no market data exists, therefore requiring an entity to develop its own assumptions.
+The fair value measurement is categorized in its entirety by reference to its lowest level of significant input.
+The Company records cash, accounts receivable, accounts payable, and accrued liabilities at cost. The carrying values of these instruments approximate their fair value due to their short-term maturities.
+The Company holds certain assets and liabilities that are required to be measured at fair value on a recurring basis, and performs certain valuations on a non-recurring basis. The Company records cash equivalents at their original purchase prices plus interest that has accrued at the stated rate. The fair values of the forward currency contract assets and liabilities are determined using observable Level 2 inputs, including foreign currency spot exchange rates, forward pricing curves, and interest rates. The fair values consider the credit risk of the Company and its counterparties. The Company's Master International Swap Dealers Association, Inc., Agreements and other similar arrangements allow net settlements under certain conditions. However, the Company records all derivatives on its consolidated balance sheets at fair value and does not offset derivative assets and liabilities. Additional information is included in Note 17. Fair Value Measurement.
+Foreign currency
+The functional currency for each entity included in these consolidated financial statements that is domiciled outside of the United States is generally the applicable local currency. Assets and liabilities of each foreign entity are translated into U.S. dollars at the exchange rate in effect on the balance sheet date. Net revenue and expenses are translated at the average rate in effect during the period. Unrealized translation gains and losses are recorded as a foreign currency translation adjustment, which is included in other comprehensive income (loss), net of tax, which is a component of accumulated other comprehensive income or loss included in stockholders' equity.
+Foreign currency transactions denominated in a currency other than an entity's functional currency are remeasured into the functional currency with any resulting gains and losses recognized in selling, general and administrative expenses, except for gains and losses arising on intercompany foreign currency transactions that are of a long-term investment nature, which are recorded as net investment hedge gains (losses) in other comprehensive income (loss), net of tax.
+Derivative financial instruments
+The Company uses derivative financial instruments to manage its exposure to certain foreign currency exchange rate risks.
+Net investment hedges. The Company enters into certain forward currency contracts that are designated as net investment hedges. The effective portions of the hedges are reported in accumulated other comprehensive income or loss, net of tax, and will subsequently be reclassified to net earnings in the period in which the hedged investment is either sold or substantially liquidated. Hedge effectiveness is measured using a method based on changes in forward exchange rates. The Company classifies the cash flows at settlement of its net investment hedges within investing activities in the consolidated statements of cash flows.
+Derivatives not designated as hedging instruments. The Company also enters into certain forward currency contracts that are not designated as net investment hedges. They are designed to economically hedge the foreign exchange revaluation gains and losses of certain monetary assets and liabilities. The Company has not applied hedge accounting to these instruments and the change in fair value of these derivatives is recorded within selling, general and administrative expenses. The Company classifies the cash flows at settlement of its forward currency contracts which are not designated in hedging relationships within operating activities in the consolidated statements of cash flows.
+The Company presents its derivative assets and derivative liabilities at their gross fair values within prepaid expenses and other current assets and other current liabilities on the consolidated balance sheets. However, the Company's Master International Swap Dealers Association, Inc., Agreements and other similar arrangements allow net settlements under certain conditions.
+54
+
+Table of Contents
+
+The Company does not enter into derivative contracts for speculative or trading purposes. Additional information on the Company's derivative financial instruments is included in Note 17. Fair Value Measurement and Note 18. Derivative Financial Instruments.
+Concentration of credit risk
+Accounts receivable primarily arise out of third-party gift card sales, sales to wholesale accounts, third-party online marketplaces, duty receivables, and license and supply arrangements. The Company generally does not require collateral to support the accounts receivable; however, in certain circumstances, the Company may require parties to provide payment for goods prior to delivery of the goods or to provide letters of credit. The accounts receivable are net of an allowance for doubtful accounts, which is established based on management's assessment of the credit risk of the underlying accounts.
+Cash and cash equivalents are held with high-quality financial institutions. The amount of cash and cash equivalents held with certain financial institutions exceeds government-insured limits. The Company is also exposed to credit-related losses in the event of nonperformance by the counterparties to the forward currency contracts. The credit risk amount is the Company's unrealized gains on its derivative instruments, based on foreign currency rates at the time of nonperformance. The Company seeks to minimize its credit risk by entering into transactions with investment-grade, creditworthy, and reputable financial institutions, by monitoring their credit standing, and by limiting exposure to any one counterparty. The Company has not experienced significant losses related to these items and does not currently believe credit risk exposure is significant.
+The Company's derivative contracts contain certain credit risk-related contingent features. Under certain circumstances, including an event of default, bankruptcy, termination, and cross default under the Company's Americas revolving credit facility, the Company may be required to make immediate payment for outstanding liabilities under its derivative contracts.
+Stock-based compensation
+The Company accounts for stock-based compensation using the fair value method. The fair value of awards granted is estimated at the date of grant. The employee compensation expense is recognized on a straight-line basis over the requisite service period with the offsetting credit to additional paid-in capital.
+The grant date fair value of each stock option granted is estimated on the date of grant using the Black-Scholes model. The closing price of the Company's common stock on the grant date is used in the model. The assumptions used to calculate the fair value of the options granted are evaluated and revised, as necessary, to reflect market conditions and the Company's historical experience. The expected term of the options is based upon the historical experience of similar awards, giving consideration to expectations of future exercise behavior. Expected volatility is based upon the historical volatility of the Company's common stock for the period corresponding with the expected term of the options. The risk-free interest rate is based on the U.S. Treasury yield curve for the period corresponding with the expected term of the options.
+The grant date fair value of restricted shares, performance-based restricted stock units ("PSUs"), and restricted stock units ("RSUs") is based on the closing price of the Company's common stock on the grant date.
+For awards with service and/or performance conditions, the amount of compensation expense recognized is based on the number of awards expected to vest, reflecting estimated expected forfeitures, and is adjusted to reflect those awards that do ultimately vest. The forfeiture rate is based on management's best estimate of expected forfeitures, taking into consideration historical trends and expected future behavior. For awards with performance conditions, the Company recognizes the compensation expense if and when the Company concludes that it is probable that the performance condition will be achieved. The Company reassesses the probability of achieving the performance condition at each reporting date.
+Earnings per share
+Earnings per share is calculated using the weighted-average number of common and exchangeable shares outstanding during the period. Exchangeable shares are the economic equivalent of common shares in all material respects. All classes of stock have in effect the same economic rights and share equally in undistributed net income. Diluted earnings per share is calculated by dividing net income available to stockholders for the period by the diluted weighted-average number of shares outstanding during the period. Diluted earnings per share reflects the potential dilution from common shares issuable through stock options, PSUs that have satisfied their performance factor, restricted shares, and RSUs using the treasury stock method.
+55
+
+Table of Contents
+
+Contingencies
+In the ordinary course of business, the Company is involved in legal proceedings regarding contractual and employment relationships and a variety of other matters. The Company records contingent liabilities resulting from claims against it, when a loss is assessed to be probable and the amount of the loss is reasonably estimable.
+Use of estimates
+The preparation of financial statements in conformity with GAAP requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and the disclosure of contingent assets and liabilities at the date of the financial statements as well as the reported amounts of net revenue and expenses during the reporting period. Actual results could differ from those estimates.
+Recently adopted accounting pronouncements
+The Company considers the applicability and impact of all Accounting Standard Updates ("ASUs"). ASUs adopted during 2025 not listed below were assessed, and determined to be either not applicable or to have minimal impact on its consolidated financial position or results of operations.
+In December 2023, the FASB issued ASU 2023-09, Income Taxes (Topic 740): Improvements to Income Tax Disclosures. This disclosure requires expanded disclosure within the rate reconciliation as well as disaggregation of annual taxes paid. The company adopted this update retrospectively for 2025, and the related disclosures are included in Note 20. Income Taxes.
+Recently issued accounting pronouncements
+ASUs recently issued not listed below were assessed and determined to be either not applicable or are expected to have minimal impact on the Company's consolidated financial position or results of operations.
+In November 2024, the FASB issued ASU 2024-03, Income Statement—Reporting Comprehensive Income—Expense Disaggregation Disclosures (Subtopic 220-40): Disaggregation of Income Statement Expenses. Entities will be required to provide disaggregated disclosures for certain income statement expense line items. This amendment is effective for annual periods beginning after December 15, 2026, and interim periods beginning after December 15, 2027, and will be applied retrospectively for periods presented in the financial statements. The Company is currently evaluating the impact that this new guidance may have on its financial statement disclosures.
+In September 2025, the FASB issued ASU 2025‑06, Intangibles—Goodwill and Other—Internal-Use Software (Subtopic 350‑40): Targeted Improvements to the Accounting for Internal-Use Software. The amendment replaces the previous project-stage model with a principles-based approach for capitalizing internal-use software costs. This guidance is effective for annual reporting periods beginning after December 15, 2027 and interim reporting periods within that year. The Company is currently evaluating the impact that this new guidance may have on its accounting policies and related disclosures.
+56
+
+Table of Contents
+
+Note 3. Net Revenue
+Disaggregated net revenue
+In addition to the disaggregation of net revenue by reportable segment in Note 24. Segmented Information, the following table disaggregates the Company's net revenue by geographic area.
+Prior to the acquisition of the Mexico operations on September 10, 2024, wholesale sales to the third party under the license and supply arrangement by lululemon athletica canada inc. were disclosed as net revenue recognized within Canada.
+
+2025 2024 2023
+(In thousands)
+United States $ 6,328,380 $ 6,483,183 $ 6,346,392
+Canada 1,423,178 1,411,673 1,285,255
+Mexico 95,486 33,300 —
+Americas 7,847,044 7,928,156 7,631,647
+
+China Mainland 1,754,799 1,361,337 963,760
+Hong Kong SAR, Taiwan, and Macau SAR
+199,079 180,092 170,533
+People's Republic of China 1,953,878 1,541,429 1,134,293
+
+Other geographic areas 1,301,678 1,118,541 853,338
+
+$ 11,102,600 $ 10,588,126 $ 9,619,278
+
+The following disaggregates the Company's net revenue by category. Accessories and other categories is primarily composed of accessories, footwear, and lululemon Studio.
+
+2025 2024 2023
+(In thousands)
+Women's apparel $ 6,995,365 $ 6,692,630 $ 6,147,372
+Men's apparel 2,663,986 2,558,380 2,252,753
+Accessories and other categories 1,443,249 1,337,116 1,219,153
+
+$ 11,102,600 $ 10,588,126 $ 9,619,278
+
+The following disaggregates the Company's net revenue by channel.
+
+2025 2024 2023
+(In thousands)
+Company-operated stores $ 5,049,744 $ 5,007,872 $ 4,410,956
+E-commerce 4,918,697 4,570,446 4,311,110
+Other channels 1,134,159 1,009,808 897,212
+$ 11,102,600 $ 10,588,126 $ 9,619,278
+
+Gift card net revenue
+During 2025, 2024, and 2023, the Company recognized net revenue of $179.2 million, $180.9 million, and $151.4 million, respectively, that was included in the opening balance of the unredeemed gift card liability at the beginning of each year. For 2025, 2024, and 2023, net revenue recognized on unredeemed gift card balances was $37.8 million, $36.2 million, and $28.5 million, respectively.
+57
+
+Table of Contents
+
+Note 4. Inventories
+
+February 1, 2026 February 2, 2025
+(In thousands)
+Inventories, at cost $ 1,789,576 $ 1,526,055
+Inventory provisions and reserves:
+Obsolescence provision (52,646) (45,840)
+Damages provision (34,450) (36,416)
+Shrink provision
+(1,727) (1,718)
+(88,823) (83,974)
+Inventories $ 1,700,753 $ 1,442,081
+
+Shrink and inventory provision expense was $134.8 million, $139.8 million, and $181.1 million in 2025, 2024, and 2023, respectively. The expense for 2023 included an inventory obsolescence provision of $23.7 million recognized as a result of the decision to cease selling the lululemon Studio Mirror in the third quarter of 2023. Please refer to Note 10. Impairment of Assets and Restructuring Costs for further information.
+
+Note 5. Prepaid Expenses and Other Current Assets
+
+February 1, 2026 February 2, 2025
+(In thousands)
+Prepaid expenses 144,744 147,680
+Forward currency contract assets 30,996 76,848
+Other current assets 35,880 26,931
+Prepaid expenses and other current assets $ 211,620 $ 251,459
+
+Note 6. Property and Equipment
+
+February 1, 2026 February 2, 2025
+(In thousands)
+Land $ 79,390 $ 74,461
+Buildings 28,816 27,655
+Leasehold improvements 1,400,487 1,227,247
+Furniture and fixtures 203,882 177,651
+Computer hardware 224,169 202,479
+Computer software 1,519,840 1,274,322
+Equipment and vehicles 61,760 51,453
+Work in progress
+378,226 206,398
+Property and equipment, gross 3,896,570 3,241,666
+Accumulated depreciation (1,862,850) (1,461,049)
+Property and equipment, net $ 2,033,720 $ 1,780,617
+
+Depreciation expense related to property and equipment was $489.7 million, $443.3 million, and $374.0 million for 2025, 2024, and 2023, respectively.
+
+Note 7. Acquisition
+On September 10, 2024, the Company acquired the lululemon branded retail locations and operations run by a third party in Mexico. The Company acquired all outstanding shares of the third party, and had previously granted it the right to operate retail locations and to sell lululemon products in Mexico.
+58
+
+Table of Contents
+
+The following table summarizes the fair value of the consideration transferred, as well as the calculation of goodwill based on the excess of consideration over the fair value of net assets acquired.
+
+September 10, 2024
+
+(In thousands)
+Fair value of consideration transferred:
+Cash paid to shareholders $ 159,380
+Contingent consideration 15,000
+Settlement of intercompany balances 6,975
+181,355
+Less cash acquired (5,234)
+Fair value of consideration transferred, net of cash and cash equivalents acquired $ 176,121
+Less fair value of net assets acquired:
+Assets acquired:
+Inventories $ 15,275
+Intangible assets 15,500
+Other current and non-current assets 14,013
+44,788
+Liabilities assumed (15,668)
+Net assets acquired $ 29,120
+Goodwill $ 147,001
+
+Goodwill relates to the assembled workforce and benefits expected as a result of the acquisition and has been allocated to the Americas segment. None of the goodwill is expected to be deductible for income tax purposes.
+Reacquired franchise rights were valued using the future expected cash flows of the remaining contractual franchise period until November 2026. These intangible assets have a fair value of $15.5 million, which is being amortized until November 2026. Contingent consideration of $15.0 million relates to performance-related conditions from the acquisition date to December 31, 2025, and has been recognized at fair value. As of February 1, 2026, $10.1 million in consideration payments has been paid.
+The Company has not disclosed pro forma information of the combined business as the transaction is not material to net revenue or net earnings.
+During 2024, the Company recognized $3.5 million in acquisition-related expenses within selling, general and administrative expenses primarily related to legal, accounting, valuation, and other professional services.
+
+Note 8. Goodwill
+The changes in the carrying amounts of goodwill were as follows:
+
+Goodwill
+(In thousands)
+Balance as of January 28, 2024
+$ 24,083
+
+Acquisition of the Mexico operations 147,001
+Effect of foreign currency translation (11,566)
+Balance as of February 2, 2025
+$ 159,518
+Effect of foreign currency translation 25,393
+Balance as of February 1, 2026
+$ 184,911
+
+Of the Company's goodwill, $147.0 million relates to the acquisition of the Mexico operations in 2024. Goodwill relates to the assembled workforce and benefits expected as a result of the acquisition and has been allocated to the Americas segment. Please refer to Note 7. Acquisition for further information.
+59
+
+Table of Contents
+
+Note 9. Intangible Assets
+A summary of the intangible asset balances is presented below:
+
+February 1, 2026
+
+Gross Carrying Amount Accumulated Amortization Net Carrying Amount Remaining Useful Life (Years)
+(In thousands, except in years)
+Franchise rights 16,965 (10,682) 6,283 0.8
+Intangible assets $ 16,965 $ (10,682) $ 6,283 0.8
+
+February 2, 2025
+
+Gross Carrying Amount Accumulated Amortization Net Carrying Amount Remaining Useful Life (Years)
+(In thousands, except in years)
+Franchise rights 14,325 (2,652) 11,673 1.8
+Other 270 (270) — n/a
+Intangible assets $ 14,595 $ (2,922) $ 11,673 1.8
+
+As part of the acquisition of the Mexico operations in 2024, the Company recognized intangible assets related to reacquired franchise rights, which are being amortized until November 2026. Please refer to Note 7. Acquisition for further information.
+Amortization of intangible assets was $7.0 million, $2.7 million, and $5.0 million in 2025, 2024, and 2023, respectively. Future expected amortization expense as of February 1, 2026 is $6.3 million for 2026.
+During 2023, the Company recognized intangible asset impairment charges of $17.0 million. These impairment charges related to the intangible assets that were recognized on the acquisition of MIRROR. Please refer to Note 10. Impairment of Assets and Restructuring Costs for further information.
+
+Note 10. Impairment of Assets and Restructuring Costs
+During the third quarter of 2023, the Company reached the decision to cease selling its lululemon Studio Mirror hardware. It also contracted with Peloton Interactive, Inc. to be the exclusive digital fitness content provider to existing lululemon Studio subscribers, and stopped producing its own digital fitness content. The Company ceased selling the lululemon Studio Mirror and new digital content subscriptions in December 2023.
+60
+
+Table of Contents
+
+These strategy shifts resulted in impairment testing and the recognition of inventory provisions, asset impairments, and restructuring costs related to the lululemon Studio reporting unit. The following table summarizes the amounts recognized:
+
+2023
+(In thousands)
+Costs recorded in cost of goods sold:
+lululemon Studio obsolescence provision $ 23,709
+
+Costs recorded in operating expenses:
+Impairment of assets:
+Impairment of intangible assets 16,951
+Impairment of cloud computing arrangement implementation costs 16,074
+Impairment of property and equipment 11,161
+$ 44,186
+Restructuring costs 30,315
+Impairment of assets and restructuring costs $ 74,501
+
+Total pre-tax charges $ 98,210
+
+Income tax effects of charges $ (26,085)
+Total after-tax charges $ 72,125
+
+lululemon Studio obsolescence provision
+As a result of the decision to cease selling the lululemon Studio Mirror in the third quarter of 2023, the Company recognized an inventory obsolescence provision of $23.7 million during 2023. The net realizable value of the lululemon Studio inventory was based on assumptions regarding liquidation value.
+Impairment of assets
+During 2023, as a result of the Company's decision to no longer produce digital fitness content and to cease the sale of the lululemon Studio Mirror, the Company performed impairment testing for the lululemon Studio asset group as of October 29, 2023. The undiscounted cash flows of the lululemon Studio asset group were less than their carrying value, and therefore the Company calculated the fair value of the asset group, which was also less than its carrying value.
+As a result of the impairment test, the Company recognized asset impairments totaling $44.2 million during 2023. The fair value of long-lived assets was based on a discounted cash flow model, and is a Level 3 non-recurring fair value measurement. The key assumptions used to estimate the fair value were subscriber churn rates and operating costs.
+Restructuring costs
+During 2023, the Company recognized restructuring costs of $30.3 million for lululemon Studio primarily related to contract termination costs, employee severance costs, and professional fees.
+61
+
+Table of Contents
+
+Note 11. Other Non-Current Assets
+
+February 1, 2026 February 2, 2025
+(In thousands)
+Cloud computing arrangement implementation costs:
+Deferred cloud computing arrangement implementation costs $ 513,713 $ 385,441
+Accumulated amortization (321,682) (223,682)
+192,031 161,759
+Security deposits 61,117 44,076
+Other 61,762 32,006
+Other non-current assets $ 314,910 $ 237,841
+
+Note 12. Accrued Liabilities and Other
+
+February 1, 2026 February 2, 2025
+(In thousands)
+Accrued operating expenses $ 167,052 $ 166,745
+Accrued duty 99,353 45,400
+Accrued digital marketing 71,240 45,392
+Sales return allowances 70,611 73,892
+Accrued credit card affiliate liabilities 64,837 —
+Forward currency contract liabilities 36,476 74,638
+Accrued capital expenditures 34,860 36,690
+Accrued freight 34,455 53,121
+Sales tax collected 25,353 16,967
+Accrued rent 20,691 17,962
+Other 38,054 28,656
+Accrued liabilities and other
+$ 662,982 $ 559,463
+
+Note 13. Revolving Credit Facilities
+Americas revolving credit facility
+On October 15, 2025, the Company entered into an amended and restated unsecured revolving credit agreement, which provides for $600.0 million in commitments under an unsecured five-year revolving credit facility. The credit facility has a maturity date of October 15, 2030, subject to two one-year extensions at the request of the Company. Subject to the conditions stated in the credit agreement, the Company may request increases in aggregate commitments thereunder up to a total of $1.0 billion. The credit facility permits prepayment of borrowings and reductions or terminations of commitments from time to time without premium or penalty, subject to customary breakage costs.
+As of February 1, 2026, the Company had no borrowings outstanding under this credit facility other than $6.4 million in outstanding letters of credit and guarantee.
+Borrowings made under the credit facility bear interest at variable rates based on the Secured Overnight Financing Rate as administered by the Federal Reserve Bank of New York ("SOFR"), or an alternate base rate, plus applicable margin. The credit agreement contains customary financial, affirmative and negative covenants applicable to the Company and its subsidiaries, including limitations on indebtedness, liens, fundamental changes, dispositions of assets, changes in the nature of business, and restrictions on subsidiary dividends and distributions, as well as financial covenants based on leverage and fixed charge coverage ratios. The Company was in compliance with all such covenants as of February 1, 2026.
+China Mainland revolving credit facility
+The Company has an uncommitted and unsecured Chinese Yuan-denominated revolving credit facility totaling the equivalent of USD $43.1 million, which is reviewed annually and provides for short-term borrowing and the issuance of
+62
+
+Table of Contents
+
+guarantees. As of February 1, 2026, there were no borrowings or guarantees outstanding, letters of credit totaling USD $7.9 million were issued, and the Company was in compliance with all applicable terms of the credit facility.
+
+Note 14. Supply Chain Financing Program
+The Company facilitates a voluntary supply chain financing ("SCF") program that allows its suppliers to elect to sell the receivables owed to them by the Company to a third-party financial institution. Participating suppliers negotiate arrangements directly with the financial institution. If a supplier chooses to participate in the SCF program it may request an invoice be paid earlier than it would by the Company, and the financial institution at its sole and absolute discretion, may elect to make an early payment to the supplier at a discount. The Company's obligations to its suppliers, including amounts due and scheduled payment terms, are not impacted by a supplier's participation in the arrangement and the Company provides no guarantees to any third parties under the SCF program.
+A roll-forward of the amounts outstanding under the SCF program, which are presented within accounts payable, is presented below:
+
+2025 2024
+(In thousands)
+Supply chain financing program balance, beginning of year $ 36,283 $ 42,139
+Amounts added during the year 543,573 509,924
+Amounts settled during the year (534,748) (515,780)
+Supply chain financing program balance, end of year $ 45,108 $ 36,283
+
+Note 15. Stockholders' Equity
+Special voting stock and exchangeable shares
+The holders of the special voting stock are entitled to one vote for each share held. The special voting shares are not entitled to receive dividends or distributions or receive any consideration in the event of a liquidation, dissolution, or wind-up. To the extent that exchangeable shares as described below are exchanged for common stock, a corresponding number of special voting shares will be cancelled without consideration.
+The holders of the exchangeable shares have dividend and liquidation rights equivalent to those of holders of the common shares of the Company. The exchangeable shares can be converted on a one for one basis by the holder at any time into common shares of the Company plus a cash payment for any accrued and unpaid dividends. Holders of exchangeable shares are entitled to the same or economically equivalent dividend as declared on the common stock of the Company. The exchangeable shares are non-voting. The Company has the right to convert the exchangeable shares into common shares of the Company at any time after the earliest of July 26, 2047, the date on which fewer than 4.2 million exchangeable shares are outstanding, or in the event of certain events such as a change in control.
+
+Note 16. Stock-Based Compensation and Benefit Plans
+Stock-based compensation plans
+The Company's eligible employees participate in various stock-based compensation plans, provided directly by the Company.
+In June 2023, the Company's stockholders approved the adoption of the lululemon athletica inc. 2023 Equity Incentive Plan. The 2023 Equity Incentive Plan provides for awards in the form of stock options, stock appreciation rights, restricted stock purchase rights, restricted stock bonuses, RSUs, performance shares, PSUs, cash-based awards, other stock-based awards, and deferred compensation awards to employees (including officers and directors who are also employees), consultants, and directors of the Company.
+The awards granted under the 2014 Equity Incentive Plan remain outstanding and continue to vest under their original conditions. No further awards will be granted under the 2014 Equity Incentive Plan.
+The Company has granted stock options, PSUs, RSUs, and restricted shares. Stock options granted to date generally have a four-year vesting period and vest at a rate of 25% each year on the anniversary date of the grant. Stock options generally expire on the earlier of seven or 10 years from the date of grant, or a specified period of time following termination. PSUs issued generally vest three years from the grant date and restricted shares generally vest one year from the grant date. RSUs
+63
+
+Table of Contents
+
+granted generally have a three-year vesting period and vest at a certain percentage each year on the anniversary date of the grant.
+The Company issues previously unissued shares upon the exercise of Company options, vesting of PSUs or RSUs that are settled in common stock, and granting of restricted shares.
+Stock-based compensation expense charged to income for the plans was $61.8 million, $88.6 million, and $92.7 million for 2025, 2024, and 2023, respectively.
+Total unrecognized compensation cost for all stock-based compensation plans was $150.9 million as of February 1, 2026, which is expected to be recognized over a weighted-average period of 2.5 years, and was $122.3 million as of February 2, 2025 over a weighted-average period of 2.0 years.
+A summary of the balances of the Company's stock-based compensation plans as of February 1, 2026, February 2, 2025, and January 28, 2024, and changes during the fiscal years then ended is presented below:
+
+Stock Options Performance-Based Restricted Stock Units Restricted Shares Restricted Stock Units
+Number Weighted-Average Exercise Price Number Weighted-Average Grant Date Fair Value Number Weighted-Average Grant Date Fair Value Number Weighted-Average Grant Date Fair Value
+(In thousands, except per share amounts)
+Balance as of January 29, 2023 866 $ 230.78 166 $ 295.93 5 $ 308.66 221 $ 323.89
+Granted 213 360.00 121 296.27 4 370.59 132 364.63
+Exercised/vested 264 160.45 104 201.56 5 308.66 106 294.65
+Forfeited/expired
+32 332.26 8 351.14 — 368.36 24 350.38
+Balance as of January 28, 2024 783 $ 285.69 175 $ 349.84 4 $ 370.85 223 $ 359.12
+Granted 232 383.09 125 354.40 5 319.19 146 375.99
+Exercised/vested 95 209.54 100 310.86 4 371.33 101 351.61
+Forfeited/expired 71 363.58 23 374.15 — — 29 371.69
+Balance as of February 2, 2025
+849 $ 314.27 177 $ 371.83 5 $ 317.86 239 $ 371.09
+Granted 593 243.30 177 299.16 6 252.28 476 232.49
+Exercised/vested 61 145.18 101 373.03 5 317.86 109 369.23
+Forfeited/expired 112 334.56 33 331.71 — — 45 320.98
+Balance as of February 1, 2026
+1,269 $ 287.41 220 $ 319.19 6 $ 252.28 561 $ 257.92
+
+A total of 2.0 million shares of the Company's common stock have been authorized for future issuance under the Company's 2023 Equity Incentive Plan.
+The Company's PSUs are awarded to eligible employees and entitle the grantee to receive a maximum of two shares of common stock per PSU if the Company achieves specified performance goals and the grantee remains employed during the vesting period. The fair value of PSUs is based on the closing price of the Company's common stock on the grant date. Expense for PSUs is recognized when it is probable that the performance goal will be achieved.
+The grant date fair value of the restricted shares and RSUs is based on the closing price of the Company's common stock on the grant date.
+The grant date fair value of each stock option granted is estimated on the date of grant using the Black-Scholes model and the following are weighted averages of the assumptions that were used:
+
+2025 2024 2023
+Expected term 4.12 years 3.75 years 3.75 years
+Expected volatility 40.67 % 37.39 % 42.35 %
+Risk-free interest rate 3.86 % 4.30 % 3.49 %
+Dividend yield — % — % — %
+
+64
+
+Table of Contents
+
+The following summarizes information about stock options outstanding and exercisable as of February 1, 2026:
+
+Outstanding Exercisable
+Range of Exercise Prices Number of Options Weighted-Average Exercise Price Weighted-Average Remaining Life (Years) Number of Options Weighted-Average Exercise Price Weighted-Average Remaining Life (Years)
+(In thousands, except per share amounts and years)
+$165.69-$198.73
+164 $ 178.30 1.4 145 $ 179.96 0.7
+$206.29-$239.39
+275 206.36 9.9 — 228.57 0.9
+$253.70-$296.36
+265 281.75 6.2 2 263.00 4.7
+$306.71-$368.36
+274 336.11 3.3 193 328.49 2.9
+$376.92-$502.74
+291 385.16 4.2 136 382.63 3.5
+
+1,269 $ 287.41 5.3 476 $ 298.37 2.4
+Intrinsic value $ 586 $ 418
+
+As of February 1, 2026, the unrecognized compensation cost related to these options was $49.2 million, which is expected to be recognized over a weighted-average period of 3.0 years. The weighted-average grant date fair value of options granted during 2025, 2024, and 2023 was $90.53, $130.87, and $130.75, respectively.
+The following table summarizes the intrinsic value of options exercised and awards that vested:
+
+2025 2024 2023
+(In thousands)
+Stock options $ 5,473 $ 16,183 $ 69,316
+Performance-based restricted stock units 28,268 38,303 33,198
+Restricted shares 1,303 1,163 1,661
+Restricted stock units 31,236 37,972 38,016
+$ 66,280 $ 93,621 $ 142,191
+
+Employee share purchase plan
+The Company has an Employee Share Purchase Plan ("ESPP"). Contributions are made by eligible employees, subject to certain limits defined in the ESPP, and the Company matches one-third of the contribution. The maximum number of shares authorized to be purchased under the ESPP is 6.0 million shares. All shares purchased under the ESPP are purchased in the open market. During 2025, 2024, and 2023, there were 0.2 million, 0.1 million, and 0.1 million shares purchased, respectively. As of February 1, 2026, 4.1 million shares remain authorized to be purchased under the ESPP.
+Defined contribution pension plans
+The Company offers defined contribution pension plans to eligible employees who may elect to defer and contribute a portion of their eligible compensation to a plan up to limits stated in the plan documents, not to exceed the dollar amounts set by applicable laws. The Company matches 50% to 75% of the contribution depending on the participant's length of service, and the Company's contribution is subject to a two-year vesting period. The Company's net expense for the defined contribution plans was $23.7 million, $22.2 million, and $19.8 million during 2025, 2024, and 2023, respectively.
+65
+
+Table of Contents
+
+Note 17. Fair Value Measurement
+Assets and liabilities measured at fair value on a recurring basis
+As of February 1, 2026 and February 2, 2025, the Company held certain assets and liabilities that are required to be measured at fair value on a recurring basis:
+
+February 1, 2026 Level 1 Level 2 Level 3 Balance Sheet Classification
+(In thousands)
+Money market funds $ 354,731 $ 354,731 $ — $ — Cash and cash equivalents
+
+Forward currency contract assets 30,996 — 30,996 — Prepaid expenses and other current assets
+Forward currency contract liabilities 36,476 — 36,476 — Other current liabilities
+
+February 2, 2025 Level 1 Level 2 Level 3 Balance Sheet Classification
+(In thousands)
+Money market funds $ 240,918 $ 240,918 $ — $ — Cash and cash equivalents
+
+Term deposits 8 — 8 — Cash and cash equivalents
+Forward currency contract assets 76,848 — 76,848 — Prepaid expenses and other current assets
+Forward currency contract liabilities 74,638 — 74,638 — Other current liabilities
+
+The Company has short-term, highly liquid investments classified as cash equivalents, which are invested in money market funds and short-term deposits with original maturities of three months or less.
+Assets and liabilities measured at fair value on a non-recurring basis
+The Company has also recorded lease termination liabilities at fair value on a non-recurring basis, determined using Level 3 inputs based on remaining lease rentals and reduced by estimated sublease income.
+
+Note 18. Derivative Financial Instruments
+The Company currently hedges against changes in the Canadian dollar and Chinese Yuan to the U.S. dollar exchange rate and changes in the Euro and Australian dollar to the Canadian dollar exchange rate using forward currency contracts.
+Net investment hedges
+The Company is exposed to foreign currency exchange gains and losses which arise on translation of its international subsidiaries' balance sheets into U.S. dollars. These gains and losses are recorded as other comprehensive income (loss), net of tax in accumulated other comprehensive income or loss within stockholders' equity.
+The Company holds a significant portion of its assets in Canada and enters into forward currency contracts designed to hedge a portion of the foreign currency exposure that arises on translation of a Canadian subsidiary into U.S. dollars. These forward currency contracts are designated as net investment hedges. The Company assesses hedge effectiveness based on changes in forward rates. The Company recorded no ineffectiveness from net investment hedges during 2025.
+Derivatives not designated as hedging instruments
+During 2025, the Company entered into certain forward currency contracts designed to economically hedge the foreign currency exchange revaluation gains and losses that are recognized by its Canadian and Chinese subsidiaries on specific monetary assets and liabilities denominated in currencies other than the functional currency of the entity. The Company has not applied hedge accounting to these instruments and the change in fair value of these derivatives is recorded within selling, general and administrative expenses.
+66
+
+Table of Contents
+
+Quantitative disclosures about derivative financial instruments
+The notional amounts and fair values of forward currency contracts were as follows:
+
+February 1, 2026 February 2, 2025
+Gross Notional Assets Liabilities Gross Notional Assets Liabilities
+(In thousands)
+Derivatives designated as net investment hedges:
+Forward currency contracts $ 1,548,000 $ — $ 32,510 $ 1,969,000 $ 74,908 $ —
+Derivatives not designated in a hedging relationship:
+Forward currency contracts 1,832,471 30,996 3,966 2,167,657 1,940 74,638
+Net derivatives recognized on consolidated balance sheets:
+Forward currency contracts $ 30,996 $ 36,476 $ 76,848 $ 74,638
+
+As of February 1, 2026, there were derivative assets of $31.0 million and derivative liabilities of $36.5 million subject to enforceable netting arrangements.
+The forward currency contracts designated as net investment hedges outstanding as of February 1, 2026 mature on different dates between February 2026 and July 2026.
+The forward currency contracts not designated in a hedging relationship outstanding as of February 1, 2026 mature on different dates between February 2026 and July 2026.
+The pre-tax gains and losses on foreign currency exchange forward contracts recorded in accumulated other comprehensive income or loss were as follows:
+
+2025 2024 2023
+(In thousands)
+Gains (losses) recognized in net investment hedge gains (losses):
+Derivatives designated as net investment hedges $ (80,212) $ 125,378 $ 15,344
+
+No gains or losses have been reclassified from accumulated other comprehensive income or loss into net income for derivative financial instruments in a net investment hedging relationship, as the Company has not sold or liquidated (or substantially liquidated) its hedged subsidiary.
+The pre-tax net foreign currency exchange and derivative gains and losses recorded in the consolidated statement of operations were as follows:
+
+2025 2024 2023
+(In thousands)
+Gains (losses) recognized in selling, general and administrative expenses:
+Foreign exchange gains (losses) $ (87,868) $ 127,843 $ (23,232)
+Derivatives not designated in a hedging relationship 65,152 (118,423) 22,765
+Net foreign exchange and derivative gains (losses) $ (22,716) $ 9,420 $ (467)
+
+Note 19. Leases
+The Company has obligations under operating leases for its store and other retail locations, distribution centers, offices, and equipment. As of February 1, 2026, the initial lease terms of the various leases generally range from two to 15 years. The majority of the Company's leases include renewal options at the sole discretion of the Company. The lease term includes options to extend or terminate the lease when it is reasonably certain those options will be exercised.
+67
+
+Table of Contents
+
+The following table details the Company's net lease expense. Certain of the Company's leases include rent escalation clauses, rent holidays, and leasehold rental incentives. The majority of the Company's leases for store premises also include contingent rental payments based on sales volume. The variable lease expenses disclosed below include contingent rent payments and other non-fixed lease-related costs, including common area maintenance, property taxes, and landlord's insurance.
+
+2025 2024 2023
+(In thousands)
+Net lease expense:
+Operating lease expense $ 405,987 $ 338,756 $ 282,888
+Short-term lease expense 13,172 13,588 15,289
+Variable lease expense 196,869 188,358 152,791
+Sublease income (9,803) (2,805) —
+$ 606,225 $ 537,897 $ 450,968
+
+The following table presents future minimum lease payments by fiscal year and the impact of discounting.
+
+February 1, 2026
+(In thousands)
+2026 $ 370,705
+2027 391,976
+2028 334,124
+2029 287,375
+2030 182,005
+Thereafter 537,635
+Future minimum lease payments $ 2,103,820
+Impact of discounting (305,379)
+Present value of lease liabilities $ 1,798,441
+
+Balance sheet classification:
+Current lease liabilities $ 298,724
+Non-current lease liabilities 1,499,717
+$ 1,798,441
+
+As of February 1, 2026, the Company's minimum lease commitment for distribution center operating leases which have been committed to, but not yet commenced, was $278.5 million, which is not reflected in the table above.
+The weighted-average remaining lease terms and weighted-average discount rates were as follows:
+
+February 1, 2026 February 2, 2025
+Weighted-average remaining lease term 6.59 years 6.68 years
+Weighted-average discount rate 4.4 % 4.3 %
+
+68
+
+Table of Contents
+
+Note 20. Income Taxes
+The Company's domestic and foreign income before income tax expense and current and deferred income taxes from federal, state, and foreign sources were as follows:
+
+2025 2024 2023
+(In thousands)
+Income before income tax expense
+
+Domestic $ 598,174 $ 479,956 $ 458,041
+Foreign 1,640,793 2,096,121 1,717,694
+
+$ 2,238,967 $ 2,576,077 $ 2,175,735
+Current income tax expense
+Federal $ 177,390 $ 86,851 $ 140,726
+State 36,771 31,983 42,476
+Foreign 494,677 584,248 469,090
+
+$ 708,838 $ 703,082 $ 652,292
+Deferred income tax expense (recovery)
+Federal $ (41,413) $ 61,386 $ (14,741)
+State (9,733) 14,047 (3,097)
+Foreign 2,092 (17,054) (8,909)
+$ (49,054) $ 58,379 $ (26,747)
+Income tax expense $ 659,784 $ 761,461 $ 625,545
+
+The Company's income tax expense for 2023 included a discrete income tax recovery of $26.1 million related to the impairment of assets and restructuring costs. Please refer to Note 10. Impairment of Assets and Restructuring Costs for further information.
+As of February 1, 2026, the Company's net investment in its Canadian subsidiaries was $3.3 billion, of which $1.6 billion was determined to be indefinitely reinvested. A deferred income tax liability of $80.7 million has been recognized in relation to the portion of the Company's net investment in its Canadian and Hong Kong SAR subsidiaries that is not indefinitely reinvested, representing the Canadian withholding taxes and U.S. state income taxes which would be due upon repatriation. This deferred tax liability has been recorded on the basis that the Company would choose to make the repatriation transactions in the most tax-efficient manner. Specifically, to the extent that the Canadian subsidiaries have paid-up capital, any such distributions would be structured as a return of capital, and therefore not subject to Canadian withholding tax. The unrecognized deferred income tax liability on the indefinitely reinvested amount is approximately $89.1 million.
+As of February 1, 2026, the Company had cash and cash equivalents of $935.1 million outside of the United States.
+69
+
+Table of Contents
+
+The reconciliation of the federal statutory income tax rate to the Company's effective tax rate was as follows:
+
+2025 2024 2023
+Amount Percent Amount Percent Amount Percent
+(In thousands, except percentages)
+Federal income tax at statutory rate $ 470,183 21.0 % $ 540,976 21.0 % $ 456,904 21.0 %
+Domestic
+Domestic federal reconciling items:
+Tax credits (4,746) (0.2) (5,923) (0.2) (5,289) (0.2)
+Nontaxable or nondeductible items 2,309 0.1 3,891 0.2 4,207 0.2
+Effect of cross-border tax laws (9,251) (0.4) 2,004 0.1 1,970 0.1
+Changes in valuation allowances 9,513 0.4 5,769 0.2 — —
+Other(1)
+(28,629) (1.3) (6,155) (0.2) (8,913) (0.4)
+State and local income tax, net of federal income tax effect
+State income taxes(2)
+31,269 1.4 27,802 1.1 20,280 0.9
+Other 7,420 0.3 8,098 0.3 4,793 0.2
+Foreign tax effects
+Canada
+Foreign tax rate differential (74,710) (3.3) (117,327) (4.6) (82,994) (3.8)
+Provincial local taxes(3)
+152,044 6.8 235,159 9.1 167,333 7.7
+Tax on unremitted earnings, net 50,881 2.3 58,835 2.3 52,498 2.4
+Other 10,987 0.5 5,284 0.2 4,877 0.2
+China Mainland
+Nontaxable or nondeductible items 25,987 1.2 8,776 0.3 (733) —
+Other 10,996 0.5 4,588 0.2 4,332 0.2
+Other foreign jurisdictions 5,531 0.2 (10,316) (0.4) 6,280 0.3
+Effective tax rate $ 659,784 29.5 % $ 761,461 29.6 % $ 625,545 28.8 %
+
+__________
+(1)The other category within domestic federal reconciling items is comprised of individually insignificant items. For 2025, it primarily relates to tax benefits related to foreign exchange losses.
+(2)California, New York, Florida, Illinois, New Jersey, Pennsylvania, Massachusetts, and Minnesota made up the majority (greater than 50%) of this category for each of 2025, 2024, and 2023.
+(3)British Columbia makes up the majority (greater than 50%) of this category for each of 2025, 2024, and 2023.
+
+Cash paid for income taxes, net of refunds, was as follows:
+
+2025 2024 2023
+(In thousands)
+Domestic
+
+Federal
+$ 183,977 $ 133,064 $ 126,980
+State
+44,106 46,438 57,073
+
+228,083 179,502 184,053
+Foreign
+
+Canada
+682,486 339,446 578,385
+China Mainland
+64,034 34,966 23,092
+Other
+40,841 25,264 38,683
+
+787,361 399,676 640,160
+Cash paid for income taxes, net of refunds
+$ 1,015,444 $ 579,178 $ 824,213
+
+70
+
+Table of Contents
+
+The tax effects of temporary differences that give rise to significant portions of the deferred income tax assets and deferred income tax liabilities are presented below:
+
+February 1, 2026 February 2, 2025
+(In thousands)
+Deferred income tax assets:
+Inventories $ 32,630 $ 33,801
+Unredeemed gift card liability 21,163 18,956
+Non-current lease liabilities 356,197 308,796
+Research and experimental expenditures 77,869 71,579
+Foreign-derived intangible income ("FDII") 43,369 —
+Foreign tax credits 15,282 5,769
+Stock-based compensation 14,738 20,883
+Net operating loss carryforwards
+2,267 2,174
+Other 30,684 26,022
+Deferred income tax assets 594,199 487,980
+Valuation allowance (17,517) (7,902)
+Deferred income tax assets, net of valuation allowance $ 576,682 $ 480,078
+Deferred income tax liabilities:
+Property and equipment, net $ (205,131) $ (180,664)
+
+Right-of-use lease assets (314,982) (269,089)
+Unremitted foreign earnings (80,651) (106,986)
+Other (4,159) (4,442)
+Deferred income tax liabilities (604,923) (561,181)
+Net deferred income tax liabilities $ (28,241) $ (81,103)
+
+Balance sheet classification:
+Deferred income tax assets $ 24,037 $ 17,085
+Deferred income tax liabilities (52,278) (98,188)
+Net deferred income tax liabilities $ (28,241) $ (81,103)
+
+As of February 1, 2026, the Company had net operating loss carryforwards of $35.0 million. The majority of the net operating loss carryforwards expire, if unused, between fiscal 2030 and fiscal 2045.
+There was a $9.6 million net increase in the valuation allowance in 2025, compared to a $5.6 million net increase in 2024, and a $1.6 million net increase in 2023.
+The Company files income tax returns in the U.S., Canada, China Mainland, and various foreign and state jurisdictions. The 2022 to 2024 tax years remain subject to examination by the U.S. federal and state tax authorities. The 2018 to 2024 tax years remain subject to examination by Canadian tax authorities. The 2016 to 2024 tax years remain subject to examination by the China Mainland tax authorities. The 2018 to 2024 tax years remain subject to examination by tax authorities in certain other foreign jurisdictions. The Company does not have any significant unrecognized tax benefits arising from uncertain tax positions taken, or expected to be taken, in the Company's tax returns.
+71
+
+Table of Contents
+
+Note 21. Earnings Per Share
+The details of the computation of basic and diluted earnings per share are as follows:
+
+2025 2024 2023
+(In thousands, except per share amounts)
+Net income $ 1,579,183 $ 1,814,616 $ 1,550,190
+Basic weighted-average number of shares outstanding 118,981 123,735 126,726
+Assumed conversion of dilutive stock options and awards 87 200 334
+Diluted weighted-average number of shares outstanding 119,068 123,935 127,060
+Basic earnings per share $ 13.27 $ 14.67 $ 12.23
+Diluted earnings per share $ 13.26 $ 14.64 $ 12.20
+
+The Company's calculation of weighted-average shares includes the common stock of the Company as well as the exchangeable shares. Exchangeable shares are the economic equivalent of common shares in all material respects. All classes of stock have in effect the same economic rights and share equally in undistributed net income. For 2025, 2024, and 2023, 127.7 thousand, 64.2 thousand, and 62.7 thousand stock options and awards, respectively, were anti-dilutive to earnings per share and therefore have been excluded from the computation of diluted earnings per share.
+On March 23, 2022, the Company's board of directors approved a stock repurchase program authorizing up to $1.0 billion of common shares, which was fully utilized during the first quarter of 2024.
+Subsequently, the board of directors approved a new repurchase program authorizing up to $4.0 billion in aggregate, including $1.0 billion initially authorized on November 29, 2023, and additional $1.0 billion increases on May 29, 2024, December 3, 2024, and December 3, 2025. This program does not have an expiration date or require a minimum number of shares to be repurchased. Repurchases may be made on the open market at prevailing prices or through privately negotiated transactions, including under plans pursuant to Rule 10b5-1 and Rule 10b-18 of the Securities Exchange Act of 1934. The timing and amount of repurchases will depend on market conditions, trading eligibility, and other factors. As of February 1, 2026, the remaining authorized amount available under the program, excluding commissions and excise taxes, was $1.4 billion.
+During 2025, 2024, and 2023, 5.0 million, 5.1 million, and 1.5 million shares, respectively, were repurchased under the programs at a total cost including commissions and excise taxes of $1.2 billion, $1.6 billion, and $558.7 million, respectively.
+Subsequent to February 1, 2026, and up to March 11, 2026, 0.9 million shares were repurchased at a total cost including commissions and excise taxes of $159.6 million.
+
+Note 22. Commitments and Contingencies
+Commitments
+Leases. The Company has obligations under operating leases for its store and other retail locations, distribution centers, offices, and equipment. Please refer to Note 19. Leases for further details regarding lease commitments and the timing of future minimum lease payments.
+License and supply arrangements. The Company has entered into license and supply arrangements with partners which grant them the right to operate lululemon branded retail locations and sell lululemon products on websites in specific countries. Under these arrangements, the Company supplies the partners with lululemon products, training, and other support. As of February 1, 2026, there were 45 licensed locations, including 13 in the United Arab Emirates, nine in Saudi Arabia, eight in Israel, four in Kuwait, four in Qatar, three in Turkey, two in Belgium, one in Bahrain, and one in Denmark. On September 10, 2024, the Company acquired the lululemon branded retail locations and operations run by a third party in Mexico. The Company had previously granted the third party the right to operate retail locations and to sell lululemon products in Mexico. Please refer to Note 7. Acquisition for further information.
+Contingencies
+Legal proceedings
+In addition to the legal proceedings described below, the Company is, from time to time, involved in routine legal matters, and audits and inspections by governmental agencies and other third parties which are incidental to the conduct of its business. This includes legal matters such as initiation and defense of proceedings to protect intellectual property rights,
+72
+
+Table of Contents
+
+employment claims, product liability claims, personal injury claims, and similar matters. The Company believes the ultimate resolution of any such legal proceedings, audits, and inspections is not reasonably likely to have a material adverse effect on its consolidated balance sheets, results of operations or cash flows; however, litigation and regulatory matters are inherently uncertain, and it is possible that an adverse outcome in one or more matters could have a material impact in a particular reporting period. The Company has recognized immaterial provisions related to the expected outcome of legal proceedings.
+On August 8, 2024, lululemon athletica inc. and certain officers of the Company were named as defendants in a purported securities class action (Patel v. Lululemon Athletica Inc., et al., No. 1:24-cv-06033) in the United States District Court for the Southern District of New York. On March 10, 2025, plaintiffs filed an amended complaint, asserting claims under Sections 10(b) and 20(a) of the Securities Exchange Act of 1934 based on allegedly false and misleading public statements and omissions by defendants during the period December 8, 2023 to July 24, 2024 relating to lululemon's business, product offerings, and inventory allocation that plaintiffs allege artificially inflated the Company’s stock price. The amended complaint currently seeks unspecified monetary damages. On May 19, 2025, defendants moved to dismiss the amended complaint. The Company intends to defend the action vigorously.
+Since November 4, 2024, six stockholder derivative complaints have been filed in the United States Court for the Southern District of New York: Bhavsar v. McDonald et al., No. 1:24-cv-08405; Muszynski v. McDonald et al., No. 1:24-cv-08507; Holtz v. McDonald et al., No. 1:24-cv-08572; Wong v. McDonald et al., No. 1:24-cv-08752; Kanaly v. McDonald et al., No. 1:24-cv-08839; and Wasserman v. McDonald et al., No. 1:25-cv-02793 (collectively, the "Derivative Actions."). The complaints in the Derivative Actions are generally based on the same allegations alleged in the securities action complaint and assert claims against certain of the Company’s current and former directors and officers for, among other things, alleged breaches of fiduciary duty and violations of Sections 10(b), 14(a), and 20(a) of the Exchange Act. Certain of the Derivative Actions also assert claims based on alleged false and misleading statements during the period October 28, 2020 to April 25, 2024 relating to the Company’s "IDEA" program. The complaints seek, among other things, monetary damages and equitable relief on behalf of the Company, as well as an award of attorneys’ fees and costs. On May 15, 2025, plaintiff in Bhavsar v. McDonald et al. voluntarily dismissed the complaint and that action has been terminated. On August 1, 2025, the Derivative Actions were consolidated for all purposes under the caption In re lululemon athletica inc. Stockholder Derivative Litigation, Master File No. 1:24-cv-08507. The Derivative Actions are stayed pending a ruling on the motion to dismiss the securities class action.
+Tariffs
+On February 20, 2026, the U.S. Supreme Court invalidated tariffs imposed under the International Emergency Economic Power Act (the "IEEPA"). Immediately following this IEEPA decision, the U.S. Administration initiated new tariffs at different rates under alternative legislative powers. The U.S. Administration also confirmed that the IEEPA decision does not impact the removal of the de minimis exemption. The IEEPA decision did not address the processes that will govern refund claims, and the timing of any potential refunds, and the ultimate amounts, if any, that we may recover remains uncertain.
+
+Note 23. Supplementary Financial Information
+Certain supplementary cash flow information follows:
+
+2025 2024 2023
+(In thousands)
+Cash paid for amounts included in the measurement of lease liabilities $ 406,046 $ 378,250 $ 288,934
+Leased assets obtained in exchange for new operating lease liabilities 542,498 503,858 586,926
+Interest paid 1,028 478 234
+
+A summary of certain costs included within selling, general and administrative expenses follows:
+
+2025 2024 2023
+(In thousands)
+Distribution costs
+$ 359,732 $ 348,957 $ 374,170
+Advertising expenses
+617,525 541,488 429,681
+
+Note 24. Segmented Information
+The Company reports three segments: Americas, China Mainland, and Rest of World, which is comprised of its non-
+73
+
+Table of Contents
+
+significant operating segments APAC and EMEA reported on a combined basis.
+The Company's segments are based on the financial information the Chief Operating Decision Maker ("CODM") uses to evaluate performance and allocate resources. Effective January 31, 2026, the Company's chief executive officer ("CEO") stepped down, and the Company's chief financial officer and its president and chief commercial officer were appointed as interim co-CEOs. The CODM of the Company during 2025 was the CEO, and during the interim period, the interim co-CEOs are the Company's CODM. The CODM approves the annual budget on a segment level, and regularly assesses the performance of the Company's segments using key financial metrics, including net revenue and segmented income from operations. The Company does not report capital expenditures and assets by segment as that information is not reviewed by the CODM.
+The following outlines segmented information:
+
+2025
+
+Americas
+China Mainland
+Rest of World
+Total Segments
+Corporate(1)
+Total
+
+(In thousands)
+Net revenue $ 7,847,044 $ 1,754,799 $ 1,500,757 $ 11,102,600 $ — $ 11,102,600
+Product costs(2)
+2,585,483 414,504 428,044 3,428,031 — 3,428,031
+Other cost of sales(2)
+674,020 221,680 255,756 1,151,456 238,981 1,390,437
+Selling, general and administrative expenses 2,026,883 417,492 471,056 2,915,431 1,151,125 4,066,556
+Amortization of intangible assets — — — — 6,961 6,961
+Income from operations $ 2,560,658 $ 701,123 $ 345,901 $ 3,607,682 $ (1,397,067) $ 2,210,615
+Other income (expense), net 28,352
+Income before income tax expense $ 2,238,967
+
+Supplemental information:
+Depreciation and amortization(3)
+$ 224,684 $ 38,198 $ 36,585 $ 299,467 $ 196,761 $ 496,228
+
+2024
+
+Americas
+China Mainland
+Rest of World
+Total Segments
+Corporate(1)
+Total
+
+(In thousands)
+Net revenue $ 7,928,156 $ 1,361,337 $ 1,298,633 $ 10,588,126 $ — $ 10,588,126
+Product costs(2)
+2,336,251 324,237 364,906 3,025,394 — 3,025,394
+Other cost of sales(2)
+641,699 198,373 217,536 1,057,608 234,313 1,291,921
+Selling, general and administrative expenses 1,934,649 328,868 401,245 2,664,762 1,097,617 3,762,379
+Amortization of intangible assets — — — — 2,735 2,735
+Income from operations $ 3,015,557 $ 509,859 $ 314,946 $ 3,840,362 $ (1,334,665) $ 2,505,697
+Other income (expense), net 70,380
+Income before income tax expense $ 2,576,077
+
+Supplemental information:
+Depreciation and amortization(3)
+$ 204,922 $ 33,206 $ 30,872 $ 269,000 $ 177,524 $ 446,524
+
+74
+
+Table of Contents
+
+2023
+
+Americas
+China Mainland
+Rest of World
+Total Segments
+Corporate(1)
+Total
+
+(In thousands)
+Net revenue $ 7,631,647 $ 963,760 $ 1,023,871 $ 9,619,278 $ — $ 9,619,278
+Product costs(2)
+2,283,490 241,663 316,542 2,841,695 23,709 2,865,404
+Other cost of sales(2)
+576,810 154,136 171,992 902,938 241,531 1,144,469
+Selling, general and administrative expenses 1,834,163 230,645 333,505 2,398,313 998,905 3,397,218
+Impairment of assets — — — — 74,501 74,501
+Amortization of intangible assets — — — — 5,010 5,010
+Income from operations $ 2,937,184 $ 337,316 $ 201,832 $ 3,476,332 $ (1,343,656) $ 2,132,676
+Other income (expense), net 43,059
+Income before income tax expense $ 2,175,735
+
+Supplemental information:
+Depreciation and amortization(3)
+$ 170,417 $ 25,746 $ 23,644 $ 219,807 $ 159,577 $ 379,384
+
+__________
+(1)Corporate includes centrally managed support functions including product design, raw material development, product innovation, sourcing, supply chain, and global merchandising which are included in other cost of sales. Administrative corporate expenses include technology, brand and marketing, finance, human resources, legal, and other head office costs. An inventory obsolescence provision in relation to lululemon Studio of $23.7 million in 2023 is included within product costs.
+(2)Please refer to Note 2. Summary of Significant Accounting Policies "Cost of goods sold" for a definition of product costs and other cost of sales.
+(3)The amounts of depreciation and amortization disclosed by reportable segment are included within other cost of sales and selling, general and administrative expenses.
+
+Long-lived assets, including property and equipment, net and right-of-use lease assets, by geographic area were as follows:
+
+February 1, 2026 February 2, 2025
+(In thousands)
+United States $ 2,004,523 $ 1,788,554
+Canada 802,444 675,048
+People's Republic of China 400,902 326,621
+Other geographic areas 456,032 406,650
+$ 3,663,901 $ 3,196,873

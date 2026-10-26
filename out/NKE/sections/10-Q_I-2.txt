@@ -1,0 +1,525 @@
+Management's Discussion and Analysis
+Source: https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm
+
+ITEM 2. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
+OVERVIEW
+NIKE designs, develops, markets and sells athletic footwear, apparel, equipment, accessories and services worldwide. We are the largest seller of athletic footwear and apparel in the world. We sell our products through two distribution channels: NIKE Direct operations which are comprised of both NIKE-owned retail stores and sales through our digital platforms (also referred to as "NIKE Brand Digital") and to wholesale accounts, which include a mix of independent distributors, licensees and sales representatives in nearly all countries around the world. Our goal is to deliver value to our shareholders by building a profitable global portfolio of branded footwear, apparel, equipment and accessories.
+Our strategy is to achieve sustainable, profitable long-term revenue growth by leading with sport, creating innovative, "must-have" products, building deep personal consumer connections with our brands and delivering compelling consumer experiences through digital platforms and at retail.
+QUARTERLY FINANCIAL HIGHLIGHTS
+•NIKE, Inc. Revenues were $11.2 billion for the first quarter of fiscal 2027 compared to $11.7 billion in the first quarter of fiscal 2026, down 4% on a reported basis and down 5% on a currency-neutral basis.
+•NIKE Brand wholesale revenues were $6.8 billion for the first quarter of fiscal 2027 and the first quarter of fiscal 2026. The decrease on a currency-neutral basis was primarily driven by lower revenues in Greater China, partially offset by higher revenues in North America.
+•NIKE Direct revenues were $4.1 billion for the first quarter of fiscal 2027 compared to $4.5 billion for the first quarter of fiscal 2026.
+•Gross margin for the first quarter of fiscal 2027 increased 60 basis points to 42.8% primarily due to lower warehousing and logistics costs.
+•Inventories as of August 31, 2026 were $7.8 billion, an increase of 5% compared to May 31, 2026, primarily due to shifts in product mix.
+•We returned approximately $0.6 billion to our shareholders in the first quarter of fiscal 2027 through dividends.
+FACTORS IMPACTING OUR BUSINESS
+We are navigating through several external factors that create uncertainty and volatility in the operating environment, including, but not limited to: geopolitical dynamics, tax regulation, fluctuating foreign currency exchange rates and evolving tariff policies. These factors, and any changes to these factors, among others, could have a material adverse impact on consumer behavior and on our future Revenues and overall profitability. For a discussion of these factors and other risks, refer to Risk Factors in Item 1A of Part I within our Annual Report on Form 10-K for the fiscal year ended May 31, 2026 (the "Annual Report").
+Despite these factors, we are focused on driving distinction within key sports, building a complete product portfolio, creating stories to inspire and emotionally connect with consumers, and elevating and growing the entire marketplace as we continue to take actions across the following areas:
+•Product Management: Accelerating product innovation and reducing the supply of certain footwear products in the marketplace to rebalance the mix of our footwear portfolio.
+•Marketplace Management: Repositioning NIKE Brand Digital as a full-price platform and reinvesting in wholesale distribution. This includes liquidating inventory through increased markdowns across NIKE Direct, and higher sales returns and discounts with our wholesale partners to reduce inventory and create capacity for new product. We are also making investments to elevate the presentation of our brands in physical retail.
+•Brand Management: Investing in demand creation, including brand marketing and sports marketing, to support key product launches and sports moments.
+19
+
+Table of Contents
+
+Our reportable operating segments are at different stages of progress with respect to these actions. While we have seen progress with certain areas of our business, additional actions related to NIKE Sportswear and Jordan Brand are expected to extend beyond fiscal 2027. The need for these additional actions reflects, in part, higher levels of discounting and broader marketplace pressure experienced in these areas of our business.
+Additionally, in Greater China, a trend of declining store traffic, elevated promotional activity and higher levels of inventory across the marketplace are negatively impacting revenues and overall profitability, while Converse is in the midst of a strategic reset of the brand and marketplace. The actions related to Converse are expected to continue throughout fiscal 2027 and for Greater China to extend beyond fiscal 2027.
+These actions have adversely affected and are expected to continue to adversely affect, Revenues and overall profitability. We believe these actions are necessary to improve the health of the business, support our long-term strategic objectives and drive sustainable shareholder value over time.
+RECENT DEVELOPMENTS
+In October 2026, NIKE announced a multi-year enterprise program, which includes and builds upon the previous cost realignment plan announced in March 2026, collectively known as Pace (the "program"). The program is intended to enhance productivity, improve organizational effectiveness, and decrease NIKE's cost structure. The program includes initiatives to further optimize our global supply chain, better align our organizational structure to support our strategic goals, including through the establishment of a new campus in India and realigning NIKE's operating model into three geographies, as well as further streamlining of the organization to reduce costs. NIKE plans to organize into three geographies in fiscal 2028, which are expected to be the Americas (North America and Latin America), APGC (Asia Pacific and Greater China) and EMEA (Europe, Middle East and Africa).
+We expect the program to result in pre-tax charges of approximately $1.0 billion, which is in addition to approximately $0.3 billion of severance costs recognized in fiscal 2026 in connection with the March 2026 plan. These costs are expected to consist primarily of employee severance and other employee-related costs. We expect approximately $0.3 billion to be recognized in fiscal 2027, with the remainder expected to be recognized through fiscal 2031. It is estimated that the majority of the charges will result in future cash expenditures and all charges will be substantially incurred by the end of fiscal 2031, subject to local law requirements.
+We expect the program to deliver approximately $2.5 billion in cumulative savings through fiscal 2031. The savings estimate is stated before the expected pre-tax charges described above and any future reinvestment.
+The expected savings, pre-tax charges and future cash expenditures are estimates and are subject to a number of assumptions, including local law requirements in various jurisdictions. Actual savings, charges and cash expenditures may differ, possibly materially, from the estimates provided above.
+20
+
+Table of Contents
+
+USE OF NON-GAAP FINANCIAL MEASURES
+Throughout this Quarterly Report on Form 10-Q, we discuss non-GAAP financial measures, which should be considered in addition to, and not in lieu of, the financial measures calculated and presented in accordance with generally accepted accounting principles in the United States of America ("U.S. GAAP"). References to these measures should not be considered in isolation or as a substitute for other financial measures calculated and presented in accordance with U.S. GAAP and may not be comparable to similarly titled measures used by other companies. Management uses these non-GAAP measures when evaluating the Company's performance, including when making financial and operating decisions. Additionally, management believes these non-GAAP financial measures provide investors with additional financial information that should be considered when assessing our underlying business performance and trends.
+Earnings Before Interest and Taxes ("EBIT") and EBIT margin: Calculated as Net income before Interest (income) expense, net and Income tax expense in the Unaudited Condensed Consolidated Statements of Income and total NIKE, Inc. EBIT divided by total NIKE, Inc. Revenues in the Unaudited Condensed Consolidated Statements of Income, respectively. Total NIKE, Inc. EBIT and EBIT margin calculations for the three months ended August 31, 2026 and 2025 are as follows:
+
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions)
+2026 2025
+Net income $ 712 $ 727
+Add: Interest (income) expense, net (14) (18)
+Add: Income tax expense 209 195
+EBIT $ 907 $ 904
+Total NIKE, Inc. Revenues $ 11,213 $ 11,720
+Net income margin 6.3% 6.2%
+EBIT margin 8.1% 7.7%
+
+Currency-neutral revenues: Currency-neutral revenues enhance visibility to underlying business trends, excluding the impact of translation arising from foreign currency exchange rate fluctuations. Currency-neutral revenues are calculated using actual exchange rates in use during the comparative prior year period in place of the exchange rates in use during the current period.
+21
+
+Table of Contents
+
+RESULTS OF OPERATIONS
+
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions, except per share data)
+2026 2025 % CHANGE
+Revenues $ 11,213 $ 11,720 -4 %
+Cost of sales 6,415 6,777 -5 %
+Gross profit 4,798 4,943 -3 %
+Gross margin 42.8% 42.2% 60 bps
+Demand creation expense 1,252 1,188 5 %
+Operating overhead expense 2,658 2,828 -6 %
+Total selling and administrative expense 3,910 4,016 -3 %
+% of revenues 34.9% 34.3% 60 bps
+Interest (income) expense, net
+(14) (18) —
+Other (income) expense, net (19) 23 —
+Income before income taxes 921 922 0 %
+Income tax expense 209 195 7 %
+Effective tax rate 22.7% 21.1% 160 bps
+NET INCOME $ 712 $ 727 -2 %
+Diluted earnings per common share $ 0.48 $ 0.49
+
+CONSOLIDATED OPERATING RESULTS
+REVENUES
+
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions)
+2026 2025 % CHANGE % CHANGE EXCLUDING CURRENCY CHANGES(1)
+
+NIKE, Inc. Revenues:
+NIKE Brand Revenues by:
+Footwear $ 6,951 $ 7,410 -6 % -6 %
+Apparel 3,384 3,313 2 % 2 %
+Equipment 611 630 -3 % -3 %
+Global Brand Divisions(2)
+6 9 — —
+TOTAL NIKE BRAND REVENUES 10,952 11,362 -4 % -4 %
+Converse 263 366 -28 % -28 %
+Corporate(3)
+(2) (8) — —
+TOTAL NIKE, INC. REVENUES $ 11,213 $ 11,720 -4 % -5 %
+NIKE Brand Channel Revenues Details:
+NIKE Brand Revenues by:
+Sales to Wholesale Customers $ 6,804 $ 6,839 -1 % -1 %
+Sales through NIKE Direct 4,142 4,514 -8 % -9 %
+Global Brand Divisions(2)
+6 9 — —
+TOTAL NIKE BRAND REVENUES $ 10,952 $ 11,362 -4 % -4 %
+
+(1)The percent change excluding currency changes represents a non-GAAP financial measure. For additional information, see "Use of Non-GAAP Financial Measures".
+(2)Global Brand Divisions revenues include NIKE Brand licensing and other miscellaneous revenues that are not part of a geographic operating segment.
+(3)Corporate revenues primarily consist of foreign currency gains and losses related to revenues generated by entities within the NIKE Brand geographic operating segments and Converse, but managed through our central foreign exchange risk management program.
+22
+
+Table of Contents
+
+FIRST QUARTER OF FISCAL 2027 COMPARED TO FIRST QUARTER OF FISCAL 2026
+•NIKE, Inc. Revenues were $11.2 billion for the first quarter of fiscal 2027 compared to $11.7 billion for the first quarter of fiscal 2026. On a currency-neutral basis, NIKE, Inc. Revenues decreased 5% primarily due to lower revenues in Greater China, Europe, Middle East & Africa ("EMEA") and Converse, partially offset by higher revenues in North America.
+•NIKE Brand revenues were $11.0 billion for the first quarter of fiscal 2027 compared to $11.4 billion for the first quarter of fiscal 2026, a decrease of 4% on a currency-neutral basis.
+DIVISIONAL REVENUES
+•NIKE Brand footwear revenues were $7.0 billion for the first quarter of fiscal 2027 compared to $7.4 billion for the first quarter of fiscal 2026. On a currency-neutral basis, NIKE Brand footwear revenues decreased 6%. Unit sales of footwear decreased 5%, while lower average selling price ("ASP") per pair reduced footwear revenues by approximately 1 percentage point. Lower ASP per pair was primarily due to channel mix and higher discounts, partially offset by strategic pricing.
+•NIKE Brand apparel revenues were $3.4 billion for the first quarter of fiscal 2027 compared to $3.3 billion for the first quarter of fiscal 2026. On a currency-neutral basis, NIKE Brand apparel revenues increased 2%. Unit sales of apparel decreased 2%, while higher ASP per unit contributed approximately 4 percentage points of apparel revenue growth. Higher ASP per unit was primarily due to product mix and strategic pricing, partially offset by higher discounts.
+NIKE BRAND CHANNEL REVENUES
+•NIKE Brand wholesale revenues were $6.8 billion for the first quarter of fiscal 2027 and the first quarter of fiscal 2026, down 1% on a currency-neutral basis. The decrease on a currency-neutral basis was primarily driven by lower revenues in Greater China, partially offset by higher revenues in North America.
+•NIKE Direct revenues were $4.1 billion for the first quarter of fiscal 2027 compared to $4.5 billion for the first quarter of fiscal 2026. On a currency-neutral basis, NIKE Direct revenues were down 9% due to declines in NIKE Brand Digital sales of 13% and declines in NIKE store sales of 5%. NIKE Brand Digital sales were $1.8 billion for the first quarter of fiscal 2027 compared to $2.1 billion for the first quarter of fiscal 2026. NIKE store sales were $2.3 billion for the first quarter of fiscal 2027 compared to $2.4 billion for the first quarter of fiscal 2026.
+GROSS MARGIN
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions)
+2026 2025 % CHANGE
+Gross profit $ 4,798 $ 4,943 -3 %
+Gross margin 42.8% 42.2% 60 bps
+
+FIRST QUARTER OF FISCAL 2027 COMPARED TO FIRST QUARTER OF FISCAL 2026
+Consolidated gross margin was 60 basis points higher than the prior year due to:
+•Lower warehousing and logistics costs, increasing gross margin approximately 90 basis points;
+•Favorable changes in net foreign currency exchange rates, including hedges, increasing gross margin approximately 40 basis points; and
+•Lower NIKE Brand product costs, increasing gross margin approximately 10 basis points.
+This was partially offset by:
+•Higher other costs, primarily due to third-party royalties, decreasing gross margin approximately 40 basis points;
+•Lower NIKE Brand ASP, decreasing gross margin approximately 30 basis points, primarily due to higher discounts and channel mix, partially offset by strategic pricing; and
+•Lower gross margin from Converse, decreasing gross margin approximately 10 basis points.
+23
+
+Table of Contents
+
+TOTAL SELLING AND ADMINISTRATIVE EXPENSE
+
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions)
+2026 2025 % CHANGE
+Demand creation expense $ 1,252 $ 1,188 5 %
+Operating overhead expense 2,658 2,828 -6 %
+Total selling and administrative expense $ 3,910 $ 4,016 -3 %
+% of revenues 34.9% 34.3% 60 bps
+
+Demand creation expense consists of brand marketing expense and sports marketing expense. Brand marketing expense includes advertising and promotion costs such as production and media costs, digital marketing expense, brand events and retail brand presentation costs. Sports marketing expense includes expenses related to endorsement contracts, complimentary product and sports marketing events.
+Operating overhead expense consists primarily of wage and benefit-related expenses and other administrative costs, such as research and development costs, bad debt expense, rent, depreciation and amortization and costs related to professional services, certain technology investments, meetings and travel.
+FIRST QUARTER OF FISCAL 2027 COMPARED TO FIRST QUARTER OF FISCAL 2026
+Demand creation expense increased 5% primarily due to higher brand marketing expense, reflecting higher investment in key sports events. Changes in foreign currency exchange rates did not have a material impact on Demand creation expense.
+Operating overhead expense decreased 6% primarily due to lower wage-related expense and lower other administrative costs. Changes in foreign currency exchange rates did not have a material impact on Operating overhead expense.
+INCOME TAXES
+
+THREE MONTHS ENDED AUGUST 31,
+2026 2025 % CHANGE
+Effective tax rate 22.7% 21.1% 160 bps
+
+FIRST QUARTER OF FISCAL 2027 COMPARED TO FIRST QUARTER OF FISCAL 2026
+Our effective tax rate increased from 21.1% to 22.7% primarily due to foreign tax audit settlements recognized in the current year.
+For additional information, refer to Note 4 — Income Taxes within the accompanying Notes to the Unaudited Condensed Consolidated Financial Statements.
+
+24
+
+Table of Contents
+
+SEGMENT INFORMATION
+See Note 10 — Segment Information in the accompanying Notes to the Unaudited Condensed Consolidated Financial Statements for a description of our segments and related information.
+The breakdown of Revenues is as follows:
+
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions)
+2026 2025 % CHANGE % CHANGE EXCLUDING CURRENCY CHANGES(1)
+
+North America $ 5,127 $ 5,020 2 % 2 %
+Europe, Middle East & Africa 3,176 3,331 -5 % -5 %
+Greater China 1,180 1,512 -22 % -26 %
+Asia Pacific & Latin America 1,463 1,490 -2 % 0 %
+Global Brand Divisions(2)
+6 9 — —
+TOTAL NIKE BRAND 10,952 11,362 -4 % -4 %
+Converse 263 366 -28 % -28 %
+Corporate(3)
+(2) (8) — —
+TOTAL NIKE, INC. REVENUES $ 11,213 $ 11,720 -4 % -5 %
+
+(1)The percent change excluding currency changes represents a non-GAAP financial measure. For additional information, see "Use of Non-GAAP Financial Measures".
+(2)Global Brand Divisions revenues include NIKE Brand licensing and other miscellaneous revenues that are not part of a geographic operating segment.
+(3)Corporate revenues primarily consist of foreign currency gains and losses related to revenues generated by entities within the NIKE Brand geographic operating segments and Converse, but managed through our central foreign exchange risk management program.
+We use EBIT as the primary financial measure to evaluate performance of our segments. The breakdown of EBIT is as follows:
+
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions)
+2026 2025 % CHANGE
+North America $ 1,170 $ 1,134 3 %
+Europe, Middle East & Africa 728 735 -1 %
+Greater China 248 377 -34 %
+Asia Pacific & Latin America 324 350 -7 %
+Global Brand Divisions (1,110) (1,192) 7 %
+TOTAL NIKE BRAND(1)
+1,360 1,404 -3 %
+Converse 25 39 -36 %
+Corporate
+(478) (539) 11 %
+TOTAL NIKE, INC. EBIT(1)
+907 904 0 %
+Interest (income) expense, net (14) (18) —
+Income tax expense 209 195 7 %
+NET INCOME $ 712 $ 727 -2 %
+
+Total NIKE, Inc. Revenues $ 11,213 $ 11,720 -4 %
+Net income margin 6.3% 6.2%
+EBIT margin(1)
+8.1% 7.7%
+
+(1)Total NIKE Brand EBIT, Total NIKE, Inc. EBIT and EBIT margin represent non-GAAP financial measures. See "Use of Non-GAAP Financial Measures" for additional information.
+25
+
+Table of Contents
+
+NORTH AMERICA
+
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions)
+2026 2025 % CHANGE % CHANGE EXCLUDING CURRENCY CHANGES
+Revenues by:
+Footwear $ 3,259 $ 3,219 1 % 1 %
+Apparel 1,566 1,474 6 % 6 %
+Equipment 302 327 -8 % -8 %
+TOTAL REVENUES $ 5,127 $ 5,020 2 % 2 %
+Revenues by:
+Sales to Wholesale Customers $ 2,981 $ 2,736 9 % 9 %
+Sales through NIKE Direct 2,146 2,284 -6 % -6 %
+TOTAL REVENUES $ 5,127 $ 5,020 2 % 2 %
+Cost of sales 2,903 2,897 0 %
+Gross profit 2,224 2,123 5 %
+Gross margin 43.4% 42.3% 110 bps
+Demand creation expense 511 442 16 %
+Operating overhead expense 564 547 3 %
+Total selling and administrative expense 1,075 989 9 %
+Other segment items (21) — —
+EARNINGS BEFORE INTEREST AND TAXES $ 1,170 $ 1,134 3 %
+
+FIRST QUARTER OF FISCAL 2027 COMPARED TO FIRST QUARTER OF FISCAL 2026
+•North America revenues increased 2% on a currency-neutral basis. Wholesale revenues increased 9%. NIKE Direct revenues decreased 6% due to declines in digital sales of 6% and declines in store sales of 6%.
+•Footwear revenues increased 1% on a currency-neutral basis. Unit sales of footwear increased 2%, while lower ASP per pair reduced footwear revenues by approximately 1 percentage point. Lower ASP per pair was primarily due to channel mix and higher discounts, partially offset by product mix and strategic pricing.
+•Apparel revenues increased 6% on a currency-neutral basis. Unit sales of apparel were flat, while higher ASP per unit contributed approximately 6 percentage points of apparel revenue growth. Higher ASP per unit was primarily due to product mix and strategic pricing, partially offset by higher discounts.
+Reported EBIT increased 3% reflecting higher reported revenues and the following:
+•Gross margin expansion of 110 basis points primarily due to higher ASP and lower warehousing and logistics costs, partially offset by higher product costs, driven by product mix. Higher ASP primarily reflects product mix and strategic pricing, partially offset by higher discounts.
+•Demand creation expense increased 16% primarily due to higher brand marketing expense, reflecting higher investment in key sports events.
+•Operating overhead expense increased 3% due to higher wage-related expense and higher other administrative costs.
+
+26
+
+Table of Contents
+
+EUROPE, MIDDLE EAST & AFRICA
+
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions)
+2026 2025 % CHANGE % CHANGE EXCLUDING CURRENCY CHANGES
+Revenues by:
+Footwear $ 1,798 $ 2,021 -11 % -11 %
+Apparel 1,163 1,106 5 % 5 %
+Equipment 215 204 5 % 5 %
+TOTAL REVENUES $ 3,176 $ 3,331 -5 % -5 %
+Revenues by:
+Sales to Wholesale Customers $ 2,233 $ 2,261 -1 % -1 %
+Sales through NIKE Direct 943 1,070 -12 % -12 %
+TOTAL REVENUES $ 3,176 $ 3,331 -5 % -5 %
+Cost of sales 1,765 1,900 -7 %
+Gross profit 1,411 1,431 -1 %
+Gross margin 44.4% 43.0% 140 bps
+Demand creation expense 313 313 0 %
+Operating overhead expense 370 382 -3 %
+Total selling and administrative expense 683 695 -2 %
+Other segment items — 1 —
+EARNINGS BEFORE INTEREST AND TAXES $ 728 $ 735 -1 %
+
+FIRST QUARTER OF FISCAL 2027 COMPARED TO FIRST QUARTER OF FISCAL 2026
+•EMEA revenues decreased 5% on a currency-neutral basis. Wholesale revenues decreased 1%. NIKE Direct revenues decreased 12% due to declines in digital sales of 26% and declines in store sales of 1%.
+•Footwear revenues decreased 11% on a currency-neutral basis. Unit sales of footwear decreased 5%, while lower ASP per pair reduced footwear revenues by approximately 6 percentage points. Lower ASP per pair was primarily due to channel mix and higher discounts.
+•Apparel revenues increased 5% on a currency-neutral basis. Unit sales of apparel increased 2%, while higher ASP per unit contributed approximately 3 percentage points of apparel revenue growth. Higher ASP per unit was primarily due to product mix, partially offset by channel mix and higher discounts.
+Reported EBIT decreased 1% reflecting lower reported revenues and the following:
+•Gross margin expansion of 140 basis points primarily due to lower product costs and lower warehousing and logistics costs, partially offset by lower ASP. Lower ASP primarily reflects product mix, higher discounts and channel mix, partially offset by strategic pricing.
+•Demand creation expense was flat, with a shift in brand marketing toward key sports events.
+•Operating overhead expense decreased 3% primarily due to lower wage-related expense and lower other administrative costs.
+
+27
+
+Table of Contents
+
+GREATER CHINA
+
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions)
+2026 2025 % CHANGE % CHANGE EXCLUDING CURRENCY CHANGES
+Revenues by:
+Footwear $ 866 $ 1,109 -22 % -26 %
+Apparel 279 362 -23 % -27 %
+Equipment 35 41 -15 % -18 %
+TOTAL REVENUES $ 1,180 $ 1,512 -22 % -26 %
+Revenues by:
+Sales to Wholesale Customers $ 644 $ 893 -28 % -31 %
+Sales through NIKE Direct 536 619 -13 % -18 %
+TOTAL REVENUES $ 1,180 $ 1,512 -22 % -26 %
+Cost of sales 619 798 -22 %
+Gross profit
+561 714 -21 %
+Gross margin
+47.5% 47.2% 30 bps
+Demand creation expense
+88 99 -11 %
+Operating overhead expense
+226 238 -5 %
+Total selling and administrative expense
+314 337 -7 %
+Other segment items
+(1) — —
+EARNINGS BEFORE INTEREST AND TAXES $ 248 $ 377 -34 %
+
+FIRST QUARTER OF FISCAL 2027 COMPARED TO FIRST QUARTER OF FISCAL 2026
+•Greater China revenues decreased 26% on a currency-neutral basis. Wholesale revenues decreased 31%. NIKE Direct revenues decreased 18% due to declines in digital sales of 28% and declines in store sales of 14%.
+•Footwear revenues decreased 26% on a currency-neutral basis. Unit sales of footwear decreased 26%, while ASP per pair was flat as lower discounts were offset primarily by channel mix.
+•Apparel revenues decreased 27% on a currency-neutral basis. Unit sales of apparel decreased 25%, while lower ASP per unit reduced apparel revenues by approximately 2 percentage points. Lower ASP per unit was primarily due to product mix, partially offset by lower discounts.
+Reported EBIT decreased 34% reflecting lower reported revenues and the following:
+•Gross margin expansion of 30 basis points primarily due to lower product costs, partially offset by lower ASP and higher inventory obsolescence reserves. Lower ASP primarily reflects product mix, partially offset by lower discounts.
+•Demand creation expense decreased 11% primarily due to lower brand marketing expense, partially offset by unfavorable changes in foreign currency exchange rates.
+•Operating overhead expense decreased 5% primarily due to lower other administrative costs, partially offset by unfavorable changes in foreign currency exchange rates.
+
+28
+
+Table of Contents
+
+ASIA PACIFIC & LATIN AMERICA
+
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions)
+2026 2025 % CHANGE % CHANGE EXCLUDING CURRENCY CHANGES
+Revenues by:
+Footwear $ 1,028 $ 1,061 -3 % -1 %
+Apparel 376 371 1 % 4 %
+Equipment 59 58 2 % 2 %
+TOTAL REVENUES $ 1,463 $ 1,490 -2 % 0 %
+Revenues by:
+Sales to Wholesale Customers $ 946 $ 949 0 % 2 %
+Sales through NIKE Direct 517 541 -4 % -3 %
+TOTAL REVENUES $ 1,463 $ 1,490 -2 % 0 %
+Cost of sales 844 838 1 %
+Gross profit 619 652 -5 %
+Gross margin 42.3% 43.8% -150 bps
+Demand creation expense 93 97 -4 %
+Operating overhead expense 200 208 -4 %
+Total selling and administrative expense 293 305 -4 %
+Other segment items 2 (3) —
+EARNINGS BEFORE INTEREST AND TAXES $ 324 $ 350 -7 %
+
+FIRST QUARTER OF FISCAL 2027 COMPARED TO FIRST QUARTER OF FISCAL 2026
+•Asia Pacific & Latin America revenues were flat on a currency-neutral basis primarily due to higher revenues in Southeast Asia & India and Central & South America offset by lower revenues in Japan, Korea and Mexico. Wholesale revenues increased 2%. NIKE Direct revenues decreased 3% due to declines in digital sales of 10%, partially offset by an increase in store sales of 5%.
+•Footwear revenues decreased 1% on a currency-neutral basis. Unit sales of footwear were flat, while lower ASP per pair reduced footwear revenues by approximately 1 percentage point. Lower ASP per pair was primarily due to higher discounts and channel mix, partially offset by product mix and strategic pricing.
+•Apparel revenues increased 4% on a currency-neutral basis. Unit sales of apparel increased 3%, while higher ASP per unit contributed approximately 1 percentage point of apparel revenue growth. Higher ASP per unit was primarily due to product mix and strategic pricing, partially offset by higher discounts.
+Reported EBIT decreased 7% reflecting lower reported revenues and the following:
+•Gross margin contraction of 150 basis points primarily due to lower ASP and unfavorable changes in standard foreign currency exchange rates. Lower ASP primarily reflects higher discounts and channel mix, partially offset by strategic pricing.
+•Demand creation expense decreased 4% primarily due to lower brand marketing expense.
+•Operating overhead expense decreased 4% due to lower wage-related expense, lower other administrative costs and favorable changes in foreign currency exchange rates.
+
+29
+
+Table of Contents
+
+GLOBAL BRAND DIVISIONS
+
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions)
+2026 2025 % CHANGE
+Revenues $ 6 $ 9 —
+Cost of sales 168 168 0 %
+Gross profit (loss) (162) (159) -2 %
+Demand creation expense 232 203 14 %
+Operating overhead expense 716 831 -14 %
+Total selling and administrative expense 948 1,034 -8 %
+Other segment items — (1) —
+EARNINGS (LOSS) BEFORE INTEREST AND TAXES $ (1,110) $ (1,192) 7 %
+
+Global Brand Divisions primarily represents costs, including product creation and design expenses, that are centrally managed for the NIKE Brand, as well as costs associated with NIKE Direct global digital operations and enterprise technology. Global Brand Divisions revenues include NIKE Brand licensing and other miscellaneous revenues that are not part of a geographic operating segment.
+FIRST QUARTER OF FISCAL 2027 COMPARED TO FIRST QUARTER OF FISCAL 2026
+Global Brand Divisions' loss before interest and taxes decreased 7% primarily due to lower Operating overhead expense, partially offset by higher Demand creation expense. Demand creation expense increased 14% primarily due to higher brand marketing expense, reflecting higher investment in key sports events. Operating overhead expense decreased 14% primarily due to lower wage-related expense.
+
+CONVERSE
+
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions)
+2026 2025 % CHANGE % CHANGE EXCLUDING CURRENCY CHANGES
+Revenues by:
+Footwear $ 227 $ 321 -29 % -29 %
+Apparel 8 11 -27 % -31 %
+Equipment 6 8 -25 % -27 %
+Other(1)
+22 26 -15 % -19 %
+TOTAL REVENUES $ 263 $ 366 -28 % -28 %
+Revenues by:
+Sales to Wholesale Customers $ 144 $ 195 -26 % -25 %
+Sales through Direct to Consumer 97 145 -33 % -34 %
+Other(1)
+22 26 -15 % -18 %
+TOTAL REVENUES $ 263 $ 366 -28 % -28 %
+Cost of sales 144 193 -25 %
+Gross profit
+119 173 -31 %
+Gross margin 45.2% 47.3% -210 bps
+Demand creation expense
+14 33 -58 %
+Operating overhead expense
+82 102 -20 %
+Total selling and administrative expense
+96 135 -29 %
+Other segment items
+(2) (1) —
+EARNINGS BEFORE INTEREST AND TAXES $ 25 $ 39 -36 %
+
+(1)Other revenues consist of territories serviced by third-party licensees who pay royalties to Converse for the use of its registered trademarks and other intellectual property rights.
+30
+
+Table of Contents
+
+FIRST QUARTER OF FISCAL 2027 COMPARED TO FIRST QUARTER OF FISCAL 2026
+•Converse revenues decreased 28% on a currency-neutral basis driven by declines in all territories. Unit sales decreased 34%, while higher ASP contributed approximately 6 percentage points of revenue growth. Higher ASP per unit was primarily due to product mix and lower discounts.
+•Wholesale revenues decreased 25% on a currency-neutral basis.
+•Direct to consumer revenues decreased 34% on a currency-neutral basis.
+Reported EBIT decreased 36% reflecting lower reported revenues and the following:
+•Gross margin contraction of 210 basis points primarily due to higher product costs and higher warehousing and logistics costs, partially offset by higher ASP.
+•Demand creation expense decreased 58% primarily due to lower brand marketing expense.
+•Operating overhead expense decreased 20% primarily due to lower wage-related expense.
+
+CORPORATE
+
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions)
+2026 2025 % CHANGE
+Revenues $ (2) $ (8) —
+Cost of sales (28) (17) —
+Gross profit 26 9 —
+Demand creation expense 1 1 0 %
+Operating overhead expense 500 520 -4 %
+Total selling and administrative expense 501 521 -4 %
+Other segment items 3 27 —
+EARNINGS (LOSS) BEFORE INTEREST AND TAXES $ (478) $ (539) 11 %
+
+Corporate primarily consists of unallocated general and administrative expenses, including expenses associated with centrally managed departments; depreciation and amortization related to our corporate headquarters; unallocated insurance; benefit and compensation programs, including stock-based compensation; and certain foreign currency gains and losses.
+Corporate revenues primarily consist of foreign currency gains and losses related to revenues generated by entities within the NIKE Brand geographic operating segments and Converse, but managed through our central foreign exchange risk management program.
+In addition to the foreign currency gains and losses recognized in Corporate revenues, foreign currency results in Corporate include gains and losses resulting from the difference between actual foreign currency exchange rates and standard rates used to record non-functional currency denominated product purchases within the NIKE Brand geographic operating segments and Converse; related foreign currency hedge results; conversion gains and losses arising from remeasurement of monetary assets and liabilities in non-functional currencies; and certain other foreign currency derivative instruments.
+FIRST QUARTER OF FISCAL 2027 COMPARED TO FIRST QUARTER OF FISCAL 2026
+Corporate's loss before interest and taxes decreased 11% primarily due to lower Operating overhead expense. Operating overhead expense decreased 4% primarily due to lower wage-related expense.
+31
+
+Table of Contents
+
+FOREIGN CURRENCY EXPOSURES AND HEDGING PRACTICES
+As a global company with significant operations outside the United States, in the normal course of business we are exposed to risk arising from changes in currency exchange rates. Our primary foreign currency exposures arise from the recording of transactions denominated in non-functional currencies and the translation of foreign currency denominated results of operations, financial position and cash flows into U.S. Dollars.
+The impact of foreign exchange rate fluctuations on the translation of our consolidated Revenues was a benefit of approximately $26 million for the three months ended August 31, 2026. The impact of foreign exchange rate fluctuations on the translation of our Income before income taxes was a detriment of approximately $5 million for the three months ended August 31, 2026.
+We estimate the combination of translation of foreign currency-denominated profits from our international businesses and the year-over-year change in foreign currency related gains and losses included in Other (income) expense, net, had a favorable impact of approximately $10 million on our Income before income taxes for the three months ended August 31, 2026.
+For additional discussion of our foreign currency exposures and hedging practices, refer to Foreign Currency Exposures and Hedging Practices in Item 7 and Quantitative and Qualitative Disclosures About Market Risk in Item 7A of Part II within our Annual Report.
+32
+
+Table of Contents
+
+LIQUIDITY AND CAPITAL RESOURCES
+CASH FLOW ACTIVITY
+
+THREE MONTHS ENDED AUGUST 31,
+(Dollars in millions)
+2026 2025
+Cash provided (used) by:
+Operations
+$ 135 $ 222
+Investing activities
+(192) (59)
+Financing activities
+(618) (598)
+Effect of exchange rate changes on cash and equivalents
+15 (5)
+NET INCREASE (DECREASE) IN CASH AND EQUIVALENTS
+$ (660) $ (440)
+
+OPERATIONS:
+For the three months ended August 31, 2026, cash provided by operations was $135 million. This was driven by Net income of $712 million, adjusted for non-cash items of $269 million, and a net change in certain working capital components and other assets and liabilities that decreased cash provided by operations by $846 million. The net change in certain working capital components and other assets and liabilities was primarily driven by decreases in Accrued liabilities and Income taxes payable and an increase in Inventories, partially offset by a decrease in Accounts receivable. The decrease in Accrued liabilities was primarily due to payments related to employee compensation. The increase in Inventories was primarily due to shifts in product mix. The decreases in Accounts receivable and Income taxes payable were primarily due to receipt of the International Emergency Economic Powers Act tariff receivable and the related U.S. federal income tax payment.
+For the three months ended August 31, 2025, cash provided by operations was $222 million. This was driven by Net income of $727 million, adjusted for non-cash items of $392 million, and a net change in certain working capital components and other assets and liabilities that decreased cash provided by operations by $897 million. The net change in certain working capital components and other assets and liabilities was primarily driven by an increase in Inventories and an increase in Accounts receivable. The increase in Inventories was primarily due to shifts in product mix and an increase in units and the increase in Accounts receivable was primarily due to higher wholesale revenues and the timing of wholesale shipments.
+INVESTING ACTIVITIES:
+For the three months ended August 31, 2026, cash used by investing activities was $192 million, primarily driven by additions to Property, plant and equipment.
+For the three months ended August 31, 2025, cash used by investing activities was $59 million, primarily driven by additions to Property, plant and equipment, partially offset by the net change in short-term investments (including purchases, sales and maturities).
+FINANCING ACTIVITIES:
+For the three months ended August 31, 2026, cash used by financing activities was $618 million, primarily driven by dividend payments.
+For the three months ended August 31, 2025, cash used by financing activities was $598 million, primarily driven by dividend payments.
+In June 2026, the Board of Directors reapproved the $18 billion share repurchase program to continue without a fixed expiration date and without increasing the aggregate amount authorized for repurchase. As of August 31, 2026, we repurchased 124.4 million shares at an average price of $97.57 per share for a total approximate cost of $12.1 billion under the program. We paused repurchases under this program during the first quarter of fiscal 2026 and no shares were repurchased during the quarter ended August 31, 2026. We may resume share repurchases in the future at any time, depending upon market conditions, operating cash flows and our liquidity and capital needs. We continue to expect funding of any future share repurchases to come from operating cash flows.
+33
+
+Table of Contents
+
+CAPITAL RESOURCES
+On July 17, 2025, we filed a shelf registration statement (the "Shelf") with the U.S. Securities and Exchange Commission (the "SEC") which permits us to issue an unlimited amount of securities from time to time. The Shelf expires on July 17, 2028.
+As of August 31, 2026, our committed credit facilities were unchanged from the information previously reported within our Annual Report. We currently have long-term debt ratings of A+ and A2 from S&P Global Ratings and Moody's Ratings, respectively. Any changes to these ratings could result in interest rate and facility fee changes. As of August 31, 2026, we were in full compliance with the covenants under our facilities and believe it is unlikely we will fail to meet any of the covenants in the foreseeable future. As of August 31, 2026 and May 31, 2026, no amounts were outstanding under our committed credit facilities.
+Liquidity is also provided by our $3 billion commercial paper program. As of and for the three months ended August 31, 2026, we did not have any borrowings outstanding under our $3 billion program. We may issue commercial paper or other debt securities depending on general corporate needs.
+To date, in fiscal 2027, we have not experienced difficulty accessing the capital or credit markets; however, future volatility may increase costs associated with issuing commercial paper or other debt instruments or affect our ability to access those markets.
+As of August 31, 2026, we had Cash and equivalents and Short-term investments totaling $8.4 billion, primarily consisting of commercial paper, corporate notes, deposits held at major banks, money market funds, U.S. Treasury obligations and other investment grade fixed-income securities. Our fixed-income investments are exposed to both credit and interest rate risk. All of our investments are investment grade to minimize our credit risk. While individual securities have varying durations, as of August 31, 2026, the weighted average days to maturity of our cash equivalents and short-term investments portfolio was 105 days.
+We believe that existing Cash and equivalents, Short-term investments and cash provided by operations, together with access to external sources of funds as described above, will be sufficient to meet our domestic and foreign capital needs for the next twelve months and beyond.
+As of August 31, 2026, we did not have any off-balance sheet arrangements that have, or are reasonably likely to have, a material effect on our current or future financial condition, results of operations, liquidity, capital expenditures or capital resources.
+Other than the items described in the Recent Developments section, there have been no significant changes to the material cash requirements previously reported.
+
+34
+
+Table of Contents
+
+RECENT ACCOUNTING PRONOUNCEMENTS
+Refer to Note 1 — Summary of Significant Accounting Policies within the accompanying Notes to the Unaudited Condensed Consolidated Financial Statements for recently adopted and issued accounting standards.
+
+CRITICAL ACCOUNTING ESTIMATES
+The preparation of our Unaudited Condensed Consolidated Financial Statements in accordance with U.S. GAAP requires us to make estimates and judgments that affect the reported amounts of assets, liabilities, revenues and expenses and related disclosure of contingent assets and liabilities.
+We believe the assumptions and judgments involved in the accounting estimates described in the "Management's Discussion and Analysis of Financial Condition and Results of Operations" section within the Annual Report have the greatest potential impact on our Unaudited Condensed Consolidated Financial Statements, so we consider these to be our critical accounting estimates. Because of the uncertainty inherent in these matters, actual results could differ from these estimates. Within the context of these critical accounting estimates, we are not currently aware of any reasonably likely events or circumstances that would result in materially different amounts being reported.
+35
+
+Table of Contents

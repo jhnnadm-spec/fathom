@@ -1,0 +1,854 @@
+{
+  "head" : {
+    "vars" : [ "item", "ceoLabel", "inception", "hqLabel", "founderLabel", "employees", "empDate", "website", "logo", "article" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Phil Knight"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "62600"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2015-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Nike%20logo%201978.svg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bill Bowerman"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "62600"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2015-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Nike%20logo%201978.svg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Phil Knight"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "74400"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2017-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Nike%20logo%201978.svg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bill Bowerman"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "74400"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2017-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Nike%20logo%201978.svg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Phil Knight"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "76700"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2019-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Nike%20logo%201978.svg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bill Bowerman"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "76700"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2019-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Nike%20logo%201978.svg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Phil Knight"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "62600"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2015-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Air%20Jordan.jpg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bill Bowerman"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "62600"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2015-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Air%20Jordan.jpg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Phil Knight"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "74400"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2017-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Air%20Jordan.jpg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bill Bowerman"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "74400"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2017-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Air%20Jordan.jpg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Phil Knight"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "76700"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2019-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Air%20Jordan.jpg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bill Bowerman"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "76700"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2019-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Air%20Jordan.jpg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Phil Knight"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "62600"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2015-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Logo%20NIKE.svg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bill Bowerman"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "62600"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2015-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Logo%20NIKE.svg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Phil Knight"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "74400"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2017-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Logo%20NIKE.svg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bill Bowerman"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "74400"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2017-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Logo%20NIKE.svg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Phil Knight"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "76700"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2019-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Logo%20NIKE.svg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483915"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1964-01-25T00:00:00Z"
+      },
+      "ceoLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elliott Hill"
+      },
+      "hqLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beaverton"
+      },
+      "founderLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bill Bowerman"
+      },
+      "employees" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "type" : "literal",
+        "value" : "76700"
+      },
+      "empDate" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2019-01-01T00:00:00Z"
+      },
+      "website" : {
+        "type" : "uri",
+        "value" : "https://www.nike.com/"
+      },
+      "logo" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Logo%20NIKE.svg"
+      },
+      "article" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Nike,_Inc."
+      }
+    } ]
+  }
+}

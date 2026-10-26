@@ -1,0 +1,35 @@
+Share Sales and Buybacks
+Source: https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm
+
+ITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS
+The following table provides information regarding our purchases of shares of our common stock during the second quarter of 2026 related to our stock repurchase program:
+
+Period(1)
+Total Number of Shares Purchased(2)
+Average Price Paid per Share Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs(2)
+Maximum Dollar Value of Shares that May Yet Be Purchased Under the Plans or Programs(2)
+
+May 4, 2026 - May 31, 2026 870,327 $ 126.21 870,327 $ 932,698,894
+June 1, 2026 - July 5, 2026 1,209,010 117.50 1,209,010 790,637,075
+July 6, 2026 - August 2, 2026 667,165 117.06 667,165 712,539,339
+Total 2,746,502 2,746,502
+
+__________
+(1)Monthly information is presented based on our fiscal months during the second quarter of 2026.
+(2)Our board of directors approved a repurchase program authorizing up to $4.0 billion in aggregate, including $1.0 billion initially authorized on November 29, 2023, and additional $1.0 billion increases on May 29, 2024, December 3, 2024, and December 3, 2025. This program does not have an expiration date or require a minimum number of shares to be repurchased. Repurchases may be made on the open market at prevailing prices or through privately negotiated transactions, including under plans pursuant to Rule 10b5-1 and Rule 10b-18 of the Securities Exchange Act of 1934. The timing and amount of repurchases will depend on market conditions, trading eligibility, and other factors.
+The following table summarizes purchases of shares of our common stock during the second quarter of 2026 related to our Employee Share Purchase Plan ("ESPP"):
+
+Period(1)
+Total Number of Shares Purchased(2)
+Average Price Paid per Share Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs(2)
+Maximum Number of Shares that May Yet Be Purchased Under the Plans or Programs(2)
+
+May 4, 2026 - May 31, 2026 26,546 $ 128.68 26,546 3,991,522
+June 1, 2026 - July 5, 2026 39,177 115.63 39,177 3,952,345
+July 6, 2026 - August 2, 2026 13,101 116.63 13,101 3,939,244
+Total 78,824 78,824
+
+__________
+(1)Monthly information is presented based on our fiscal months during the second quarter of 2026.
+(2)All shares purchased under the ESPP are purchased on the Nasdaq Global Select Market (or such other stock exchange as we may designate). Unless our board of directors terminates the ESPP earlier, it will continue until all shares authorized for purchase have been purchased. The maximum number of shares authorized to be purchased under the ESPP is 6,000,000.
+Excluded from this disclosure are shares withheld to settle statutory employee tax withholding related to the vesting of stock-based compensation awards.

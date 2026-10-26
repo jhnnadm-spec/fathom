@@ -1,0 +1,2103 @@
+{
+  "company": {
+    "cik": "0001397187",
+    "ticker": "LULU",
+    "name": "lululemon athletica inc.",
+    "industry": "Apparel & Other Finishd Prods of  Fabrics & Similar Matl",
+    "fiscalYearEnd": "0131",
+    "exchanges": [
+      "Nasdaq"
+    ]
+  },
+  "reports": [
+    {
+      "form": "10-K",
+      "filingDate": "2026-03-17",
+      "periodEnd": "2026-02-01",
+      "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+      "previous": {
+        "filingDate": "2025-03-27",
+        "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718725000013/lulu-20250202.htm"
+      },
+      "sections": [
+        {
+          "id": "1",
+          "title": "Business",
+          "characters": 25426
+        },
+        {
+          "id": "1A",
+          "title": "Risk Factors",
+          "characters": 71255
+        },
+        {
+          "id": "1C",
+          "title": "Cybersecurity",
+          "characters": 5934
+        },
+        {
+          "id": "2",
+          "title": "Properties",
+          "characters": 1576
+        },
+        {
+          "id": "3",
+          "title": "Legal Proceedings",
+          "characters": 156
+        },
+        {
+          "id": "4",
+          "title": "Mine Safety Disclosures",
+          "characters": 78
+        },
+        {
+          "id": "5",
+          "title": "Market for the Company's Stock",
+          "characters": 5103
+        },
+        {
+          "id": "6",
+          "title": "[Reserved]",
+          "characters": 82
+        },
+        {
+          "id": "7",
+          "title": "Management's Discussion and Analysis",
+          "characters": 44502
+        },
+        {
+          "id": "7A",
+          "title": "Market Risk",
+          "characters": 6331
+        },
+        {
+          "id": "8",
+          "title": "Financial Statements",
+          "characters": 104162
+        },
+        {
+          "id": "9A",
+          "title": "Controls and Procedures",
+          "characters": 4623
+        },
+        {
+          "id": "9B",
+          "title": "Other Information",
+          "characters": 992
+        },
+        {
+          "id": "9C",
+          "title": "Foreign Jurisdictions that Prevent Inspections",
+          "characters": 124
+        },
+        {
+          "id": "10",
+          "title": "Directors, Executive Officers and Corporate Governance",
+          "characters": 2582
+        },
+        {
+          "id": "11",
+          "title": "Executive Compensation",
+          "characters": 207
+        },
+        {
+          "id": "12",
+          "title": "Security Ownership",
+          "characters": 2412
+        },
+        {
+          "id": "13",
+          "title": "Relationships and Director Independence",
+          "characters": 279
+        },
+        {
+          "id": "14",
+          "title": "Accountant Fees and Services",
+          "characters": 225
+        },
+        {
+          "id": "15",
+          "title": "Exhibits and Financial Statement Schedules",
+          "characters": 5422
+        },
+        {
+          "id": "16",
+          "title": "Form 10-K Summary",
+          "characters": 2361
+        }
+      ]
+    },
+    {
+      "form": "10-Q",
+      "filingDate": "2026-09-03",
+      "periodEnd": "2026-08-02",
+      "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+      "previous": {
+        "filingDate": "2026-06-04",
+        "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000078/lulu-20260503.htm"
+      },
+      "sections": [
+        {
+          "id": "I-1",
+          "title": "Financial Statements",
+          "characters": 45026
+        },
+        {
+          "id": "I-2",
+          "title": "Management's Discussion and Analysis",
+          "characters": 47588
+        },
+        {
+          "id": "I-3",
+          "title": "Market Risk",
+          "characters": 6372
+        },
+        {
+          "id": "I-4",
+          "title": "Controls and Procedures",
+          "characters": 1526
+        },
+        {
+          "id": "II-1",
+          "title": "Legal Proceedings",
+          "characters": 704
+        },
+        {
+          "id": "II-1A",
+          "title": "Risk Factors",
+          "characters": 72148
+        },
+        {
+          "id": "II-2",
+          "title": "Share Sales and Buybacks",
+          "characters": 2737
+        },
+        {
+          "id": "II-5",
+          "title": "Other Information",
+          "characters": 348
+        },
+        {
+          "id": "II-6",
+          "title": "Exhibits",
+          "characters": 1852
+        }
+      ]
+    }
+  ],
+  "announcements": [
+    {
+      "filingDate": "2026-10-22",
+      "events": [
+        "Change in its leaders or board",
+        "Shared information with investors"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000135/lulu-20261019.htm"
+    },
+    {
+      "filingDate": "2026-10-07",
+      "events": [
+        "Change in its leaders or board",
+        "Shared information with investors"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000131/lulu-20260930.htm"
+    },
+    {
+      "filingDate": "2026-09-14",
+      "events": [
+        "Change in its leaders or board",
+        "Changed its company rules or financial year"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000129/lulu-20260908.htm"
+    },
+    {
+      "filingDate": "2026-09-03",
+      "events": [
+        "Shared financial results"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000126/lulu-20260903.htm"
+    },
+    {
+      "filingDate": "2026-08-13",
+      "events": [
+        "Announced another event"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000120/lulu-20260813.htm"
+    }
+  ],
+  "numbers": {
+    "asOf": "2026-08-02",
+    "annual": {
+      "revenue": {
+        "id": "revenue",
+        "latest": {
+          "value": 11102600000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "previous": {
+          "value": 10588126000,
+          "start": "2024-01-29",
+          "end": "2025-02-02",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "change": 0.04858971266492295
+      },
+      "grossProfit": {
+        "id": "grossProfit",
+        "latest": {
+          "value": 6284132000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "GrossProfit",
+          "label": "gross profit",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "previous": {
+          "value": 6270811000,
+          "start": "2024-01-29",
+          "end": "2025-02-02",
+          "tag": "GrossProfit",
+          "label": "gross profit",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "change": 0.0021242866353331333
+      },
+      "operatingIncome": {
+        "id": "operatingIncome",
+        "latest": {
+          "value": 2210615000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "OperatingIncomeLoss",
+          "label": "operating income",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "previous": {
+          "value": 2505697000,
+          "start": "2024-01-29",
+          "end": "2025-02-02",
+          "tag": "OperatingIncomeLoss",
+          "label": "operating income",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "change": -0.11776443839777914
+      },
+      "netIncome": {
+        "id": "netIncome",
+        "latest": {
+          "value": 1579183000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "previous": {
+          "value": 1814616000,
+          "start": "2024-01-29",
+          "end": "2025-02-02",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "change": -0.12974260118945274
+      },
+      "eps": {
+        "id": "eps",
+        "latest": {
+          "value": 13.26,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "EarningsPerShareDiluted",
+          "label": "diluted earnings per share",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "previous": {
+          "value": 14.64,
+          "start": "2024-01-29",
+          "end": "2025-02-02",
+          "tag": "EarningsPerShareDiluted",
+          "label": "diluted earnings per share",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "change": -0.09426229508196726
+      },
+      "operatingCashFlow": {
+        "id": "operatingCashFlow",
+        "latest": {
+          "value": 1602477000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "label": "cash from operations",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "previous": {
+          "value": 2272713000,
+          "start": "2024-01-29",
+          "end": "2025-02-02",
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "label": "cash from operations",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "change": -0.2949056920077458
+      },
+      "capex": {
+        "id": "capex",
+        "latest": {
+          "value": 680802000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "label": "spending on buildings and equipment",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "previous": {
+          "value": 689232000,
+          "start": "2024-01-29",
+          "end": "2025-02-02",
+          "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "label": "spending on buildings and equipment",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "change": -0.012231004944634027
+      },
+      "buybacks": {
+        "id": "buybacks",
+        "latest": {
+          "value": 1178349000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "PaymentsForRepurchaseOfCommonStock",
+          "label": "share buybacks",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "previous": {
+          "value": 1636879000,
+          "start": "2024-01-29",
+          "end": "2025-02-02",
+          "tag": "PaymentsForRepurchaseOfCommonStock",
+          "label": "share buybacks",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "change": -0.2801245541057097
+      },
+      "acquisitions": {
+        "id": "acquisitions",
+        "latest": {
+          "value": 0,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "PaymentsToAcquireBusinessesNetOfCashAcquired",
+          "label": "buying other businesses",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "previous": {
+          "value": 154146000,
+          "start": "2024-01-29",
+          "end": "2025-02-02",
+          "tag": "PaymentsToAcquireBusinessesNetOfCashAcquired",
+          "label": "buying other businesses",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        "change": -1
+      }
+    },
+    "quarter": {
+      "revenue": {
+        "id": "revenue",
+        "latest": {
+          "value": 2415631000,
+          "start": "2026-05-04",
+          "end": "2026-08-02",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        "previous": {
+          "value": 2525219000,
+          "start": "2025-05-05",
+          "end": "2025-08-03",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        "change": -0.04339742414420294
+      },
+      "netIncome": {
+        "id": "netIncome",
+        "latest": {
+          "value": 329223000,
+          "start": "2026-05-04",
+          "end": "2026-08-02",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        "previous": {
+          "value": 370905000,
+          "start": "2025-05-05",
+          "end": "2025-08-03",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        "change": -0.11237918065272778
+      }
+    },
+    "balance": {
+      "cash": {
+        "id": "cash",
+        "latest": {
+          "value": 1389737000,
+          "end": "2026-08-02",
+          "tag": "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
+          "label": "cash, including cash set aside for specific uses",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        "previous": {
+          "value": 1155794000,
+          "end": "2025-08-03",
+          "tag": "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
+          "label": "cash, including cash set aside for specific uses",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        "change": 0.20240890677750534
+      },
+      "equity": {
+        "id": "equity",
+        "latest": {
+          "value": 4791174000,
+          "end": "2026-08-02",
+          "tag": "StockholdersEquity",
+          "label": "shareholders' equity",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        "previous": {
+          "value": 4387279000,
+          "end": "2025-08-03",
+          "tag": "StockholdersEquity",
+          "label": "shareholders' equity",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        "change": 0.09206047757619244
+      },
+      "assets": {
+        "id": "assets",
+        "latest": {
+          "value": 8484578000,
+          "end": "2026-08-02",
+          "tag": "Assets",
+          "label": "total assets",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        "previous": {
+          "value": 7523439000,
+          "end": "2025-08-03",
+          "tag": "Assets",
+          "label": "total assets",
+          "source": {
+            "label": "10-Q filed September 4, 2025",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718725000039/lulu-20250803.htm",
+            "form": "10-Q",
+            "filed": "2025-09-04"
+          }
+        },
+        "change": 0.12775261419677889
+      },
+      "liabilities": {
+        "id": "liabilities",
+        "latest": {
+          "value": 3693404000,
+          "end": "2026-08-02",
+          "tag": "Liabilities",
+          "label": "total liabilities",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        "previous": {
+          "value": 3136160000,
+          "end": "2025-08-03",
+          "tag": "Liabilities",
+          "label": "total liabilities",
+          "source": {
+            "label": "10-Q filed September 4, 2025",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718725000039/lulu-20250803.htm",
+            "form": "10-Q",
+            "filed": "2025-09-04"
+          }
+        },
+        "change": 0.17768353655425745
+      },
+      "currentAssets": {
+        "id": "currentAssets",
+        "latest": {
+          "value": 3945587000,
+          "end": "2026-08-02",
+          "tag": "AssetsCurrent",
+          "label": "current assets",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        "previous": {
+          "value": 3528728000,
+          "end": "2025-08-03",
+          "tag": "AssetsCurrent",
+          "label": "current assets",
+          "source": {
+            "label": "10-Q filed September 4, 2025",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718725000039/lulu-20250803.htm",
+            "form": "10-Q",
+            "filed": "2025-09-04"
+          }
+        },
+        "change": 0.11813293628752343
+      },
+      "currentLiabilities": {
+        "id": "currentLiabilities",
+        "latest": {
+          "value": 1801651000,
+          "end": "2026-08-02",
+          "tag": "LiabilitiesCurrent",
+          "label": "current liabilities",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        "previous": {
+          "value": 1557346000,
+          "end": "2025-08-03",
+          "tag": "LiabilitiesCurrent",
+          "label": "current liabilities",
+          "source": {
+            "label": "10-Q filed September 4, 2025",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718725000039/lulu-20250803.htm",
+            "form": "10-Q",
+            "filed": "2025-09-04"
+          }
+        },
+        "change": 0.15687265386112015
+      }
+    },
+    "margins": {
+      "periodEnd": "2026-02-01",
+      "gross": 0.566005440167168,
+      "operating": 0.19910786662583538,
+      "net": 0.14223542233350747
+    },
+    "marginHistory": [
+      {
+        "end": "2022-01-30",
+        "gross": 0.5767597728932424,
+        "operating": 0.21311117493687085,
+        "net": 0.15588647986603624
+      },
+      {
+        "end": "2023-01-29",
+        "gross": 0.5538906392908567,
+        "operating": 0.16378830550650403,
+        "net": 0.10539400812623806
+      },
+      {
+        "end": "2024-01-28",
+        "gross": 0.583141998806979,
+        "operating": 0.22170853155507098,
+        "net": 0.16115450660642097
+      },
+      {
+        "end": "2025-02-02",
+        "gross": 0.5922493744407651,
+        "operating": 0.23665160388155562,
+        "net": 0.1713821690448338
+      },
+      {
+        "end": "2026-02-01",
+        "gross": 0.566005440167168,
+        "operating": 0.19910786662583538,
+        "net": 0.14223542233350747
+      }
+    ],
+    "revenueHistory": [
+      {
+        "value": 6256617000,
+        "start": "2021-02-01",
+        "end": "2022-01-30",
+        "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "revenue",
+        "source": {
+          "label": "10-K filed March 21, 2024",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718724000010/lulu-20240128.htm",
+          "form": "10-K",
+          "filed": "2024-03-21"
+        }
+      },
+      {
+        "value": 8110518000,
+        "start": "2022-01-31",
+        "end": "2023-01-29",
+        "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "revenue",
+        "source": {
+          "label": "10-K filed March 27, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718725000013/lulu-20250202.htm",
+          "form": "10-K",
+          "filed": "2025-03-27"
+        }
+      },
+      {
+        "value": 9619278000,
+        "start": "2023-01-30",
+        "end": "2024-01-28",
+        "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "revenue",
+        "source": {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      },
+      {
+        "value": 10588126000,
+        "start": "2024-01-29",
+        "end": "2025-02-02",
+        "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "revenue",
+        "source": {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      },
+      {
+        "value": 11102600000,
+        "start": "2025-02-03",
+        "end": "2026-02-01",
+        "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "revenue",
+        "source": {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      }
+    ],
+    "ratios": {
+      "freeCashFlow": {
+        "value": 921675000,
+        "end": "2026-02-01",
+        "figures": [
+          {
+            "value": 1602477000,
+            "start": "2025-02-03",
+            "end": "2026-02-01",
+            "tag": "NetCashProvidedByUsedInOperatingActivities",
+            "label": "cash from operations",
+            "source": {
+              "label": "10-K filed March 17, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+              "form": "10-K",
+              "filed": "2026-03-17"
+            }
+          },
+          {
+            "value": 680802000,
+            "start": "2025-02-03",
+            "end": "2026-02-01",
+            "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+            "label": "spending on buildings and equipment",
+            "source": {
+              "label": "10-K filed March 17, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+              "form": "10-K",
+              "filed": "2026-03-17"
+            }
+          }
+        ]
+      },
+      "currentRatio": {
+        "value": 2.1899840757172173,
+        "end": "2026-08-02",
+        "figures": [
+          {
+            "value": 3945587000,
+            "end": "2026-08-02",
+            "tag": "AssetsCurrent",
+            "label": "current assets",
+            "source": {
+              "label": "10-Q filed September 3, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+              "form": "10-Q",
+              "filed": "2026-09-03"
+            }
+          },
+          {
+            "value": 1801651000,
+            "end": "2026-08-02",
+            "tag": "LiabilitiesCurrent",
+            "label": "current liabilities",
+            "source": {
+              "label": "10-Q filed September 3, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+              "form": "10-Q",
+              "filed": "2026-09-03"
+            }
+          }
+        ]
+      },
+      "assetsToLiabilities": {
+        "value": 2.297224457438179,
+        "end": "2026-08-02",
+        "figures": [
+          {
+            "value": 8484578000,
+            "end": "2026-08-02",
+            "tag": "Assets",
+            "label": "total assets",
+            "source": {
+              "label": "10-Q filed September 3, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+              "form": "10-Q",
+              "filed": "2026-09-03"
+            }
+          },
+          {
+            "value": 3693404000,
+            "end": "2026-08-02",
+            "tag": "Liabilities",
+            "label": "total liabilities",
+            "source": {
+              "label": "10-Q filed September 3, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+              "form": "10-Q",
+              "filed": "2026-09-03"
+            }
+          }
+        ]
+      },
+      "returnOnEquity": {
+        "value": 0.3401253967445436,
+        "end": "2026-02-01",
+        "figures": [
+          {
+            "value": 1579183000,
+            "start": "2025-02-03",
+            "end": "2026-02-01",
+            "tag": "NetIncomeLoss",
+            "label": "net income",
+            "source": {
+              "label": "10-K filed March 17, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+              "form": "10-K",
+              "filed": "2026-03-17"
+            }
+          },
+          {
+            "value": 4961840000,
+            "end": "2026-02-01",
+            "tag": "StockholdersEquity",
+            "label": "shareholders' equity",
+            "source": {
+              "label": "10-Q filed September 3, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+              "form": "10-Q",
+              "filed": "2026-09-03"
+            }
+          },
+          {
+            "value": 4324047000,
+            "end": "2025-02-02",
+            "tag": "StockholdersEquity",
+            "label": "shareholders' equity",
+            "source": {
+              "label": "10-Q filed September 3, 2026",
+              "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+              "form": "10-Q",
+              "filed": "2026-09-03"
+            }
+          }
+        ]
+      }
+    },
+    "omitted": [
+      {
+        "id": "dividends",
+        "period": "annual",
+        "reason": "not-reported"
+      },
+      {
+        "id": "longTermDebt",
+        "period": "instant",
+        "reason": "not-reported"
+      }
+    ]
+  },
+  "statements": [
+    {
+      "id": "revenue-year",
+      "section": "growth",
+      "text": "[[revenue|Revenue]] grew 4.9% in the year ended February 1, 2026, to $11.1 billion. This means the company sold more than the year before.",
+      "figures": [
+        {
+          "value": 11102600000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 10588126000,
+          "start": "2024-01-29",
+          "end": "2025-02-02",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      ]
+    },
+    {
+      "id": "revenue-quarter",
+      "section": "quarter",
+      "text": "In the [[quarter|quarter]] ended August 2, 2026, revenue was $2.4 billion, down 4.3% from the same quarter a year earlier.",
+      "figures": [
+        {
+          "value": 2415631000,
+          "start": "2026-05-04",
+          "end": "2026-08-02",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        {
+          "value": 2525219000,
+          "start": "2025-05-05",
+          "end": "2025-08-03",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed September 3, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+          "form": "10-Q",
+          "filed": "2026-09-03"
+        }
+      ]
+    },
+    {
+      "id": "net-income-year",
+      "section": "profit",
+      "text": "[[net-income|Net income]], the profit left after all costs and taxes, fell 13% to $1.6 billion in the year ended February 1, 2026.",
+      "figures": [
+        {
+          "value": 1579183000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 1814616000,
+          "start": "2024-01-29",
+          "end": "2025-02-02",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      ]
+    },
+    {
+      "id": "gross-margin",
+      "section": "profit",
+      "text": "After paying for the products it sold, the company kept about $57 of every $100 of sales. This is called its [[gross-margin|gross margin]].",
+      "figures": [
+        {
+          "value": 6284132000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "GrossProfit",
+          "label": "gross profit",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 11102600000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      ]
+    },
+    {
+      "id": "net-margin",
+      "section": "profit",
+      "text": "Out of every $100 of sales, about $14 was left as profit after all costs and taxes. This is called its [[profit-margin|profit margin]].",
+      "figures": [
+        {
+          "value": 1579183000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 11102600000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      ]
+    },
+    {
+      "id": "operating-cash-flow",
+      "section": "profit",
+      "text": "Its day-to-day business brought in $1.6 billion of cash in the year ended February 1, 2026. This is called [[cash-from-operations|cash from operations]].",
+      "figures": [
+        {
+          "value": 1602477000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "label": "cash from operations",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      ]
+    },
+    {
+      "id": "cash",
+      "section": "cashAndDebt",
+      "text": "On August 2, 2026, the company had $1.4 billion in [[cash-and-equivalents|cash and cash equivalents]], money it can use quickly.",
+      "figures": [
+        {
+          "value": 1389737000,
+          "end": "2026-08-02",
+          "tag": "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
+          "label": "cash, including cash set aside for specific uses",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed September 3, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+          "form": "10-Q",
+          "filed": "2026-09-03"
+        }
+      ]
+    },
+    {
+      "id": "current-ratio",
+      "section": "health",
+      "text": "On August 2, 2026, the company had $3.9 billion in cash and other assets it expects to use within a year, against $1.8 billion of bills due within a year. That is about $2.19 for every $1 it owes soon, more than enough to cover them. This is its [[current-ratio|current ratio]].",
+      "figures": [
+        {
+          "value": 3945587000,
+          "end": "2026-08-02",
+          "tag": "AssetsCurrent",
+          "label": "current assets",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        {
+          "value": 1801651000,
+          "end": "2026-08-02",
+          "tag": "LiabilitiesCurrent",
+          "label": "current liabilities",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed September 3, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+          "form": "10-Q",
+          "filed": "2026-09-03"
+        }
+      ]
+    },
+    {
+      "id": "assets-vs-liabilities",
+      "section": "health",
+      "text": "It owned $8.5 billion in [[assets|assets]] and owed $3.7 billion in [[total-liabilities|total liabilities]], so it owned about $2.30 for every $1 it owed.",
+      "figures": [
+        {
+          "value": 8484578000,
+          "end": "2026-08-02",
+          "tag": "Assets",
+          "label": "total assets",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        {
+          "value": 3693404000,
+          "end": "2026-08-02",
+          "tag": "Liabilities",
+          "label": "total liabilities",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed September 3, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+          "form": "10-Q",
+          "filed": "2026-09-03"
+        }
+      ]
+    },
+    {
+      "id": "free-cash-flow",
+      "section": "cashFlow",
+      "text": "Its business brought in $1.6 billion of cash in the year ended February 1, 2026 and spent $680.8 million on [[capital-expenditure|buildings and equipment]], leaving $921.7 million of [[free-cash-flow|free cash flow]]: money it could use for dividends, buybacks, paying down debt or growing.",
+      "figures": [
+        {
+          "value": 1602477000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "label": "cash from operations",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 680802000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "label": "spending on buildings and equipment",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      ]
+    },
+    {
+      "id": "fcf-vs-profit",
+      "section": "cashFlow",
+      "text": "Free cash flow was smaller than its [[net-income|net income]] ($1.6 billion) that year, meaning less of its accounting profit turned into spare cash.",
+      "figures": [
+        {
+          "value": 1602477000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "label": "cash from operations",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 680802000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "label": "spending on buildings and equipment",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 1579183000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      ]
+    },
+    {
+      "id": "capital-allocation",
+      "section": "capital",
+      "text": "In the year ended February 1, 2026, the company spent $1.2 billion buying back its own shares ([[share-buyback|buybacks]]) and invested $680.8 million in buildings and equipment.",
+      "figures": [
+        {
+          "value": 1178349000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "PaymentsForRepurchaseOfCommonStock",
+          "label": "share buybacks",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 680802000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "label": "spending on buildings and equipment",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      ]
+    },
+    {
+      "id": "return-on-equity",
+      "section": "returns",
+      "text": "It earned about $34 of profit for every $100 of [[shareholders-equity|shareholders' equity]] in the year ended February 1, 2026. This is its [[return-on-equity|return on equity]] (34%).",
+      "figures": [
+        {
+          "value": 1579183000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 4961840000,
+          "end": "2026-02-01",
+          "tag": "StockholdersEquity",
+          "label": "shareholders' equity",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        {
+          "value": 4324047000,
+          "end": "2025-02-02",
+          "tag": "StockholdersEquity",
+          "label": "shareholders' equity",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        },
+        {
+          "label": "10-Q filed September 3, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+          "form": "10-Q",
+          "filed": "2026-09-03"
+        }
+      ]
+    },
+    {
+      "id": "eps",
+      "section": "returns",
+      "text": "[[eps|Earnings per share]] (diluted) fell 9.4% to $13.26 in the year ended February 1, 2026.",
+      "figures": [
+        {
+          "value": 13.26,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "EarningsPerShareDiluted",
+          "label": "diluted earnings per share",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 14.64,
+          "start": "2024-01-29",
+          "end": "2025-02-02",
+          "tag": "EarningsPerShareDiluted",
+          "label": "diluted earnings per share",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      ]
+    },
+    {
+      "id": "margin-trend",
+      "section": "returns",
+      "text": "Over the 5 years to February 1, 2026, its [[operating-margin|operating margin]] fell to 19.9%, from 21.3%.",
+      "figures": [
+        {
+          "value": 6256617000,
+          "start": "2021-02-01",
+          "end": "2022-01-30",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed March 21, 2024",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718724000010/lulu-20240128.htm",
+            "form": "10-K",
+            "filed": "2024-03-21"
+          }
+        },
+        {
+          "value": 11102600000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 21, 2024",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718724000010/lulu-20240128.htm",
+          "form": "10-K",
+          "filed": "2024-03-21"
+        },
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      ]
+    },
+    {
+      "id": "s-growth",
+      "section": "summary",
+      "text": "In the year to February 2026, it made $11.1 billion in [[revenue|sales]], 4.9% more than the year before. Sales in its latest three months (to August 2026) were down 4.3% on a year earlier.",
+      "figures": [
+        {
+          "value": 11102600000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 10588126000,
+          "start": "2024-01-29",
+          "end": "2025-02-02",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 2415631000,
+          "start": "2026-05-04",
+          "end": "2026-08-02",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        {
+          "value": 2525219000,
+          "start": "2025-05-05",
+          "end": "2025-08-03",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        },
+        {
+          "label": "10-Q filed September 3, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+          "form": "10-Q",
+          "filed": "2026-09-03"
+        }
+      ]
+    },
+    {
+      "id": "s-profit",
+      "section": "summary",
+      "text": "In the year to February 2026, it kept $1.6 billion as [[net-income|profit]] after paying all its costs and taxes: about $14 of every $100 it made in sales, its [[profit-margin|profit margin]].",
+      "figures": [
+        {
+          "value": 1579183000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "NetIncomeLoss",
+          "label": "net income",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 11102600000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "label": "revenue",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      ]
+    },
+    {
+      "id": "s-bills",
+      "section": "summary",
+      "text": "On August 2, 2026, for every $1 of bills due within a year, it had about $2.19 in cash and other things it expected to turn into cash in that time: more than enough to cover them. This is its [[current-ratio|current ratio]].",
+      "figures": [
+        {
+          "value": 3945587000,
+          "end": "2026-08-02",
+          "tag": "AssetsCurrent",
+          "label": "current assets",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        },
+        {
+          "value": 1801651000,
+          "end": "2026-08-02",
+          "tag": "LiabilitiesCurrent",
+          "label": "current liabilities",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed September 3, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+          "form": "10-Q",
+          "filed": "2026-09-03"
+        }
+      ]
+    },
+    {
+      "id": "s-debt",
+      "section": "summary",
+      "text": "On August 2, 2026, it held $1.4 billion in [[cash-and-equivalents|cash]].",
+      "figures": [
+        {
+          "value": 1389737000,
+          "end": "2026-08-02",
+          "tag": "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
+          "label": "cash, including cash set aside for specific uses",
+          "source": {
+            "label": "10-Q filed September 3, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+            "form": "10-Q",
+            "filed": "2026-09-03"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-Q filed September 3, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm",
+          "form": "10-Q",
+          "filed": "2026-09-03"
+        }
+      ]
+    },
+    {
+      "id": "s-cash",
+      "section": "summary",
+      "text": "In the year to February 2026, its everyday business brought in $1.6 billion in [[cash-from-operations|cash]]. After paying for [[capital-expenditure|new buildings and equipment]], $921.7 million was [[free-cash-flow|left over]].",
+      "figures": [
+        {
+          "value": 1602477000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "label": "cash from operations",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 680802000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "label": "spending on buildings and equipment",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      ]
+    },
+    {
+      "id": "s-spending",
+      "section": "summary",
+      "text": "In the year to February 2026, its biggest uses of money were: [[share-buyback|buying back its own shares]]: $1.2 billion; and [[capital-expenditure|new buildings and equipment]]: $680.8 million.",
+      "figures": [
+        {
+          "value": 1178349000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "PaymentsForRepurchaseOfCommonStock",
+          "label": "share buybacks",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        },
+        {
+          "value": 680802000,
+          "start": "2025-02-03",
+          "end": "2026-02-01",
+          "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+          "label": "spending on buildings and equipment",
+          "source": {
+            "label": "10-K filed March 17, 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+            "form": "10-K",
+            "filed": "2026-03-17"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "label": "10-K filed March 17, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+          "form": "10-K",
+          "filed": "2026-03-17"
+        }
+      ]
+    }
+  ],
+  "crossCheck": [
+    {
+      "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "end": "2026-02-01",
+      "value": 11102600000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "end": "2025-02-02",
+      "value": 10588126000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "GrossProfit",
+      "end": "2026-02-01",
+      "value": 6284132000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "GrossProfit",
+      "end": "2025-02-02",
+      "value": 6270811000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "OperatingIncomeLoss",
+      "end": "2026-02-01",
+      "value": 2210615000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "OperatingIncomeLoss",
+      "end": "2025-02-02",
+      "value": 2505697000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "NetIncomeLoss",
+      "end": "2026-02-01",
+      "value": 1579183000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "NetIncomeLoss",
+      "end": "2025-02-02",
+      "value": 1814616000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "EarningsPerShareDiluted",
+      "end": "2026-02-01",
+      "value": 13.26,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "EarningsPerShareDiluted",
+      "end": "2025-02-02",
+      "value": 14.64,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "NetCashProvidedByUsedInOperatingActivities",
+      "end": "2026-02-01",
+      "value": 1602477000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "NetCashProvidedByUsedInOperatingActivities",
+      "end": "2025-02-02",
+      "value": 2272713000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "end": "2026-02-01",
+      "value": 680802000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "end": "2025-02-02",
+      "value": 689232000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "PaymentsForRepurchaseOfCommonStock",
+      "end": "2026-02-01",
+      "value": 1178349000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "PaymentsForRepurchaseOfCommonStock",
+      "end": "2025-02-02",
+      "value": 1636879000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "PaymentsToAcquireBusinessesNetOfCashAcquired",
+      "end": "2026-02-01",
+      "value": 0,
+      "filing": "10-K filed March 17, 2026",
+      "found": false
+    },
+    {
+      "tag": "PaymentsToAcquireBusinessesNetOfCashAcquired",
+      "end": "2025-02-02",
+      "value": 154146000,
+      "filing": "10-K filed March 17, 2026",
+      "found": true
+    },
+    {
+      "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "end": "2026-08-02",
+      "value": 2415631000,
+      "filing": "10-Q filed September 3, 2026",
+      "found": true
+    },
+    {
+      "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "end": "2025-08-03",
+      "value": 2525219000,
+      "filing": "10-Q filed September 3, 2026",
+      "found": true
+    },
+    {
+      "tag": "NetIncomeLoss",
+      "end": "2026-08-02",
+      "value": 329223000,
+      "filing": "10-Q filed September 3, 2026",
+      "found": true
+    },
+    {
+      "tag": "NetIncomeLoss",
+      "end": "2025-08-03",
+      "value": 370905000,
+      "filing": "10-Q filed September 3, 2026",
+      "found": true
+    },
+    {
+      "tag": "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
+      "end": "2026-08-02",
+      "value": 1389737000,
+      "filing": "10-Q filed September 3, 2026",
+      "found": true
+    },
+    {
+      "tag": "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
+      "end": "2025-08-03",
+      "value": 1155794000,
+      "filing": "10-Q filed September 3, 2026",
+      "found": true
+    },
+    {
+      "tag": "StockholdersEquity",
+      "end": "2026-08-02",
+      "value": 4791174000,
+      "filing": "10-Q filed September 3, 2026",
+      "found": true
+    },
+    {
+      "tag": "StockholdersEquity",
+      "end": "2025-08-03",
+      "value": 4387279000,
+      "filing": "10-Q filed September 3, 2026",
+      "found": true
+    },
+    {
+      "tag": "Assets",
+      "end": "2026-08-02",
+      "value": 8484578000,
+      "filing": "10-Q filed September 3, 2026",
+      "found": true
+    },
+    {
+      "tag": "Liabilities",
+      "end": "2026-08-02",
+      "value": 3693404000,
+      "filing": "10-Q filed September 3, 2026",
+      "found": true
+    },
+    {
+      "tag": "AssetsCurrent",
+      "end": "2026-08-02",
+      "value": 3945587000,
+      "filing": "10-Q filed September 3, 2026",
+      "found": true
+    },
+    {
+      "tag": "LiabilitiesCurrent",
+      "end": "2026-08-02",
+      "value": 1801651000,
+      "filing": "10-Q filed September 3, 2026",
+      "found": true
+    }
+  ],
+  "debtTags": [
+    {
+      "tag": "OtherBorrowings",
+      "end": "2026-08-02",
+      "value": 0
+    },
+    {
+      "tag": "ShortTermBorrowings",
+      "end": "2026-08-02",
+      "value": 0
+    },
+    {
+      "tag": "LineOfCreditFacilityMaximumBorrowingCapacity",
+      "end": "2024-10-27",
+      "value": 42100000
+    }
+  ],
+  "fetchedAt": "2026-10-26T11:51:44.514Z"
+}

@@ -1,0 +1,51 @@
+Exhibits
+Source: https://www.sec.gov/Archives/edgar/data/1397187/000139718726000127/lulu-20260802.htm
+
+ITEM 6. EXHIBITS
+
+Incorporated by Reference
+Exhibit
+No. Exhibit Title Filed
+Herewith Form Exhibit
+No. File No. Filing
+Date
+
+10.1* Non-Employee Director Restricted Stock Unit Award Agreement
+X
+
+10.2* First Amendment to the lululemon athletica inc. 2023 Equity Incentive Plan
+S-8 10.2 333-297306 7/7/2026
+
+31.1 Certification of principal executive officer Pursuant to Exchange Act Rule 13a-14(a)
+X
+
+31.2 Certification of principal financial and accounting officer Pursuant to Exchange Act Rule 13a-14(a)
+X
+
+32.1** Certification of principal executive officer and principal financial and accounting officer Pursuant to 18 U.S.C. Section 1350 as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002
+
+101 The following unaudited interim consolidated financial statements from the Company's Quarterly Report on Form 10-Q for the fiscal quarter ended August 2, 2026, formatted in iXBRL: (i) Consolidated Balance Sheets, (ii) Consolidated Statements of Operations and Comprehensive Income, (iii) Consolidated Statements of Stockholders' Equity, (iv) Consolidated Statements of Cash Flows, and (v) Notes to the Unaudited Interim Consolidated Financial Statements X
+
+104 Cover Page Interactive Data File (formatted in iXBRL and contained in Exhibit 101)
+X
+
+* Denotes a compensatory plan, contract, or arrangement in which our directors or executive officers may participate.
+** Furnished herewith.
+
+51
+
+Table of Contents
+
+SIGNATURES
+Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.
+
+lululemon athletica inc.
+
+By: /s/ MEGHAN FRANK
+
+Meghan Frank
+Interim Co-Chief Executive Officer and Chief Financial Officer
+(principal executive officer and principal financial and accounting officer)
+
+Dated: September 3, 2026
+52

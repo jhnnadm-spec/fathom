@@ -1,0 +1,52 @@
+Exhibits
+Source: https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm
+
+ITEM 6. EXHIBITS
+
+Exhibits:
+3.1 Restated Articles of Incorporation, as amended (incorporated by reference to Exhibit 3.1 to the Company's Quarterly Report on Form 10-Q for the fiscal quarter ended November 30, 2015).
+
+3.2 Sixth Amended and Restated Bylaws (incorporated by reference to Exhibit 3.1 to the Company's Current Report on Form 8-K filed September 20, 2024).
+
+4.1 Restated Articles of Incorporation, as amended (see Exhibit 3.1).
+
+4.2 Sixth Amended and Restated Bylaws (see Exhibit 3.2).
+
+10.1 NIKE, Inc. Employee Stock Purchase Plan, as amended (incorporated by reference to Exhibit 10.1 to the Company's Current Report on Form 8-K filed on September 10, 2026).*
+
+31.1 Rule 13a-14(a)/15d-14(a) Certification of Chief Executive Officer.
+
+31.2 Rule 13a-14(a)/15d-14(a) Certification of Chief Financial Officer.
+
+32.1† Section 1350 Certification of Chief Executive Officer.
+
+32.2† Section 1350 Certification of Chief Financial Officer.
+
+101.INS Inline XBRL Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document.
+101.SCH Inline XBRL Taxonomy Extension Schema
+101.CAL Inline XBRL Taxonomy Extension Calculation Linkbase
+101.DEF Inline XBRL Taxonomy Extension Definition Document
+101.LAB Inline XBRL Taxonomy Extension Label Linkbase
+101.PRE Inline XBRL Taxonomy Extension Presentation Linkbase
+104 Cover Page Interactive Data File - formatted in Inline XBRL and included in Exhibit 101
+
+* Management contract or compensatory plan or arrangement.
+† Furnished herewith
+
+41
+
+Table of Contents
+
+SIGNATURES
+Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.
+
+NIKE, INC.
+an Oregon Corporation
+
+By: /s/ David Denton
+David Denton
+Chief Financial Officer and Authorized Officer
+
+Date: October 2, 2026
+
+42
