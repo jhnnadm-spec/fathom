@@ -79,3 +79,11 @@ checks every point, and saves it in a free Supabase database.
   and website come from Wikidata (CC0, free to reuse); the short introduction
   comes from Wikipedia (CC BY-SA 4.0, credited on the page). They're labelled as
   background and never used for financial figures.
+
+## Research lenses and comparing companies
+
+Each lens lives in `lib/lens/` and returns the same shape (`LensResult` in `lib/lens/types.ts`): figures with their period, currency and source links, plus a plain-English summary written from those figures only. Numbers are always worked out in code; the AI never produces figures.
+
+- **Fundamental** (`lib/lens/fundamental.ts`): sales, growth, margins, EBITDA, cash flow, net debt, debt-to-equity, current ratio, ROE and EPS from SEC filings. P/E and EV/EBITDA need a share price, so they're listed but not calculated: the TradingView price is display only.
+- **Compare** (`lib/compare/compare.ts`, page `/compare?t=KO,PEP`): 2 to 5 companies side by side, highest and lowest marked (never "better" or "worse"), warnings when figures aren't like for like, and "Not reported" instead of zero. The link is the saved comparison.
+- JSON for testing: `/api/lens/fundamental?t=KO` and `/api/lens/compare?t=KO,PEP`.

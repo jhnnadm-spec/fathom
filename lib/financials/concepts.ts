@@ -17,6 +17,7 @@ export type MetricId =
   | "netIncome"
   | "eps"
   | "operatingCashFlow"
+  | "depreciation"
   | "capex"
   | "dividends"
   | "buybacks"
@@ -77,6 +78,16 @@ export const METRICS: Record<MetricId, MetricDefinition> = {
     tags: [
       usd("NetCashProvidedByUsedInOperatingActivities", "cash from operations"),
       usd("NetCashProvidedByUsedInOperatingActivitiesContinuingOperations", "cash from continuing operations"),
+    ],
+  },
+  depreciation: {
+    id: "depreciation",
+    kind: "duration",
+    tags: [
+      usd("DepreciationDepletionAndAmortization", "depreciation and amortisation"),
+      usd("DepreciationAmortizationAndAccretionNet", "depreciation and amortisation"),
+      usd("DepreciationAndAmortization", "depreciation and amortisation"),
+      usd("Depreciation", "depreciation"),
     ],
   },
   capex: {

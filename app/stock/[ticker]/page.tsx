@@ -23,6 +23,8 @@ import { getCompanyProfile, type CompanyProfile } from "@/lib/profile/wiki";
 import { TermName } from "@/components/TermName";
 import { ConceptMap } from "@/components/ConceptMap";
 import { conceptMap } from "@/lib/report/concept-map";
+import { FundamentalGlance } from "@/components/FundamentalGlance";
+import { fundamentalFromReport } from "@/lib/lens/fundamental";
 import { Forces, ForcesSummary } from "@/components/Forces";
 import { getMacro } from "@/lib/macro/data";
 import { buildForces } from "@/lib/report/forces";
@@ -80,6 +82,7 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
     rules: mentioned("rules"),
   });
   const lead = e?.topics.whatItDoes?.[0];
+  const fundamentals = fundamentalFromReport(report);
   const ctx: Ctx = { report, e, level: "surface" };
 
   return (
@@ -88,6 +91,7 @@ async function Report({ params }: { params: Promise<{ ticker: string }> }) {
         <Hero report={report} profile={profile} company={company} lead={lead} />
         <ExplainStatus ticker={report.company.ticker} state={state} />
         <Contents company={company} />
+        {fundamentals && <FundamentalGlance result={fundamentals} />}
         <DetailBar />
         <div className="-mt-4 flex flex-col gap-14">
           {STEPS.map((step, i) => (
@@ -1137,8 +1141,8 @@ function MoreInfo({ report }: { report: CompanyReport }) {
 function Disclaimer() {
   return (
     <p className="text-sm leading-relaxed text-muted">
-      <strong className="font-semibold text-ink">Not financial advice.</strong> Fathom explains public information for
-      education only. It does not recommend buying, selling or holding any investment, and does not give price targets.
+      <strong className="font-semibold text-ink">For information only. Not investment advice.</strong> Fathom explains public
+      information for education. It never says whether to buy, sell or hold any investment, and never gives price targets.
     </p>
   );
 }

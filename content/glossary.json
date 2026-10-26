@@ -125,7 +125,19 @@
       "operating cash flow",
       "ocf",
       "cfo"
-    ]
+    ],
+    "sides": {
+      "high": {
+        "label": "High operating cash flow (compared with profit)",
+        "good": "Profits are turning into real cash, often a sign of good-quality earnings and customers who pay on time.",
+        "bad": "It can be boosted for a while by paying suppliers later or cutting stock, which can't go on for ever."
+      },
+      "low": {
+        "label": "Low operating cash flow (compared with profit)",
+        "good": "A fast-growing company may be building up stock or waiting for customers to pay, which can turn into cash later.",
+        "bad": "Profit that doesn't arrive as cash can be a warning that customers are slow to pay, stock is piling up, or the profit relies on estimates."
+      }
+    }
   },
   "cash-and-equivalents": {
     "term": "Cash and cash equivalents",
@@ -971,6 +983,80 @@
         "label": "A low P/S",
         "good": "The company may be cheap for the business it does, especially if margins could improve.",
         "bad": "Low-margin businesses always trade on low P/S ratios, so it may not be cheap at all."
+      }
+    }
+  },
+  "ebitda": {
+    "term": "EBITDA",
+    "short": "EBITDA",
+    "aliases": [
+      "earnings before interest tax depreciation and amortisation",
+      "ebitda margin"
+    ],
+    "definition": "Earnings before interest, tax, depreciation and amortisation: profit from the main business before paying interest and tax, and before the yearly wear-and-tear charge on buildings and equipment.",
+    "why": "It shows how much the core business earns before decisions about borrowing and tax, so companies with different debts can be compared.",
+    "analyst": "Analysts use it as a rough measure of the cash-like earnings of the main business, and it's the bottom half of the EV/EBITDA ratio.",
+    "reading": "Growing EBITDA suggests the core business is earning more each year.",
+    "caveat": "It ignores the real cost of replacing worn-out equipment and the interest the company must pay, so a business can show strong EBITDA and still be short of cash.",
+    "sides": {
+      "high": {
+        "label": "High EBITDA (compared with sales)",
+        "good": "The main business earns a lot before interest and tax, which gives room to pay debts and invest.",
+        "bad": "It can flatter companies that must keep spending heavily on equipment, because that spending isn't subtracted."
+      },
+      "low": {
+        "label": "Low EBITDA (compared with sales)",
+        "good": "Some businesses, like retailers, run on thin earnings but sell very large volumes and turn their stock over quickly.",
+        "bad": "Little is left to cover interest, tax and new equipment, so a small fall in sales can wipe it out."
+      }
+    }
+  },
+  "net-debt": {
+    "term": "Net debt",
+    "short": "net debt",
+    "aliases": [
+      "net cash"
+    ],
+    "definition": "Long-term borrowing minus the cash the company holds. A negative figure means it holds more cash than it owes long-term (net cash).",
+    "why": "Cash in the bank could be used to pay back debt, so net debt shows the borrowing that cash wouldn't cover.",
+    "analyst": "Analysts compare net debt with profit and cash flow to see how many years it would take to pay off what the company owes.",
+    "reading": "Low or negative net debt suggests a strong cushion; high net debt means the company depends more on lenders.",
+    "caveat": "Fathom uses long-term debt only, so short-term borrowing and leases are left out; and not all cash is free to use (some may be needed day to day or held abroad).",
+    "sides": {
+      "high": {
+        "label": "High net debt",
+        "good": "Stable businesses with reliable income can borrow cheaply to grow or pay owners, which can lift returns.",
+        "bad": "Interest must be paid in good years and bad, and refinancing can get expensive when interest rates rise."
+      },
+      "low": {
+        "label": "Low or negative net debt",
+        "good": "Plenty of cash and little borrowing gives safety in a downturn and freedom to invest.",
+        "bad": "Large idle cash can mean management has no good use for it, and it earns little."
+      }
+    }
+  },
+  "revenue-growth": {
+    "term": "Revenue growth",
+    "short": "revenue growth",
+    "aliases": [
+      "sales growth",
+      "growth"
+    ],
+    "definition": "How much sales rose or fell compared with the year before, as a percentage.",
+    "why": "It shows whether more customers are buying, or paying more, over time.",
+    "analyst": "Analysts look at the growth rate and how steady it is, and whether it comes from the existing business or from buying other companies.",
+    "reading": "Steady growth suggests strong demand; shrinking sales can mean lost customers or a weaker market.",
+    "caveat": "Growth can come from price rises during inflation, from buying other businesses, or from currency moves, rather than from selling more.",
+    "sides": {
+      "high": {
+        "label": "Fast revenue growth",
+        "good": "Customers want more of what it sells, and growth can lead to bigger profits as the business scales up.",
+        "bad": "Very fast growth can be bought with discounts or heavy spending, and is hard to keep up for long."
+      },
+      "low": {
+        "label": "Slow or negative revenue growth",
+        "good": "Mature companies can still earn steady profits and pay generous dividends without growing much.",
+        "bad": "Shrinking sales can mean customers are leaving or the market is getting smaller."
       }
     }
   }

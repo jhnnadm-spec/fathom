@@ -43,6 +43,7 @@ export type CompanyReport = {
     industry: string;
     sic: number;
     exchanges: string[];
+    fiscalYearEnd?: string; // "MMDD", e.g. "1231"
   };
   support: Support;
   annualReport?: ReportFiling;
@@ -125,6 +126,7 @@ export async function getCompanyReport(ticker: string): Promise<CompanyReport | 
       industry: filings.industry,
       sic: filings.sic,
       exchanges: filings.exchanges,
+      fiscalYearEnd: filings.fiscalYearEnd || undefined,
     },
     support,
     statements: [],

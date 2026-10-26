@@ -42,7 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
         <footer className="border-t border-line">
           <div className="mx-auto flex max-w-[1180px] flex-col gap-2 px-5 py-8 text-sm leading-relaxed text-muted sm:flex-row sm:items-center sm:justify-between lg:px-8">
-            <p>For learning only. Fathom never tells you to buy or sell anything.</p>
+            <p>For information only. Not investment advice. Fathom never tells you to buy, sell or hold anything.</p>
             <Link href="/about" className="font-semibold">
               About Fathom
             </Link>
